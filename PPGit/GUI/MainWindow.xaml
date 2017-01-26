@@ -16,7 +16,18 @@
         Loaded="Window_Loaded">
 
     <Window.Resources>
-        <BitmapImage x:Key="ActiveRightArrow" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\ActiveRightArrow.png"/>
+        <BitmapImage x:Key="ActiveRightArrow" UriSource="..\Resources\ActiveRightArrow.png"/>
+        <BitmapImage x:Key="ActiveLeftArrow" UriSource="..\Resources\ActiveLeftArrow.png"/>
+        <BitmapImage x:Key="Close" UriSource="..\Resources\Close.png"/>
+        <BitmapImage x:Key="Min" UriSource="..\Resources\Min.png"/>
+        <BitmapImage x:Key="Max" UriSource="..\Resources\Max.png"/>
+        <BitmapImage x:Key="Browse" UriSource="..\Resources\Browse.png"/>
+        <BitmapImage x:Key="Settings" UriSource="..\Resources\Settings.png"/>
+        <BitmapImage x:Key="Fullscreen" UriSource="..\Resources\Fullscreen.png"/>
+        <BitmapImage x:Key="Plus" UriSource="..\Resources\Plus.png"/>
+        <BitmapImage x:Key="Minus" UriSource="..\Resources\Minus.png"/>
+        
+        <!--<BitmapImage x:Key="ActiveRightArrow" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\ActiveRightArrow.png"/>
         <BitmapImage x:Key="ActiveLeftArrow" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\ActiveLeftArrow.png"/>
         <BitmapImage x:Key="Close" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Close.png"/>
         <BitmapImage x:Key="Min" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Min.png"/>
@@ -25,7 +36,7 @@
         <BitmapImage x:Key="Settings" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Settings.png"/>
         <BitmapImage x:Key="Fullscreen" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Fullscreen.png"/>
         <BitmapImage x:Key="Plus" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Plus.png"/>
-        <BitmapImage x:Key="Minus" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Minus.png"/>
+        <BitmapImage x:Key="Minus" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Minus.png"/>-->
 
         <!--<BitmapImage x:Key="ActiveRightArrow" UriSource="C:\Users\Nick\Google Drive\Projects\ImageViewer\ImageViewer\ActiveRightArrow.png"/>
         <BitmapImage x:Key="ActiveLeftArrow" UriSource="C:\Users\Nick\Google Drive\Projects\ImageViewer\ImageViewer\ActiveLeftArrow.png"/>
