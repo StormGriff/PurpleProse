@@ -35,8 +35,14 @@ namespace PurpleProse.Lib
                 if (description == null) return null;
                 else
                 {
-                    string[] myDesc = File.ReadAllLines(description);
-                    return myDesc;
+                    try
+                    {
+                        string[] myDesc = File.ReadAllLines(description);
+                        return myDesc;
+                    }
+                    catch (FileNotFoundException) {
+                        return null;
+                    }
                 }
             }
             set{ File.WriteAllLines(description, value); }
@@ -46,8 +52,14 @@ namespace PurpleProse.Lib
                 if (history == null) return null;
                 else
                 {
-                    string[] myHist = File.ReadAllLines(history);
-                    return myHist;
+                    try
+                    {
+                        string[] myHist = File.ReadAllLines(history);
+                        return myHist;
+                    }
+                    catch (FileNotFoundException) {
+                        return null;
+                    }
                 }
             }
             set { File.WriteAllLines(history, value); } //Writes the history to the file
