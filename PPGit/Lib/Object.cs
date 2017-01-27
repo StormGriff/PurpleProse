@@ -32,15 +32,23 @@ namespace PurpleProse.Lib
         public string ImageFile	{ get; set; }
         public string[] DescText { //Gets and Sets the description text
             get {
-                string[] myDesc = null; /*= File.ReadAllLines(description); */
-                return myDesc;
+                if (description == null) return null;
+                else
+                {
+                    string[] myDesc = File.ReadAllLines(description);
+                    return myDesc;
+                }
             }
             set{ File.WriteAllLines(description, value); }
         }
         public string[] HistText { //Gets and Sets the history text
             get {
-                string[] myHist = null; /*= File.ReadAllLines(history); */
-                return myHist;
+                if (history == null) return null;
+                else
+                {
+                    string[] myHist = File.ReadAllLines(history);
+                    return myHist;
+                }
             }
             set { File.WriteAllLines(history, value); } //Writes the history to the file
         }
