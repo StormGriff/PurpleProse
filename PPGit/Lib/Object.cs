@@ -27,9 +27,9 @@ namespace PurpleProse.Lib
         }
 
         public string Name		{ get { return name; } set { name = value; } }
-        public string DescFile	{ get; set; }
-        public string Hist		{ get; set; }
-        public string ImageFile	{ get; set; }
+        public string DescFile	{ get { return description; } set { description = value; } }
+        public string Hist		{ get { return history; } set { history = value; } }
+        public string ImageFile	{ get { return imageFile; } set { imageFile = value; } }
         public string[] DescText { //Gets and Sets the description text
             get {
                 if (description == null) return null;
