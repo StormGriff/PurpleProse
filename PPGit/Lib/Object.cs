@@ -27,20 +27,40 @@ namespace PurpleProse.Lib
         }
 
         public string Name		{ get { return name; } set { name = value; } }
-        public string DescFile	{ get; set; }
-        public string Hist		{ get; set; }
-        public string ImageFile	{ get; set; }
+        public string DescFile	{ get { return description; } set { description = value; } }
+        public string Hist		{ get { return history; } set { history = value; } }
+        public string ImageFile	{ get { return imageFile; } set { imageFile = value; } }
         public string[] DescText { //Gets and Sets the description text
             get {
-                string[] myDesc = null; /*= File.ReadAllLines(description); */
-                return myDesc;
+                if (description == null) return null;
+                else
+                {
+                    try
+                    {
+                        string[] myDesc = File.ReadAllLines(description);
+                        return myDesc;
+                    }
+                    catch (FileNotFoundException) {
+                        return null;
+                    }
+                }
             }
             set{ File.WriteAllLines(description, value); }
         }
         public string[] HistText { //Gets and Sets the history text
             get {
-                string[] myHist = null; /*= File.ReadAllLines(history); */
-                return myHist;
+                if (history == null) return null;
+                else
+                {
+                    try
+                    {
+                        string[] myHist = File.ReadAllLines(history);
+                        return myHist;
+                    }
+                    catch (FileNotFoundException) {
+                        return null;
+                    }
+                }
             }
             set { File.WriteAllLines(history, value); } //Writes the history to the file
         }
