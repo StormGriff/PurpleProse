@@ -23,5 +23,10 @@ namespace PPGit.GUI
         {
             InitializeComponent();
         }
+
+        private void calWND_Loaded(object sender, RoutedEventArgs e)
+        {
+            monthLBL.Content = PPGit.Lib.time.monthName(DateTime.Now.Month);
+        }
     }
 }
