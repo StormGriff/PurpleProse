@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Diagnostics;
 
 namespace PurpleProse
 {
@@ -15,7 +16,6 @@ namespace PurpleProse
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-
         }
 
         [System.STAThreadAttribute()]
@@ -28,5 +28,9 @@ namespace PurpleProse
             app.Run();
         }
 
-    }
+		private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e) {
+			//stub
+		}
+
+	}
 }

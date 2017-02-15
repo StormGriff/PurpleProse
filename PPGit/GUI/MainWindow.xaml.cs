@@ -1,27 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Data;
+using System.Diagnostics;
 
 namespace PurpleProse
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
     {
-
+		//static string texteditor; Currently using seperate class
         List<PurpleProse.Lib.Character> characters;
         List<PurpleProse.Lib.Location> locations;
         DataTable bindChar;
@@ -81,7 +72,17 @@ namespace PurpleProse
             UpdateBinding();
 
             DataGrid.DataContext = bindChar.DefaultView;
+			
+			/*texteditor*/ TextOps.editor = "D:\\Documents\\Visual Studio 2015\\Projects\\HelloWPF\\HelloWPF\\bin\\Debug\\HelloWPF.exe";//"D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\HelloWPF - Shortcut.exe";
+			// Intialization of default texteditor must be moved, and edited.
         }
+
+		private void MenuItem_Click(object sender, RoutedEventArgs e) {
+			(sender as MenuItem).ContextMenu.IsEnabled = true;
+			(sender as MenuItem).ContextMenu.PlacementTarget = (sender as MenuItem);
+			(sender as MenuItem).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+			(sender as MenuItem).ContextMenu.IsOpen = true;
+		}
 
         //need to add for location
         private void UpdateBinding()
@@ -96,5 +97,14 @@ namespace PurpleProse
                 bindChar.Rows.Add(dr);
             }
         }
-    }
+
+		private void Add_Character_LeftMouseUp(object sender, MouseButtonEventArgs e) {
+			PurpleProse.Lib.Character New_Char = new PurpleProse.Lib.Character(null, null, null, null, 20, null, null, null, null, null, null);
+			characters.Add(New_Char);
+			CharacterWindow CharWindow = new CharacterWindow(New_Char);
+			CharWindow.Show();
+			//MessageBox.Show(CharWindow.Getmessage());
+			//CharWindow.ShowDialog();
+		}
+	}
 }

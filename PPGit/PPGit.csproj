@@ -49,11 +49,18 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>C:\Program Files (x86)\Microsoft Web Tools\Extended WPF Toolkit Binaries\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\CharacterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\Create\CreateCharacter.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -64,12 +71,17 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="App.xaml.cs" />
+    <Compile Include="GUI\CharacterWindow.xaml.cs">
+      <DependentUpon>CharacterWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Create\CreateCharacter.xaml.cs" />
     <Compile Include="GUI\MainWindow.xaml.cs" />
     <Compile Include="Lib\Building.cs" />
     <Compile Include="Lib\Character.cs" />
     <Compile Include="Lib\City.cs" />
+    <Compile Include="Lib\Text.cs" />
     <Compile Include="Lib\Country.cs" />
+    <Compile Include="Lib\CY_Object.cs" />
     <Compile Include="Lib\deadline.cs" />
     <Compile Include="Lib\Location.cs" />
     <Compile Include="Lib\Object.cs" />

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PurpleProse"
         xmlns:lib="clr-namespace:PurpleProse.Lib"
         mc:Ignorable="d"
+		
         Title="MainWindow" Height="400" Width="625"
         MinHeight="550" MinWidth="500"
         WindowStyle="None"
@@ -73,25 +74,25 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
-        <Style TargetType="{x:Type ResizeGrip}">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Foreground" Value="Gray"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ResizeGrip}">
-                        <Border Background="{TemplateBinding Background}"
+		<Style TargetType="{x:Type ResizeGrip}">
+			<Setter Property="OverridesDefaultStyle" Value="True"/>
+			<Setter Property="Foreground" Value="Gray"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ResizeGrip}">
+						<Border Background="{TemplateBinding Background}"
                                 SnapsToDevicePixels="True"
                                 Width="10"
                                 Height="10">
-                            <Path Data="M7.677,7.5300003 L9.677,7.5300003 9.677,9.5300002 7.677,9.5300002 z M3.786,7.5300003 L5.7859998,7.5300003 5.7859998,9.5300002 3.786,9.5300002 z M0,7.5300003 L2,7.5300003 2,9.5300002 0,9.5300002 z M3.786,3.8280003 L5.7859998,3.8280003 5.7859998,5.8280003 3.786,5.8280003 z M7.677,3.7660003 L9.677,3.7660003 9.677,5.7659999 7.677,5.7659999 z M7.677,0 L9.677,0 9.677,2 7.677,2 z" Fill="{TemplateBinding Foreground}" Height="9.53" Stretch="Fill" VerticalAlignment="Top" Width="9.677"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+							<Path Data="M7.677,7.5300003 L9.677,7.5300003 9.677,9.5300002 7.677,9.5300002 z M3.786,7.5300003 L5.7859998,7.5300003 5.7859998,9.5300002 3.786,9.5300002 z M0,7.5300003 L2,7.5300003 2,9.5300002 0,9.5300002 z M3.786,3.8280003 L5.7859998,3.8280003 5.7859998,5.8280003 3.786,5.8280003 z M7.677,3.7660003 L9.677,3.7660003 9.677,5.7659999 7.677,5.7659999 z M7.677,0 L9.677,0 9.677,2 7.677,2 z" Fill="{TemplateBinding Foreground}" Height="9.53" Stretch="Fill" VerticalAlignment="Top" Width="9.677"/>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
 
-    </Window.Resources>
+	</Window.Resources>
 
     <Border BorderThickness="1" Background="#FF171717" BorderBrush="#FF171717"
             Name="WindowBorder">
@@ -212,13 +213,25 @@
                 
                 <DockPanel Grid.Row="1">
                     <Menu IsMainMenu="True" DockPanel.Dock="Top" Background="#FF171717" Foreground="White">
-                        <MenuItem Header="Menu">
-                            
+						<MenuItem Name="Menu" Header="Menu"  Click="MenuItem_Click" ContextMenuService.IsEnabled="False">
+                            <MenuItem.ContextMenu><ContextMenu>
+									<MenuItem x:Name="Sup" FontSize="12" Header="Stub"/>
+							</ContextMenu></MenuItem.ContextMenu>
                         </MenuItem>
-                        <MenuItem Header="Theme">
-                            
-                        </MenuItem>
-                    </Menu>
+						<MenuItem Name="Theme" Header="Theme"  Click="MenuItem_Click" ContextMenuService.IsEnabled="False">
+							<MenuItem.ContextMenu><ContextMenu>
+									<MenuItem x:Name="Stub" FontSize="12" Header="Stub"/>
+							</ContextMenu></MenuItem.ContextMenu>
+						</MenuItem>
+						<MenuItem  Name="Add" Header="Add" Click="MenuItem_Click" ContextMenuService.IsEnabled="False">
+							<MenuItem.ContextMenu><ContextMenu>
+									<MenuItem x:Name="Add_Object" FontSize="12" Header="Object"/>
+									<MenuItem x:Name="Add_Character" FontSize="12" Header="Character" PreviewMouseLeftButtonUp="Add_Character_LeftMouseUp" />
+									<MenuItem x:Name="Add_Location" FontSize="12" Header="Location"/>
+									<MenuItem x:Name="Add_Relationship" FontSize="12" Header="Relationship"/>
+							</ContextMenu></MenuItem.ContextMenu>
+						</MenuItem>
+					</Menu>
                 </DockPanel>
 
                 <Grid Grid.Row="2">
@@ -246,9 +259,8 @@
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
                         </DataGrid.Columns>-->
-
                     </DataGrid>
-                </Grid>
+				</Grid>
             </Grid>
                
         </Grid>
