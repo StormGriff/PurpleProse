@@ -121,14 +121,6 @@ namespace PurpleProse {
         #line default
         #line hidden
         
-        
-        #line 251 "..\..\..\GUI\MainWindow.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button button;
-        
-        #line default
-        #line hidden
-        
         private bool _contentLoaded;
         
         /// <summary>
@@ -222,15 +214,6 @@ namespace PurpleProse {
             return;
             case 12:
             this.DataGrid = ((System.Windows.Controls.DataGrid)(target));
-            return;
-            case 13:
-            this.button = ((System.Windows.Controls.Button)(target));
-            
-            #line 251 "..\..\..\GUI\MainWindow.xaml"
-            this.button.Click += new System.Windows.RoutedEventHandler(this.button_Click);
-            
-            #line default
-            #line hidden
             return;
             }
             this._contentLoaded = true;

@@ -107,141 +107,141 @@ namespace PPGit.GUI
                 x++;
             }
             //Populate the rest of the weeks
-            if (x != lastDay.Day) {
+            if (x <= lastDay.Day) {
                 num8.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num9.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num10.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num11.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num12.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num13.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num14.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num15.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num16.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num17.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num18.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num19.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num20.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num21.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num22.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num23.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num24.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num25.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num26.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num27.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num28.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num29.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num30.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num31.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num32.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num33.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num34.Content = x;
                 x++;
             }
-            if (x != lastDay.Day)
+            if (x <= lastDay.Day)
             {
                 num35.Content = x;
                 x++;
