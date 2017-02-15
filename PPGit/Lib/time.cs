@@ -8,6 +8,8 @@ namespace PPGit.Lib
 {
     public static class time
     {
+        public static DateTime firstDay;
+        public static DateTime lastDay;
         public static string monthName(int month) {
             switch (month) {
                 case 1:

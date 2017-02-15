@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PPGit.GUI"
         mc:Ignorable="d"
-        Title="Calendar" Height="336.205" Width="360.344" MinHeight="372.198" MinWidth="406.153"
+        Title="Calendar" Height="541.608" Width="525.181" MinHeight="541.608" MinWidth="525.181"
         WindowStartupLocation="CenterOwner" Loaded="calWND_Loaded">
     <Grid>
         <Grid Margin="27,60,20,46">
             <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
                 <RowDefinition Height="50*"/>
                 <RowDefinition Height="50*"/>
                 <RowDefinition Height="50*"/>
@@ -130,6 +131,27 @@
             <Border x:Name="day35" BorderBrush="Black" BorderThickness="1" Grid.Column="6" Grid.Row="4">
                 <Label x:Name="num35" Content="" Margin="-1,-1,9,9" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
             </Border>
+            <Border x:Name="day36" BorderBrush="Black" BorderThickness="1" Grid.Row="5">
+                <Label x:Name="num36" Margin="-1,-1,9,8" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
+            </Border>
+            <Border x:Name="day37" BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="5">
+                <Label x:Name="num37" Content="" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold" Margin="-1,-1,9,8"/>
+            </Border>
+            <Border x:Name="day38" BorderBrush="Black" BorderThickness="1" Grid.Column="2" Grid.Row="5">
+                <Label x:Name="num38" Content="" Margin="-1,-2,9,9" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
+            </Border>
+            <Border x:Name="day39" BorderBrush="Black" BorderThickness="1" Grid.Column="3" Grid.Row="5">
+                <Label x:Name="num39" Content="" Margin="-1,-2,9,9" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
+            </Border>
+            <Border x:Name="day40" BorderBrush="Black" BorderThickness="1" Grid.Column="4" Grid.Row="5">
+                <Label x:Name="num40" Content="" Margin="0,-2,9,9" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
+            </Border>
+            <Border x:Name="day41" BorderBrush="Black" BorderThickness="1" Grid.Column="5" Grid.Row="5">
+                <Label x:Name="num41" Content="" Margin="-1,-2,9,9" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
+            </Border>
+            <Border x:Name="day42" BorderBrush="Black" BorderThickness="1" Grid.Column="6" Grid.Row="5">
+                <Label x:Name="num42" Content="" Margin="-1,-2,9,9" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
+            </Border>
         </Grid>
         <Grid Height="23" Margin="27,37,20,0" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
@@ -149,6 +171,8 @@
             <Label x:Name="friLBL" Content="Friday" Grid.Column="5" Margin="9,2,0,4" FontSize="6" FontFamily="Showcard Gothic"/>
             <Label x:Name="satLBL" Content="Saturday" Grid.Column="6" Margin="5,2,0,4" FontFamily="Showcard Gothic" FontSize="6"/>
         </Grid>
-        <Label x:Name="monthLBL" Content="MONTH" VerticalAlignment="Top" FontSize="20" FontFamily="Wide Latin" Margin="114,0,55,0"/>
+        <Label x:Name="monthLBL" Content="MONTH" FontSize="20" FontFamily="Wide Latin" Margin="125,0,118,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <Button x:Name="rtBTN" Content="&gt;" Margin="0,0,10,10" HorizontalAlignment="Right" Width="27" Height="20" VerticalAlignment="Bottom" Click="rtBTN_Click"/>
+        <Button x:Name="lftBTN" Content="&lt;" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="27"/>
     </Grid>
 </Window>
