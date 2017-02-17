@@ -171,7 +171,7 @@
             <Label x:Name="friLBL" Content="Friday" Grid.Column="5" Margin="9,2,0,4" FontSize="6" FontFamily="Showcard Gothic"/>
             <Label x:Name="satLBL" Content="Saturday" Grid.Column="6" Margin="5,2,0,4" FontFamily="Showcard Gothic" FontSize="6"/>
         </Grid>
-        <Label x:Name="monthLBL" Content="MONTH" FontSize="20" FontFamily="Wide Latin" Margin="125,0,118,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <Label x:Name="monthLBL" Content="MONTH" FontSize="20" FontFamily="Wide Latin" Margin="27,0,20,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Center" Width="auto"/>
         <Button x:Name="rtBTN" Content="&gt;" Margin="0,0,10,10" HorizontalAlignment="Right" Width="27" Height="20" VerticalAlignment="Bottom" Click="rtBTN_Click"/>
         <Button x:Name="lftBTN" Content="&lt;" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="27" Click="lftBTN_Click"/>
     </Grid>

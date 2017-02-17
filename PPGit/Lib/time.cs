@@ -10,36 +10,57 @@ namespace PPGit.Lib
     {
         public static DateTime firstDay;
         public static DateTime lastDay;
-        public static string monthName(int month) {
-            switch (month) {
-                case 1:
-                    return "January";
-                case 2:
-                    return "February";
-                case 3:
-                    return "March";
-                case 4:
-                    return "April";
-                case 5:
-                    return "May";
-                case 6:
-                    return "June";
-                case 7:
-                    return "July";
-                case 8:
-                    return "August";
-                case 9:
-                    return "September";
-                case 10:
-                    return "October";
-                case 11:
-                    return "November";
-                case 12:
-                    return "December";
-                default:
-                    return "INVALID";
-
+        public static string Name {
+            get
+            {
+                string month;
+                switch (firstDay.Month)
+                {
+                    case 1:
+                        month = "January";
+                        break;
+                    case 2:
+                        month = "February";
+                        break;
+                    case 3:
+                        month = "March";
+                        break;
+                    case 4:
+                        month = "April";
+                        break;
+                    case 5:
+                        month = "May";
+                        break;
+                    case 6:
+                        month = "June";
+                        break;
+                    case 7:
+                        month = "July";
+                        break;
+                    case 8:
+                        month = "August";
+                        break;
+                    case 9:
+                        month = "September";
+                        break;
+                    case 10:
+                        month = "October";
+                        break;
+                    case 11:
+                        month = "November";
+                        break;
+                    case 12:
+                        month = "December";
+                        break;
+                    default:
+                        return "INVALID";
+                }
+                return month + " " + firstDay.Year;
             }
+        }
+        public static bool thisMonth() {
+            if (firstDay.Month == DateTime.Now.Month && firstDay.Year == DateTime.Now.Year) return true;
+            else return false;
         }
     }
 }
