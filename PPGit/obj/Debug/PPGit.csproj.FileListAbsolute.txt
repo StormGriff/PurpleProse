@@ -18,3 +18,5 @@ C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\PPGit.Properties.Res
 C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\PPGit.csproj.GenerateResource.Cache
 C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\PPGit.exe
 C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\PPGit.pdb
+C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\GUI\addDeadline.g.cs
+C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\GUI\addDeadline.baml

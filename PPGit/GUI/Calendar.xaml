@@ -174,5 +174,6 @@
         <Label x:Name="monthLBL" Content="MONTH" FontSize="20" FontFamily="Wide Latin" Margin="27,0,20,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Center" Width="auto"/>
         <Button x:Name="rtBTN" Content="&gt;" Margin="0,0,10,10" HorizontalAlignment="Right" Width="27" Height="20" VerticalAlignment="Bottom" Click="rtBTN_Click"/>
         <Button x:Name="lftBTN" Content="&lt;" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="27" Click="lftBTN_Click"/>
+        <Button x:Name="addBTN" Content="Add Deadline" Margin="0,0,94,21" Click="addBTN_Click" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="91"/>
     </Grid>
 </Window>
