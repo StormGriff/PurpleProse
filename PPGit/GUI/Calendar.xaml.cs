@@ -36,60 +36,77 @@ namespace PPGit.GUI
             {
                 num1.Content = x;
                 if (DateTime.Now.Day == x) day1.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day1.Background = deadlineColor;
                 x++;
                 num2.Content = x;
                 if (DateTime.Now.Day == x) day2.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day2.Background = deadlineColor;
                 x++;
                 num3.Content = x;
                 if (DateTime.Now.Day == x) day3.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day3.Background = deadlineColor;
                 x++;
                 num4.Content = x;
                 if (DateTime.Now.Day == x) day4.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day4.Background = deadlineColor;
                 x++;
                 num5.Content = x;
                 if (DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Monday) //Where does the month start?
             {
                 num2.Content = x;
                 if (DateTime.Now.Day == x) day2.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day2.Background = deadlineColor;
                 x++;
                 num3.Content = x;
                 if (DateTime.Now.Day == x) day3.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day3.Background = deadlineColor;
                 x++;
                 num4.Content = x;
                 if (DateTime.Now.Day == x) day4.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day4.Background = deadlineColor;
                 x++;
                 num5.Content = x;
                 if (DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Tuesday)  //We are populating the first week
             {
                 num3.Content = x;
                 if (DateTime.Now.Day == x) day3.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day3.Background = deadlineColor;
                 x++;
                 num4.Content = x;
                 if (DateTime.Now.Day == x) day4.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day4.Background = deadlineColor;
                 x++;
                 num5.Content = x;
                 if (DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
@@ -99,251 +116,296 @@ namespace PPGit.GUI
             {
                 num4.Content = x;
                 if (DateTime.Now.Day == x) day4.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day4.Background = deadlineColor;
                 x++;
                 num5.Content = x;
                 if (DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Thursday)
             {
                 num5.Content = x;
                 if (DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Friday)
             {
                 num6.Content = x;
                 if (DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Saturday) {
                 num7.Content = x;
                 if (DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             //Populate the rest of the weeks
             if (x <= PPGit.Lib.time.lastDay.Day) {
                 num8.Content = x;
                 if (DateTime.Now.Day == x) day8.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day8.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num9.Content = x;
                 if (DateTime.Now.Day == x) day9.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day9.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num10.Content = x;
                 if (DateTime.Now.Day == x) day10.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day10.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num11.Content = x;
                 if (DateTime.Now.Day == x) day11.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day11.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num12.Content = x;
                 if (DateTime.Now.Day == x) day12.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day12.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num13.Content = x;
                 if (DateTime.Now.Day == x) day13.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day13.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num14.Content = x;
                 if (DateTime.Now.Day == x) day14.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day14.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num15.Content = x;
                 if (DateTime.Now.Day == x) day15.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day15.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num16.Content = x;
                 if (DateTime.Now.Day == x) day16.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day16.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num17.Content = x;
                 if (DateTime.Now.Day == x) day17.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day17.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num18.Content = x;
                 if (DateTime.Now.Day == x) day18.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day18.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num19.Content = x;
                 if (DateTime.Now.Day == x) day19.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day19.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num20.Content = x;
                 if (DateTime.Now.Day == x) day20.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day20.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num21.Content = x;
                 if (DateTime.Now.Day == x) day21.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day21.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num22.Content = x;
                 if (DateTime.Now.Day == x) day22.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day22.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num23.Content = x;
                 if (DateTime.Now.Day == x) day23.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day23.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num24.Content = x;
                 if (DateTime.Now.Day == x) day24.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day24.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num25.Content = x;
                 if (DateTime.Now.Day == x) day25.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day25.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num26.Content = x;
                 if (DateTime.Now.Day == x) day26.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day26.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num27.Content = x;
                 if (DateTime.Now.Day == x) day27.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day27.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num28.Content = x;
                 if (DateTime.Now.Day == x) day28.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day28.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num29.Content = x;
                 if (DateTime.Now.Day == x) day29.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day29.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num30.Content = x;
                 if (DateTime.Now.Day == x) day30.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day30.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num31.Content = x;
                 if (DateTime.Now.Day == x) day31.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day31.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num32.Content = x;
                 if (DateTime.Now.Day == x) day32.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day32.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num33.Content = x;
                 if (DateTime.Now.Day == x) day33.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day33.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num34.Content = x;
                 if (DateTime.Now.Day == x) day34.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day34.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num35.Content = x;
                 if (DateTime.Now.Day == x) day35.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day35.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num36.Content = x;
                 if (DateTime.Now.Day == x) day36.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day36.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num37.Content = x;
                 if (DateTime.Now.Day == x) day37.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day37.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num38.Content = x;
                 if (DateTime.Now.Day == x) day38.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day38.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num39.Content = x;
                 if (DateTime.Now.Day == x) day39.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day39.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num40.Content = x;
                 if (DateTime.Now.Day == x) day40.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day40.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num41.Content = x;
                 if (DateTime.Now.Day == x) day41.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day41.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num42.Content = x;
                 if (DateTime.Now.Day == x) day42.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day42.Background = deadlineColor;
                 x++;
             }
         }
@@ -369,6 +431,7 @@ namespace PPGit.GUI
             day18.Background = null;
             day19.Background = null;
             day20.Background = null;
+            day21.Background = null;
             day22.Background = null;
             day23.Background = null;
             day24.Background = null;
@@ -404,24 +467,31 @@ namespace PPGit.GUI
             {
                 num1.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day1.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day1.Background = deadlineColor;
                 x++;
                 num2.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day2.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day2.Background = deadlineColor;
                 x++;
                 num3.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day3.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day3.Background = deadlineColor;
                 x++;
                 num4.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day4.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day4.Background = deadlineColor;
                 x++;
                 num5.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Monday) //Where does the month start?
@@ -429,21 +499,27 @@ namespace PPGit.GUI
                 num1.Content = "";
                 num2.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day2.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day2.Background = deadlineColor;
                 x++;
                 num3.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day3.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day3.Background = deadlineColor;
                 x++;
                 num4.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day4.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day4.Background = deadlineColor;
                 x++;
                 num5.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Tuesday)  //We are populating the first week
@@ -452,18 +528,23 @@ namespace PPGit.GUI
                 num2.Content = "";
                 num3.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day3.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day3.Background = deadlineColor;
                 x++;
                 num4.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day4.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day4.Background = deadlineColor;
                 x++;
                 num5.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Wednesday)
@@ -473,15 +554,19 @@ namespace PPGit.GUI
                 num3.Content = "";
                 num4.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day4.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day4.Background = deadlineColor;
                 x++;
                 num5.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Thursday)
@@ -492,12 +577,15 @@ namespace PPGit.GUI
                 num4.Content = "";
                 num5.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Friday)
@@ -509,9 +597,11 @@ namespace PPGit.GUI
                 num5.Content = "";
                 num6.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Saturday)
@@ -524,6 +614,7 @@ namespace PPGit.GUI
                 num6.Content = "";
                 num7.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             //Populate the rest of the weeks
@@ -531,120 +622,140 @@ namespace PPGit.GUI
             {
                 num8.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day8.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day8.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num9.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day9.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day9.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num10.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day10.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day10.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num11.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day11.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day11.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num12.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day12.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day12.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num13.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day13.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day13.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num14.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day14.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day14.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num15.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day15.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day15.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num16.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day16.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day16.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num17.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day17.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day17.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num18.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day18.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day18.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num19.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day19.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day19.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num20.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day20.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day20.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num21.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day21.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day21.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num22.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day22.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day22.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num23.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day23.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day23.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num24.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day24.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day24.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num25.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day25.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day25.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num26.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day26.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day26.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num27.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day27.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day27.Background = deadlineColor;
                 x++;
             }
             else { //Clear the rest of them
@@ -669,6 +780,7 @@ namespace PPGit.GUI
             {
                 num28.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day28.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day28.Background = deadlineColor;
                 x++;
             }
             else
@@ -693,6 +805,7 @@ namespace PPGit.GUI
             {
                 num29.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day29.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day29.Background = deadlineColor;
                 x++;
             }
             else
@@ -716,6 +829,7 @@ namespace PPGit.GUI
             {
                 num30.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day30.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day30.Background = deadlineColor;
                 x++;
             }
             else
@@ -738,6 +852,7 @@ namespace PPGit.GUI
             {
                 num31.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day31.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day31.Background = deadlineColor;
                 x++;
             }
             else
@@ -759,6 +874,7 @@ namespace PPGit.GUI
             {
                 num32.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day32.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day32.Background = deadlineColor;
                 x++;
             }
             else
@@ -779,6 +895,7 @@ namespace PPGit.GUI
             {
                 num33.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day33.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day33.Background = deadlineColor;
                 x++;
             }
             else
@@ -798,6 +915,7 @@ namespace PPGit.GUI
             {
                 num34.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day34.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day34.Background = deadlineColor;
                 x++;
             }
             else
@@ -816,6 +934,7 @@ namespace PPGit.GUI
             {
                 num35.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day35.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day35.Background = deadlineColor;
                 x++;
             }
             else
@@ -832,6 +951,7 @@ namespace PPGit.GUI
             if (x <= PPGit.Lib.time.lastDay.Day) {
                 num36.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day36.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day36.Background = deadlineColor;
                 x++;
             }
             else
@@ -847,6 +967,7 @@ namespace PPGit.GUI
             if (x <= PPGit.Lib.time.lastDay.Day) {
                 num37.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day37.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day37.Background = deadlineColor;
                 x++;
             }
             else
@@ -861,6 +982,7 @@ namespace PPGit.GUI
             if (x <= PPGit.Lib.time.lastDay.Day) {
                 num38.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day38.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day38.Background = deadlineColor;
                 x++;
             }
             else
@@ -874,6 +996,7 @@ namespace PPGit.GUI
             if (x <= PPGit.Lib.time.lastDay.Day) {
                 num39.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day39.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day39.Background = deadlineColor;
                 x++;
             }
             else
@@ -886,6 +1009,7 @@ namespace PPGit.GUI
             if (x <= PPGit.Lib.time.lastDay.Day) {
                 num40.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day40.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day40.Background = deadlineColor;
                 x++;
             }
             else
@@ -897,6 +1021,7 @@ namespace PPGit.GUI
             if (x <= PPGit.Lib.time.lastDay.Day) {
                 num41.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day41.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day41.Background = deadlineColor;
                 x++;
             }
             else
@@ -907,6 +1032,7 @@ namespace PPGit.GUI
             if (x <= PPGit.Lib.time.lastDay.Day) {
                 num42.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day42.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day42.Background = deadlineColor;
             }
         }
 
@@ -922,24 +1048,31 @@ namespace PPGit.GUI
             {
                 num1.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day1.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day1.Background = deadlineColor;
                 x++;
                 num2.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day2.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day2.Background = deadlineColor;
                 x++;
                 num3.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day3.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day3.Background = deadlineColor;
                 x++;
                 num4.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day4.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day4.Background = deadlineColor;
                 x++;
                 num5.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Monday) //Where does the month start?
@@ -947,21 +1080,27 @@ namespace PPGit.GUI
                 num1.Content = "";
                 num2.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day2.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day2.Background = deadlineColor;
                 x++;
                 num3.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day3.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day3.Background = deadlineColor;
                 x++;
                 num4.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day4.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day4.Background = deadlineColor;
                 x++;
                 num5.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Tuesday)  //We are populating the first week
@@ -970,18 +1109,23 @@ namespace PPGit.GUI
                 num2.Content = "";
                 num3.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day3.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day3.Background = deadlineColor;
                 x++;
                 num4.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day4.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day4.Background = deadlineColor;
                 x++;
                 num5.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Wednesday)
@@ -991,15 +1135,19 @@ namespace PPGit.GUI
                 num3.Content = "";
                 num4.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day4.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day4.Background = deadlineColor;
                 x++;
                 num5.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Thursday)
@@ -1010,12 +1158,15 @@ namespace PPGit.GUI
                 num4.Content = "";
                 num5.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day5.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day5.Background = deadlineColor;
                 x++;
                 num6.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Friday)
@@ -1027,9 +1178,11 @@ namespace PPGit.GUI
                 num5.Content = "";
                 num6.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day6.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day6.Background = deadlineColor;
                 x++;
                 num7.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             else if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Saturday)
@@ -1042,6 +1195,7 @@ namespace PPGit.GUI
                 num6.Content = "";
                 num7.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day7.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day7.Background = deadlineColor;
                 x++;
             }
             //Populate the rest of the weeks
@@ -1049,120 +1203,140 @@ namespace PPGit.GUI
             {
                 num8.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day8.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day8.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num9.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day9.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day9.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num10.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day10.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day10.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num11.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day11.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day11.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num12.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day12.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day12.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num13.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day13.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day13.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num14.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day14.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day14.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num15.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day15.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day15.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num16.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day16.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day16.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num17.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day17.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day17.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num18.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day18.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day18.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num19.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day19.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day19.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num20.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day20.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day20.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num21.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day21.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day21.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num22.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day22.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day22.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num23.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day23.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day23.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num24.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day24.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day24.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num25.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day25.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day25.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num26.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day26.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day26.Background = deadlineColor;
                 x++;
             }
             if (x <= PPGit.Lib.time.lastDay.Day)
             {
                 num27.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day27.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day27.Background = deadlineColor;
                 x++;
             }
             else
@@ -1188,6 +1362,7 @@ namespace PPGit.GUI
             {
                 num28.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day28.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day28.Background = deadlineColor;
                 x++;
             }
             else
@@ -1212,6 +1387,7 @@ namespace PPGit.GUI
             {
                 num29.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day29.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day29.Background = deadlineColor;
                 x++;
             }
             else
@@ -1235,6 +1411,7 @@ namespace PPGit.GUI
             {
                 num30.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day30.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day30.Background = deadlineColor;
                 x++;
             }
             else
@@ -1257,6 +1434,7 @@ namespace PPGit.GUI
             {
                 num31.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day31.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day31.Background = deadlineColor;
                 x++;
             }
             else
@@ -1278,6 +1456,7 @@ namespace PPGit.GUI
             {
                 num32.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day32.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day32.Background = deadlineColor;
                 x++;
             }
             else
@@ -1298,6 +1477,7 @@ namespace PPGit.GUI
             {
                 num33.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day33.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day33.Background = deadlineColor;
                 x++;
             }
             else
@@ -1317,6 +1497,7 @@ namespace PPGit.GUI
             {
                 num34.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day34.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day34.Background = deadlineColor;
                 x++;
             }
             else
@@ -1335,6 +1516,7 @@ namespace PPGit.GUI
             {
                 num35.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day35.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day35.Background = deadlineColor;
                 x++;
             }
             else
@@ -1352,6 +1534,7 @@ namespace PPGit.GUI
             {
                 num36.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day36.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day36.Background = deadlineColor;
                 x++;
             }
             else
@@ -1368,6 +1551,7 @@ namespace PPGit.GUI
             {
                 num37.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day37.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day37.Background = deadlineColor;
                 x++;
             }
             else
@@ -1383,6 +1567,7 @@ namespace PPGit.GUI
             {
                 num38.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day38.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day38.Background = deadlineColor;
                 x++;
             }
             else
@@ -1397,6 +1582,7 @@ namespace PPGit.GUI
             {
                 num39.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day39.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day39.Background = deadlineColor;
                 x++;
             }
             else
@@ -1410,6 +1596,7 @@ namespace PPGit.GUI
             {
                 num40.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day40.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day40.Background = deadlineColor;
                 x++;
             }
             else
@@ -1422,6 +1609,7 @@ namespace PPGit.GUI
             {
                 num41.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day41.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day41.Background = deadlineColor;
                 x++;
             }
             else
@@ -1433,6 +1621,7 @@ namespace PPGit.GUI
             {
                 num42.Content = x;
                 if (thisMonth && DateTime.Now.Day == x) day42.Background = Brushes.LightGreen;
+                else if (PPGit.Lib.time.deadlineMatch(x)) day42.Background = deadlineColor;
             }
         }
 

@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PPGit.GUI"
         mc:Ignorable="d"
-        Title="Deadline" Height="218.813" Width="496.04" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+        Title="Deadline" Height="238.311" Width="499.651" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Loaded="addDeadline1_Loaded">
     <Grid>
-        <Calendar x:Name="dateCAL" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Cursor="Arrow"/>
-        <Label x:Name="wordCntLBL" Content="Word Count Target:" HorizontalAlignment="Left" Margin="209,50,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="wordCntTXT" HorizontalAlignment="Left" Height="23" Margin="327,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66"/>
-        <Button x:Name="addBTN" Content="Add" HorizontalAlignment="Left" Margin="219,142,0,0" VerticalAlignment="Top" Width="75" Click="addBTN_Click"/>
-        <Button x:Name="cnclBTN" Content="Cancel" HorizontalAlignment="Left" Margin="353,142,0,0" VerticalAlignment="Top" Width="75" Click="cnclBTN_Click"/>
+        <Label x:Name="wordCntLBL" Content="Word Count Target:" HorizontalAlignment="Left" Margin="209,76,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="wordCntTXT" HorizontalAlignment="Left" Height="23" Margin="327,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66"/>
+        <Button x:Name="addBTN" Content="Add" HorizontalAlignment="Left" Margin="219,164,0,0" VerticalAlignment="Top" Width="75" Click="addBTN_Click"/>
+        <Button x:Name="cnclBTN" Content="Cancel" HorizontalAlignment="Left" Margin="362,164,0,0" VerticalAlignment="Top" Width="75" Click="cnclBTN_Click"/>
+        <Grid x:Name="grd1" HorizontalAlignment="Left" Height="199" VerticalAlignment="Top" Width="195" Margin="10,10,0,0" MouseEnter="grd1_MouseEnter" MouseLeave="grd1_MouseLeave">
+            <Calendar x:Name="dateCAL" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Cursor="Arrow" PreviewMouseUp="dateCAL_PreviewMouseUp"/>
+        </Grid>
     </Grid>
 </Window>

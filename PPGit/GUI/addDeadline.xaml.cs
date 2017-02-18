@@ -53,5 +53,25 @@ namespace PPGit.GUI
                 wordCntTXT.Foreground = Brushes.White;
             }
         }
+
+        private void addDeadline1_Loaded(object sender, RoutedEventArgs e)
+        {
+            dateCAL.IsEnabled = false;
+        }
+
+        private void grd1_MouseEnter(object sender, MouseEventArgs e)
+        {
+            dateCAL.IsEnabled = true;
+        }
+
+        private void grd1_MouseLeave(object sender, MouseEventArgs e)
+        {
+            dateCAL.IsEnabled = false;
+        }
+
+        private void dateCAL_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Mouse.Capture(null);
+        }
     }
 }
