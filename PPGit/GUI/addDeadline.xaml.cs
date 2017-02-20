@@ -69,7 +69,7 @@ namespace PPGit.GUI
             dateCAL.IsEnabled = false;
         }
 
-        private void dateCAL_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void dateCAL_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             Mouse.Capture(null);
         }
