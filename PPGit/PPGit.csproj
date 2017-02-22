@@ -62,10 +62,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\Create\CreateCharacter.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="GUI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,7 +70,6 @@
     <Compile Include="GUI\CharacterWindow.xaml.cs">
       <DependentUpon>CharacterWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Create\CreateCharacter.xaml.cs" />
     <Compile Include="GUI\MainWindow.xaml.cs" />
     <Compile Include="Lib\Building.cs" />
     <Compile Include="Lib\Character.cs" />

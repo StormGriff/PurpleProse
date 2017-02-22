@@ -14,7 +14,8 @@
         AllowsTransparency="True"
         Background="Transparent"
         ResizeMode="CanResizeWithGrip"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+		Activated="Window_Activated">
 
     <Window.Resources>
         <BitmapImage x:Key="ActiveRightArrow" UriSource="..\Resources\ActiveRightArrow.png"/>
@@ -255,11 +256,17 @@
                     </Grid>
 
                     <DataGrid Name="DataGrid" Grid.Row="0" ItemsSource="{Binding}">
-                        <!--<DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
-                        </DataGrid.Columns>-->
+                        
                     </DataGrid>
+
+					<DockPanel HorizontalAlignment="Left" Height="483" Panel.ZIndex="0" LastChildFill="False" VerticalAlignment="Top" Width="107">
+						<TreeView x:Name="Elements" Loaded="Elements_Loaded" SelectedItemChanged="Elements_SelectedItemChanged" Height="483" VerticalAlignment="Top" Width="100">
+							<!--TreeViewItem x:Name="Characters" Header="Characters">
+								<TreeViewItem Header="Jimbo"></TreeViewItem>
+							</TreeViewItem-->
+						</TreeView>
+
+					</DockPanel>
 				</Grid>
             </Grid>
                
