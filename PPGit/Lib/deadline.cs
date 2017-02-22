@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace PurpleProse.Lib
 {
-    class deadline
+    public class deadline
     {
         private DateTime newDeadline;
-        public deadline(int year, int month, int day) {
+        private int wordCount;
+        public deadline(int year, int month, int day, int wordCount) {
             newDeadline = new DateTime(year, month, day);
+            this.wordCount = wordCount;
         }
         public int[] changeDeadline { //Deadline... elements go year, month, day
             set {
@@ -20,6 +22,18 @@ namespace PurpleProse.Lib
                 }
                 catch (IndexOutOfRangeException) {
                 }
+            }
+        }
+        public bool thisDeadline(int year, int month, int day) {  //Is this the deadline?
+            if (newDeadline.Year == year && newDeadline.Month == month && newDeadline.Day == day) return true;
+            else return false;
+        }
+        public int theWordCount {
+            set {
+                wordCount = value;
+            }
+            get {
+                return wordCount;
             }
         }
         public DateTime getDate {

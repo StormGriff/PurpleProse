@@ -55,6 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="GUI\addDeadline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Calendar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Create\CreateCharacter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -64,6 +72,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="App.xaml.cs" />
+    <Compile Include="GUI\addDeadline.xaml.cs">
+      <DependentUpon>addDeadline.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Calendar.xaml.cs">
+      <DependentUpon>Calendar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Create\CreateCharacter.xaml.cs" />
     <Compile Include="GUI\MainWindow.xaml.cs" />
     <Compile Include="Lib\Building.cs" />
@@ -78,6 +92,7 @@
     <Compile Include="Lib\room.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lib\time.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
