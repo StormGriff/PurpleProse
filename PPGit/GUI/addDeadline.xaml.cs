@@ -33,9 +33,10 @@ namespace PPGit.GUI
         {
             try
             {
-                if (wordCntTXT.Text == "") throw new InvalidCastException();
-                int num = Convert.ToInt32(wordCntTXT.Text);
-                if (num < 1) { //It must be greater than 1
+                int num = 0;
+                if (wrdCHK.IsChecked == true && wordCntTXT.Text == "") throw new InvalidCastException();
+                if(wrdCHK.IsChecked == true) num = Convert.ToInt32(wordCntTXT.Text);
+                if (wrdCHK.IsChecked == true && num < 1) { //It must be greater than 1
                     MessageBox.Show("NUMBER MUST BE GREATER THAN 1", "ERROR", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     wordCntTXT.Background = Brushes.Red;
                     wordCntTXT.Foreground = Brushes.White;
@@ -57,6 +58,8 @@ namespace PPGit.GUI
         private void addDeadline1_Loaded(object sender, RoutedEventArgs e)
         {
             dateCAL.IsEnabled = false;
+            wordCntLBL.IsEnabled = false;
+            wordCntTXT.IsEnabled = false;
         }
 
         private void grd1_MouseEnter(object sender, MouseEventArgs e)
@@ -72,6 +75,18 @@ namespace PPGit.GUI
         private void dateCAL_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             Mouse.Capture(null);
+        }
+
+        private void wrdCHK_Checked(object sender, RoutedEventArgs e)
+        {
+            wordCntTXT.IsEnabled = true;
+            wordCntLBL.IsEnabled = true;
+        }
+
+        private void wrdCHK_Unchecked(object sender, RoutedEventArgs e)
+        {
+            wordCntTXT.IsEnabled = false;
+            wordCntLBL.IsEnabled = false;
         }
     }
 }

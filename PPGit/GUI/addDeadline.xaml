@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PPGit.GUI"
         mc:Ignorable="d"
-        Title="Deadline" Height="238.311" Width="499.651" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Loaded="addDeadline1_Loaded">
+        Title="Deadline" Height="238.311" Width="527.762" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Loaded="addDeadline1_Loaded">
     <Grid>
-        <Label x:Name="wordCntLBL" Content="Word Count Target:" HorizontalAlignment="Left" Margin="209,76,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="wordCntTXT" HorizontalAlignment="Left" Height="23" Margin="327,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66"/>
-        <Button x:Name="addBTN" Content="Add" HorizontalAlignment="Left" Margin="219,164,0,0" VerticalAlignment="Top" Width="75" Click="addBTN_Click"/>
-        <Button x:Name="cnclBTN" Content="Cancel" HorizontalAlignment="Left" Margin="362,164,0,0" VerticalAlignment="Top" Width="75" Click="cnclBTN_Click"/>
+        <Label x:Name="wordCntLBL" Content="Word Count Target:" HorizontalAlignment="Left" Margin="225,23,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="wordCntTXT" HorizontalAlignment="Left" Height="23" Margin="344,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66"/>
+        <Button x:Name="addBTN" Content="Add" HorizontalAlignment="Left" Margin="264,169,0,0" VerticalAlignment="Top" Width="75" Click="addBTN_Click"/>
+        <Button x:Name="cnclBTN" Content="Cancel" HorizontalAlignment="Left" Margin="415,169,0,0" VerticalAlignment="Top" Width="75" Click="cnclBTN_Click"/>
         <Grid x:Name="grd1" HorizontalAlignment="Left" Height="199" VerticalAlignment="Top" Width="195" Margin="10,10,0,0" MouseEnter="grd1_MouseEnter" MouseLeave="grd1_MouseLeave">
             <Calendar x:Name="dateCAL" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Cursor="Arrow" SelectedDatesChanged="dateCAL_SelectedDatesChanged"/>
         </Grid>
+        <CheckBox x:Name="wrdCHK" Content="Word Count" HorizontalAlignment="Left" Margin="415,28,0,0" VerticalAlignment="Top" Checked="wrdCHK_Checked" Unchecked="wrdCHK_Unchecked"/>
     </Grid>
 </Window>
