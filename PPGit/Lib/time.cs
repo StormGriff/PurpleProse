@@ -11,6 +11,7 @@ namespace PPGit.Lib
         public static DateTime firstDay;
         public static DateTime lastDay;
         private static List<PurpleProse.Lib.deadline> deadlines = new List<PurpleProse.Lib.deadline>();
+        public static int currentWords;
         public static PurpleProse.Lib.deadline addDeadline {
             set {
                 deadlines.Add(value);

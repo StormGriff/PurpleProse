@@ -19,8 +19,9 @@ namespace PPGit.GUI
     /// </summary>
     public partial class Calendar : Window
     {
-        public Calendar()
+        public Calendar(int words = 0)
         {
+            Lib.time.currentWords = words;
             InitializeComponent();
         }
 
@@ -31,6 +32,7 @@ namespace PPGit.GUI
             PPGit.Lib.time.firstDay = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             PPGit.Lib.time.lastDay = PPGit.Lib.time.firstDay.AddMonths(1).AddDays(-1);
             monthLBL.Content = PPGit.Lib.time.Name;
+            SetLeft(); //How many days/words left?
             int x = 1; //Counting days
             if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Sunday) //Populating days
             {
@@ -410,6 +412,30 @@ namespace PPGit.GUI
             }
         }
 
+        private void SetLeft() { //Sets how many days and words left for deadline in GUI
+            wordsLeftLBL.Visibility = Visibility.Hidden;
+            daysLeftLBL.Visibility = Visibility.Hidden;
+            int words = 0;
+            int days = 0;
+            DateTime lastDate = DateTime.MaxValue;
+            foreach (PurpleProse.Lib.deadline theDeadline in Lib.time.getAllDeadlines()) {
+                if (days == 0) days = theDeadline.timeLeft;
+                else if (theDeadline.timeLeft < days) days = theDeadline.timeLeft;
+                if (theDeadline.wordsLeft > 0 && theDeadline.getDate < lastDate) {
+                    lastDate = theDeadline.getDate;
+                    words = theDeadline.wordsLeft;
+                }
+            }
+            if (days > 0) {
+                daysLeftLBL.Content = days + " days left till nearest deadline";
+                daysLeftLBL.Visibility = Visibility.Visible;
+            }
+            if (words > 0) {
+                wordsLeftLBL.Content = words + " words left for nearest deadline";
+                wordsLeftLBL.Visibility = Visibility.Visible;
+            }
+        }
+
         private void clearAll() {
             day1.Background = null;
             day2.Background = null;
@@ -462,6 +488,7 @@ namespace PPGit.GUI
             PPGit.Lib.time.lastDay = PPGit.Lib.time.firstDay.AddMonths(1).AddDays(-1);
             monthLBL.Content = PPGit.Lib.time.Name;
             clearAll();
+            SetLeft();
             int x = 1; //Counting days
             if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Sunday) //Populating days
             {
@@ -1043,6 +1070,7 @@ namespace PPGit.GUI
             PPGit.Lib.time.lastDay = PPGit.Lib.time.firstDay.AddMonths(1).AddDays(-1);
             monthLBL.Content = PPGit.Lib.time.Name;
             clearAll();
+            SetLeft();
             int x = 1; //Counting days
             if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Sunday) //Populating days
             {
@@ -1631,6 +1659,7 @@ namespace PPGit.GUI
             newDeadline.ShowDialog();
             bool thisMonth = PPGit.Lib.time.thisMonth();
             clearAll();
+            SetLeft();
             int x = 1; //Counting days
             if (PPGit.Lib.time.firstDay.DayOfWeek == DayOfWeek.Sunday) //Populating days
             {

@@ -42,7 +42,10 @@ namespace PPGit.GUI
                     wordCntTXT.Foreground = Brushes.White;
                 } else if (dateCAL.SelectedDate > DateTime.Now) //Check if selectedDate is in the future
                 {
-                    PurpleProse.Lib.deadline newDeadline = new PurpleProse.Lib.deadline(dateCAL.SelectedDate.Value.Year, dateCAL.SelectedDate.Value.Month, dateCAL.SelectedDate.Value.Day, num);
+                    bool usingWordCount;
+                    if (wrdCHK.IsChecked == true) usingWordCount = true;
+                    else usingWordCount = false;
+                    PurpleProse.Lib.deadline newDeadline = new PurpleProse.Lib.deadline(dateCAL.SelectedDate.Value.Year, dateCAL.SelectedDate.Value.Month, dateCAL.SelectedDate.Value.Day, num, usingWordCount);
                     PPGit.Lib.time.addDeadline = newDeadline;
                     this.Close();
                  } else {

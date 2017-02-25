@@ -10,9 +10,11 @@ namespace PurpleProse.Lib
     {
         private DateTime newDeadline;
         private int wordCount;
-        public deadline(int year, int month, int day, int wordCount) {
+        private bool usingWordCount;
+        public deadline(int year, int month, int day, int wordCount, bool usingWordCount = false) {
             newDeadline = new DateTime(year, month, day);
             this.wordCount = wordCount;
+            this.usingWordCount = usingWordCount;
         }
         public int[] changeDeadline { //Deadline... elements go year, month, day
             set {
@@ -39,6 +41,12 @@ namespace PurpleProse.Lib
         public DateTime getDate {
             get {
                 return newDeadline;
+            }
+        }
+        public int wordsLeft {
+            get {
+                if (usingWordCount) return wordCount - PPGit.Lib.time.currentWords;
+                else return 0;
             }
         }
         public int timeLeft {
