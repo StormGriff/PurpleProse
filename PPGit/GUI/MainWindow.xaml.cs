@@ -1,15 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Data;
-using System.Diagnostics;
+using System.Windows.Threading;
 
 namespace PurpleProse
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
+	/// 
+	public static class ExtensionMethods 
+		{
+			private static Action EmptyDelegate = delegate() { };
+			
+			public static void Refresh(this UIElement uiElement)
+			{ uiElement.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate); }
+		}
+
 	public partial class MainWindow : Window
     {
 		//static string texteditor; Currently using seperate class
@@ -25,6 +37,16 @@ namespace PurpleProse
 
             InitializeComponent();
         }
+
+
+		private void LoopingMethod()
+		{
+  			for (int i = 0; i < 10; i++)
+  			{	//Elements.Items = i.ToString();
+     			Elements.Refresh();
+     			Thread.Sleep(100);
+  			}
+		}
 
         #region Title Bar and Border
 
@@ -52,8 +74,8 @@ namespace PurpleProse
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            characters.Add(new PurpleProse.Lib.Character("bob", null, null, null, 20, null, null, null, null, null, null));
-            characters.Add(new PurpleProse.Lib.Character("Jimbo", null, null, null, 15, null, null, null, null, null, null));
+            //characters.Add(new PurpleProse.Lib.Character("bob", null, null, null, 20, null, null, null, null, null, null));
+            //characters.Add(new PurpleProse.Lib.Character("Jimbo", null, null, null, 15, null, null, null, null, null, null));
 			/*
 			NewColumn("Name"); NewColumn("Age", "System.Int64"); NewColumn(new List<string> { "Gender", "Race", "Role", "hometown", "language" });
             //bindChar.Columns.Add(new DataColumn("Name"));
@@ -69,8 +91,12 @@ namespace PurpleProse
         }
 
 		private void Window_Activated(object sender, System.EventArgs e)
-		{if(this.IsLoaded){
+		{if(this.IsLoaded && Elements.IsLoaded){
 				//UpdateBinding();
+				//Elements.;
+				//Elements.UpdateLayout();
+				//Elements.Items.Refresh();
+				//Dispatcher.Invoke();
 		}}
 
 		private void Elements_Loaded(object sender, RoutedEventArgs e)
@@ -78,16 +104,20 @@ namespace PurpleProse
 			// ... Create a TreeViewItem.
 			TreeViewItem _Characters = new TreeViewItem();
 			_Characters.Header = "Characters";
-			_Characters.ItemsSource = new Lib.Character[] { new Lib.Character("bob", null, null, null, 20, null, null, null, null, null, null) };
 
 			// ... Create a second TreeViewItem.
 			TreeViewItem _Locations = new TreeViewItem();
 			_Locations.Header = "Locations";
-			_Locations.ItemsSource = new string[] { "Pants", "Shirt", "Hat", "Socks" };
 			
 			Elements.Items.Add(_Characters);
 			Elements.Items.Add(_Locations);
+			
+			var sub_folder = Elements.Items[0] as TreeViewItem;
+			sub_folder.ItemsSource = characters;
+			//TreeViewItem.SetBinding(sub_folder, characters);
 
+			/**/sub_folder = Elements.Items[1] as TreeViewItem;
+			sub_folder.ItemsSource = locations;
 			//Elements.Items[0].Add(new Lib.Character("Jimbo", null, null, null, 15, null, null, null, null, null, null));
 
 		}
@@ -104,7 +134,6 @@ namespace PurpleProse
 			else if (tree.SelectedItem is string)
 			{
 			}
-			
 		}
 
 		private void MenuItem_Click(object sender, RoutedEventArgs e) {
@@ -148,15 +177,19 @@ namespace PurpleProse
 			}
 		}
 
-		private void Add_Character_LeftMouseUp(object sender, MouseButtonEventArgs e) {
-			PurpleProse.Lib.Character New_Char = new PurpleProse.Lib.Character(null, null, null, null, 20, null, null, null, null, null, null);
+		private void Add_Character_LeftMouseUp(object sender, MouseButtonEventArgs e)
+		{	PurpleProse.Lib.Character New_Char = new PurpleProse.Lib.Character(null, null, null, null, 20, null, null, null, null, null, null);
 			characters.Add(New_Char);
 			CharacterWindow CharWindow = new CharacterWindow(New_Char);
 			CharWindow.Show();
-			//Elements.Items[0]; //Add("Text");
-			var sub_folder = Elements.Items[0] as TreeViewItem;
-			sub_folder.Items.Add(New_Char);
+			Elements.Items.Refresh();
+			this.Refresh();
+			LoopingMethod();
 		}
 
+		private void Elements_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+		{	Elements.Items.Refresh();
+			Elements.UpdateLayout();
+		}
 	}
 }

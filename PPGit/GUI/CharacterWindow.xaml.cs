@@ -58,12 +58,15 @@ namespace PurpleProse
 		private void DescBtn_Click(object sender, RoutedEventArgs e)
 			{ TextOps.Open(Person.DescFile); }
 
+		Binding name_binding;
+
 	//	private void NameBox_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
 	//	private void NameBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) 
 	//		{ if (!it) it = true; }
 		
 		//Bug: Functions execute upon inital click. (Originally named XXX_LostKeyboardFocus)
 		//ComboBox Tutorial: https://youtu.be/UDDYd3q5WM4
+
 		private void NameBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
 			{ if (NameBox.Text != "") Person.Name = NameBox.Text; } 
 
