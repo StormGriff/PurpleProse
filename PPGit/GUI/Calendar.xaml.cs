@@ -12,12 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using MahApps.Metro.Controls;
+using MahApps.Metro;
+
 namespace PPGit.GUI
 {
     /// <summary>
     /// Interaction logic for Calendar.xaml
     /// </summary>
-    public partial class Calendar : Window
+    public partial class Calendar : MetroWindow
     {
         public Calendar()
         {

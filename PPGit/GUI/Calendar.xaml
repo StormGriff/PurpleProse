@@ -1,9 +1,10 @@
-﻿<Window x:Name="calWND" x:Class="PPGit.GUI.Calendar"
+﻿<Controls:MetroWindow x:Name="calWND" x:Class="PPGit.GUI.Calendar"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PPGit.GUI"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         Title="Calendar" Height="541.608" Width="525.181" MinHeight="541.608" MinWidth="525.181"
         WindowStartupLocation="CenterOwner" Loaded="calWND_Loaded">
@@ -176,4 +177,4 @@
         <Button x:Name="lftBTN" Content="&lt;" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="27" Click="lftBTN_Click"/>
         <Button x:Name="addBTN" Content="Add Deadline" Margin="0,0,94,21" Click="addBTN_Click" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="91"/>
     </Grid>
-</Window>
+</Controls:MetroWindow>

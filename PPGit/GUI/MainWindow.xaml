@@ -219,7 +219,8 @@
                             
                         </MenuItem>
                         <MenuItem Header="Test">
-                            <MenuItem Header="Text Edit" Click="MenuItem_Click"/>
+                            <MenuItem Header="Text Edit" Click="Text_Click"/>
+                            <MenuItem Header="Calendar" Click="Cal_Click"/>
                         </MenuItem>
                     </Menu>
                 </DockPanel>

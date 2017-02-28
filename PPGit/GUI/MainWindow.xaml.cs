@@ -97,9 +97,16 @@ namespace PPGit.GUI
             }
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void Text_Click(object sender, RoutedEventArgs e)
         {
             PPGit.GUI.TextEditor test = new PPGit.GUI.TextEditor();
+
+            test.Show();
+        }
+
+        private void Cal_Click(object sender, RoutedEventArgs e)
+        {
+            PPGit.GUI.Calendar test = new Calendar();
 
             test.Show();
         }
