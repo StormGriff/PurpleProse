@@ -1,0 +1,78 @@
+﻿<Controls:MetroWindow x:Class="PPGit.GUI.TextEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PPGit.GUI"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="Text Editor" Height="300" Width="600">
+
+    
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top" HorizontalAlignment="Right"
+                 Margin="0,0,0.333,0" Width="593">
+            <Button Name="btnOpen" Click="btnOpen_Click"
+                    Width="20" Height="20">
+                <Rectangle Width="15" Height="15" 
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_book_open_hardcover}"
+                                     Stretch="Fill"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button Name="btnSave" Click="btnSave_Click"
+                    Width="20" Height="20">
+                <Rectangle Width="15" Height="15"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_save}"
+                                     Stretch="Fill"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <ToggleButton Name="btnBold" Command="EditingCommands.ToggleBold"
+                    Width="20" Height="20">
+                <Rectangle Width="13" Height="13"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_text_bold}"
+                                     Stretch="Fill"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </ToggleButton>
+            <ToggleButton Name="btnItalic" Command="EditingCommands.ToggleItalic"
+                    Width="20" Height="20">
+                <Rectangle Width="13" Height="13"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_text_italic}"
+                                     Stretch="Fill"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </ToggleButton>
+            <ToggleButton Name="btnUnderline" Command="EditingCommands.ToggleUnderline"
+                          Width="20" Height="20">
+                <Rectangle Width="13" Height="13"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_text_underline}"
+                                     Stretch="Fill"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </ToggleButton>
+
+            <Separator/>
+
+            <ComboBox Name="cmbFontFamily" Width="150"
+                      SelectionChanged="cmbFontFamily_SelectionChanged"
+                      Opacity="0.8"/>
+            <ComboBox Name="cmbFontSize" Width="50" IsEditable="True"
+                      TextBoxBase.TextChanged="cmbFontSize_TextChanged"/>
+        </ToolBar>
+        
+        <RichTextBox Name="rtbEditor"
+                     SelectionChanged="rtbEditor_SelectionChanged"/>
+    </DockPanel>
+</Controls:MetroWindow>

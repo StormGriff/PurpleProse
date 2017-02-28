@@ -1,10 +1,10 @@
-﻿<Window x:Class="PurpleProse.MainWindow"
+﻿<Window x:Class="PPGit.GUI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PurpleProse"
-        xmlns:lib="clr-namespace:PurpleProse.Lib"
+        xmlns:local="clr-namespace:PPGit"
+        xmlns:lib="clr-namespace:PPGit.Lib"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="625"
         MinHeight="550" MinWidth="500"
@@ -217,6 +217,9 @@
                         </MenuItem>
                         <MenuItem Header="Theme">
                             
+                        </MenuItem>
+                        <MenuItem Header="Test">
+                            <MenuItem Header="Text Edit" Click="MenuItem_Click"/>
                         </MenuItem>
                     </Menu>
                 </DockPanel>

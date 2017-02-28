@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\
 PPGit
 none
 false
 DEBUG;TRACE
 
-51009430194
+8345250154
 
-23-1713820697
-13738642453
-App.xaml;GUI\addDeadline.xaml;GUI\Calendar.xaml;GUI\Create\CreateCharacter.xaml;GUI\MainWindow.xaml;
+241438503198
+1680258764
+App.xaml;GUI\addDeadline.xaml;GUI\Calendar.xaml;GUI\Create\CreateCharacter.xaml;GUI\MainWindow.xaml;GUI\TextEditor.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;
 
-False
+True
 

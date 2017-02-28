@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace PurpleProse
+namespace PPGit
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -23,7 +23,7 @@ namespace PurpleProse
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
         public static void Main()
         {
-            PurpleProse.App app = new PurpleProse.App();
+            PPGit.App app = new PPGit.App();
             app.InitializeComponent();
             app.Run();
         }

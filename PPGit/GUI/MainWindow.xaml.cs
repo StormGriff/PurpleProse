@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 
-namespace PurpleProse
+namespace PPGit.GUI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -95,6 +95,13 @@ namespace PurpleProse
                 dr["Age"] = c.charAge;
                 bindChar.Rows.Add(dr);
             }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            PPGit.GUI.TextEditor test = new PPGit.GUI.TextEditor();
+
+            test.Show();
         }
     }
 }
