@@ -248,6 +248,7 @@
                         </DataGrid.Columns>-->
 
                     </DataGrid>
+                    <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="238,201,0,0" VerticalAlignment="Top" Width="124" Height="65" Click="button_Click"/>
                 </Grid>
             </Grid>
                

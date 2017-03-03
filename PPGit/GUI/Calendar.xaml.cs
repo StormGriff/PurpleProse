@@ -2241,5 +2241,15 @@ namespace PPGit.GUI
                 else if (PPGit.Lib.time.deadlineMatch(x)) day42.Background = deadlineColor;
             }
         }
+
+        private void day1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void day9_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

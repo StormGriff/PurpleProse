@@ -96,5 +96,11 @@ namespace PurpleProse
                 bindChar.Rows.Add(dr);
             }
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            PPGit.GUI.Calendar newCal = new PPGit.GUI.Calendar(222);
+            newCal.Show();
+        }
     }
 }

@@ -104,6 +104,30 @@ namespace PPGit.GUI {
         #line default
         #line hidden
         
+        
+        #line 18 "..\..\..\GUI\addDeadline.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Label notesLBL;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 19 "..\..\..\GUI\addDeadline.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox notesTXT;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 20 "..\..\..\GUI\addDeadline.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.CheckBox notesCHK;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -202,6 +226,27 @@ namespace PPGit.GUI {
             
             #line 17 "..\..\..\GUI\addDeadline.xaml"
             this.wrdCHK.Unchecked += new System.Windows.RoutedEventHandler(this.wrdCHK_Unchecked);
+            
+            #line default
+            #line hidden
+            return;
+            case 9:
+            this.notesLBL = ((System.Windows.Controls.Label)(target));
+            return;
+            case 10:
+            this.notesTXT = ((System.Windows.Controls.TextBox)(target));
+            return;
+            case 11:
+            this.notesCHK = ((System.Windows.Controls.CheckBox)(target));
+            
+            #line 20 "..\..\..\GUI\addDeadline.xaml"
+            this.notesCHK.Checked += new System.Windows.RoutedEventHandler(this.notesCHK_Checked);
+            
+            #line default
+            #line hidden
+            
+            #line 20 "..\..\..\GUI\addDeadline.xaml"
+            this.notesCHK.Unchecked += new System.Windows.RoutedEventHandler(this.notesCHK_Unchecked);
             
             #line default
             #line hidden

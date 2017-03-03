@@ -34,6 +34,9 @@ namespace PPGit.GUI
             try
             {
                 int num = 0;
+                string newString;
+                if (notesCHK.IsChecked == true) newString = notesTXT.Text;
+                else newString = null;
                 if (wrdCHK.IsChecked == true && wordCntTXT.Text == "") throw new InvalidCastException();
                 if(wrdCHK.IsChecked == true) num = Convert.ToInt32(wordCntTXT.Text);
                 if (wrdCHK.IsChecked == true && num < 1) { //It must be greater than 1
@@ -45,7 +48,7 @@ namespace PPGit.GUI
                     bool usingWordCount;
                     if (wrdCHK.IsChecked == true) usingWordCount = true;
                     else usingWordCount = false;
-                    PurpleProse.Lib.deadline newDeadline = new PurpleProse.Lib.deadline(dateCAL.SelectedDate.Value.Year, dateCAL.SelectedDate.Value.Month, dateCAL.SelectedDate.Value.Day, num, usingWordCount);
+                    PurpleProse.Lib.deadline newDeadline = new PurpleProse.Lib.deadline(dateCAL.SelectedDate.Value.Year, dateCAL.SelectedDate.Value.Month, dateCAL.SelectedDate.Value.Day, num, usingWordCount, newString);
                     PPGit.Lib.time.addDeadline = newDeadline;
                     this.Close();
                  } else {
@@ -63,6 +66,7 @@ namespace PPGit.GUI
             dateCAL.IsEnabled = false;
             wordCntLBL.IsEnabled = false;
             wordCntTXT.IsEnabled = false;
+            notesTXT.IsEnabled = false;
         }
 
         private void grd1_MouseEnter(object sender, MouseEventArgs e)
@@ -90,6 +94,16 @@ namespace PPGit.GUI
         {
             wordCntTXT.IsEnabled = false;
             wordCntLBL.IsEnabled = false;
+        }
+
+        private void notesCHK_Checked(object sender, RoutedEventArgs e)
+        {
+            notesTXT.IsEnabled = true;
+        }
+
+        private void notesCHK_Unchecked(object sender, RoutedEventArgs e)
+        {
+            notesTXT.IsEnabled = false;
         }
     }
 }

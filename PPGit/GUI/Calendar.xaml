@@ -26,8 +26,8 @@
                 <ColumnDefinition Width="50*"/>
                 <ColumnDefinition Width="50*"/>
             </Grid.ColumnDefinitions>
-            <Border x:Name="day1" BorderBrush="Black" BorderThickness="1">
-                <Label x:Name="num1" Content="" Margin="-1,-1,25,23" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
+            <Border x:Name="day1" BorderBrush="Black" BorderThickness="1" MouseLeftButtonUp="day1_MouseLeftButtonUp">
+                <Label x:Name="num1" Content="" Margin="-0.8,-0.8,-0.6,-1.6" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
             </Border>
             <Border x:Name="day2" BorderBrush="Black" BorderThickness="1" Grid.Column="1">
                 <Label x:Name="num2" Content="" Margin="-1,-1,27,20" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
@@ -50,8 +50,8 @@
             <Border x:Name="day8" BorderBrush="Black" BorderThickness="1" Grid.Row="1">
                 <Label x:Name="num8" Content="" Margin="-1,-1,23,20" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
             </Border>
-            <Border x:Name="day9" BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="1">
-                <Label x:Name="num9" Content="" Margin="-1,-1,22,22" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
+            <Border x:Name="day9" BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="1" MouseLeftButtonUp="day9_MouseLeftButtonUp">
+                <Label x:Name="num9" Content="" Margin="-0.8,-0.8,-0.6,-1.6" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
             </Border>
             <Border x:Name="day10" BorderBrush="Black" BorderThickness="1" Grid.Column="2" Grid.Row="1">
                 <Label x:Name="num10" Content="" Margin="-1,-1,22,22" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
