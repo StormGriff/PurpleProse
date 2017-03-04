@@ -2215,5 +2215,14 @@ namespace PPGit.GUI
                 else if (PPGit.Lib.time.deadlineMatch(x)) day42.Background = deadlineColor;
             }
         }
+
+
+
+        private void btnRightWindowChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+            AppThemeChanger wnd = new AppThemeChanger();
+
+            wnd.Show();
+        }
     }
 }

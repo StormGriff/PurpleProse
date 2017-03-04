@@ -8,6 +8,13 @@
         mc:Ignorable="d"
         Title="Calendar" Height="541.608" Width="525.181" MinHeight="541.608" MinWidth="525.181"
         WindowStartupLocation="CenterOwner" Loaded="calWND_Loaded">
+
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="btnRightWindowChangeTheme" Content="change app theme" Click="btnRightWindowChangeTheme_Click"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
     <Grid>
         <Grid Margin="27,60,20,46">
             <Grid.RowDefinitions>
