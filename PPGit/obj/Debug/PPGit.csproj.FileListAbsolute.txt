@@ -27,8 +27,6 @@ M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.csprojResolveAssemblyReference.ca
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\Resources\Icons.baml
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\Resources\IconsNonShared.baml
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\App.g.cs
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\addDeadline.g.cs
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Calendar.g.cs
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Create\CreateCharacter.g.cs
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\MainWindow.g.cs
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\TextEditor.g.cs
@@ -43,8 +41,6 @@ M:\Git Repos\PurpleProse\PPGit\bin\Debug\MahApps.Metro.pdb
 M:\Git Repos\PurpleProse\PPGit\bin\Debug\MahApps.Metro.xml
 M:\Git Repos\PurpleProse\PPGit\bin\Debug\Ookii.Dialogs.Wpf.xml
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\App.baml
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\addDeadline.baml
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Calendar.baml
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Create\CreateCharacter.baml
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\MainWindow.baml
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\TextEditor.baml
@@ -55,3 +51,7 @@ M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\AppThemeChanger.g.cs
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\AppThemeChanger.baml
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\MusicPlayer\MusicPlayer.g.cs
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\MusicPlayer\MusicPlayer.baml
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\addDeadline.g.cs
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\Calendar.g.cs
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\addDeadline.baml
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\Calendar.baml

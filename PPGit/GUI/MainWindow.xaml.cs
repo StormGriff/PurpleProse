@@ -85,7 +85,7 @@ namespace PPGit.GUI
 
         private void Cal_Click(object sender, RoutedEventArgs e)
         {
-            PPGit.GUI.Calendar test = new Calendar();
+            PPGit.GUI.Deadlines.Calendar test = new Deadlines.Calendar();
 
             test.Show();
         }
