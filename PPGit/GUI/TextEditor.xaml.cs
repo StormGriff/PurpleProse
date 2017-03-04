@@ -91,5 +91,12 @@ namespace PPGit.GUI
             temp = rtbEditor.Selection.GetPropertyValue(Inline.FontSizeProperty);
             cmbFontSize.Text = temp.ToString();
         }
+
+        private void btnRightWindowChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+            AppThemeChanger wnd = new AppThemeChanger();
+
+            wnd.Show();
+        }
     }
 }

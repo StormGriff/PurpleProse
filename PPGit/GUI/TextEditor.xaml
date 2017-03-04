@@ -8,6 +8,11 @@
         mc:Ignorable="d"
         Title="Text Editor" Height="300" Width="600">
 
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="btnRightWindowChangeTheme" Content="change app theme" Click="btnRightWindowChangeTheme_Click"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
     
     <DockPanel>
         <ToolBar DockPanel.Dock="Top" HorizontalAlignment="Right"

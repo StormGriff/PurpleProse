@@ -12,12 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using MahApps.Metro.Controls;
+using MahApps.Metro;
+
 namespace PPGit.GUI
 {
     /// <summary>
     /// Interaction logic for Calendar.xaml
     /// </summary>
-    public partial class Calendar : Window
+    public partial class Calendar : MetroWindow
     {
         public Calendar()
         {
@@ -2211,6 +2214,15 @@ namespace PPGit.GUI
                 if (thisMonth && DateTime.Now.Day == x) day42.Background = Brushes.LightGreen;
                 else if (PPGit.Lib.time.deadlineMatch(x)) day42.Background = deadlineColor;
             }
+        }
+
+
+
+        private void btnRightWindowChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+            AppThemeChanger wnd = new AppThemeChanger();
+
+            wnd.Show();
         }
     }
 }

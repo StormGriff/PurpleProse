@@ -1,0 +1,98 @@
+﻿<Controls:MetroWindow x:Class="PPGit.GUI.AppThemeChanger"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PPGit.GUI"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:metro="clr-namespace:MahApps.Metro;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Theme Changer" Height="280.831" Width="270"
+                      MinHeight="300" MinWidth="270"
+                      MaxHeight="400" MaxWidth="270">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0" Header="Base Style">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnBaseDark" Height="30" Margin="2" Click="btnBaseDark_Click">
+                    Dark
+                </Button>
+                <Button x:Name="btnBaseLight" Height="30" Margin="2" Click="btnBaseLight_Click">
+                    Light
+                </Button>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Header="Accent Color">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <WrapPanel Orientation="Horizontal">
+                    <Button x:Name="btnRed" Height="30" Margin="1" Click="btnRed_Click">
+                        Red
+                    </Button>
+                    <Button x:Name="btnGreen" Height="30" Margin="1" Click="btnGreen_Click">
+                        Green
+                    </Button>
+                    <Button x:Name="btnBlue" Height="30" Margin="1" Click="btnBlue_Click">
+                        Blue
+                    </Button>
+                    <Button x:Name="btnPurple" Height="30" Margin="1" Click="btnPurple_Click">
+                        Purple
+                    </Button>
+                    <Button x:Name="btnOrange" Height="30" Margin="1" Click="btnOrange_Click">
+                        Orange
+                    </Button>
+                    <Button x:Name="btnPink" Height="30" Margin="1" Click="btnPink_Click">
+                        Pink
+                    </Button>
+                    <Button x:Name="btnYellow" Height="30" Margin="1" Click="btnYellow_Click">
+                        Yellow
+                    </Button>
+                    <Button x:Name="btnBrown" Height="30" Margin="1" Click="btnBrown_Click">
+                        Brown
+                    </Button>
+                    <Button x:Name="btnSteel" Height="30" Margin="1" Click="btnSteel_Click">
+                        Steel
+                    </Button>
+                </WrapPanel>
+
+                <Expander x:Name="moreColorExpander" Grid.Row="1" Header="Expanded Color Options" Height="auto" Margin="0,5,0,5" Expanded="moreColorExpander_Expanded" Collapsed="moreColorExpander_Collapsed">
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox x:Name="moreColorBox" Width="70" HorizontalAlignment="Left" ScrollViewer.CanContentScroll="True" SelectionChanged="moreColorBox_SelectionChanged"
+                                  ItemsSource="{x:Static metro:ThemeManager.Accents}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBlock Text="(color will change on selection)" Margin="2"/>
+                    </StackPanel>
+                </Expander>
+
+                <Expander x:Name="everyColorExpander" Grid.Row="2" Header="Every Color Option" Height="auto" Expanded="everyColorExpander_Expanded" Collapsed="everyColorExpander_Collapsed">
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox x:Name="everyColorBox" Width="70" HorizontalAlignment="Left" ScrollViewer.CanContentScroll="True"
+                                  ItemsSource="{Binding Colors}" SelectionChanged="everyColorBox_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Key}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBlock Text="(color will change on selection)" Margin="2"/>
+                    </StackPanel>
+                </Expander>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Controls:MetroWindow>

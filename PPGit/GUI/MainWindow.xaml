@@ -1,19 +1,23 @@
-﻿<Window x:Class="PPGit.GUI.MainWindow"
+﻿<Controls:MetroWindow x:Class="PPGit.GUI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PPGit"
         xmlns:lib="clr-namespace:PPGit.Lib"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="625"
         MinHeight="550" MinWidth="500"
-        WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
-        Background="Transparent"
-        ResizeMode="CanResizeWithGrip"
         Loaded="Window_Loaded">
+
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="btnRightWindowChangeTheme" Content="change app theme" Click="btnRightWindowChangeTheme_Click"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
 
     <Window.Resources>
         <BitmapImage x:Key="ActiveRightArrow" UriSource="..\Resources\ActiveRightArrow.png"/>
@@ -26,7 +30,7 @@
         <BitmapImage x:Key="Fullscreen" UriSource="..\Resources\Fullscreen.png"/>
         <BitmapImage x:Key="Plus" UriSource="..\Resources\Plus.png"/>
         <BitmapImage x:Key="Minus" UriSource="..\Resources\Minus.png"/>
-        
+
         <!--<BitmapImage x:Key="ActiveRightArrow" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\ActiveRightArrow.png"/>
         <BitmapImage x:Key="ActiveLeftArrow" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\ActiveLeftArrow.png"/>
         <BitmapImage x:Key="Close" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Close.png"/>
@@ -93,167 +97,58 @@
 
     </Window.Resources>
 
-    <Border BorderThickness="1" Background="#FF171717" BorderBrush="#FF171717"
-            Name="WindowBorder">
-        <Grid>
+    <Grid Name="GridBackground"
+                  Grid.Row="1" Grid.ColumnSpan="2"
+                  Panel.ZIndex="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="1">
+            <Menu IsMainMenu="True" DockPanel.Dock="Top" >
+                <MenuItem Header="Menu">
+
+                </MenuItem>
+                <MenuItem Header="Theme">
+
+                </MenuItem>
+                <MenuItem Header="Test">
+                    <MenuItem Header="Text Edit" Click="Text_Click"/>
+                    <MenuItem Header="Calendar" Click="Cal_Click"/>
+                    <MenuItem Header="Theme" Click="Theme_Click"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+
+        <Grid Grid.Row="2">
             <Grid.RowDefinitions>
-                <RowDefinition Name="titleRow" Height="auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <DockPanel Panel.ZIndex="2" Name="TitleBar">
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <CheckBox Name="ShowOnlyMajorChars" Padding="2">
+                    <TextBlock Text="Only Show Major Characters"/>
+                </CheckBox>
 
 
-                <Button Name="CloseButton" Focusable="False" 
-                    HorizontalAlignment="Right" 
-                        DockPanel.Dock="Right"
-                    Width="30" Height="26"
-                    Click="CloseButton_Click">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="#A0171717"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border Background="{TemplateBinding Background}">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Gray"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                    <Image Source="{StaticResource Close}"/>
-                </Button>
+            </Grid>
 
-                <Button Name="MaxButton" Focusable="False"
-                    HorizontalAlignment="Right"
-                    Width="30" Height="26"
-                        DockPanel.Dock="Right"
-                    Panel.ZIndex="1"
-                    Click="MaxButton_Click">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="#A0171717"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border Background="{TemplateBinding Background}">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Gray"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                    <Image Source="{StaticResource Max}"/>
-                </Button>
-
-                <Button Name="MinButton" Focusable="False"
-                    HorizontalAlignment="Right"
-                    Width="30" Height="26"
-                        DockPanel.Dock="Right"
-                    Panel.ZIndex="1"
-                    Click="MinButton_Click">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="#A0171717"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border Background="{TemplateBinding Background}">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Gray"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                    <Image Source="{StaticResource Min}"/>
-                </Button>
-
-                <TextBlock Foreground="White"
-                       Background="#A0171717"
-                       VerticalAlignment="Stretch"
-                           DockPanel.Dock="Right"
-                       MouseLeftButtonDown="TitleBarText_MouseLeftButtonDown"
-                       Panel.ZIndex="1">
-                    <TextBlock Name="TitleBarText" Margin="5">
-                        Title Bar
-                    </TextBlock>
-                </TextBlock>
-            </DockPanel>
-
-
-            <Grid Name="GridBackground" Background="Black"
-                  Grid.Row="1" Grid.ColumnSpan="2"
-                  Panel.ZIndex="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                
-                <DockPanel Grid.Row="1">
-                    <Menu IsMainMenu="True" DockPanel.Dock="Top" Background="#FF171717" Foreground="White">
-                        <MenuItem Header="Menu">
-                            
-                        </MenuItem>
-                        <MenuItem Header="Theme">
-                            
-                        </MenuItem>
-                        <MenuItem Header="Test">
-                            <MenuItem Header="Text Edit" Click="MenuItem_Click"/>
-                        </MenuItem>
-                    </Menu>
-                </DockPanel>
-
-                <Grid Grid.Row="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <CheckBox Name="ShowOnlyMajorChars" Padding="2">
-                            <TextBlock Text="Only Show Major Characters"/>
-                        </CheckBox>
-
-                        
-                    </Grid>
-
-                    <DataGrid Name="DataGrid" Grid.Row="0" ItemsSource="{Binding}">
-                        <!--<DataGrid.Columns>
+            <DataGrid Name="DataGrid" Grid.Row="0" ItemsSource="{Binding}">
+                <!--<DataGrid.Columns>
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
                         </DataGrid.Columns>-->
 
-                    </DataGrid>
-                </Grid>
-            </Grid>
-               
+            </DataGrid>
         </Grid>
-    </Border>
-</Window>
+    </Grid>
+</Controls:MetroWindow>
