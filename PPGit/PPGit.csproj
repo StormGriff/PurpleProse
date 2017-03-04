@@ -99,6 +99,10 @@
     </Compile>
     <Compile Include="GUI\Create\CreateCharacter.xaml.cs" />
     <Compile Include="GUI\MainWindow.xaml.cs" />
+    <Compile Include="GUI\MusicPlayer\Music.cs" />
+    <Compile Include="GUI\MusicPlayer\MusicPlayer.xaml.cs">
+      <DependentUpon>MusicPlayer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\TextEditor.xaml.cs">
       <DependentUpon>TextEditor.xaml</DependentUpon>
     </Compile>
@@ -113,6 +117,10 @@
     <Compile Include="Lib\Planet.cs" />
     <Compile Include="Lib\Region.cs" />
     <Compile Include="Lib\room.cs" />
+    <Page Include="GUI\MusicPlayer\MusicPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\TextEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

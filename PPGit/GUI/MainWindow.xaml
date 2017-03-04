@@ -118,6 +118,7 @@
                     <MenuItem Header="Text Edit" Click="Text_Click"/>
                     <MenuItem Header="Calendar" Click="Cal_Click"/>
                     <MenuItem Header="Theme" Click="Theme_Click"/>
+                    <MenuItem Header="Music" Click="Music_Click"/>
                 </MenuItem>
             </Menu>
         </DockPanel>
