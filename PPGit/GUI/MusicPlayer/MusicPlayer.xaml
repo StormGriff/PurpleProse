@@ -1,0 +1,69 @@
+﻿<Controls:MetroWindow x:Class="PPGit.GUI.MusicPlayer.MusicPlayer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PPGit.GUI.MusicPlayer"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="MusicPlayer" Height="150" Width="250"
+                      MinHeight="150" MinWidth="250">
+    
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="btnRightWindowChangeTheme" Content="change app theme" Click="btnRightWindowChangeTheme_Click"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Now Playing:"/>
+
+        <TextBox x:Name="txtNowPlaying" Grid.Row="1" Width="200" IsReadOnly="True"/>
+
+        <StackPanel Grid.Row="2" Margin="0 10 0 10" Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button x:Name="btnBrowse" Click="btnBrowse_Click">
+                <Rectangle Width="30" Height="30"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_book_open_hardcover}"
+                                     Stretch="Fill"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button x:Name="btnPlay" Click="btnPlay_Click">
+                <Rectangle Width="30" Height="30"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush x:Name="PlayPauseBrush" Visual="{StaticResource appbar_control_play}"
+                                     Stretch="Fill"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button x:Name="btnPause" Click="btnPause_Click">
+                <Rectangle Width="30" Height="30"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_control_pause}"
+                                     Stretch="Fill"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button x:Name="btnStop" Click="btnStop_Click">
+                <Rectangle Width="30" Height="30"
+                           Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_control_stop}"
+                                     Stretch="Fill"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Controls:MetroWindow>
