@@ -51,3 +51,5 @@ M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\TextEditor.baml
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.g.resources
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.Properties.Resources.resources
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.csproj.GenerateResource.Cache
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\AppThemeChanger.g.cs
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\AppThemeChanger.baml

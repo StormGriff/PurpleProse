@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-8345250154
+9-1863690177
 
-241438503198
+26766786812
 1680258764
-App.xaml;GUI\addDeadline.xaml;GUI\Calendar.xaml;GUI\Create\CreateCharacter.xaml;GUI\MainWindow.xaml;GUI\TextEditor.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;
+App.xaml;GUI\addDeadline.xaml;GUI\AppThemeChanger.xaml;GUI\Calendar.xaml;GUI\Create\CreateCharacter.xaml;GUI\MainWindow.xaml;GUI\TextEditor.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;
 
 True
 

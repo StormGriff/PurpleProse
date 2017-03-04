@@ -110,5 +110,12 @@ namespace PPGit.GUI
 
             test.Show();
         }
+
+        private void Theme_Click(object sender, RoutedEventArgs e)
+        {
+            PPGit.GUI.AppThemeChanger temp = new PPGit.GUI.AppThemeChanger();
+
+            temp.Show();
+        }
     }
 }
