@@ -14,12 +14,15 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 
+using MahApps.Metro.Controls;
+using MahApps.Metro;
+
 namespace PPGit.GUI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
 
         List<PurpleProse.Lib.Character> characters;
@@ -34,30 +37,6 @@ namespace PPGit.GUI
 
             InitializeComponent();
         }
-
-        #region Title Bar and Border
-
-        private void TitleBarText_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
-
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void MaxButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = (this.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
-        }
-
-        private void MinButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        #endregion
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -116,6 +95,13 @@ namespace PPGit.GUI
             PPGit.GUI.AppThemeChanger temp = new PPGit.GUI.AppThemeChanger();
 
             temp.Show();
+        }
+
+        private void btnRightWindowChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+            AppThemeChanger wnd = new AppThemeChanger();
+
+            wnd.Show();
         }
     }
 }
