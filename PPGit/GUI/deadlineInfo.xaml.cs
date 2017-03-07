@@ -33,6 +33,43 @@ namespace PPGit.GUI
             string day = theDate.Day.ToString();
             string year = theDate.Year.ToString();
             this.Title = month + " " + day + ", " + year;
+            //Setting the Word-Count
+            int words = thisDeadline.theWordCount;
+            if (words == 0)
+            {
+                wordsLeftLBL.IsEnabled = false;
+                wrdsLftTXT.IsEnabled = false;
+            }
+            else {
+                wrdsLftTXT.Text = words.ToString();
+            }
+            //Setting the notes
+            string notes = thisDeadline.getSetNotes;
+            if (notes == null)
+            {
+                notesLBL.IsEnabled = false;
+                notesTXT.IsEnabled = false;
+            }
+            else {
+                notesTXT.Text = notes;
+            }
+        }
+
+        private void updateBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (wrdsLftTXT.IsEnabled) {
+                try
+                {
+                    thisDeadline.theWordCount = Convert.ToInt32(wrdsLftTXT.Text);
+                }
+                catch (FormatException) {
+                    MessageBox.Show("Unable to update word count", "ERROR", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+
+            if (notesTXT.IsEnabled) {
+                thisDeadline.getSetNotes = notesTXT.Text;
+            }
         }
     }
 }

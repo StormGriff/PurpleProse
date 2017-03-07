@@ -2242,14 +2242,73 @@ namespace PPGit.GUI
             }
         }
 
+        private void showDeadlineInfo(int day) {
+            PurpleProse.Lib.deadline thisDeadline = PPGit.Lib.time.returnDeadline(day);
+            PPGit.GUI.deadlineInfo newInfo = new deadlineInfo(thisDeadline);
+            newInfo.ShowDialog();
+        }
+
         private void day1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            if (day1.Background == deadlineColor) {
+                showDeadlineInfo(Convert.ToInt32(num1.Content));
+            }
         }
 
         private void day9_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            if (day9.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num9.Content));
+            }
+        }
 
+        private void day2_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day2.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num2.Content));
+            }
+        }
+
+        private void day3_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day3.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num3.Content));
+            }
+        }
+
+        private void day4_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day4.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num4.Content));
+            }
+        }
+
+        private void day5_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day5.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num5.Content));
+            }
+        }
+
+        private void day6_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day6.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num6.Content));
+            }
+        }
+
+        private void day7_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day7.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num7.Content));
+            }
         }
     }
 }

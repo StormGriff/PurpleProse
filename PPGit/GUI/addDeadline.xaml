@@ -16,7 +16,7 @@
         </Grid>
         <CheckBox x:Name="wrdCHK" Content="Word Count" HorizontalAlignment="Left" Margin="415,28,0,0" VerticalAlignment="Top" Checked="wrdCHK_Checked" Unchecked="wrdCHK_Unchecked"/>
         <Label x:Name="notesLBL" Content="Notes:" HorizontalAlignment="Left" Margin="225,54,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="notesTXT" HorizontalAlignment="Left" Height="98" Margin="274,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" SpellCheck.IsEnabled="True"/>
+        <TextBox x:Name="notesTXT" HorizontalAlignment="Left" Height="98" Margin="274,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" SpellCheck.IsEnabled="True" AcceptsReturn="True"/>
         <CheckBox x:Name="notesCHK" Content="" HorizontalAlignment="Left" Margin="236,80,0,0" VerticalAlignment="Top" Checked="notesCHK_Checked" Unchecked="notesCHK_Unchecked"/>
     </Grid>
 </Window>

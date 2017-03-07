@@ -30,6 +30,13 @@ namespace PPGit.Lib
             }
             return false; //No match
         }
+        public static PurpleProse.Lib.deadline returnDeadline(int day) {
+            DateTime date = new DateTime(firstDay.Year, firstDay.Month, day);
+            foreach (PurpleProse.Lib.deadline thisDeadline in deadlines) {
+                if (thisDeadline.getDate == date) return thisDeadline;
+            }
+            return null;
+        }
         public static string Name {
             get
             {
