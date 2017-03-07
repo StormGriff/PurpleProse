@@ -2248,10 +2248,21 @@ namespace PPGit.GUI
             newInfo.ShowDialog();
         }
 
+        private void wordsLeftOutput() {
+            int num = 0;
+            foreach (PurpleProse.Lib.deadline thisDeadline in Lib.time.getAllDeadlines()) {
+                if (num == 0) num = thisDeadline.theWordCount;
+                else if (thisDeadline.theWordCount < num && thisDeadline.theWordCount != 0) num = thisDeadline.theWordCount;
+            }
+            if (num == 0) wordsLeftLBL.IsEnabled = false;
+            else wordsLeftLBL.Content = num + " Words left for nearest deadline";
+        }
+
         private void day1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (day1.Background == deadlineColor) {
                 showDeadlineInfo(Convert.ToInt32(num1.Content));
+                wordsLeftOutput();
             }
         }
 
@@ -2260,6 +2271,7 @@ namespace PPGit.GUI
             if (day9.Background == deadlineColor)
             {
                 showDeadlineInfo(Convert.ToInt32(num9.Content));
+                wordsLeftOutput();
             }
         }
 
@@ -2268,6 +2280,7 @@ namespace PPGit.GUI
             if (day2.Background == deadlineColor)
             {
                 showDeadlineInfo(Convert.ToInt32(num2.Content));
+                wordsLeftOutput();
             }
         }
 
@@ -2276,6 +2289,7 @@ namespace PPGit.GUI
             if (day3.Background == deadlineColor)
             {
                 showDeadlineInfo(Convert.ToInt32(num3.Content));
+                wordsLeftOutput();
             }
         }
 
@@ -2284,6 +2298,7 @@ namespace PPGit.GUI
             if (day4.Background == deadlineColor)
             {
                 showDeadlineInfo(Convert.ToInt32(num4.Content));
+                wordsLeftOutput();
             }
         }
 
@@ -2292,6 +2307,7 @@ namespace PPGit.GUI
             if (day5.Background == deadlineColor)
             {
                 showDeadlineInfo(Convert.ToInt32(num5.Content));
+                wordsLeftOutput();
             }
         }
 
@@ -2300,6 +2316,7 @@ namespace PPGit.GUI
             if (day6.Background == deadlineColor)
             {
                 showDeadlineInfo(Convert.ToInt32(num6.Content));
+                wordsLeftOutput();
             }
         }
 
@@ -2308,6 +2325,7 @@ namespace PPGit.GUI
             if (day7.Background == deadlineColor)
             {
                 showDeadlineInfo(Convert.ToInt32(num7.Content));
+                wordsLeftOutput();
             }
         }
     }
