@@ -57,10 +57,12 @@ namespace PPGit.GUI
 
         private void updateBTN_Click(object sender, RoutedEventArgs e)
         {
+            bool updated = false;
             if (wrdsLftTXT.IsEnabled) {
                 try
                 {
                     thisDeadline.theWordCount = Convert.ToInt32(wrdsLftTXT.Text);
+                    updated = true;
                 }
                 catch (FormatException) {
                     MessageBox.Show("Unable to update word count", "ERROR", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -69,7 +71,18 @@ namespace PPGit.GUI
 
             if (notesTXT.IsEnabled) {
                 thisDeadline.getSetNotes = notesTXT.Text;
+                updated = true;
             }
+
+            if (updated == true) {
+                MessageBoxResult newResult = MessageBox.Show("Deadline Updated.\nWould you like to go back to the calendar?", "Update", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (newResult == MessageBoxResult.Yes) this.Close();
+            }
+        }
+
+        private void clsBTN_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -2328,5 +2328,311 @@ namespace PPGit.GUI
                 wordsLeftOutput();
             }
         }
+
+        private void day8_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day8.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num8.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day10_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day10.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num10.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day11_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day11.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num11.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day12_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day12.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num12.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day13_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day13.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num13.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day14_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day14.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num14.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day15_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day15.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num15.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day16_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day16.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num16.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day17_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day17.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num17.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day18_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day18.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num18.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day19_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day19.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num19.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day20_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day20.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num20.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day21_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day21.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num21.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day22_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day22.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num22.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day23_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day23.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num23.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day24_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day24.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num24.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day25_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day25.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num25.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day26_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day26.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num26.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day27_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day27.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num27.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day28_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day28.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num28.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day29_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day29.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num29.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day30_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day30.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num30.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day31_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day31.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num31.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day32_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day32.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num32.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day33_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day33.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num33.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day34_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day34.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num34.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day35_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day35.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num35.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day36_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day36.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num36.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day37_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day37.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num37.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day38_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day38.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num38.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day39_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day39.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num39.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day40_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day40.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num40.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day41_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day41.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num41.Content));
+                wordsLeftOutput();
+            }
+        }
+
+        private void day42_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (day42.Background == deadlineColor)
+            {
+                showDeadlineInfo(Convert.ToInt32(num42.Content));
+                wordsLeftOutput();
+            }
+        }
     }
 }

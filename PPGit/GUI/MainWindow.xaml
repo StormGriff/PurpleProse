@@ -26,7 +26,7 @@
         <BitmapImage x:Key="Fullscreen" UriSource="..\Resources\Fullscreen.png"/>
         <BitmapImage x:Key="Plus" UriSource="..\Resources\Plus.png"/>
         <BitmapImage x:Key="Minus" UriSource="..\Resources\Minus.png"/>
-        
+
         <!--<BitmapImage x:Key="ActiveRightArrow" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\ActiveRightArrow.png"/>
         <BitmapImage x:Key="ActiveLeftArrow" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\ActiveLeftArrow.png"/>
         <BitmapImage x:Key="Close" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Close.png"/>
@@ -209,14 +209,14 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                
+
                 <DockPanel Grid.Row="1">
                     <Menu IsMainMenu="True" DockPanel.Dock="Top" Background="#FF171717" Foreground="White">
                         <MenuItem Header="Menu">
-                            
+
                         </MenuItem>
                         <MenuItem Header="Theme">
-                            
+
                         </MenuItem>
                     </Menu>
                 </DockPanel>
@@ -238,7 +238,7 @@
                             <TextBlock Text="Only Show Major Characters"/>
                         </CheckBox>
 
-                        
+
                     </Grid>
 
                     <DataGrid Name="DataGrid" Grid.Row="0" ItemsSource="{Binding}">
@@ -250,7 +250,7 @@
                     </DataGrid>
                 </Grid>
             </Grid>
-               
+
         </Grid>
     </Border>
 </Window>
