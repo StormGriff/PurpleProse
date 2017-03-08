@@ -31,8 +31,7 @@ namespace PPGit.GUI
             DateTime theDate = thisDeadline.getDate;
             string month = Lib.time.Name;
             string day = theDate.Day.ToString();
-            string year = theDate.Year.ToString();
-            this.Title = month + " " + day + ", " + year;
+            this.Title = day + ", " + month;
             //Setting the Word-Count
             int words = thisDeadline.theWordCount;
             if (words == 0)
