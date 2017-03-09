@@ -226,9 +226,9 @@
 						</MenuItem>
 						<MenuItem  Name="Add" Header="Add" Click="MenuItem_Click" ContextMenuService.IsEnabled="False">
 							<MenuItem.ContextMenu><ContextMenu>
-									<MenuItem x:Name="Add_Object" FontSize="12" Header="Object"/>
-									<MenuItem x:Name="Add_Character" FontSize="12" Header="Character" PreviewMouseLeftButtonUp="Add_Character_LeftMouseUp" />
-									<MenuItem x:Name="Add_Location" FontSize="12" Header="Location"/>
+									<MenuItem x:Name="Add_Object"	 FontSize="12" Header="Object"/>
+									<MenuItem x:Name="Add_Character" FontSize="12" Header="Character" PreviewMouseLeftButtonUp="Add_Character_LeftMouseUp"/>
+									<MenuItem x:Name="Add_Location"  FontSize="12" Header="Location"  PreviewMouseLeftButtonUp="Add_Location_LeftMouseUp"/>
 									<MenuItem x:Name="Add_Relationship" FontSize="12" Header="Relationship"/>
 							</ContextMenu></MenuItem.ContextMenu>
 						</MenuItem>
@@ -256,21 +256,21 @@
                     </Grid>
 
                     <DataGrid Name="DataGrid" Grid.Row="0" ItemsSource="{Binding}">
-                        
+                        <!--I thought this might need to be used for making a proper tree list-->
                     </DataGrid>
 
-					<DockPanel HorizontalAlignment="Left" Height="483" Panel.ZIndex="0" LastChildFill="False" VerticalAlignment="Top" Width="135">
-						<TreeView x:Name="Elements" Loaded="Elements_Loaded"
+					<DockPanel x:Name="TreeList" HorizontalAlignment="Left" Height="483" Panel.ZIndex="0" LastChildFill="False" VerticalAlignment="Top" Width="135">
+						<!--TreeView x:Name="Elements" Loaded="Elements_Loaded"
 								  SelectedItemChanged="Elements_SelectedItemChanged"
 								  DataContext="{Binding RelativeSource={RelativeSource self}}"
 								  SourceUpdated="Elements_SourceUpdated"
-								  AllowDrop="True" Height="483" VerticalAlignment="Top" Width="135">
+								  AllowDrop="True" Height="483" VerticalAlignment="Top" Width="135"-->
 							<!--ItemsControl-->
 								<!--TreeViewItem x:Name="Characters" Header="Characters">
 									<TreeViewItem Header="Jimbo"></TreeViewItem>
 								</TreeViewItem-->
 							<!--/ItemsControl-->
-						</TreeView>
+						<!--/TreeView-->
 
 					</DockPanel>
 				</Grid>

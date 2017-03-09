@@ -58,6 +58,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="GUI\LocationWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GUI\CharacterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -67,6 +71,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="App.xaml.cs" />
+    <Compile Include="GUI\LocationWindow.xaml.cs">
+      <DependentUpon>LocationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\CharacterWindow.xaml.cs">
       <DependentUpon>CharacterWindow.xaml</DependentUpon>
     </Compile>

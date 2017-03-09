@@ -16,7 +16,7 @@ namespace PurpleProse.Lib
         //private string charImg;
 
         // Using Properties: Character attribute file names + extension
-        public int		charAge		{ get; set; }
+        public long		charAge		{ get; set; }
         public string	charKind	{ get; set; } // Make a list struct
         public string	charGender	{ get; set; } // Make a list struct
         public string	charRole	{ get; set; }

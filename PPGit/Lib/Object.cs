@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Xml;
 using System.Windows.Markup;
+using System.Windows;
 
 namespace PurpleProse.Lib
 {
@@ -15,6 +16,7 @@ namespace PurpleProse.Lib
         public string Name { get; set; }
 		protected string description, history, imageFile;
         protected List<relationship> MyRelationships; //List of this objects relationships
+		public Window its_window;
 		public static System.IO.FileNotFoundException InvalidTextFile;
 
         protected struct relationship { //A relationship.  Including the type of relationship and who it is with.

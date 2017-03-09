@@ -16,7 +16,7 @@ using PurpleProse.Lib;
 namespace PurpleProse
 {
 	/// <summary>
-	/// Interaction logic for ChildWindow.xaml
+	/// Interaction logic for CharacterWindow.xaml
 	/// </summary>
 	public partial class CharacterWindow :Window
 	{
@@ -33,25 +33,14 @@ namespace PurpleProse
 
         #region Title Bar and Border
 
-        private void TitleBarText_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
+        private void TitleBarText_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) { DragMove(); }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        private void CloseButton_Click(object sender, RoutedEventArgs e) { Close(); }
 
         private void MaxButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = (this.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
-        }
+			{ WindowState = (WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized; }
 
-        private void MinButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
+        private void MinButton_Click(object sender, RoutedEventArgs e) { WindowState = WindowState.Minimized; }
 
         #endregion
 
@@ -59,19 +48,18 @@ namespace PurpleProse
 			{ TextOps.Open(Person.DescFile); }
 
 		Binding name_binding;
-
-	//	private void NameBox_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-	//	private void NameBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) 
-	//		{ if (!it) it = true; }
 		
 		//Bug: Functions execute upon inital click. (Originally named XXX_LostKeyboardFocus)
 		//ComboBox Tutorial: https://youtu.be/UDDYd3q5WM4
 
 		private void NameBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
-			{ if (NameBox.Text != "") Person.Name = NameBox.Text; } 
+			{ if (NameBox.Text != "") Person.Name = NameBox.Text; }
 
 		private void AgeBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e) 
-			{ if (AgeBox.Text != "") Person.charAge = 5; }	//Some sort of atoi needs to be implimented
+		{	if (AgeBox.Text != "") try { Person.charAge = Convert.ToInt64(AgeBox.Text); }// I figured sometimes the ages of fictional characters can get long.
+				catch(FormatException	exc) { AgeBox.Clear(); }
+				catch(OverflowException exc) { AgeBox.Text = "OvrFlo"; }
+		}
 
 		private void GenderBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e) 
 			{ if (GenderBox.Text != "") Person.charGender = GenderBox.Text; }

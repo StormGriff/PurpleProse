@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
+using PurpleProse.Lib;
 
 namespace PurpleProse
 {
@@ -28,25 +29,17 @@ namespace PurpleProse
         List<PurpleProse.Lib.Character> characters;
         List<PurpleProse.Lib.Location> locations;
         DataTable bindChar;
+		TreeView Elements;
 
         public MainWindow()
         {
             characters = new List<PurpleProse.Lib.Character>();
             locations = new List<PurpleProse.Lib.Location>();
             bindChar = new DataTable();
-
             InitializeComponent();
+			Create_Elements();
         }
 
-
-		private void LoopingMethod()
-		{
-  			for (int i = 0; i < 10; i++)
-  			{	//Elements.Items = i.ToString();
-     			Elements.Refresh();
-     			Thread.Sleep(100);
-  			}
-		}
 
         #region Title Bar and Border
 
@@ -99,6 +92,17 @@ namespace PurpleProse
 				//Dispatcher.Invoke();
 		}}
 
+		private void Create_Elements()
+		{	if(Elements != null) Elements.Items.Clear();
+			Elements = new TreeView();
+			TreeList.Children.Add(Elements);
+			Elements.Loaded += Elements_Loaded;
+			Elements.SelectedItemChanged += Elements_SelectedItemChanged;
+			Elements.Height=483; Width=135;
+			VerticalAlignment = VerticalAlignment.Top;
+			Elements.Visibility = Visibility.Visible;
+		}
+
 		private void Elements_Loaded(object sender, RoutedEventArgs e)
 		{
 			// ... Create a TreeViewItem.
@@ -131,8 +135,8 @@ namespace PurpleProse
 			{	var item = tree.SelectedItem as TreeViewItem;
 				
 			}
-			else if (tree.SelectedItem is string)
-			{
+			else if (tree.SelectedItem is Lib.Object)
+			{	tree.its_window.Show();
 			}
 		}
 
@@ -178,18 +182,23 @@ namespace PurpleProse
 		}
 
 		private void Add_Character_LeftMouseUp(object sender, MouseButtonEventArgs e)
-		{	PurpleProse.Lib.Character New_Char = new PurpleProse.Lib.Character(null, null, null, null, 20, null, null, null, null, null, null);
+		{	PurpleProse.Lib.Character New_Char = new PurpleProse.Lib.Character(null, null, null, null, 0, null, null, null, null, null, null);
+			New_Char.its_window =  new CharacterWindow(New_Char);
 			characters.Add(New_Char);
-			CharacterWindow CharWindow = new CharacterWindow(New_Char);
-			CharWindow.Show();
-			Elements.Items.Refresh();
-			this.Refresh();
-			LoopingMethod();
+		//	CharacterWindow CharWindow = new CharacterWindow(New_Char);
+			New_Char.its_window.Show();
+			Elements.Visibility=Visibility.Hidden;
+			Create_Elements();
 		}
-
-		private void Elements_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
-		{	Elements.Items.Refresh();
-			Elements.UpdateLayout();
+		
+		private void Add_Location_LeftMouseUp(object sender, MouseButtonEventArgs e)
+		{	PurpleProse.Lib.Location New_Loc = new PurpleProse.Lib.Location(null, null, null, null);
+			New_Loc.its_window =  new LocationWindow(New_Loc);
+			locations.Add(New_Loc);
+		//	LocationWindow LocWindow = new LocationWindow(New_Loc);
+			New_Loc.its_window.Show();
+			Elements.Visibility=Visibility.Hidden;
+			Create_Elements();
 		}
 	}
 }
