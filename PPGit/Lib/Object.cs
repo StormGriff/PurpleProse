@@ -7,10 +7,11 @@ using System.IO;
 using System.Xml;
 using System.Windows.Markup;
 using System.Windows;
+using System.ComponentModel;
 
 namespace PurpleProse.Lib
 {
-    public abstract class Object  //This will be a parent class to all objects
+    public abstract class Object : INotifyPropertyChanged //This will be a parent class to all objects
     {
         public enum relationshipTypes {Null, Father, Mother, Sibling, Friend, Enemy}; //Types of relationships... let me know if we need more
         public string Name { get; set; }
@@ -19,7 +20,13 @@ namespace PurpleProse.Lib
 		public Window its_window;
 		public static System.IO.FileNotFoundException InvalidTextFile;
 
-        protected struct relationship { //A relationship.  Including the type of relationship and who it is with.
+		public event PropertyChangedEventHandler PropertyChanged;
+		public void NotifyPropertyChanged(string propName)
+		{
+			if(PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(propName));
+		}
+
+		protected struct relationship { //A relationship.  Including the type of relationship and who it is with.
             public relationshipTypes type;
             public Object myRelationship;
         }
@@ -31,6 +38,15 @@ namespace PurpleProse.Lib
 			MyRelationships = Original.MyRelationships;
 		//	attributes = copy.attributes;
 		}
+
+		/*public Object(string name, Window wind, string desc, string hist, string pict = "") {
+			if (!string.IsNullOrEmpty(name)) Name = name;
+			if (wind != null) its_window = wind;
+			if (!string.IsNullOrEmpty(desc)) description = desc; //desc, hist, and imageFile hold filenames with extension
+			if (!string.IsNullOrEmpty(hist)) history = hist;
+			if (!string.IsNullOrEmpty(pict)) imageFile = pict;
+			MyRelationships = new List<relationship>();
+		}*/
 
 		public Object(string name, string desc, string hist, string pict = "") {
 			if (!string.IsNullOrEmpty(name)) Name = name;

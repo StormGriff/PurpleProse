@@ -260,17 +260,16 @@
                     </DataGrid>
 
 					<DockPanel x:Name="TreeList" HorizontalAlignment="Left" Height="483" Panel.ZIndex="0" LastChildFill="False" VerticalAlignment="Top" Width="135">
-						<!--TreeView x:Name="Elements" Loaded="Elements_Loaded"
+						<TreeView x:Name="Elements" Loaded="Elements_Loaded"
 								  SelectedItemChanged="Elements_SelectedItemChanged"
-								  DataContext="{Binding RelativeSource={RelativeSource self}}"
 								  SourceUpdated="Elements_SourceUpdated"
-								  AllowDrop="True" Height="483" VerticalAlignment="Top" Width="135"-->
-							<!--ItemsControl-->
-								<!--TreeViewItem x:Name="Characters" Header="Characters">
-									<TreeViewItem Header="Jimbo"></TreeViewItem>
-								</TreeViewItem-->
-							<!--/ItemsControl-->
-						<!--/TreeView-->
+								  AllowDrop="True" Height="483" VerticalAlignment="Top" Width="135">
+							<TreeViewItem x:Name="Characters_TVL" Header="Characters" ItemsSource="{Binding Items}">
+									<HierarchicalDataTemplate DataType="{x:Type self:MenuItem}" ItemsSource="{Binding Items}">
+										<TextBlock Text="{Binding Txt}" />
+									</HierarchicalDataTemplate>
+							</TreeViewItem>
+						</TreeView>
 
 					</DockPanel>
 				</Grid>

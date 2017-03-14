@@ -7,7 +7,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
-using PurpleProse.Lib;
+//using PurpleProse.Lib;
+using System.Collections.ObjectModel;
 
 namespace PurpleProse
 {
@@ -15,26 +16,19 @@ namespace PurpleProse
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
 	/// 
-	public static class ExtensionMethods 
-		{
-			private static Action EmptyDelegate = delegate() { };
-			
-			public static void Refresh(this UIElement uiElement)
-			{ uiElement.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate); }
-		}
 
 	public partial class MainWindow : Window
     {
 		//static string texteditor; Currently using seperate class
-        List<PurpleProse.Lib.Character> characters;
-        List<PurpleProse.Lib.Location> locations;
+        ObservableCollection<Lib.Character> characters;
+        ObservableCollection<Lib.Location> locations;
         DataTable bindChar;
-		TreeView Elements;
+	//	TreeView Elements;
 
         public MainWindow()
         {
-            characters = new List<PurpleProse.Lib.Character>();
-            locations = new List<PurpleProse.Lib.Location>();
+            characters = new ObservableCollection<Lib.Character>();
+            locations = new ObservableCollection<Lib.Location>();
             bindChar = new DataTable();
             InitializeComponent();
 			Create_Elements();
@@ -101,21 +95,28 @@ namespace PurpleProse
 			Elements.Height=483; Width=135;
 			VerticalAlignment = VerticalAlignment.Top;
 			Elements.Visibility = Visibility.Visible;
+
+		//	BindingExpression binding = MainWindow.GetBindingExpression(TextBox.TextProperty);
+		//	binding.UpdateSource();
+		}
+
+		public void Elements_SourceUpdated(object sender, RoutedEventArgs e)
+		{
 		}
 
 		private void Elements_Loaded(object sender, RoutedEventArgs e)
-		{
+		{	/*
 			// ... Create a TreeViewItem.
-			TreeViewItem _Characters = new TreeViewItem();
-			_Characters.Header = "Characters";
+			TreeViewItem Characters_TVL = new TreeViewItem();
+			Characters_TVL.Header = "Characters";
 
 			// ... Create a second TreeViewItem.
 			TreeViewItem _Locations = new TreeViewItem();
 			_Locations.Header = "Locations";
 			
-			Elements.Items.Add(_Characters);
+			Elements.Items.Add(Characters_TVL);
 			Elements.Items.Add(_Locations);
-			
+			*/
 			var sub_folder = Elements.Items[0] as TreeViewItem;
 			sub_folder.ItemsSource = characters;
 			//TreeViewItem.SetBinding(sub_folder, characters);
@@ -123,7 +124,7 @@ namespace PurpleProse
 			/**/sub_folder = Elements.Items[1] as TreeViewItem;
 			sub_folder.ItemsSource = locations;
 			//Elements.Items[0].Add(new Lib.Character("Jimbo", null, null, null, 15, null, null, null, null, null, null));
-
+		
 		}
 
 		private void Elements_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -136,7 +137,7 @@ namespace PurpleProse
 				
 			}
 			else if (tree.SelectedItem is Lib.Object)
-			{	tree.its_window.Show();
+			{	//tree.its_window.Show();
 			}
 		}
 
@@ -182,13 +183,13 @@ namespace PurpleProse
 		}
 
 		private void Add_Character_LeftMouseUp(object sender, MouseButtonEventArgs e)
-		{	PurpleProse.Lib.Character New_Char = new PurpleProse.Lib.Character(null, null, null, null, 0, null, null, null, null, null, null);
+		{	Lib.Character New_Char = new PurpleProse.Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
 			New_Char.its_window =  new CharacterWindow(New_Char);
 			characters.Add(New_Char);
 		//	CharacterWindow CharWindow = new CharacterWindow(New_Char);
 			New_Char.its_window.Show();
-			Elements.Visibility=Visibility.Hidden;
-			Create_Elements();
+		//	Elements.Visibility=Visibility.Hidden;
+		//	Create_Elements();
 		}
 		
 		private void Add_Location_LeftMouseUp(object sender, MouseButtonEventArgs e)
@@ -197,8 +198,8 @@ namespace PurpleProse
 			locations.Add(New_Loc);
 		//	LocationWindow LocWindow = new LocationWindow(New_Loc);
 			New_Loc.its_window.Show();
-			Elements.Visibility=Visibility.Hidden;
-			Create_Elements();
+		//	Elements.Visibility=Visibility.Hidden;
+		//	Create_Elements();
 		}
 	}
 }
