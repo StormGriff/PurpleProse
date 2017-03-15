@@ -265,11 +265,9 @@
 								  SelectedItemChanged="Elements_SelectedItemChanged"
 								  SourceUpdated="Elements_SourceUpdated"
 								  AllowDrop="True" Height="483" VerticalAlignment="Top" Width="135">
-							<TreeViewItem x:Name="Characters_TVL" Header="Characters"> <!--ItemsSource="{Binding Items}"-->
-									<!--HierarchicalDataTemplate DataType="{x:Type lib:Character}" ItemsSource="{Binding Items}"-->
-										<!--TextBlock Text="{Binding Items.Name}" /-->
-									<!--/HierarchicalDataTemplate-->
-							</TreeViewItem>
+							<TreeViewItem x:Name="Characters_TVL" Header="Characters"/>
+							<TreeViewItem x:Name="Locations_TVL" Header="Locations"/>
+
 						</TreeView>
 
 					</DockPanel>

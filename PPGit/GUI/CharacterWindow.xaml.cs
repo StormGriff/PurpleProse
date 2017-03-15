@@ -22,20 +22,26 @@ namespace PurpleProse
 	{
 		private Character Person;
 
-		public CharacterWindow() {
-			InitializeComponent();
-		}
-
 		public CharacterWindow(Character person) {
 			InitializeComponent();
 			this.Person = person;
+			Person.its_window = this;
+			NameBox.Text = Person.Name;
+			AgeBox.Text = Convert.ToString(Person.charAge);
+			GenderBox.Text = Person.charGender;
+			HomeBox.Text = Person.charHometown;
+			RoleBox.Text = Person.charRole;
+			LingBox.Text = Person.charLanguage;
+			RaceBox.Text = Person.charKind;
 		}
 
         #region Title Bar and Border
 
         private void TitleBarText_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) { DragMove(); }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e) { Visibility=Visibility.Hidden; }
+        private void CloseButton_Click(object sender, RoutedEventArgs e) { this.Close(); }
+		// A I am assuming this will completely deallocate the data here, if I'm wrong we have a leak.
+		// I sometimes use A ^ and /\s to denote that a comment applies to the code above it.
 
         private void MaxButton_Click(object sender, RoutedEventArgs e)
 			{ WindowState = (WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized; }
@@ -59,21 +65,24 @@ namespace PurpleProse
 		{	if (AgeBox.Text != "") try { Person.charAge = Convert.ToInt64(AgeBox.Text); }// I figured sometimes the ages of fictional characters can get long.
 				catch(FormatException	exc) { AgeBox.Clear(); }
 				catch(OverflowException exc) { AgeBox.Text = "OvrFlo"; }
+			else Person.charAge = 0;
 		}
 
 		private void GenderBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e) 
-			{ if (GenderBox.Text != "") Person.charGender = GenderBox.Text; }
+			{ Person.charGender = GenderBox.Text; }
 
 		private void HomeBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e) 
-			{ if (HomeBox.Text != "") Person.charHometown = HomeBox.Text; }
+			{ Person.charHometown = HomeBox.Text; }
 
 		private void RoleBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
-			{ if (RoleBox.Text != "") Person.charRole = RoleBox.Text; }
+			{ Person.charRole = RoleBox.Text; }
 
 		private void LingBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e) 
-			{ if (LingBox.Text != "") Person.charLanguage = LingBox.Text; }
+			{ Person.charLanguage = LingBox.Text; }
 
 		private void RaceBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e) 
-			{ if (RaceBox.Text != "") Person.charKind = RaceBox.Text; }
-    }
+			{ Person.charKind = RaceBox.Text; }
+
+		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) { Person.its_window = null; }
+	}
 }

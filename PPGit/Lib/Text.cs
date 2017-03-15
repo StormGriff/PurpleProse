@@ -14,8 +14,5 @@ namespace PurpleProse
 	public static class TextOps
 	{	public static string editor;
 		static public void Open(string file) { Process.Start(editor, "\"" + file + "\""); }
-		/*public int Atoi(string text) {
-			
-		}*/
 	}
 }

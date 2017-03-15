@@ -79,11 +79,13 @@ namespace PurpleProse
 		private void Window_Activated(object sender, System.EventArgs e)
 		{if(this.IsLoaded && Elements.IsLoaded){
 				//UpdateBinding();
-				Elements.UpdateLayout();
-				Elements.Items.Refresh();
-				var sub_folder = Elements.Items[0] as TreeViewItem;
-				sub_folder.ItemsSource = null;
-				sub_folder.ItemsSource = characters;
+			var sub_folder = Elements.Items[0] as TreeViewItem;
+			sub_folder.ItemsSource = null;
+			sub_folder.ItemsSource = characters;
+
+			/**/sub_folder = Elements.Items[1] as TreeViewItem;
+			sub_folder.ItemsSource = null;
+			sub_folder.ItemsSource = locations;
 		}}
 
 		public void Elements_SourceUpdated(object sender, RoutedEventArgs e)
@@ -105,23 +107,31 @@ namespace PurpleProse
 			*/
 
 			var sub_folder = Elements.Items[0] as TreeViewItem;
+			sub_folder.ItemsSource = null;
 			sub_folder.ItemsSource = characters;
 
-		//	/**/sub_folder = Elements.Items[1] as TreeViewItem;
-		//	sub_folder.ItemsSource = locations;
+			/**/sub_folder = Elements.Items[1] as TreeViewItem;
+			sub_folder.ItemsSource = null;
+			sub_folder.ItemsSource = locations;
 		
 		}
 
 		private void Elements_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-		{
-			var tree = sender as TreeView;
-			// ... Determine type of SelectedItem.
-			/*if (tree.SelectedItem is TreeView)
-			{	
+		{	var selection = (sender as TreeView).SelectedItem;
+			/**/ if (selection is Lib.Character)
+			{	var select = selection as Lib.Character;
+				if ( select.its_window == null) new CharacterWindow(select).Show();
+				else select.its_window.Activate();
 			}
-			else */if (tree.SelectedItem is Lib.Object)
-			{	var thing = tree.SelectedItem as Lib.Object;
-				thing.its_window.Show();
+			else if (selection is Lib.Location )
+			{	var select = selection as Lib.Location;
+				if (select.its_window == null) new  LocationWindow(select).Show();
+				else select.its_window.Activate();
+			}
+			else if (selection is Lib.Object   )
+			{	var select = selection as Lib.Object;
+				if (select.its_window == null) ;//new    ObjectWindow(select).Show();
+				else select.its_window.Activate();
 			}
 		}
 
@@ -167,16 +177,16 @@ namespace PurpleProse
 		}
 
 		private void Add_Character_LeftMouseUp(object sender, MouseButtonEventArgs e)
-		{	Lib.Character New_Char = new PurpleProse.Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
-			New_Char.its_window =  new CharacterWindow(New_Char);
+		{	Lib.Character New_Char = new Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
 			characters.Add(New_Char);
+			new CharacterWindow(New_Char);
 			New_Char.its_window.Show();
 		}
 		
 		private void Add_Location_LeftMouseUp(object sender, MouseButtonEventArgs e)
-		{	PurpleProse.Lib.Location New_Loc = new PurpleProse.Lib.Location(null, null, null, null);
-			New_Loc.its_window =  new LocationWindow(New_Loc);
+		{	Lib.Location New_Loc = new Lib.Location("The_State", null, null, null);
 			locations.Add(New_Loc);
+			new LocationWindow(New_Loc);
 			New_Loc.its_window.Show();
 		}
 	}
