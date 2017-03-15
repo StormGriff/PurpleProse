@@ -107,5 +107,10 @@ namespace PurpleProse.Lib
             }
             return relationshipTypes.Null; //If the given object does not have a relationship to this object, return null type
         }
-    }
+
+		public override string ToString() {
+			return Name;
+		}
+
+	}
 }

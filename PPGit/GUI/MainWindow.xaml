@@ -260,14 +260,15 @@
                     </DataGrid>
 
 					<DockPanel x:Name="TreeList" HorizontalAlignment="Left" Height="483" Panel.ZIndex="0" LastChildFill="False" VerticalAlignment="Top" Width="135">
-						<TreeView x:Name="Elements" Loaded="Elements_Loaded"
+						<TreeView x:Name="Elements"
+								  Loaded="Elements_Loaded"
 								  SelectedItemChanged="Elements_SelectedItemChanged"
 								  SourceUpdated="Elements_SourceUpdated"
 								  AllowDrop="True" Height="483" VerticalAlignment="Top" Width="135">
-							<TreeViewItem x:Name="Characters_TVL" Header="Characters" ItemsSource="{Binding Items}">
-									<HierarchicalDataTemplate DataType="{x:Type self:MenuItem}" ItemsSource="{Binding Items}">
-										<TextBlock Text="{Binding Txt}" />
-									</HierarchicalDataTemplate>
+							<TreeViewItem x:Name="Characters_TVL" Header="Characters"> <!--ItemsSource="{Binding Items}"-->
+									<!--HierarchicalDataTemplate DataType="{x:Type lib:Character}" ItemsSource="{Binding Items}"-->
+										<!--TextBlock Text="{Binding Items.Name}" /-->
+									<!--/HierarchicalDataTemplate-->
 							</TreeViewItem>
 						</TreeView>
 

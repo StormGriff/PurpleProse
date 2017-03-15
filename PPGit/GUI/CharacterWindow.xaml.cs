@@ -35,7 +35,7 @@ namespace PurpleProse
 
         private void TitleBarText_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) { DragMove(); }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e) { Close(); }
+        private void CloseButton_Click(object sender, RoutedEventArgs e) { Visibility=Visibility.Hidden; }
 
         private void MaxButton_Click(object sender, RoutedEventArgs e)
 			{ WindowState = (WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized; }

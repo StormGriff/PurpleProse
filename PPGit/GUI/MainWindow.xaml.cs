@@ -31,7 +31,6 @@ namespace PurpleProse
             locations = new ObservableCollection<Lib.Location>();
             bindChar = new DataTable();
             InitializeComponent();
-			Create_Elements();
         }
 
 
@@ -80,28 +79,15 @@ namespace PurpleProse
 		private void Window_Activated(object sender, System.EventArgs e)
 		{if(this.IsLoaded && Elements.IsLoaded){
 				//UpdateBinding();
-				//Elements.;
-				//Elements.UpdateLayout();
-				//Elements.Items.Refresh();
-				//Dispatcher.Invoke();
+				Elements.UpdateLayout();
+				Elements.Items.Refresh();
+				var sub_folder = Elements.Items[0] as TreeViewItem;
+				sub_folder.ItemsSource = null;
+				sub_folder.ItemsSource = characters;
 		}}
 
-		private void Create_Elements()
-		{	if(Elements != null) Elements.Items.Clear();
-			Elements = new TreeView();
-			TreeList.Children.Add(Elements);
-			Elements.Loaded += Elements_Loaded;
-			Elements.SelectedItemChanged += Elements_SelectedItemChanged;
-			Elements.Height=483; Width=135;
-			VerticalAlignment = VerticalAlignment.Top;
-			Elements.Visibility = Visibility.Visible;
-
-		//	BindingExpression binding = MainWindow.GetBindingExpression(TextBox.TextProperty);
-		//	binding.UpdateSource();
-		}
-
 		public void Elements_SourceUpdated(object sender, RoutedEventArgs e)
-		{
+		{	
 		}
 
 		private void Elements_Loaded(object sender, RoutedEventArgs e)
@@ -117,27 +103,25 @@ namespace PurpleProse
 			Elements.Items.Add(Characters_TVL);
 			Elements.Items.Add(_Locations);
 			*/
+
 			var sub_folder = Elements.Items[0] as TreeViewItem;
 			sub_folder.ItemsSource = characters;
-			//TreeViewItem.SetBinding(sub_folder, characters);
 
-			/**/sub_folder = Elements.Items[1] as TreeViewItem;
-			sub_folder.ItemsSource = locations;
-			//Elements.Items[0].Add(new Lib.Character("Jimbo", null, null, null, 15, null, null, null, null, null, null));
+		//	/**/sub_folder = Elements.Items[1] as TreeViewItem;
+		//	sub_folder.ItemsSource = locations;
 		
 		}
 
 		private void Elements_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
 		{
 			var tree = sender as TreeView;
-
 			// ... Determine type of SelectedItem.
-			if (tree.SelectedItem is TreeViewItem)
-			{	var item = tree.SelectedItem as TreeViewItem;
-				
+			/*if (tree.SelectedItem is TreeView)
+			{	
 			}
-			else if (tree.SelectedItem is Lib.Object)
-			{	//tree.its_window.Show();
+			else */if (tree.SelectedItem is Lib.Object)
+			{	var thing = tree.SelectedItem as Lib.Object;
+				thing.its_window.Show();
 			}
 		}
 
@@ -186,20 +170,14 @@ namespace PurpleProse
 		{	Lib.Character New_Char = new PurpleProse.Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
 			New_Char.its_window =  new CharacterWindow(New_Char);
 			characters.Add(New_Char);
-		//	CharacterWindow CharWindow = new CharacterWindow(New_Char);
 			New_Char.its_window.Show();
-		//	Elements.Visibility=Visibility.Hidden;
-		//	Create_Elements();
 		}
 		
 		private void Add_Location_LeftMouseUp(object sender, MouseButtonEventArgs e)
 		{	PurpleProse.Lib.Location New_Loc = new PurpleProse.Lib.Location(null, null, null, null);
 			New_Loc.its_window =  new LocationWindow(New_Loc);
 			locations.Add(New_Loc);
-		//	LocationWindow LocWindow = new LocationWindow(New_Loc);
 			New_Loc.its_window.Show();
-		//	Elements.Visibility=Visibility.Hidden;
-		//	Create_Elements();
 		}
 	}
 }
