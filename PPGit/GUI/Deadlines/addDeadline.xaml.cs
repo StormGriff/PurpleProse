@@ -27,6 +27,13 @@ namespace PPGit.GUI.Deadlines
             InitializeComponent();
         }
 
+        private void btnRightWindowChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+            AppThemeChanger wnd = new AppThemeChanger();
+
+            wnd.Show();
+        }
+
         private void cnclBTN_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -36,21 +43,33 @@ namespace PPGit.GUI.Deadlines
         {
             try
             {
-                if (wordCntTXT.Text == "") throw new InvalidCastException();
-                int num = Convert.ToInt32(wordCntTXT.Text);
-                if (num < 1) { //It must be greater than 1
+                int num = 0;
+                string newString;
+                if (notesCHK.IsChecked == true) newString = notesTXT.Text;
+                else newString = null;
+                if (wrdCHK.IsChecked == true && wordCntTXT.Text == "") throw new InvalidCastException();
+                if (wrdCHK.IsChecked == true) num = Convert.ToInt32(wordCntTXT.Text);
+                if (wrdCHK.IsChecked == true && num < 1)
+                { //It must be greater than 1
                     MessageBox.Show("NUMBER MUST BE GREATER THAN 1", "ERROR", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     wordCntTXT.Background = Brushes.Red;
                     wordCntTXT.Foreground = Brushes.White;
-                } else if (dateCAL.SelectedDate > DateTime.Now) //Check if selectedDate is in the future
+                }
+                else if (dateCAL.SelectedDate > DateTime.Now) //Check if selectedDate is in the future
                 {
-                    PurpleProse.Lib.deadline newDeadline = new PurpleProse.Lib.deadline(dateCAL.SelectedDate.Value.Year, dateCAL.SelectedDate.Value.Month, dateCAL.SelectedDate.Value.Day, num);
+                    bool usingWordCount;
+                    if (wrdCHK.IsChecked == true) usingWordCount = true;
+                    else usingWordCount = false;
+                    PurpleProse.Lib.deadline newDeadline = new PurpleProse.Lib.deadline(dateCAL.SelectedDate.Value.Year, dateCAL.SelectedDate.Value.Month, dateCAL.SelectedDate.Value.Day, num, usingWordCount, newString);
                     PPGit.Lib.time.addDeadline = newDeadline;
                     this.Close();
-                 } else {
+                }
+                else {
                     MessageBox.Show("ERROR: Date must be in the FUTURE!", "ERROR", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-            } catch (InvalidCastException) {
+            }
+            catch (InvalidCastException)
+            {
                 MessageBox.Show("ERROR: No number entered", "ERROR", MessageBoxButton.OK, MessageBoxImage.Stop);
                 wordCntTXT.Background = Brushes.Red;
                 wordCntTXT.Foreground = Brushes.White;
@@ -60,6 +79,9 @@ namespace PPGit.GUI.Deadlines
         private void addDeadline1_Loaded(object sender, RoutedEventArgs e)
         {
             dateCAL.IsEnabled = false;
+            wordCntLBL.IsEnabled = false;
+            wordCntTXT.IsEnabled = false;
+            notesTXT.IsEnabled = false;
         }
 
         private void grd1_MouseEnter(object sender, MouseEventArgs e)
@@ -77,11 +99,26 @@ namespace PPGit.GUI.Deadlines
             Mouse.Capture(null);
         }
 
-        private void btnRightWindowChangeTheme_Click(object sender, RoutedEventArgs e)
+        private void wrdCHK_Checked(object sender, RoutedEventArgs e)
         {
-            AppThemeChanger wnd = new AppThemeChanger();
+            wordCntTXT.IsEnabled = true;
+            wordCntLBL.IsEnabled = true;
+        }
 
-            wnd.Show();
+        private void wrdCHK_Unchecked(object sender, RoutedEventArgs e)
+        {
+            wordCntTXT.IsEnabled = false;
+            wordCntLBL.IsEnabled = false;
+        }
+
+        private void notesCHK_Checked(object sender, RoutedEventArgs e)
+        {
+            notesTXT.IsEnabled = true;
+        }
+
+        private void notesCHK_Unchecked(object sender, RoutedEventArgs e)
+        {
+            notesTXT.IsEnabled = false;
         }
     }
 }

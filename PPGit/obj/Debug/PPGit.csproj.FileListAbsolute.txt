@@ -55,3 +55,5 @@ M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\addDeadline.g.cs
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\Calendar.g.cs
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\addDeadline.baml
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\Calendar.baml
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\deadlineInfo.g.cs
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\deadlineInfo.baml
