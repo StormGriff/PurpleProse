@@ -11,25 +11,41 @@ namespace PPGit.Lib
         public static DateTime firstDay;
         public static DateTime lastDay;
         private static List<PurpleProse.Lib.deadline> deadlines = new List<PurpleProse.Lib.deadline>();
-        public static PurpleProse.Lib.deadline addDeadline {
-            set {
+        public static int currentWords;
+        public static PurpleProse.Lib.deadline addDeadline
+        {
+            set
+            {
                 deadlines.Add(value);
             }
         }
-        public static List<PurpleProse.Lib.deadline> getAllDeadlines() {
+        public static List<PurpleProse.Lib.deadline> getAllDeadlines()
+        {
             return deadlines;
         }
         public static void removeDeadline(PurpleProse.Lib.deadline removeThis)
         {
             deadlines.Remove(removeThis);
         }
-        public static bool deadlineMatch(int day) { //Do we have a match?
-            foreach (PurpleProse.Lib.deadline newDead in deadlines) {
+        public static bool deadlineMatch(int day)
+        { //Do we have a match?
+            foreach (PurpleProse.Lib.deadline newDead in deadlines)
+            {
                 if (newDead.thisDeadline(firstDay.Year, firstDay.Month, day)) return true;
             }
             return false; //No match
         }
-        public static string Name {
+        public static PurpleProse.Lib.deadline returnDeadline(int day)
+        {
+            DateTime date = new DateTime(firstDay.Year, firstDay.Month, day);
+            foreach (PurpleProse.Lib.deadline thisDeadline in deadlines)
+            {
+                if (thisDeadline.getDate == date) return thisDeadline;
+            }
+            return null;
+        }
+        public static string Name
+        {
             get
             {
                 string month;
@@ -77,7 +93,8 @@ namespace PPGit.Lib
                 return month + " " + firstDay.Year;
             }
         }
-        public static bool thisMonth() {
+        public static bool thisMonth()
+        {
             if (firstDay.Month == DateTime.Now.Month && firstDay.Year == DateTime.Now.Year) return true;
             else return false;
         }

@@ -1,0 +1,28 @@
+﻿<Controls:MetroWindow x:Class="PPGit.GUI.Deadlines.deadlineInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PPGit.GUI.Deadlines"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="TITLE" Height="224.946" Width="441.734"
+                      Loaded="deadlineInfo1_Loaded" ResizeMode="NoResize"
+                      WindowStartupLocation="CenterOwner">
+    
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="btnRightWindowChangeTheme" Content="change app theme" Click="btnRightWindowChangeTheme_Click"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <Grid>
+        <Label x:Name="wordsLeftLBL" Content="Words Left:" HorizontalAlignment="Left" Margin="23,17,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="wrdsLftTXT" HorizontalAlignment="Left" Height="23" Margin="98,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="notesLBL" Content="Notes:" HorizontalAlignment="Left" Margin="23,58,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="notesTXT" HorizontalAlignment="Left" Height="89" Margin="72,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335" SpellCheck.IsEnabled="True" AcceptsReturn="True"/>
+        <Button x:Name="updateBTN" Content="Update" HorizontalAlignment="Left" Margin="327,158,0,0" VerticalAlignment="Top" Width="75" Click="updateBTN_Click"/>
+        <Button x:Name="clsBTN" Content="Close" HorizontalAlignment="Left" Margin="186,158,0,0" VerticalAlignment="Top" Width="75" Click="clsBTN_Click"/>
+
+    </Grid>
+</Controls:MetroWindow>

@@ -83,6 +83,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="GUI\Deadlines\deadlineInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,6 +102,9 @@
       <DependentUpon>Calendar.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Create\CreateCharacter.xaml.cs" />
+    <Compile Include="GUI\Deadlines\deadlineInfo.xaml.cs">
+      <DependentUpon>deadlineInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\MainWindow.xaml.cs" />
     <Compile Include="GUI\MusicPlayer\Music.cs" />
     <Compile Include="GUI\MusicPlayer\MusicPlayer.xaml.cs">
