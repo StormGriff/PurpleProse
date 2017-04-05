@@ -57,3 +57,6 @@ M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\addDeadline.baml
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\Calendar.baml
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\deadlineInfo.g.cs
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\deadlineInfo.baml
+C:\Users\stash\Desktop\PurpleProse-Recycle\PPGit\bin\Debug\PPGit.exe.config
+C:\Users\stash\Desktop\PurpleProse-Recycle\PPGit\obj\Debug\PPGit.exe
+C:\Users\stash\Desktop\PurpleProse-Recycle\PPGit\obj\Debug\PPGit.pdb

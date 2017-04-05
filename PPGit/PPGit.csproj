@@ -122,6 +122,7 @@
     <Compile Include="Lib\Location.cs" />
     <Compile Include="Lib\Object.cs" />
     <Compile Include="Lib\Planet.cs" />
+    <Compile Include="Lib\recycle.cs" />
     <Compile Include="Lib\Region.cs" />
     <Compile Include="Lib\room.cs" />
     <Page Include="GUI\MusicPlayer\MusicPlayer.xaml">
