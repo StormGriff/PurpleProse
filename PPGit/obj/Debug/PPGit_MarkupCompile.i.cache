@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\
+C:\Users\stash\Desktop\PurpleProse-Recycle\PPGit\obj\Debug\
 PPGit
 none
 false
 DEBUG;TRACE
 
-11-901372078
+12-58775431
 
-29493617140
-1680258764
-App.xaml;GUI\Deadlines\addDeadline.xaml;GUI\AppThemeChanger.xaml;GUI\Deadlines\Calendar.xaml;GUI\Create\CreateCharacter.xaml;GUI\Deadlines\deadlineInfo.xaml;GUI\MainWindow.xaml;GUI\MusicPlayer\MusicPlayer.xaml;GUI\TextEditor.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;
+31-756195048
+16-604744114
+App.xaml;GUI\Deadlines\addDeadline.xaml;GUI\AppThemeChanger.xaml;GUI\Deadlines\Calendar.xaml;GUI\Create\CreateCharacter.xaml;GUI\Deadlines\deadlineInfo.xaml;GUI\MainWindow.xaml;GUI\MusicPlayer\MusicPlayer.xaml;GUI\Recycle Bin\RecycleBin.xaml;GUI\TextEditor.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;
 
-True
+False
 
