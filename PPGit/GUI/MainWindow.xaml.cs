@@ -110,5 +110,11 @@ namespace PPGit.GUI
 
             wnd.Show();
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            PPGit.GUI.Recycle_Bin.RecycleBin newBin = new Recycle_Bin.RecycleBin();
+            newBin.Show();
+        }
     }
 }

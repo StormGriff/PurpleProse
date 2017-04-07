@@ -47,6 +47,7 @@ namespace PPGit.Lib
             item newItem = new item();
             newItem.myObject = singleObject;
             newItem.delete = DateTime.Now.AddDays(DAYS_TO_DELETE);
+            bin.Add(newItem);
         }
 
         //Delete all items older than 10 days
