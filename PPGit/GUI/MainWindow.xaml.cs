@@ -99,9 +99,9 @@ namespace PPGit.GUI
 
         private void Music_Click(object sender, RoutedEventArgs e)
         {
-            PPGit.GUI.MusicPlayer.MusicPlayer temp = new MusicPlayer.MusicPlayer();
+            //PPGit.GUI.MusicPlayer.MusicPlayer temp = new MusicPlayer.MusicPlayer();
 
-            temp.Show();
+            //temp.Show();
         }
 
         private void btnRightWindowChangeTheme_Click(object sender, RoutedEventArgs e)
