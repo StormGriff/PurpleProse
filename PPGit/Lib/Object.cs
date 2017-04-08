@@ -56,9 +56,9 @@ namespace PurpleProse.Lib
 			MyRelationships = new List<relationship>();
 		}
 
-	public string DescFile	{ get { return description; } set { description = value; } }
-	public string HistFile		{ get { return history; } set { history = value; } }
-	public string ImageFile	{ get { return imageFile; } set { imageFile = value; } }
+	public string DescFile	{ get { return description; }set { description = value; } }
+	public string HistFile	{ get { return history; }	 set { history = value; } }
+	public string ImageFile	{ get { return imageFile; }  set { imageFile = value; } }
 	public string DescText { //Gets and Sets the description text
 		get{
 			if (description == null) return null;

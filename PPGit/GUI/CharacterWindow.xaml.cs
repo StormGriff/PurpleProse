@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PurpleProse.Lib;
+using System.IO;
+using Microsoft.Win32;
+using System.Diagnostics;
 
 namespace PurpleProse
 {
@@ -84,5 +87,40 @@ namespace PurpleProse
 			{ Person.charKind = RaceBox.Text; }
 
 		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) { Person.its_window = null; }
+/*
+		private void NewPic_Click(object sender, RoutedEventArgs e)
+		{	try
+			{	OpenFileDialog dlg = new OpenFileDialog();
+				dlg.Title = "Insert image";
+				dlg.Filter = "Image (*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.tif;*.tiff;*.wdp)|*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.tif;*.tiff;*.wdp";
+				if (dlg.ShowDialog() == true)	//Calls show dialog, if the function does not fail then...
+				{	/*
+				//	Canvas canvas1 = new Canvas();
+				//	Random rand = new Random();
+					// ... Create a new BitmapImage.
+					BitmapImage bitpic = new BitmapImage();
+					bitpic.BeginInit();
+				//	bitpic.UriSource = new Uri("pack://"+"siteoforigin:,,,/"+dlg.FileName, UriKind.Absolute);
+					bitpic.UriSource = new Uri(dlg.FileName, UriKind.Relative);
+					bitpic.EndInit();
+					double height_ = bitpic.Height;
+					double width__ = bitpic.Width ;
+					
+					//var picture = sender as Image;	// to populate an existing image from a clicked space
+					Image picture = new Image();
+					picture.Height = height_;
+					picture.Width = width__;
+					picture.Source = bitpic;
+				//	Canvas.SetLeft(picture, rand.NextDouble());
+				//	Canvas.SetTop(picture, rand.NextDouble());
+				//	canvas1.Children.Add(picture);
+					*
+					Image picture = new Image();
+					picture.Source = new BitmapImage( new Uri(dlg.FileName) );
+				} 
+				else{				MessageBox.Show("An unexpected error occured."); Trace.Write('y'); }
+            } catch (Exception x) { MessageBox.Show("An unexpected error occured."); Trace.Write("Exception: "+x); }
+		}
+		*/
 	}
 }
