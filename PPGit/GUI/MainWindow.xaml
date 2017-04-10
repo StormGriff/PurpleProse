@@ -150,7 +150,6 @@
                         </DataGrid.Columns>-->
 
             </DataGrid>
-            <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="255,193,0,0" VerticalAlignment="Top" Width="141" Height="47" Click="button_Click"/>
         </Grid>
     </Grid>
 </Controls:MetroWindow>

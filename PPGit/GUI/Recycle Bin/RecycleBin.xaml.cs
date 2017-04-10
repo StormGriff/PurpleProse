@@ -33,24 +33,27 @@ namespace PPGit.GUI.Recycle_Bin
             PPGit.Lib.recycle.Bin.add(new PurpleProse.Lib.Character("James", null, null, null, 0, null, null, null, null, null, null));
             PPGit.Lib.recycle.Bin.add(new PurpleProse.Lib.Character("Jack", null, null, null, 0, null, null, null, null, null, null));
             PPGit.Lib.recycle.Bin.add(new PurpleProse.Lib.Character("Jill", null, null, null, 0, null, null, null, null, null, null));
-            DataColumn newCol = new DataColumn();
+            /*DataColumn newCol = new DataColumn();
             newCol.ColumnName = "Name"; //Column 1
             newCol.DataType = System.Type.GetType("System.String");
             newTable.Columns.Add(newCol);
             DataColumn newCol2 = new DataColumn();
             newCol2.ColumnName = "Deletion in... (days)";
             newCol2.DataType = System.Type.GetType("System.Int64");
-            newTable.Columns.Add(newCol2);
+            newTable.Columns.Add(newCol2);*/
+            newTable.Columns.Add("Name", typeof(string));
+            newTable.Columns.Add("Deleted", typeof(string));
             List<PPGit.Lib.recycle.item> theList = PPGit.Lib.recycle.Bin.getList;
             foreach (PPGit.Lib.recycle.item thisOb in theList)
             {
                 TimeSpan newSpan = thisOb.delete - DateTime.Now;
                 DataRow newRow = newTable.NewRow();
                 newRow["Name"] = thisOb.myObject.Name;
-                newRow["Deletion in... (days)"] = newSpan.Days;
+                newRow["Deleted"] = Math.Ceiling(newSpan.TotalDays).ToString() + " days";
                 newTable.Rows.Add(newRow);
+                //newTable.Rows.Add(thisOb.myObject.Name, newSpan.Days);
             }
-            binLST.DataContext = newTable.DefaultView;
+            binLST.ItemsSource = newTable.DefaultView;
         }
     }
 }
