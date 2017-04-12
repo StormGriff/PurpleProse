@@ -67,8 +67,24 @@ namespace PPGit.Lib
             foreach (item theItem in bin) {
                 if (theItem.myObject.Name == name)
                 {
-                    theItem.myObject; //Put this somewhere
-                    //bin.Remove(theItem);
+                    bool done;
+                    int x = 0;
+                    do
+                    {
+                        done = true;
+                        try
+                        {
+                            if(x == 0) mainLists.locationList.Add((PurpleProse.Lib.Location)theItem.myObject);
+                            else mainLists.characterList.Add((PurpleProse.Lib.Character)theItem.myObject);
+                        }
+                        catch (InvalidCastException)
+                        {
+                            done = false;
+                            x++;
+                        }
+                    } while (!done);
+                    bin.Remove(theItem);
+                    break;
                 }
             }
         }

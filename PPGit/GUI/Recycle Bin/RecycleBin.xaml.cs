@@ -62,6 +62,7 @@ namespace PPGit.GUI.Recycle_Bin
                 int num = binLST.SelectedIndex;
                 string find = newTable.Rows[num][0].ToString();
                 PPGit.Lib.recycle.Bin.restore(find);
+                newTable.Rows.Remove(newTable.Rows[num]);
             }
         }
     }
