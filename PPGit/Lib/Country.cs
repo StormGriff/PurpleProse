@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PurpleProse.Lib
+namespace PPGit.Lib
 {
     public class Country : Location
     {	public Country(string name, string desc, string hist, string imageFile) : base(name, desc, hist, imageFile) { }

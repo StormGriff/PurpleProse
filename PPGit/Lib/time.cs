@@ -10,35 +10,35 @@ namespace PPGit.Lib
     {
         public static DateTime firstDay;
         public static DateTime lastDay;
-        private static List<PurpleProse.Lib.deadline> deadlines = new List<PurpleProse.Lib.deadline>();
+        private static List<PPGit.Lib.deadline> deadlines = new List<PPGit.Lib.deadline>();
         public static int currentWords;
-        public static PurpleProse.Lib.deadline addDeadline
+        public static PPGit.Lib.deadline addDeadline
         {
             set
             {
                 deadlines.Add(value);
             }
         }
-        public static List<PurpleProse.Lib.deadline> getAllDeadlines()
+        public static List<PPGit.Lib.deadline> getAllDeadlines()
         {
             return deadlines;
         }
-        public static void removeDeadline(PurpleProse.Lib.deadline removeThis)
+        public static void removeDeadline(PPGit.Lib.deadline removeThis)
         {
             deadlines.Remove(removeThis);
         }
         public static bool deadlineMatch(int day)
         { //Do we have a match?
-            foreach (PurpleProse.Lib.deadline newDead in deadlines)
+            foreach (PPGit.Lib.deadline newDead in deadlines)
             {
                 if (newDead.thisDeadline(firstDay.Year, firstDay.Month, day)) return true;
             }
             return false; //No match
         }
-        public static PurpleProse.Lib.deadline returnDeadline(int day)
+        public static PPGit.Lib.deadline returnDeadline(int day)
         {
             DateTime date = new DateTime(firstDay.Year, firstDay.Month, day);
-            foreach (PurpleProse.Lib.deadline thisDeadline in deadlines)
+            foreach (PPGit.Lib.deadline thisDeadline in deadlines)
             {
                 if (thisDeadline.getDate == date) return thisDeadline;
             }

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-11-901372078
+10570593381
 
-25-1375075431
+26-1646820930
 1680258764
-App.xaml;GUI\Deadlines\addDeadline.xaml;GUI\AppThemeChanger.xaml;GUI\Deadlines\Calendar.xaml;GUI\Create\CreateCharacter.xaml;GUI\Deadlines\deadlineInfo.xaml;GUI\MainWindow.xaml;GUI\MusicPlayer\MusicPlayer.xaml;GUI\TextEditor.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;
+App.xaml;GUI\Deadlines\addDeadline.xaml;GUI\AppThemeChanger.xaml;GUI\Deadlines\Calendar.xaml;GUI\Deadlines\deadlineInfo.xaml;GUI\DetailWindows\CharacterWindow.xaml;GUI\MainWindow.xaml;GUI\TextEditor.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;
 
 False
 

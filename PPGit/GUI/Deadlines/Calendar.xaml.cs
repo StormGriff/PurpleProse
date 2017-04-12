@@ -431,7 +431,7 @@ namespace PPGit.GUI.Deadlines
             int words = 0;
             int days = 0;
             DateTime lastDate = DateTime.MaxValue;
-            foreach (PurpleProse.Lib.deadline theDeadline in Lib.time.getAllDeadlines())
+            foreach (PPGit.Lib.deadline theDeadline in Lib.time.getAllDeadlines())
             {
                 if (days == 0) days = theDeadline.timeLeft;
                 else if (theDeadline.timeLeft < days) days = theDeadline.timeLeft;
@@ -2269,7 +2269,7 @@ namespace PPGit.GUI.Deadlines
 
         private void showDeadlineInfo(int day)
         {
-            PurpleProse.Lib.deadline thisDeadline = PPGit.Lib.time.returnDeadline(day);
+            PPGit.Lib.deadline thisDeadline = PPGit.Lib.time.returnDeadline(day);
             PPGit.GUI.Deadlines.deadlineInfo newInfo = new deadlineInfo(thisDeadline);
             newInfo.ShowDialog();
         }
@@ -2277,7 +2277,7 @@ namespace PPGit.GUI.Deadlines
         private void wordsLeftOutput()
         {
             int num = 0;
-            foreach (PurpleProse.Lib.deadline thisDeadline in Lib.time.getAllDeadlines())
+            foreach (PPGit.Lib.deadline thisDeadline in Lib.time.getAllDeadlines())
             {
                 if (num == 0) num = thisDeadline.theWordCount;
                 else if (thisDeadline.theWordCount < num && thisDeadline.theWordCount != 0) num = thisDeadline.theWordCount;
