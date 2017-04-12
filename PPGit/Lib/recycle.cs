@@ -63,5 +63,14 @@ namespace PPGit.Lib
                 return bin;
             }
         }
+        public void restore(string name) {
+            foreach (item theItem in bin) {
+                if (theItem.myObject.Name == name)
+                {
+                    theItem.myObject; //Put this somewhere
+                    //bin.Remove(theItem);
+                }
+            }
+        }
     }
 }

@@ -55,5 +55,14 @@ namespace PPGit.GUI.Recycle_Bin
             }
             binLST.ItemsSource = newTable.DefaultView;
         }
+
+        private void restoreBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (binLST.SelectedItem != null) {
+                int num = binLST.SelectedIndex;
+                string find = newTable.Rows[num][0].ToString();
+                PPGit.Lib.recycle.Bin.restore(find);
+            }
+        }
     }
 }

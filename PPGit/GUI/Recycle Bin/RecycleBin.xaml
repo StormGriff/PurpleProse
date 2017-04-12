@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="Recycle Bin" Height="386.554" Width="522.973" Loaded="recycleFRM_Loaded">
     <Grid>
-        <Button x:Name="restoreBTN" Content="Restore" Margin="0,0,21.8,9.8" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
-        <DataGrid x:Name="binLST" HorizontalAlignment="Left" Margin="0,0,-0.2,51.8" Width="517"/>
+        <Button x:Name="restoreBTN" Content="Restore" Margin="0,0,21.8,9.8" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Click="restoreBTN_Click"/>
+        <DataGrid x:Name="binLST" HorizontalAlignment="Left" Margin="0,0,-0.2,51.8" Width="517" CanUserSortColumns="False" CanUserReorderColumns="False"/>
 
     </Grid>
 </Window>
