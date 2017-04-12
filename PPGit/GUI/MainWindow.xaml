@@ -11,7 +11,8 @@
         MinHeight="550" MinWidth="500"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        Activated="Window_Activated">
 
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
@@ -19,85 +20,7 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
 
-    <Window.Resources>
-        <BitmapImage x:Key="ActiveRightArrow" UriSource="..\Resources\ActiveRightArrow.png"/>
-        <BitmapImage x:Key="ActiveLeftArrow" UriSource="..\Resources\ActiveLeftArrow.png"/>
-        <BitmapImage x:Key="Close" UriSource="..\Resources\Close.png"/>
-        <BitmapImage x:Key="Min" UriSource="..\Resources\Min.png"/>
-        <BitmapImage x:Key="Max" UriSource="..\Resources\Max.png"/>
-        <BitmapImage x:Key="Browse" UriSource="..\Resources\Browse.png"/>
-        <BitmapImage x:Key="Settings" UriSource="..\Resources\Settings.png"/>
-        <BitmapImage x:Key="Fullscreen" UriSource="..\Resources\Fullscreen.png"/>
-        <BitmapImage x:Key="Plus" UriSource="..\Resources\Plus.png"/>
-        <BitmapImage x:Key="Minus" UriSource="..\Resources\Minus.png"/>
-
-        <!--<BitmapImage x:Key="ActiveRightArrow" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\ActiveRightArrow.png"/>
-        <BitmapImage x:Key="ActiveLeftArrow" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\ActiveLeftArrow.png"/>
-        <BitmapImage x:Key="Close" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Close.png"/>
-        <BitmapImage x:Key="Min" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Min.png"/>
-        <BitmapImage x:Key="Max" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Max.png"/>
-        <BitmapImage x:Key="Browse" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Browse.png"/>
-        <BitmapImage x:Key="Settings" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Settings.png"/>
-        <BitmapImage x:Key="Fullscreen" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Fullscreen.png"/>
-        <BitmapImage x:Key="Plus" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Plus.png"/>
-        <BitmapImage x:Key="Minus" UriSource="D:\Google Drive\Projects\ImageViewer\ImageViewer\Minus.png"/>-->
-
-        <!--<BitmapImage x:Key="ActiveRightArrow" UriSource="C:\Users\Nick\Google Drive\Projects\ImageViewer\ImageViewer\ActiveRightArrow.png"/>
-        <BitmapImage x:Key="ActiveLeftArrow" UriSource="C:\Users\Nick\Google Drive\Projects\ImageViewer\ImageViewer\ActiveLeftArrow.png"/>
-        <BitmapImage x:Key="Close" UriSource="C:\Users\Nick\Google Drive\Projects\ImageViewer\ImageViewer\Close.png"/>
-        <BitmapImage x:Key="Min" UriSource="C:\Users\Nick\Google Drive\Projects\ImageViewer\ImageViewer\Min.png"/>
-        <BitmapImage x:Key="Max" UriSource="C:\Users\Nick\Google Drive\Projects\ImageViewer\ImageViewer\Max.png"/>
-        <BitmapImage x:Key="Browse" UriSource="C:\Users\Nick\Google Drive\Projects\ImageViewer\ImageViewer\Browse.png"/>
-        <BitmapImage x:Key="Settings" UriSource="C:\Users\Nick\Google Drive\Projects\ImageViewer\ImageViewer\Settings.png"/>
-        <BitmapImage x:Key="Fullscreen" UriSource="C:\Users\Nick\Google Drive\Projects\ImageViewer\ImageViewer\Fullscreen.png"/>
-        <BitmapImage x:Key="Plus" UriSource="C:\Users\Nick\Google Drive\Projects\ImageViewer\ImageViewer\Plus.png"/>
-        <BitmapImage x:Key="Minus" UriSource="C:\Users\Nick\Google Drive\Projects\ImageViewer\ImageViewer\Minus.png"/>-->
-
-
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="#A0000000"/>
-            <Setter Property="ToolTipService.InitialShowDelay" Value="2000"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="Gray"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style TargetType="{x:Type Border}">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-        </Style>
-        <Style TargetType="{x:Type ResizeGrip}">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Foreground" Value="Gray"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ResizeGrip}">
-                        <Border Background="{TemplateBinding Background}"
-                                SnapsToDevicePixels="True"
-                                Width="10"
-                                Height="10">
-                            <Path Data="M7.677,7.5300003 L9.677,7.5300003 9.677,9.5300002 7.677,9.5300002 z M3.786,7.5300003 L5.7859998,7.5300003 5.7859998,9.5300002 3.786,9.5300002 z M0,7.5300003 L2,7.5300003 2,9.5300002 0,9.5300002 z M3.786,3.8280003 L5.7859998,3.8280003 5.7859998,5.8280003 3.786,5.8280003 z M7.677,3.7660003 L9.677,3.7660003 9.677,5.7659999 7.677,5.7659999 z M7.677,0 L9.677,0 9.677,2 7.677,2 z" Fill="{TemplateBinding Foreground}" Height="9.53" Stretch="Fill" VerticalAlignment="Top" Width="9.677"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-    </Window.Resources>
-
-    <Grid Name="GridBackground"
+    <Grid Name="GridBackground" Background="Black"
                   Grid.Row="1" Grid.ColumnSpan="2"
                   Panel.ZIndex="1">
         <Grid.RowDefinitions>
@@ -107,18 +30,30 @@
         </Grid.RowDefinitions>
 
         <DockPanel Grid.Row="1">
-            <Menu IsMainMenu="True" DockPanel.Dock="Top" >
-                <MenuItem Header="Menu">
-
+            <Menu IsMainMenu="True" DockPanel.Dock="Top" Background="#FF171717" Foreground="White">
+                <MenuItem Name="Menu" Header="Menu"  Click="MenuItem_Click" ContextMenuService.IsEnabled="False">
+                    <MenuItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="Sup" FontSize="12" Header="Stub"/>
+                        </ContextMenu>
+                    </MenuItem.ContextMenu>
                 </MenuItem>
-                <MenuItem Header="Theme">
-
+                <MenuItem Name="Theme" Header="Theme"  Click="MenuItem_Click" ContextMenuService.IsEnabled="False">
+                    <MenuItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="Stub" FontSize="12" Header="Stub"/>
+                        </ContextMenu>
+                    </MenuItem.ContextMenu>
                 </MenuItem>
-                <MenuItem Header="Test">
-                    <MenuItem Header="Text Edit" Click="Text_Click"/>
-                    <MenuItem Header="Calendar" Click="Cal_Click"/>
-                    <MenuItem Header="Theme" Click="Theme_Click"/>
-                    <MenuItem Header="Music" Click="Music_Click"/>
+                <MenuItem  Name="Add" Header="Add" Click="MenuItem_Click" ContextMenuService.IsEnabled="False">
+                    <MenuItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="Add_Object"	 FontSize="12" Header="Object"/>
+                            <MenuItem x:Name="Add_Character" FontSize="12" Header="Character" PreviewMouseLeftButtonUp="Add_Character_LeftMouseUp"/>
+                            <MenuItem x:Name="Add_Location"  FontSize="12" Header="Location"  PreviewMouseLeftButtonUp="Add_Location_LeftMouseUp"/>
+                            <MenuItem x:Name="Add_Relationship" FontSize="12" Header="Relationship"/>
+                        </ContextMenu>
+                    </MenuItem.ContextMenu>
                 </MenuItem>
             </Menu>
         </DockPanel>
@@ -144,12 +79,21 @@
             </Grid>
 
             <DataGrid Name="DataGrid" Grid.Row="0" ItemsSource="{Binding}">
-                <!--<DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
-                        </DataGrid.Columns>-->
-
+                <!--I thought this might need to be used for making a proper tree list-->
             </DataGrid>
+
+            <DockPanel x:Name="TreeList" HorizontalAlignment="Left" Height="483" Panel.ZIndex="0" LastChildFill="False" VerticalAlignment="Top" Width="135">
+                <TreeView x:Name="Elements"
+								  Loaded="Elements_Loaded"
+								  SelectedItemChanged="Elements_SelectedItemChanged"
+								  SourceUpdated="Elements_SourceUpdated"
+								  AllowDrop="True" Height="483" VerticalAlignment="Top" Width="135">
+                    <TreeViewItem x:Name="Characters_TVI" Header="Characters"/>
+                    <TreeViewItem x:Name="Locations_TVI" Header="Locations"/>
+
+                </TreeView>
+
+            </DockPanel>
         </Grid>
     </Grid>
 </Controls:MetroWindow>

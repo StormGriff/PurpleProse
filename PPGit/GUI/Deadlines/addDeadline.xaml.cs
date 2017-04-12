@@ -60,7 +60,7 @@ namespace PPGit.GUI.Deadlines
                     bool usingWordCount;
                     if (wrdCHK.IsChecked == true) usingWordCount = true;
                     else usingWordCount = false;
-                    PurpleProse.Lib.deadline newDeadline = new PurpleProse.Lib.deadline(dateCAL.SelectedDate.Value.Year, dateCAL.SelectedDate.Value.Month, dateCAL.SelectedDate.Value.Day, num, usingWordCount, newString);
+                    PPGit.Lib.deadline newDeadline = new PPGit.Lib.deadline(dateCAL.SelectedDate.Value.Year, dateCAL.SelectedDate.Value.Month, dateCAL.SelectedDate.Value.Day, num, usingWordCount, newString);
                     PPGit.Lib.time.addDeadline = newDeadline;
                     this.Close();
                 }

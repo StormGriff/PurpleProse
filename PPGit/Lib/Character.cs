@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System.IO;
 
-namespace PurpleProse.Lib
+namespace PPGit.Lib
 {
     // Behaviors per an instance of a character
     public class Character : Object 
@@ -16,7 +11,7 @@ namespace PurpleProse.Lib
         //private string charImg;
 
         // Using Properties: Character attribute file names + extension
-        public int		charAge		{ get; set; }
+        public long		charAge		{ get; set; }
         public string	charKind	{ get; set; } // Make a list struct
         public string	charGender	{ get; set; } // Make a list struct
         public string	charRole	{ get; set; }
@@ -29,12 +24,12 @@ namespace PurpleProse.Lib
 
         public string charBioFile	{ get; set; } // filename of the text that contains all info, including txt file names of desc, hist, sketches
 
-        public Character() : base(null, null, null, null)
-        {}
+        //public Character() : base(null, null, null, null)
+        //{}
 
-        public Character(string charName, string charDesc, string charHist, string charImg,
-                        int charAge, string charKind, string charGender, string charRole,
-                        string charSketches, string charLanguage, string charHometown)
+        public Character(string charName, string charDesc = null, string charHist = null, string charImg = null,
+                        int charAge = 0, string charKind = null, string charGender = null, string charRole = null,
+                        string charSketches = null, string charLanguage = null, string charHometown = null)
             : base(charName, charDesc, charHist, charImg)
         {
             this.charAge = charAge;

@@ -22,8 +22,8 @@ namespace PPGit.GUI.Deadlines
     /// </summary>
     public partial class deadlineInfo : MetroWindow
     {
-        PurpleProse.Lib.deadline thisDeadline;
-        public deadlineInfo(PurpleProse.Lib.deadline myDeadline)
+        PPGit.Lib.deadline thisDeadline;
+        public deadlineInfo(PPGit.Lib.deadline myDeadline)
         {
             InitializeComponent();
             thisDeadline = myDeadline;

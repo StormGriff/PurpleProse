@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PurpleProse.Lib
+namespace PPGit.Lib
 {
     public class Planet : Location
     {

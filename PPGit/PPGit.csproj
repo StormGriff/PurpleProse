@@ -79,11 +79,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\Create\CreateCharacter.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="GUI\Deadlines\deadlineInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\DetailWindows\CharacterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\DetailWindows\LocationWindow2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,9 +105,14 @@
     <Compile Include="GUI\Deadlines\Calendar.xaml.cs">
       <DependentUpon>Calendar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Create\CreateCharacter.xaml.cs" />
     <Compile Include="GUI\Deadlines\deadlineInfo.xaml.cs">
       <DependentUpon>deadlineInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DetailWindows\CharacterWindow.xaml.cs">
+      <DependentUpon>CharacterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DetailWindows\LocationWindow2.xaml.cs">
+      <DependentUpon>LocationWindow2.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\MainWindow.xaml.cs" />
     <Compile Include="GUI\TextEditor.xaml.cs">
@@ -114,6 +123,7 @@
     <Compile Include="Lib\Character.cs" />
     <Compile Include="Lib\City.cs" />
     <Compile Include="Lib\Country.cs" />
+    <Compile Include="Lib\CY_Object.cs" />
     <Compile Include="Lib\deadline.cs" />
     <Compile Include="Lib\Location.cs" />
     <Compile Include="Lib\Object.cs" />
@@ -134,6 +144,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lib\TextOps.cs" />
     <Compile Include="Lib\time.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
