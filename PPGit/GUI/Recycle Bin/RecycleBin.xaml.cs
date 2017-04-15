@@ -29,10 +29,6 @@ namespace PPGit.GUI.Recycle_Bin
 
         private void recycleFRM_Loaded(object sender, RoutedEventArgs e)
         {
-            PPGit.Lib.recycle.Bin.add(new PurpleProse.Lib.Character("John", null, null, null, 0, null, null, null, null, null, null));
-            PPGit.Lib.recycle.Bin.add(new PurpleProse.Lib.Character("James", null, null, null, 0, null, null, null, null, null, null));
-            PPGit.Lib.recycle.Bin.add(new PurpleProse.Lib.Character("Jack", null, null, null, 0, null, null, null, null, null, null));
-            PPGit.Lib.recycle.Bin.add(new PurpleProse.Lib.Character("Jill", null, null, null, 0, null, null, null, null, null, null));
             /*DataColumn newCol = new DataColumn();
             newCol.ColumnName = "Name"; //Column 1
             newCol.DataType = System.Type.GetType("System.String");
