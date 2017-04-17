@@ -9,7 +9,6 @@
         Title="LocationWindow2"
 		WindowStyle="SingleBorderWindow"
         ResizeMode="CanResizeWithGrip"
-		Background="Moccasin"
 		Height="520" Width="413" Closing="MetroWindow_Closing">
 	<Border Name="WindowBorder" BorderThickness="1" BorderBrush="#FF171717">
 		<Grid>

@@ -12,7 +12,6 @@ namespace PPGit.Lib
 		public string Name { get; set; }
 		protected string description, history, imageFile;
 		protected List<relationship> MyRelationships; //List of this objects relationships
-		//public MetroWindow Page;
 		private object window;//A reference to the Object's page
 		public static System.IO.FileNotFoundException InvalidTextFile;
 		public enum relationshipTypes { Null, Father, Mother, Sibling, Friend, Enemy }; //Types of relationships... let me know if we need more
