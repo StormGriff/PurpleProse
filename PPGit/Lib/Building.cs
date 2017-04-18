@@ -18,7 +18,7 @@ namespace PPGit.Lib
         }
 
         private dimensions myDimensions;
-        public Building(string name, string desc, string hist, string imageFile, int height, int width, int length, measurement usedMeasurement, int stories = 1, int rooms = 1) : base(name, desc, hist, imageFile) {
+        public Building(string name, string desc, string hist, List<string> images, int height, int width, int length, measurement usedMeasurement, int stories = 1, int rooms = 1) : base(name, desc, hist, images) {
 			this.stories = stories;
             this.rooms = rooms;
             myDimensions = new dimensions();

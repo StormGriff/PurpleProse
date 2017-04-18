@@ -6,40 +6,48 @@
         xmlns:local="clr-namespace:PPGit.GUI.DetailWindows"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="CharacterWindow" Height="520" Width="413" Closing="MetroWindow_Closing">
-    <Grid>
+        Title="CharacterWindow"
+		Height="520" Width="413"
+		Background="Maroon"
+		SizeChanged="Window_SizeChanged"
+		Closing="MetroWindow_Closing">
+	<Grid>
 
-        <Grid Margin="2,0,194,-8" Height="auto">
-            <!--Honestly IDK whether this should be a panel, grid, control or whatever-->
-            <Label   x:Name="NameLabel" Content="Name" FontSize="14"				Margin="10,29,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBox x:Name="NameBox" LostKeyboardFocus="NameBox_LostKeyFocus"		Margin="10,58,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="15" Width="129" Height="23" Text="{Binding Person.Name, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource AncestorType=TreeView, AncestorLevel=1}, Mode=TwoWay}"/>
-            <Label   x:Name="L4" Content="Description"								Margin="10,97,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Button  Name="DescBtn" Content="Open new window" Click="DescBtn_Click"	Margin="80,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Height="23" Panel.ZIndex="2"/>
-            <RichTextBox x:Name="DescBox" IsEnabled="False"							Margin="10,133,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="176" Height="92">
-                <FlowDocument>
-                    <Paragraph>
-                        <Run Text="Rich Text Box functionality not yet available."/>
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>
-            <Label   x:Name="AgeLabel" Content="Age"								Margin="10,238,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBox x:Name="AgeBox" LostKeyboardFocus="AgeBox_LostKeyFocus"		Margin="10,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Width="31" Height="23"/>
-            <Label   x:Name="GeLabel" Content="Gender"								Margin="55,238,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <ComboBox x:Name="GenderBox" LostKeyboardFocus="GenderBox_LostKeyFocus" Margin="55,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Height="23" IsEditable="True"/>
-            <Label   x:Name="RoleLabel" Content="Role"								Margin="127,238,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <ComboBox x:Name="RoleBox" LostKeyboardFocus="RoleBox_LostKeyFocus"		Margin="127,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="72" Height="23" IsEditable="True"/>
-            <Label   x:Name="HomeLabel" Content="HomeTown"							Margin="10,301,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <ComboBox x:Name="HomeBox" LostKeyboardFocus="HomeBox_LostKeyFocus"		Margin="10,327,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" IsEditable="True"/>
-            <Label   x:Name="LingLabel" Content="Language"							Margin="10,364,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <ComboBox x:Name="LingBox" LostKeyboardFocus="LingBox_LostKeyFocus"		Margin="10,390,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" IsEditable="True"/>
-            <Label   x:Name="RaceLabel" Content="Race"								Margin="10,427,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <ComboBox x:Name="RaceBox" LostKeyboardFocus="RaceBox_LostKeyFocus"		Margin="10,453,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" IsEditable="True"/>
-        </Grid>
+		<Grid x:Name="Info"  Margin="2,0,194,-8" Height="auto" Background="DarkSlateGray">
+			<!--Honestly IDK whether this should be a panel, grid, control or whatever-->
+			<Label   x:Name="NameLabel" Content="Name" FontSize="14"				Margin="10,8,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
+			<TextBox x:Name="NameBox" LostKeyboardFocus="NameBox_LostKeyFocus"		Margin="10,37,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="15" Width="129" Height="23" Text="{Binding Person.Name, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource AncestorType=TreeView, AncestorLevel=1}, Mode=TwoWay}"/>
+			<Label   x:Name="L4" Content="Description"								Margin="10,76,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
+			<Button  Name="DescBtn" Content="Open new window" Click="DescBtn_Click"	Margin="80,79,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Height="23" Panel.ZIndex="2"/>
+			<RichTextBox x:Name="DescBox" IsEnabled="False"							Margin="10,112,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="176" Height="92">
+				<FlowDocument>
+					<Paragraph>
+						<Run Text="Rich Text Box functionality not yet available."/>
+					</Paragraph>
+				</FlowDocument>
+			</RichTextBox>
+			<Label   x:Name="AgeLabel" Content="Age"								Margin="10,217,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+			<TextBox x:Name="AgeBox" LostKeyboardFocus="AgeBox_LostKeyFocus"		Margin="10,243,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Width="31" Height="23"/>
+			<Label   x:Name="GeLabel" Content="Gender"								Margin="55,217,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+			<ComboBox x:Name="GenderBox" LostKeyboardFocus="GenderBox_LostKeyFocus" Margin="55,243,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Height="23" IsEditable="True"/>
+			<Label   x:Name="RoleLabel" Content="Role"								Margin="127,217,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+			<ComboBox x:Name="RoleBox" LostKeyboardFocus="RoleBox_LostKeyFocus"		Margin="127,243,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="72" Height="23" IsEditable="True"/>
+			<Label   x:Name="HomeLabel" Content="HomeTown"							Margin="10,280,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+			<ComboBox x:Name="HomeBox" LostKeyboardFocus="HomeBox_LostKeyFocus"		Margin="10,306,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" IsEditable="True"/>
+			<Label   x:Name="LingLabel" Content="Language"							Margin="10,343,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+			<ComboBox x:Name="LingBox" LostKeyboardFocus="LingBox_LostKeyFocus"		Margin="10,369,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" IsEditable="True"/>
+			<Label   x:Name="RaceLabel" Content="Race"								Margin="10,406,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+			<ComboBox x:Name="RaceBox" LostKeyboardFocus="RaceBox_LostKeyFocus"		Margin="10,432,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" IsEditable="True"/>
+		</Grid>
 
 
-        <Grid Name="Art_space" Margin="209,0,0,0" Height="auto">
-            <Label x:Name="label" Content="Art Work:" HorizontalAlignment="Left" Margin="0,29,0,0" VerticalAlignment="Top"/>
-            <!--Button x:Name="NewPic" Content="Load" HorizontalAlignment="Left" Margin="143,32,0,0" VerticalAlignment="Top" Width="41" Click="NewPic_Click"/-->
-        </Grid>
-    </Grid>
+		<Grid Name="Art_space" Margin="209,0,0,0" Height="auto" Background="#FF1B24F0">
+			<Label x:Name="label" Content="Art Work:" HorizontalAlignment="Left" Margin="0,29,0,0" VerticalAlignment="Top"/>
+			<Button x:Name="NewPic" Content="Load" HorizontalAlignment="Left" Margin="143,32,0,0" VerticalAlignment="Top" Width="41" Click="NewPic_Click"/>
+			<Canvas x:Name="Canvas_pics" Margin="10,60,10,0" Panel.ZIndex="1" ScrollViewer.CanContentScroll="True">
+				<WrapPanel x:Name="WrapP_pics" HorizontalAlignment="Left" VerticalAlignment="Top"
+						   MaxWidth="{Binding ActualWidth, ElementName=Canvas_pics}" ScrollViewer.CanContentScroll="True" Background="Aqua"/>
+			</Canvas>
+		</Grid>
+	</Grid>
 </Controls:MetroWindow>
