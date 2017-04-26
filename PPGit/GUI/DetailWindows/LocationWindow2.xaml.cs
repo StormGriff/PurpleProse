@@ -27,7 +27,7 @@ namespace PPGit.GUI.DetailWindows
 		public LocationWindow(PPGit.Lib.Location place) {
 			InitializeComponent();
 			this.Place = place;
-			//Place.Page = this;
+			//Place.window = this;
 			NameBox.Text = Place.Name;
 			AgeBox.Text = Convert.ToString(Place.size);
 			SizeBox.Text = Place.size;
@@ -98,7 +98,7 @@ namespace PPGit.GUI.DetailWindows
 		private void EconBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e) 
 			{ /*Place.economy = EconBox.Text*/; }
 
-		private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) { Place.Page = null; }
+		private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) { Place.window = null; }
 	}
 }
 

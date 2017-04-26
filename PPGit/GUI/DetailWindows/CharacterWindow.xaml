@@ -11,37 +11,81 @@
 		Background="Maroon"
 		SizeChanged="Window_SizeChanged"
 		Closing="MetroWindow_Closing">
-	<Grid>
+	<Window.Resources>
+		<Style x:Key="TopLeft" TargetType="{x:Type Control}"><!--Needs to be based on the metro style-->
+			<Setter Property="VerticalAlignment" Value="Top"/>
+			<Setter Property="HorizontalAlignment" Value="Left"/>
+			<Setter Property="Margin" Value="10,10,0,0"/>
+		</Style>
+		
+		<Style x:Key="NewStdCombo" BasedOn="{StaticResource TopLeft}" TargetType="ComboBox">
+			<Setter Property="IsEditable" Value="True"/>
+			<Setter Property="Width" Value="129"/>
+			<Setter Property="Height" Value="23"/>
+		</Style>
+		
+	</Window.Resources>
+	<Grid x:Name="MainGrid">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="5" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		
+		<WrapPanel Grid.Column="0" x:Name="Info" HorizontalAlignment="Left" Background="DarkSlateGray" >
+			<WrapPanel Margin="0,0,20,0">
+				<Label   x:Name="NameLabel" Content="Name" FontSize="14"			Style="{StaticResource TopLeft}"/>
+				<TextBox x:Name="NameBox" LostKeyboardFocus="NameBox_LostKeyFocus"	Style="{StaticResource TopLeft}" TextWrapping="Wrap" FontSize="15" Width="129" Height="23" />
+				<!--Text="{Binding Person.Name, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource AncestorType=TreeView, AncestorLevel=1}, Mode=TwoWay}"/-->
+			</WrapPanel>
+			<Grid>
+				<Label   x:Name="L4" Content="Description"							Style="{StaticResource TopLeft}"/>
+				<Grid x:Name="DescControl" Margin="10,46,10,0" Height="92">
+					<!--Grid.ColumnDefinitions>
+						<ColumnDefinition Width="3"/>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="3" />
+					</Grid.ColumnDefinitions-->
+					<!--GridSplitter Grid.Row="1" Grid.ColumnSpan="2" ResizeDirection="Rows" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="4" BorderThickness="0,0,0,1" BorderBrush="Gray" Background="Transparent"/-->
+					<RichTextBox Grid.Row="0" Grid.Column="0" x:Name="DescBox" Focusable="False" PreviewMouseDoubleClick="DescBox_PreviewMouseDoubleClick">
+						<FlowDocument x:Name="DescBox_" Focusable="False">
+							<Paragraph x:Name="DescBox__">
+							</Paragraph>
+						</FlowDocument>
+					</RichTextBox>
+					<GridSplitter Grid.Row="1" Grid.ColumnSpan="2" ResizeDirection="Rows"    HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="4" BorderThickness="0,0,0,1" BorderBrush="Gray" Background="Transparent"/>
+					<GridSplitter Grid.RowSpan="2" Grid.Column="1" ResizeDirection="Columns" HorizontalAlignment="Right"   VerticalAlignment="Stretch" Width="4" BorderThickness="0,0,0,1" BorderBrush="Gray" Background="Transparent"/>
+				</Grid>
+			</Grid>
+			<WrapPanel>
+				<Label   x:Name="AgeLabel" Content="Age"								Style="{StaticResource TopLeft}"/>
+				<TextBox x:Name="AgeBox" LostKeyboardFocus="AgeBox_LostKeyFocus"		Style="{StaticResource TopLeft}" TextWrapping="Wrap" Width="31" Height="23"/>
+			</WrapPanel>
+			<WrapPanel>
+				<Label   x:Name="GeLabel" Content="Gender"								Style="{StaticResource TopLeft}"/>
+				<ComboBox x:Name="GenderBox" LostKeyboardFocus="GenderBox_LostKeyFocus" Style="{StaticResource NewStdCombo}" Width="58"/>
+			</WrapPanel>
+			<WrapPanel>
+				<Label   x:Name="RoleLabel" Content="Role"								Style="{StaticResource TopLeft}"/>
+				<ComboBox x:Name="RoleBox" LostKeyboardFocus="RoleBox_LostKeyFocus"		Style="{StaticResource NewStdCombo}" Width="72"/>
+			</WrapPanel>
+			<WrapPanel>
+				<Label   x:Name="HomeLabel" Content="HomeTown"							Style="{StaticResource TopLeft}"/>
+				<ComboBox x:Name="HomeBox" LostKeyboardFocus="HomeBox_LostKeyFocus"		Style="{StaticResource NewStdCombo}"/>
+			</WrapPanel>
+			<WrapPanel>
+				<Label   x:Name="LingLabel" Content="Language"							Style="{StaticResource TopLeft}"/>
+				<ComboBox x:Name="LingBox" LostKeyboardFocus="LingBox_LostKeyFocus"		Style="{StaticResource NewStdCombo}"/>
+			</WrapPanel>
+			<WrapPanel>
+				<Label   x:Name="RaceLabel" Content="Race"								Style="{StaticResource TopLeft}"/>
+				<ComboBox x:Name="RaceBox" LostKeyboardFocus="RaceBox_LostKeyFocus"		Style="{StaticResource NewStdCombo}"/>
+			</WrapPanel>
+		</WrapPanel>
+		
+		<GridSplitter Grid.Column="1" x:Name="gridSplitter" HorizontalAlignment="Stretch" Width="5" DragStarted="gridSplitter_DragStarted" DragCompleted="gridSplitter_DragCompleted" DragDelta="gridSplitter_DragDelta"/>
 
-		<Grid x:Name="Info"  Margin="2,0,194,-8" Height="auto" Background="DarkSlateGray">
-			<!--Honestly IDK whether this should be a panel, grid, control or whatever-->
-			<Label   x:Name="NameLabel" Content="Name" FontSize="14"				Margin="10,8,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
-			<TextBox x:Name="NameBox" LostKeyboardFocus="NameBox_LostKeyFocus"		Margin="10,37,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="15" Width="129" Height="23" Text="{Binding Person.Name, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource AncestorType=TreeView, AncestorLevel=1}, Mode=TwoWay}"/>
-			<Label   x:Name="L4" Content="Description"								Margin="10,76,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
-			<Button  Name="DescBtn" Content="Open new window" Click="DescBtn_Click"	Margin="80,79,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Height="23" Panel.ZIndex="2"/>
-			<RichTextBox x:Name="DescBox" IsEnabled="False"							Margin="10,112,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="176" Height="92">
-				<FlowDocument>
-					<Paragraph>
-						<Run Text="Rich Text Box functionality not yet available."/>
-					</Paragraph>
-				</FlowDocument>
-			</RichTextBox>
-			<Label   x:Name="AgeLabel" Content="Age"								Margin="10,217,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-			<TextBox x:Name="AgeBox" LostKeyboardFocus="AgeBox_LostKeyFocus"		Margin="10,243,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Width="31" Height="23"/>
-			<Label   x:Name="GeLabel" Content="Gender"								Margin="55,217,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-			<ComboBox x:Name="GenderBox" LostKeyboardFocus="GenderBox_LostKeyFocus" Margin="55,243,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Height="23" IsEditable="True"/>
-			<Label   x:Name="RoleLabel" Content="Role"								Margin="127,217,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-			<ComboBox x:Name="RoleBox" LostKeyboardFocus="RoleBox_LostKeyFocus"		Margin="127,243,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="72" Height="23" IsEditable="True"/>
-			<Label   x:Name="HomeLabel" Content="HomeTown"							Margin="10,280,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-			<ComboBox x:Name="HomeBox" LostKeyboardFocus="HomeBox_LostKeyFocus"		Margin="10,306,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" IsEditable="True"/>
-			<Label   x:Name="LingLabel" Content="Language"							Margin="10,343,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-			<ComboBox x:Name="LingBox" LostKeyboardFocus="LingBox_LostKeyFocus"		Margin="10,369,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" IsEditable="True"/>
-			<Label   x:Name="RaceLabel" Content="Race"								Margin="10,406,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-			<ComboBox x:Name="RaceBox" LostKeyboardFocus="RaceBox_LostKeyFocus"		Margin="10,432,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" IsEditable="True"/>
-		</Grid>
-
-
-		<Grid Name="Art_space" Margin="209,0,0,0" Height="auto" Background="#FF1B24F0">
+		<Grid Grid.Column="2" Name="Art_space" Height="auto" Background="#FF1B24F0">
 			<Label x:Name="label" Content="Art Work:" HorizontalAlignment="Left" Margin="0,29,0,0" VerticalAlignment="Top"/>
 			<Button x:Name="NewPic" Content="Load" HorizontalAlignment="Left" Margin="143,32,0,0" VerticalAlignment="Top" Width="41" Click="NewPic_Click"/>
 			<Canvas x:Name="Canvas_pics" Margin="10,60,10,0" Panel.ZIndex="1" ScrollViewer.CanContentScroll="True">

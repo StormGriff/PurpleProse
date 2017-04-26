@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Markup;
 
 using MahApps.Metro.Controls;
 using Microsoft.Win32;
@@ -26,10 +27,12 @@ namespace PPGit.GUI.DetailWindows
         private PPGit.Lib.Character Person;
 		private const int defaultwidth = 413;
 
+		public double DescNormWidth = 180, DescNormHeight = 92;
+
         public CharacterWindow(PPGit.Lib.Character person)
 		{	InitializeComponent();
 			this.Person = person;
-			Person.Page = this;
+			Person.window = this;
 			NameBox.Text = Person.Name;
 			AgeBox.Text = Convert.ToString(Person.charAge);
 			GenderBox.Text = Person.charGender;
@@ -37,6 +40,8 @@ namespace PPGit.GUI.DetailWindows
 			RoleBox.Text = Person.charRole;
 			LingBox.Text = Person.charLanguage;
 			RaceBox.Text = Person.charKind;
+		//	if (Person.DescText == null) DescBox.AppendText("Double Click to add (not yet available).");
+		//	else DescBox.AppendText(Person.DescText);
 			foreach(string image_file in Person.Images){ Add_picture(image_file); }
 		}
 
@@ -55,9 +60,6 @@ namespace PPGit.GUI.DetailWindows
 
         #endregion
 
-        private void DescBtn_Click(object sender, RoutedEventArgs e)
-        { PPGit.Lib.TextOps.Open(Person.DescFile); }
-
         Binding name_binding;
 
         //Bug: Functions execute upon inital click. (Originally named XXX_LostKeyboardFocus)
@@ -67,8 +69,7 @@ namespace PPGit.GUI.DetailWindows
 			{ if (NameBox.Text != "") Person.Name = NameBox.Text; }
 		
 		private void AgeBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            if (AgeBox.Text != "") try { Person.charAge = Convert.ToInt64(AgeBox.Text); }// I figured sometimes the ages of fictional characters can get long.
+        {	if (AgeBox.Text != "") try { Person.charAge = Convert.ToInt64(AgeBox.Text); }// I figured sometimes the ages of fictional characters can get long.
                 catch (FormatException exc) { AgeBox.Clear(); }
                 catch (OverflowException exc) { AgeBox.Text = "OvrFlo"; }
             else Person.charAge = 0;
@@ -135,15 +136,35 @@ namespace PPGit.GUI.DetailWindows
 		}
 
 		private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-		{	Thickness marge = Art_space.Margin;//Can this be made static?
+		{	/*Thickness marge = Art_space.Margin;//Can this be made static?
 			if(this.Width <= 413) marge.Left = this.Width/2;
 			else marge.Left = -((100*defaultwidth)/(this.Width+200-defaultwidth))+defaultwidth;
 			Art_space.Margin = marge;
 			marge.Right = this.Width - marge.Left - 1;
 			marge.Left = 0;
-			Info.Margin = marge;
+			Info.Margin = marge;*/
 		}
 
-		private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) { Person.Page = null; }
+		private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) { Person.window = null; }
+
+		private void DescBox_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e) 
+		{	//Person.DescFile = "D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\Lolly.rtf";
+			if (Person.DescFile == null) Lib.TextOps.Open();
+			else Lib.TextOps.Open(Person.DescFile);
+		}
+
+		private void gridSplitter_DragStarted(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e) {
+			Trace.WriteLine("DragStarted");
+		}
+
+		private void gridSplitter_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e) {
+			double ColWidth = MainGrid.ColumnDefinitions[0].ActualWidth;
+			var marginoffset = DescControl.Margin.Left + DescControl.Margin.Right;
+			if (ColWidth < DescNormWidth + marginoffset) DescControl.Width = ColWidth-marginoffset; 
+		}
+
+		private void gridSplitter_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e) {
+			Trace.WriteLine("DragCompleted");
+		}
 	}
 }

@@ -12,8 +12,8 @@ namespace PPGit.Lib
 		public string Name { get; set; }
 		protected string description, history;
 		public List<string> Images;
-		protected List<relationship> MyRelationships; //List of this objects relationships
-		private object window;//A reference to the Object's page
+		protected List<relationship> MyRelationships;	//List of this objects relationships
+		public MetroWindow window;						//A reference to the Object's page used for activation checking.
 		public static System.IO.FileNotFoundException InvalidTextFile;
 		public enum relationshipTypes { Null, Father, Mother, Sibling, Friend, Enemy }; //Types of relationships... let me know if we need more
 
@@ -41,7 +41,7 @@ namespace PPGit.Lib
 		
 		/*public Object(string name, Window wind, string desc, string hist, string pict = "") {
 			if (!string.IsNullOrEmpty(name)) Name = name;
-			if (wind != null) Page = wind;
+			if (wind != null) window = wind;
 			if (!string.IsNullOrEmpty(desc)) description = desc; //desc, hist, and images hold filenames with extension
 			if (!string.IsNullOrEmpty(hist)) history = hist;
 			if (!string.IsNullOrEmpty(pict)) images = pict;
@@ -56,10 +56,6 @@ namespace PPGit.Lib
 			else Images = new List<string>();
 			MyRelationships = new List<relationship>();
 		}
-		
-		public MetroWindow Page
-		{	get { return window as MetroWindow; }  /*	
-		*/	set { window = value;				}	}
 
 		public string DescFile { get { return description; } set { description = value; } }
 		public string HistFile { get { return history; } set { history = value; } }

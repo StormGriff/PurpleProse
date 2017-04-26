@@ -82,8 +82,7 @@ namespace PPGit.GUI
             DataGrid.DataContext = bindChar.DefaultView;
 			*/
 
-            PPGit.Lib.TextOps.editor = "D:\\Documents\\Visual Studio 2015\\Projects\\HelloWPF\\HelloWPF\\bin\\Debug\\HelloWPF.exe";//"D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\HelloWPF - Shortcut.exe";
-			//^ Intialization of default texteditor must be moved, and edited. ^
+            //PPGit.Lib.TextOps.editor = "D:\\Documents\\Visual Studio 2015\\Projects\\HelloWPF\\HelloWPF\\bin\\Debug\\HelloWPF.exe";//"D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\HelloWPF - Shortcut.exe";
         }
 
         private void Window_Activated(object sender, System.EventArgs e)
@@ -133,24 +132,26 @@ namespace PPGit.GUI
         {
             var selection = (sender as TreeView).SelectedItem;
             
-            /**/ if(selection is Lib.Character)
-            {	var select = selection as Lib.Character;
-				if ( null == select.Page)
-				{	select.Page = new CharacterWindow(select);
-					select.Page.Show();
-				}else select.Page.Activate();
+            if(selection is Lib.Character)								//If the slected item is a character
+            {	var Acharacter = selection as Lib.Character;			//call it Acharacter
+				if ( Acharacter.window == null)							//if it does not have a window
+				{	Acharacter.window = new CharacterWindow(Acharacter);//	create a new window for it
+					Acharacter.window.Show();							//	and make it visable
+				}else Acharacter.window.Activate();						//otherwise make its window active
             }
-			else if (selection is Lib.Location )
-			{	var select = selection as Lib.Location;
-				if (select.Page == null)
-				{	select.Page = new LocationWindow(select);
-					select.Page.Show();
-				}else select.Page.Activate();
+			else if (selection is Lib.Location )					//If the slected item is a location
+			{	var Alocation = selection as Lib.Location;			//call it Alocation
+				if (Alocation.window == null)						//if it does not have a window
+				{	Alocation.window =new LocationWindow(Alocation);//	create a new window for it
+					Alocation.window.Show();						//	and make it visable
+				}else Alocation.window.Activate();					//otherwise make its window active
 			}
-			else if (selection is Lib.Object   )
-			{	var select = selection as Lib.Object;
-				if (select.Page == null) ;//{ select.Page = new ObjectWindow(select);select.Page.Show(); }
-				else select.Page.Activate();
+			else if (selection is Lib.Object   )				//If the slected item is a misc. item
+			{	var Athing = selection as Lib.Object;			//call it Athing
+				if (Athing.window == null) ;					//if it does not have a window
+				/*{	Athing.window = new ObjectWindow(Athing);	//	create a new window for it
+				 *	Athing.window.Show(); }*/					//	and make it visable
+				else Athing.window.Activate();					//otherwise make its window active
 			}
         }
 
@@ -202,16 +203,20 @@ namespace PPGit.GUI
 
         private void Add_Character_LeftMouseUp(object sender, MouseButtonEventArgs e)
         {	Lib.Character New_Char = new Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
-            characters.Add(New_Char);
-            New_Char.Page = new CharacterWindow(New_Char);
-            New_Char.Page.Show();
+			// ^Create a character^
+
+            characters.Add(New_Char);						//Add it to the list of characters
+            New_Char.window = new CharacterWindow(New_Char);//give it a window (stored inside for later reference)
+            New_Char.window.Show();							//Show it.
         }
 
         private void Add_Location_LeftMouseUp(object sender, MouseButtonEventArgs e)
         {	Lib.Location New_Loc = new Lib.Location("The_State", null, null, null);
-            locations.Add(New_Loc);
-            New_Loc.Page = new LocationWindow(New_Loc);
-            New_Loc.Page.Show();
+			// ^Create a location^
+
+            locations.Add(New_Loc);						//Add it to the list of locations
+            New_Loc.window = new LocationWindow(New_Loc);//give it a window (stored inside for later reference)
+            New_Loc.window.Show();						//Show it.
         }
 
         private void Text_Click(object sender, RoutedEventArgs e)
