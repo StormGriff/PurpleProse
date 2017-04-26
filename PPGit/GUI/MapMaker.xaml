@@ -5,9 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PPGit.GUI"
         mc:Ignorable="d"
-        Title="Map Creator" Height="420.626" Width="582.767" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner">
+        Title="Map Creator" Height="457.966" Width="683.805" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner">
     <Grid>
-        <Canvas x:Name="mapCVS" HorizontalAlignment="Left" Height="269" Margin="10,70,0,0" VerticalAlignment="Top" Width="557"/>
+        <Canvas x:Name="mapCVS" HorizontalAlignment="Left" Height="335" Margin="10,70,0,0" VerticalAlignment="Top" Width="644" Background="#FF1616A6"/>
+        <Menu HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="678">
+            <MenuItem x:Name="backgroundLST" Header="Background" Height="31" Width="90" HorizontalAlignment="Center" VerticalAlignment="Center" Click="backgroundLST_Click">
+                <MenuItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="snowBTN" FontSize="12" Header="Snow" Click="snowBTN_Click"/>
+                    </ContextMenu>
+                </MenuItem.ContextMenu>
+            </MenuItem>
+        </Menu>
 
     </Grid>
 </Window>

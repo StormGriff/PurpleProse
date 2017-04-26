@@ -23,5 +23,20 @@ namespace PPGit.GUI
         {
             InitializeComponent();
         }
+
+        private void snowBTN_Click(object sender, RoutedEventArgs e)
+        {
+            ImageBrush newBrush = new ImageBrush();
+            newBrush.ImageSource = new BitmapImage(new Uri(@"..\..\snow background.jpg", UriKind.Relative));
+            mapCVS.Background = newBrush;
+        }
+
+        private void backgroundLST_Click(object sender, RoutedEventArgs e)
+        {
+            (sender as MenuItem).ContextMenu.IsEnabled = true;
+            (sender as MenuItem).ContextMenu.PlacementTarget = (sender as MenuItem);
+            (sender as MenuItem).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+            (sender as MenuItem).ContextMenu.IsOpen = true;
+        }
     }
 }
