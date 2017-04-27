@@ -26,6 +26,10 @@ namespace PPGit.GUI
             InitializeComponent();
         }
 
+        BitmapImage map = null;
+        Image img = null;
+        Uri picLoc;
+
         private void snowBTN_Click(object sender, RoutedEventArgs e)
         {
             changeBackground(background.snow);
@@ -63,6 +67,36 @@ namespace PPGit.GUI
         private void waterBTN_Click(object sender, RoutedEventArgs e)
         {
             changeBackground(background.water);
+        }
+
+        private void mountainBTN_Click(object sender, RoutedEventArgs e)
+        {
+            picLoc = new Uri(@"..\..\Map POIs\mountains.png", UriKind.Relative); //Location of the image
+            map = new BitmapImage(picLoc);
+            img = new Image();
+            img.Source = map;
+
+            mapCVS.Children.Add(img);
+        }
+
+        private void mapCVS_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (img != null)
+            {
+                Point mousePosition = e.GetPosition(mapCVS);  //Follow the mouse
+                Canvas.SetLeft(img, mousePosition.X - img.ActualWidth / 2);
+                Canvas.SetTop(img, mousePosition.Y - img.ActualHeight / 2);
+            }
+        }
+
+        private void mapCVS_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (img != null)
+            {
+                img = null;
+                map = null;
+                picLoc = null;
+            }
         }
     }
 }
