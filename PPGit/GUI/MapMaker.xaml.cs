@@ -52,6 +52,7 @@ namespace PPGit.GUI
             if (whichOne == background.water) newBrush.ImageSource = new BitmapImage(new Uri(@"..\..\water background.jpg", UriKind.Relative));
             //Add background
             mapCVS.Background = newBrush;
+            iconsLST.IsEnabled = true;
         }
 
         private void desertBTN_Click(object sender, RoutedEventArgs e)
@@ -71,12 +72,17 @@ namespace PPGit.GUI
 
         private void mountainBTN_Click(object sender, RoutedEventArgs e)
         {
+            switchIcons();
             picLoc = new Uri(@"..\..\Map POIs\mountains.png", UriKind.Relative); //Location of the image
             map = new BitmapImage(picLoc);
             img = new Image();
             img.Source = map;
 
-            mapCVS.Children.Add(img);
+            mapCVS.Children.Add(img); //Add image to canvas
+        }
+
+        private void switchIcons() {
+            if(img != null) mapCVS.Children.Remove(img);
         }
 
         private void mapCVS_MouseMove(object sender, MouseEventArgs e)
@@ -97,6 +103,22 @@ namespace PPGit.GUI
                 map = null;
                 picLoc = null;
             }
+        }
+
+        private void lakeBTN_Click(object sender, RoutedEventArgs e)
+        {
+            switchIcons();
+            picLoc = new Uri(@"..\..\Map POIs\Lake icon.png", UriKind.Relative); //Location of the image
+            map = new BitmapImage(picLoc);
+            img = new Image();
+            img.Source = map;
+
+            mapCVS.Children.Add(img); //Add image to canvas
+        }
+
+        private void mapMakerFRM_Initialized(object sender, EventArgs e)
+        {
+            iconsLST.IsEnabled = false;
         }
     }
 }

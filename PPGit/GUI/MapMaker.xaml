@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PPGit.GUI"
         mc:Ignorable="d"
-        Title="Map Creator" Height="457.966" Width="673.043" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner">
+        Title="Map Creator" Height="463.945" Width="681.414" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner" Initialized="mapMakerFRM_Initialized">
     <Grid>
-        <Canvas x:Name="mapCVS" HorizontalAlignment="Left" Height="335" Margin="10,70,0,0" VerticalAlignment="Top" Width="644" Background="#FF1616A6" MouseMove="mapCVS_MouseMove" MouseDown="mapCVS_MouseDown"/>
+        <Canvas x:Name="mapCVS" HorizontalAlignment="Left" Height="335" Margin="10,70,0,0" VerticalAlignment="Top" Width="644" Background="#FFF7F7F7" MouseMove="mapCVS_MouseMove" MouseDown="mapCVS_MouseDown"/>
         <Menu HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="678">
             <MenuItem x:Name="backgroundLST" Header="Background" Height="31" Width="90" HorizontalAlignment="Center" VerticalAlignment="Center" Click="backgroundLST_Click">
                 <MenuItem.ContextMenu>
@@ -20,12 +20,13 @@
                 </MenuItem.ContextMenu>
             </MenuItem>
         </Menu>
-        <Menu x:Name="iconsLST" HorizontalAlignment="Left" Height="33" Margin="0,32,0,0" VerticalAlignment="Top" Width="667">
+        <Menu x:Name="iconsLST" HorizontalAlignment="Left" Height="33" Margin="0,32,0,0" VerticalAlignment="Top" Width="675">
             <MenuItem x:Name="mountainBTN" Header="Mountains" Click="mountainBTN_Click">
                 <MenuItem.Background>
                     <ImageBrush/>
                 </MenuItem.Background>
             </MenuItem>
+            <MenuItem x:Name="lakeBTN" Header="Lake" Click="lakeBTN_Click"/>
         </Menu>
 
     </Grid>
