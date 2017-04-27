@@ -13,6 +13,9 @@
                 <MenuItem.ContextMenu>
                     <ContextMenu>
                         <MenuItem x:Name="snowBTN" FontSize="12" Header="Snow" Click="snowBTN_Click"/>
+                        <MenuItem x:Name="desertBTN" FontSize="12" Header="Desert" Click="desertBTN_Click"/>
+                        <MenuItem x:Name="grassBTN" FontSize="12" Header="Grass" Click="grassBTN_Click"/>
+                        <MenuItem x:Name="waterBTN" FontSize="12" Header="Water" Click="waterBTN_Click"/>
                     </ContextMenu>
                 </MenuItem.ContextMenu>
             </MenuItem>

@@ -19,6 +19,8 @@ namespace PPGit.GUI
     /// </summary>
     public partial class MapMaker : Window
     {
+        private enum background { snow, desert, grass, water }
+
         public MapMaker()
         {
             InitializeComponent();
@@ -26,9 +28,7 @@ namespace PPGit.GUI
 
         private void snowBTN_Click(object sender, RoutedEventArgs e)
         {
-            ImageBrush newBrush = new ImageBrush();
-            newBrush.ImageSource = new BitmapImage(new Uri(@"..\..\snow background.jpg", UriKind.Relative));
-            mapCVS.Background = newBrush;
+            changeBackground(background.snow);
         }
 
         private void backgroundLST_Click(object sender, RoutedEventArgs e)
@@ -37,6 +37,32 @@ namespace PPGit.GUI
             (sender as MenuItem).ContextMenu.PlacementTarget = (sender as MenuItem);
             (sender as MenuItem).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
             (sender as MenuItem).ContextMenu.IsOpen = true;
+        }
+
+        private void changeBackground(background whichOne) {
+            ImageBrush newBrush = new ImageBrush();
+            //Choose picture
+            if(whichOne == background.snow) newBrush.ImageSource = new BitmapImage(new Uri(@"..\..\snow background.jpg", UriKind.Relative));
+            if (whichOne == background.desert) newBrush.ImageSource = new BitmapImage(new Uri(@"..\..\desert background.jpg", UriKind.Relative));
+            if (whichOne == background.grass) newBrush.ImageSource = new BitmapImage(new Uri(@"..\..\grass background.jpg", UriKind.Relative));
+            if (whichOne == background.water) newBrush.ImageSource = new BitmapImage(new Uri(@"..\..\water background.jpg", UriKind.Relative));
+            //Add background
+            mapCVS.Background = newBrush;
+        }
+
+        private void desertBTN_Click(object sender, RoutedEventArgs e)
+        {
+            changeBackground(background.desert);
+        }
+
+        private void grassBTN_Click(object sender, RoutedEventArgs e)
+        {
+            changeBackground(background.grass);
+        }
+
+        private void waterBTN_Click(object sender, RoutedEventArgs e)
+        {
+            changeBackground(background.water);
         }
     }
 }
