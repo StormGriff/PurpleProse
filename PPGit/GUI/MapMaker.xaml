@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PPGit.GUI"
         mc:Ignorable="d"
-        Title="Map Creator" Height="463.945" Width="681.414" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner" Initialized="mapMakerFRM_Initialized">
+        Title="Map Creator" Height="463.945" Width="681.414" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner" Initialized="mapMakerFRM_Initialized" KeyDown="mapMakerFRM_KeyDown" KeyUp="mapMakerFRM_KeyUp">
     <Grid>
         <Canvas x:Name="mapCVS" HorizontalAlignment="Left" Height="335" Margin="10,70,0,0" VerticalAlignment="Top" Width="644" Background="#FFF7F7F7" MouseMove="mapCVS_MouseMove" MouseDown="mapCVS_MouseDown"/>
         <Menu HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="678">
@@ -27,6 +27,7 @@
                 </MenuItem.Background>
             </MenuItem>
             <MenuItem x:Name="lakeBTN" Header="Lake" Click="lakeBTN_Click"/>
+            <MenuItem x:Name="cityBTN" Header="City" Click="cityBTN_Click"/>
         </Menu>
 
     </Grid>

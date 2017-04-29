@@ -29,6 +29,8 @@ namespace PPGit.GUI
         BitmapImage map = null;
         Image img = null;
         Uri picLoc;
+        bool cntrl = false;
+        bool z = false;
 
         private void snowBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -99,6 +101,7 @@ namespace PPGit.GUI
         {
             if (img != null)
             {
+                Lib.mapStack.map.pushPop = img; //push to stack
                 img = null;
                 map = null;
                 picLoc = null;
@@ -119,6 +122,35 @@ namespace PPGit.GUI
         private void mapMakerFRM_Initialized(object sender, EventArgs e)
         {
             iconsLST.IsEnabled = false;
+        }
+
+        private void cityBTN_Click(object sender, RoutedEventArgs e)
+        {
+            switchIcons();
+            picLoc = new Uri(@"..\..\Map POIs\city icon.png", UriKind.Relative); //Location of the image
+            map = new BitmapImage(picLoc);
+            img = new Image();
+            img.Source = map;
+
+            mapCVS.Children.Add(img); //Add image to canvas
+        }
+
+        private void mapMakerFRM_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.LeftCtrl) cntrl = true;
+            if (e.Key == Key.Z) z = true;
+            if (cntrl && z) {
+                Image pullImage = Lib.mapStack.map.pushPop;
+                if (pullImage != null) {
+                    mapCVS.Children.Remove(pullImage);
+                }
+            }
+        }
+
+        private void mapMakerFRM_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.LeftCtrl) cntrl = false;
+            if (e.Key == Key.Z) z = false;
         }
     }
 }
