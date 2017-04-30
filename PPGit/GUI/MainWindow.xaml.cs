@@ -261,5 +261,13 @@ namespace PPGit.GUI
 
             wnd.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            /*MapMaker newMap = new MapMaker();
+            newMap.Show();*/
+            GUI.Deadlines.Calendar newCal = new Deadlines.Calendar();
+            newCal.Show();
+        }
     }
 }

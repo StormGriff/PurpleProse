@@ -38,7 +38,7 @@
                 <Label x:Name="num1" Content="" Margin="-1" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
             </Border>
             <Border x:Name="day2" BorderBrush="Black" BorderThickness="1" Grid.Column="1" MouseLeftButtonUp="day2_MouseLeftButtonUp">
-                <Label x:Name="num2" Content="" Margin="-1" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>
+                <Label x:Name="num2" Content="" Margin="-1" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold" Background="{x:Null}"/>
             </Border>
             <Border x:Name="day3" BorderBrush="Black" BorderThickness="1" Grid.Column="2" MouseLeftButtonUp="day3_MouseLeftButtonUp">
                 <Label x:Name="num3" Content="" Margin="-1" RenderTransformOrigin="0.659,0.775" FontSize="10" FontWeight="Bold"/>

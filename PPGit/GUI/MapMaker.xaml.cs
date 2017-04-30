@@ -31,6 +31,7 @@ namespace PPGit.GUI
         Uri picLoc;
         bool cntrl = false;
         bool z = false;
+        bool shift = false;
 
         private void snowBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -102,9 +103,18 @@ namespace PPGit.GUI
             if (img != null)
             {
                 Lib.mapStack.map.pushPop = img; //push to stack
-                img = null;
-                map = null;
-                picLoc = null;
+                if (!shift)
+                {
+                    img = null;
+                    map = null;
+                    picLoc = null;
+                }
+                else {
+                    map = new BitmapImage(picLoc);
+                    img = new Image();
+                    img.Source = map;
+                    mapCVS.Children.Add(img);
+                }
             }
         }
 
@@ -139,6 +149,7 @@ namespace PPGit.GUI
         {
             if (e.Key == Key.LeftCtrl) cntrl = true;
             if (e.Key == Key.Z) z = true;
+            if (e.Key == Key.LeftShift) shift = true;
             if (cntrl && z) {
                 Image pullImage = Lib.mapStack.map.pushPop;
                 if (pullImage != null) {
@@ -151,6 +162,18 @@ namespace PPGit.GUI
         {
             if (e.Key == Key.LeftCtrl) cntrl = false;
             if (e.Key == Key.Z) z = false;
+            if (e.Key == Key.LeftShift) shift = false;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            switchIcons();
+            picLoc = new Uri(@"..\..\Map POIs\water segment.jpg", UriKind.Relative); //Location of the image
+            map = new BitmapImage(picLoc);
+            img = new Image();
+            img.Source = map;
+
+            mapCVS.Children.Add(img); //Add image to canvas
         }
     }
 }

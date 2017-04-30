@@ -28,6 +28,7 @@
             </MenuItem>
             <MenuItem x:Name="lakeBTN" Header="Lake" Click="lakeBTN_Click"/>
             <MenuItem x:Name="cityBTN" Header="City" Click="cityBTN_Click"/>
+            <MenuItem Header="Water Block" Click="MenuItem_Click"/>
         </Menu>
 
     </Grid>
