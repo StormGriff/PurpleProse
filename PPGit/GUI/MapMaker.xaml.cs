@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace PPGit.GUI
 {
@@ -98,26 +99,6 @@ namespace PPGit.GUI
             }
         }
 
-        private void mapCVS_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (img != null)
-            {
-                Lib.mapStack.map.pushPop = img; //push to stack
-                if (!shift)
-                {
-                    img = null;
-                    map = null;
-                    picLoc = null;
-                }
-                else {
-                    map = new BitmapImage(picLoc);
-                    img = new Image();
-                    img.Source = map;
-                    mapCVS.Children.Add(img);
-                }
-            }
-        }
-
         private void lakeBTN_Click(object sender, RoutedEventArgs e)
         {
             switchIcons();
@@ -174,6 +155,97 @@ namespace PPGit.GUI
             img.Source = map;
 
             mapCVS.Children.Add(img); //Add image to canvas
+        }
+
+        private void fileBTN_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                (sender as MenuItem).ContextMenu.IsEnabled = true;
+                (sender as MenuItem).ContextMenu.PlacementTarget = (sender as MenuItem);
+                (sender as MenuItem).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+                (sender as MenuItem).ContextMenu.IsOpen = true;
+            }
+            catch (NullReferenceException) { }
+        }
+
+        private void saveBTN_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog newSave = new SaveFileDialog();
+            newSave.Filter = "Jpeg Files | *.jpeg";
+            bool newResult = (bool)newSave.ShowDialog();
+            if (newResult == true)
+            {
+                RenderTargetBitmap rtb = new RenderTargetBitmap((int)mapCVS.Width, (int)mapCVS.Height, 96d, 96d, PixelFormats.Default);
+                rtb.Render(mapCVS);
+                JpegBitmapEncoder newEncoder = new JpegBitmapEncoder();
+                newEncoder.Frames.Add(BitmapFrame.Create(rtb));
+                newEncoder.Save(System.IO.File.OpenWrite(newSave.FileName));
+            }
+        }
+
+        private void mapCVS_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (img != null)
+            {
+                Lib.mapStack.map.pushPop = img; //push to stack
+                if (!shift)
+                {
+                    img = null;
+                    map = null;
+                    picLoc = null;
+                }
+                else
+                {
+                    map = new BitmapImage(picLoc);
+                    img = new Image();
+                    img.Source = map;
+                    mapCVS.Children.Add(img);
+                }
+            }
+        }
+
+        private void mapCVS_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (img != null) {
+                mapCVS.Children.Remove(img);
+                img = null;
+                map = null;
+                picLoc = null;
+            }
+        }
+
+        private void openBTN_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openNew = new OpenFileDialog();
+            openNew.Filter = "Jpeg Files | *.jpeg";
+            bool result = (bool)openNew.ShowDialog();
+            if (result == true) {
+                mapCVS.Children.Clear();
+                ImageBrush newImage = new ImageBrush();
+                newImage.ImageSource = new BitmapImage(new Uri(openNew.FileName, UriKind.RelativeOrAbsolute));
+                mapCVS.Background = newImage;
+                iconsLST.IsEnabled = true;
+            }
+        }
+
+        private void forestBTN_Click(object sender, RoutedEventArgs e)
+        {
+            switchIcons();
+            picLoc = new Uri(@"..\..\Map POIs\forest icon.png", UriKind.Relative); //Location of the image
+            map = new BitmapImage(picLoc);
+            img = new Image();
+            img.Source = map;
+
+            mapCVS.Children.Add(img); //Add image to canvas
+        }
+
+        private void mapMakerFRM_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MessageBoxResult newResult = MessageBox.Show("All unsaved changes will be lost.\nWould you like to close anyway?", "Warning!!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (newResult == MessageBoxResult.No) {
+                e.Cancel = true;
+            }
         }
     }
 }

@@ -5,10 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PPGit.GUI"
         mc:Ignorable="d"
-        Title="Map Creator" Height="463.945" Width="681.414" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner" Initialized="mapMakerFRM_Initialized" KeyDown="mapMakerFRM_KeyDown" KeyUp="mapMakerFRM_KeyUp">
+        Title="Map Creator" Height="463.945" Width="681.414" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner" Initialized="mapMakerFRM_Initialized" KeyDown="mapMakerFRM_KeyDown" KeyUp="mapMakerFRM_KeyUp" Closing="mapMakerFRM_Closing">
     <Grid>
-        <Canvas x:Name="mapCVS" HorizontalAlignment="Left" Height="335" Margin="10,70,0,0" VerticalAlignment="Top" Width="644" Background="#FFF7F7F7" MouseMove="mapCVS_MouseMove" MouseDown="mapCVS_MouseDown"/>
+        <Canvas x:Name="mapCVS" HorizontalAlignment="Left" Height="335" Margin="10,70,0,0" VerticalAlignment="Top" Width="644" Background="#FFF7F7F7" MouseMove="mapCVS_MouseMove" MouseLeftButtonDown="mapCVS_MouseLeftButtonDown" MouseRightButtonDown="mapCVS_MouseRightButtonDown"/>
         <Menu HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="678">
+            <MenuItem x:Name="fileBTN" Header="File" Click="fileBTN_Click">
+                <MenuItem x:Name="openBTN" Header="Open" Click="openBTN_Click"/>
+                <MenuItem x:Name="saveBTN" Header="Save As..." Click="saveBTN_Click"/>
+            </MenuItem>
             <MenuItem x:Name="backgroundLST" Header="Background" Height="31" Width="90" HorizontalAlignment="Center" VerticalAlignment="Center" Click="backgroundLST_Click">
                 <MenuItem.ContextMenu>
                     <ContextMenu>
@@ -29,6 +33,7 @@
             <MenuItem x:Name="lakeBTN" Header="Lake" Click="lakeBTN_Click"/>
             <MenuItem x:Name="cityBTN" Header="City" Click="cityBTN_Click"/>
             <MenuItem Header="Water Block" Click="MenuItem_Click"/>
+            <MenuItem x:Name="forestBTN" Header="Forest" Click="forestBTN_Click"/>
         </Menu>
 
     </Grid>
