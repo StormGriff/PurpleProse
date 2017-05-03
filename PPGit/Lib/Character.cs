@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 
 namespace PPGit.Lib
 {
@@ -8,7 +9,7 @@ namespace PPGit.Lib
         //private string charName;
         //private string charDesc;
         //private string charHist;
-        //private string charImg;
+        //private List<string> images;
 
         // Using Properties: Character attribute file names + extension
         public long		charAge		{ get; set; }
@@ -27,10 +28,10 @@ namespace PPGit.Lib
         //public Character() : base(null, null, null, null)
         //{}
 
-        public Character(string charName, string charDesc = null, string charHist = null, string charImg = null,
+        public Character(string charName, string charDesc = null, string charHist = null, List<string> images = null,
                         int charAge = 0, string charKind = null, string charGender = null, string charRole = null,
                         string charSketches = null, string charLanguage = null, string charHometown = null)
-            : base(charName, charDesc, charHist, charImg)
+            : base(charName, charDesc, charHist, images)
         {
             this.charAge = charAge;
             this.charKind = charKind;

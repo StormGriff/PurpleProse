@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PPGit.Lib
 {	public class Region : Location
-	{	public  Region(string name, string desc, string hist, string imageFile) : base(name, desc, hist, imageFile)
+	{	public  Region(string name, string desc, string hist, List<string> images) : base(name, desc, hist, images)
 		{ }
 		
 		private string terrain { get; set; }

@@ -34,20 +34,32 @@ namespace PPGit.GUI
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
         }
 
-        private void btnOpen_Click(object sender, RoutedEventArgs e)
+		public TextEditor(string FQpath)
         {
+            InitializeComponent();
+
+            cmbFontFamily.ItemsSource = Fonts.SystemFontFamilies;
+
+            cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
+
+			OpenFile(FQpath);
+        }
+
+        private void btnOpen_Click(object sender, RoutedEventArgs e)
+        {try{ 
             Ookii.Dialogs.Wpf.VistaOpenFileDialog ofd = new VistaOpenFileDialog();
             ofd.Filter = "Rich Text Format (*.rtf)|*.rtf|All Files (*.*)|*.*";
 
-            if(ofd.ShowDialog() == true)
-            {
-                FileStream fs = new FileStream(ofd.FileName, FileMode.Open);
-                TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
-                range.Load(fs, DataFormats.Rtf);
+            if(ofd.ShowDialog() == true) OpenFile(ofd.FileName);
+        }catch(Exception) {} }
 
-                this.Title = ofd.FileName;
-            }
-        }
+		private void OpenFile(string FQpath)
+		{	FileStream fs = new FileStream(FQpath, FileMode.Open);
+			TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+			range.Load(fs, DataFormats.Rtf);
+			
+			this.Title = FQpath;
+		}
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {

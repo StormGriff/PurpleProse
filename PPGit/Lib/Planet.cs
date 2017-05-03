@@ -8,7 +8,7 @@ namespace PPGit.Lib
 {
     public class Planet : Location
     {
-        public Planet(int pop, biome land, technologyLevel developement, string name, string desc, string hist, string imageFile, string other = "") : base(name, desc, hist, imageFile)
+        public Planet(int pop, biome land, technologyLevel developement, string name, string desc, string hist, List<string> images, string other = "") : base(name, desc, hist, images)
         {
             population = pop;
             myLevel = developement;

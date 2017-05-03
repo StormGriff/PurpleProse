@@ -58,7 +58,7 @@ namespace StoryPlanner
 		public string DescrptTXT { get{return GetText  (description);} set{SetMethod(description, ref value, false);} }//Gets and Sets the description text
 		public string HistoryFQP { get{return GetFQPath(history    );} set{SetMethod(history	, ref value, false );} }//Gets and sets the fully qualified path that contains the history of the object
 		public string HistoryTXT { get{return GetText  (history    );} set{SetMethod(history	, ref value, false);} }//Gets and Sets the history text
-		public string PictureFQP { get{return GetFQPath(imageFile  );} set{SetMethod(imageFile	, ref value, false );} }//Gets and sets the fully qualified path that contains the image of the object
+		public string PictureFQP { get{return GetFQPath(images  );} set{SetMethod(images	, ref value, false );} }//Gets and sets the fully qualified path that contains the image of the object
 		*/
 
 #if USER_GENERATED_OBJECTS
@@ -72,7 +72,7 @@ namespace StoryPlanner
 #else
 		public Object(string name, string desc, string hist, string pict = "") {
 			if (!string.IsNullOrEmpty(name)) Name = name;
-			if (!string.IsNullOrEmpty(desc)) description = desc; //desc, hist, and imageFile hold filenames with extension
+			if (!string.IsNullOrEmpty(desc)) description = desc; //desc, hist, and images hold filenames with extension
 			if (!string.IsNullOrEmpty(hist)) history = hist;
 			if (!string.IsNullOrEmpty(pict)) ImageFil = pict;
 			MyRelationships = new List<relationship>();

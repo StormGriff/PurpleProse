@@ -17,7 +17,7 @@ namespace PPGit.Lib
         dimensions myRoom;
         private string myDescription;
 
-        public room(double x, double y, measurement measuredIn, string descriptionFile, string name, string desc, string hist, string imageFile) : base(name, desc, hist, imageFile) {
+        public room(double x, double y, measurement measuredIn, string descriptionFile, string name, string desc, string hist, List<string> images) : base(name, desc, hist, images) {
 			myRoom = new dimensions();
 			myRoom.x = x;
 			myRoom.y = y;
