@@ -1,6 +1,4 @@
 ﻿/*
- * Denys Vuika Oct. 15, 2007 .NET, WPF
- * Denis Vuyka
  * D. Vuyka (2007, Oct. 15). WPF. SIMPLE ADORNER USAGE WITH DRAG AND RESIZE OPERATIONS [web].
  *	Available: https://denisvuyka.wordpress.com/2007/10/15/wpf-simple-adorner-usage-with-drag-and-resize-operations/
  */
