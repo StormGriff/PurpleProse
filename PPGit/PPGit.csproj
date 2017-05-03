@@ -87,6 +87,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI\DetailWindows\LocationWindow2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -107,11 +111,18 @@
     <Compile Include="GUI\DetailWindows\CharacterWindow.xaml.cs">
       <DependentUpon>CharacterWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DetailWindows\LocationWindow2.xaml.cs">
+      <DependentUpon>LocationWindow2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\MainWindow.xaml.cs" />
+    <Compile Include="GUI\ResizingAdorner.cs" />
     <Compile Include="GUI\TextEditor.xaml.cs">
       <DependentUpon>TextEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThemeManagerHelper.cs" />
+    <Compile Include="GUI\Launcher.xaml.cs">
+      <DependentUpon>Launcher.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\Building.cs" />
     <Compile Include="Lib\Character.cs" />
     <Compile Include="Lib\City.cs" />
@@ -124,6 +135,10 @@
     <Compile Include="Lib\Region.cs" />
     <Compile Include="Lib\room.cs" />
     <Page Include="GUI\TextEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Launcher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -194,6 +209,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GUI\MusicPlayer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cursive.png" />
+    <Resource Include="Resources\scroll1.png" />
+    <Resource Include="Resources\scroll2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

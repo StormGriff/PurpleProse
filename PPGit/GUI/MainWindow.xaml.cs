@@ -19,6 +19,7 @@ using MahApps.Metro.Controls;
 using MahApps.Metro;
 
 using PPGit.GUI.DetailWindows;
+using System.IO;
 
 namespace PPGit.GUI
 {
@@ -30,8 +31,8 @@ namespace PPGit.GUI
     {
 
         //static string texteditor; Currently using seperate class
-        ObservableCollection<Lib.Character> characters;
-        ObservableCollection<Lib.Location> locations;
+        public ObservableCollection<Lib.Character> characters;
+        public ObservableCollection<Lib.Location> locations;
         DataTable bindChar;
         //	TreeView Elements;
 
@@ -82,8 +83,7 @@ namespace PPGit.GUI
             DataGrid.DataContext = bindChar.DefaultView;
 			*/
 
-            PPGit.Lib.TextOps.editor = "D:\\Documents\\Visual Studio 2015\\Projects\\HelloWPF\\HelloWPF\\bin\\Debug\\HelloWPF.exe";//"D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\HelloWPF - Shortcut.exe";
-                                                                                                                         // Intialization of default texteditor must be moved, and edited.
+            //PPGit.Lib.TextOps.editor = "D:\\Documents\\Visual Studio 2015\\Projects\\HelloWPF\\HelloWPF\\bin\\Debug\\HelloWPF.exe";//"D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\HelloWPF - Shortcut.exe";
         }
 
         private void Window_Activated(object sender, System.EventArgs e)
@@ -95,7 +95,6 @@ namespace PPGit.GUI
                 sub_folder.ItemsSource = null;
                 sub_folder.ItemsSource = characters;
 
-                /**/
                 sub_folder = Elements.Items[1] as TreeViewItem;
                 sub_folder.ItemsSource = null;
                 sub_folder.ItemsSource = locations;
@@ -119,42 +118,42 @@ namespace PPGit.GUI
 			Elements.Items.Add(Characters_TVL);
 			Elements.Items.Add(_Locations);
 			*/
-
-            var sub_folder = Elements.Items[0] as TreeViewItem;
-            sub_folder.ItemsSource = null;
-            sub_folder.ItemsSource = characters;
-
-            /**/
-            sub_folder = Elements.Items[1] as TreeViewItem;
-            sub_folder.ItemsSource = null;
-            sub_folder.ItemsSource = locations;
+			
+			var sub_folder = Elements.Items[0] as TreeViewItem;
+			sub_folder.ItemsSource = null;
+			sub_folder.ItemsSource = characters;
+			
+			sub_folder = Elements.Items[1] as TreeViewItem;
+			sub_folder.ItemsSource = null;
+			sub_folder.ItemsSource = locations;
 
         }
 
         private void Elements_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             var selection = (sender as TreeView).SelectedItem;
-            /**/
-            if (selection is Lib.Character)
-            {
-                var select = selection as Lib.Character;
-
-                CharacterWindow win = new CharacterWindow(select);
-                win.Show();
+            
+            if(selection is Lib.Character)								//If the slected item is a character
+            {	var Acharacter = selection as Lib.Character;			//call it Acharacter
+				if ( Acharacter.window == null)							//if it does not have a window
+				{	Acharacter.window = new CharacterWindow(Acharacter);//	create a new window for it
+					Acharacter.window.Show();							//	and make it visable
+				}else Acharacter.window.Activate();						//otherwise make its window active
             }
-            else if (selection is Lib.Location)
-            {
-                var select = selection as Lib.Location;
-
-                //LocationWindow win = new CharacterWindow(select);
-                //win.Show();
-            }
-            else if (selection is Lib.Object)
-            {
-                var select = selection as Lib.Object;
-                //if (select.its_window == null) ;//new    ObjectWindow(select).Show();
-                //else select.its_window.Activate();
-            }
+			else if (selection is Lib.Location )					//If the slected item is a location
+			{	var Alocation = selection as Lib.Location;			//call it Alocation
+				if (Alocation.window == null)						//if it does not have a window
+				{	Alocation.window =new LocationWindow(Alocation);//	create a new window for it
+					Alocation.window.Show();						//	and make it visable
+				}else Alocation.window.Activate();					//otherwise make its window active
+			}
+			else if (selection is Lib.Object   )				//If the slected item is a misc. item
+			{	var Athing = selection as Lib.Object;			//call it Athing
+				if (Athing.window == null) ;					//if it does not have a window
+				/*{	Athing.window = new ObjectWindow(Athing);	//	create a new window for it
+				 *	Athing.window.Show(); }*/					//	and make it visable
+				else Athing.window.Activate();					//otherwise make its window active
+			}
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -204,27 +203,21 @@ namespace PPGit.GUI
         }
 
         private void Add_Character_LeftMouseUp(object sender, MouseButtonEventArgs e)
-        {
-            Lib.Character New_Char = new Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
-            characters.Add(New_Char);
+        {	Lib.Character New_Char = new Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
+			// ^Create a character^
 
-            GUI.DetailWindows.CharacterWindow win = new CharacterWindow(New_Char);
-            win.Show();
-
-            //new CharacterWindow(New_Char);
-            //New_Char.its_window.Show();
+            characters.Add(New_Char);						//Add it to the list of characters
+            New_Char.window = new CharacterWindow(New_Char);//give it a window (stored inside for later reference)
+            New_Char.window.Show();							//Show it.
         }
 
         private void Add_Location_LeftMouseUp(object sender, MouseButtonEventArgs e)
-        {
-            Lib.Location New_Loc = new Lib.Location("The_State", null, null, null);
-            locations.Add(New_Loc);
+        {	Lib.Location New_Loc = new Lib.Location("The_State", null, null, null);
+			// ^Create a location^
 
-            //to show the window, use code as above for add_character
-            //its_window was a resource sink that really didn't need to be there
-
-            //new LocationWindow(New_Loc);
-            //New_Loc.its_window.Show();
+            locations.Add(New_Loc);						//Add it to the list of locations
+            New_Loc.window = new LocationWindow(New_Loc);//give it a window (stored inside for later reference)
+            New_Loc.window.Show();						//Show it.
         }
 
         private void Text_Click(object sender, RoutedEventArgs e)
@@ -260,6 +253,33 @@ namespace PPGit.GUI
             AppThemeChanger wnd = new AppThemeChanger();
 
             wnd.Show();
+        }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Get all info and write to file in the created file structure
+            // Compress the file into a zip file
+            // Change zip file to be a custom zip file
+
+            // For load: unzip custom zip file
+
+            StringBuilder sb = new StringBuilder();
+
+            // Characters
+            /*foreach (TreeViewItem node in Elements.)
+            {
+                sb.AppendLine(node.Name);
+            }
+
+            SaveFileDialog saveList = new SaveFileDialog();
+
+            saveList.DefaultExt = "*.mvia";
+            saveList.Filter = "MVIA Files|*.mvia";
+
+            if (saveList.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(saveList.FileName, sb.ToString());
+            }*/
         }
     }
 }

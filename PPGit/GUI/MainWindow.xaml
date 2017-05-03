@@ -55,6 +55,13 @@
                         </ContextMenu>
                     </MenuItem.ContextMenu>
                 </MenuItem>
+                
+                <Button x:Name="SaveBtn" 
+                        Content="Save" Width="75" 
+                        RenderTransformOrigin="5.8,0.575" Click="SaveBtn_Click"
+                        
+                        />
+                
             </Menu>
         </DockPanel>
 
@@ -88,8 +95,8 @@
 								  SelectedItemChanged="Elements_SelectedItemChanged"
 								  SourceUpdated="Elements_SourceUpdated"
 								  AllowDrop="True" Height="483" VerticalAlignment="Top" Width="135">
-                    <TreeViewItem x:Name="Characters_TVL" Header="Characters"/>
-                    <TreeViewItem x:Name="Locations_TVL" Header="Locations"/>
+                    <TreeViewItem x:Name="Characters_TVI" Header="Characters"/>
+                    <TreeViewItem x:Name="Locations_TVI" Header="Locations"/>
 
                 </TreeView>
 

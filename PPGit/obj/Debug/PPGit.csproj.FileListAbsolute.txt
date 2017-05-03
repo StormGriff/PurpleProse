@@ -1,57 +1,39 @@
-C:\Users\stash\Desktop\PurpleProse-Joey-Branch\PPGit\bin\Debug\PPGit.exe.config
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\bin\Debug\PPGit.exe.config
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\bin\Debug\PPGit.exe
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\bin\Debug\PPGit.pdb
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\PPGit.csprojResolveAssemblyReference.cache
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\App.g.cs
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\GUI\Calendar.g.cs
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\GUI\Create\CreateCharacter.g.cs
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\GUI\MainWindow.g.cs
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\PPGit_MarkupCompile.cache
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\PPGit_MarkupCompile.lref
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\App.baml
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\GUI\Calendar.baml
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\GUI\Create\CreateCharacter.baml
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\GUI\MainWindow.baml
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\PPGit.g.resources
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\PPGit.Properties.Resources.resources
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\PPGit.csproj.GenerateResource.Cache
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\PPGit.exe
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\PPGit.pdb
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\GUI\addDeadline.g.cs
-C:\Users\stash\Desktop\PurpleProse-Calendar\PPGit\obj\Debug\GUI\addDeadline.baml
-M:\Git Repos\PurpleProse\PPGit\bin\Debug\PPGit.exe.config
-M:\Git Repos\PurpleProse\PPGit\bin\Debug\PPGit.exe
-M:\Git Repos\PurpleProse\PPGit\bin\Debug\PPGit.pdb
-M:\Git Repos\PurpleProse\PPGit\bin\Debug\MahApps.Metro.dll
-M:\Git Repos\PurpleProse\PPGit\bin\Debug\Ookii.Dialogs.Wpf.dll
-M:\Git Repos\PurpleProse\PPGit\bin\Debug\System.Windows.Interactivity.dll
-M:\Git Repos\PurpleProse\PPGit\bin\Debug\MahApps.Metro.pdb
-M:\Git Repos\PurpleProse\PPGit\bin\Debug\MahApps.Metro.xml
-M:\Git Repos\PurpleProse\PPGit\bin\Debug\Ookii.Dialogs.Wpf.xml
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\Resources\Icons.baml
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\Resources\IconsNonShared.baml
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\App.g.cs
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\addDeadline.g.cs
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\AppThemeChanger.g.cs
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\Calendar.g.cs
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\deadlineInfo.g.cs
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\MainWindow.g.cs
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\TextEditor.g.cs
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit_MarkupCompile.cache
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit_MarkupCompile.lref
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\App.baml
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\addDeadline.baml
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\AppThemeChanger.baml
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\Calendar.baml
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\deadlineInfo.baml
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\MainWindow.baml
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\TextEditor.baml
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.g.resources
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.Properties.Resources.resources
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.csproj.GenerateResource.Cache
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.exe
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.pdb
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.csprojResolveAssemblyReference.cache
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\DetailWindows\CharacterWindow.g.cs
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\DetailWindows\CharacterWindow.baml
+C:\PurpleProse-master\PurpleProse\PPGit\bin\Debug\PPGit.exe.config
+C:\PurpleProse-master\PurpleProse\PPGit\bin\Debug\PPGit.exe
+C:\PurpleProse-master\PurpleProse\PPGit\bin\Debug\PPGit.pdb
+C:\PurpleProse-master\PurpleProse\PPGit\bin\Debug\MahApps.Metro.dll
+C:\PurpleProse-master\PurpleProse\PPGit\bin\Debug\Ookii.Dialogs.Wpf.dll
+C:\PurpleProse-master\PurpleProse\PPGit\bin\Debug\System.Windows.Interactivity.dll
+C:\PurpleProse-master\PurpleProse\PPGit\bin\Debug\MahApps.Metro.pdb
+C:\PurpleProse-master\PurpleProse\PPGit\bin\Debug\MahApps.Metro.xml
+C:\PurpleProse-master\PurpleProse\PPGit\bin\Debug\Ookii.Dialogs.Wpf.xml
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\PPGit.csprojResolveAssemblyReference.cache
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\Resources\Icons.baml
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\Resources\IconsNonShared.baml
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\App.g.cs
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\addDeadline.g.cs
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\AppThemeChanger.g.cs
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\Calendar.g.cs
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\deadlineInfo.g.cs
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\DetailWindows\CharacterWindow.g.cs
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\DetailWindows\LocationWindow2.g.cs
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\MainWindow.g.cs
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\TextEditor.g.cs
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\Launcher.g.cs
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\PPGit_MarkupCompile.cache
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\PPGit_MarkupCompile.lref
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\App.baml
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\addDeadline.baml
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\AppThemeChanger.baml
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\Calendar.baml
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\Deadlines\deadlineInfo.baml
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\DetailWindows\CharacterWindow.baml
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\DetailWindows\LocationWindow2.baml
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\MainWindow.baml
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\TextEditor.baml
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\GUI\Launcher.baml
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\PPGit.g.resources
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\PPGit.Properties.Resources.resources
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\PPGit.csproj.GenerateResource.Cache
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\PPGit.exe
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\PPGit.pdb
