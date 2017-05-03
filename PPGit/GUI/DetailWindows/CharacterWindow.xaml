@@ -19,6 +19,14 @@
 		</Style>
 		
 		<Style x:Key="NewStdCombo" BasedOn="{StaticResource TopLeft}" TargetType="ComboBox">
+			<!--Metro Style Properties (copied here because I cannot figure out how else to access them)-->
+			<Setter Property="Background" Value="#FF252525"/>
+			<Setter Property="Controls:ControlsHelper.MouseOverBorderBrush" Value="{DynamicResource Gray2}"/>
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="FontFamily" Value="Segoe UI, Lucida Sans Unicode, Verdana"/>
+			<Setter Property="Controls:ControlsHelper.FocusBorderBrush" Value="White"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource Gray6}"/>
+
 			<Setter Property="IsEditable" Value="True"/>
 			<Setter Property="Width" Value="129"/>
 			<Setter Property="Height" Value="23"/>
@@ -41,20 +49,12 @@
 			<Grid>
 				<Label   x:Name="L4" Content="Description"							Style="{StaticResource TopLeft}"/>
 				<Grid x:Name="DescControl" Margin="10,46,10,0" Height="92">
-					<!--Grid.ColumnDefinitions>
-						<ColumnDefinition Width="3"/>
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="3" />
-					</Grid.ColumnDefinitions-->
-					<!--GridSplitter Grid.Row="1" Grid.ColumnSpan="2" ResizeDirection="Rows" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="4" BorderThickness="0,0,0,1" BorderBrush="Gray" Background="Transparent"/-->
-					<RichTextBox Grid.Row="0" Grid.Column="0" x:Name="DescBox" Focusable="False" PreviewMouseDoubleClick="DescBox_PreviewMouseDoubleClick">
+					<RichTextBox x:Name="DescBox" Focusable="False" PreviewMouseDoubleClick="DescBox_PreviewMouseDoubleClick">
 						<FlowDocument x:Name="DescBox_" Focusable="False">
 							<Paragraph x:Name="DescBox__">
 							</Paragraph>
 						</FlowDocument>
 					</RichTextBox>
-					<GridSplitter Grid.Row="1" Grid.ColumnSpan="2" ResizeDirection="Rows"    HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="4" BorderThickness="0,0,0,1" BorderBrush="Gray" Background="Transparent"/>
-					<GridSplitter Grid.RowSpan="2" Grid.Column="1" ResizeDirection="Columns" HorizontalAlignment="Right"   VerticalAlignment="Stretch" Width="4" BorderThickness="0,0,0,1" BorderBrush="Gray" Background="Transparent"/>
 				</Grid>
 			</Grid>
 			<WrapPanel>

@@ -40,8 +40,8 @@ namespace PPGit.GUI.DetailWindows
 			RoleBox.Text = Person.charRole;
 			LingBox.Text = Person.charLanguage;
 			RaceBox.Text = Person.charKind;
-		//	if (Person.DescText == null) DescBox.AppendText("Double Click to add (not yet available).");
-		//	else DescBox.AppendText(Person.DescText);
+			if (Person.DescText == null) DescBox.AppendText("Double Click to add (not yet available).");
+			else DescBox.AppendText(Person.DescText);
 			foreach(string image_file in Person.Images){ Add_picture(image_file); }
 		}
 
@@ -107,24 +107,13 @@ namespace PPGit.GUI.DetailWindows
 			{	double yval = 0;
 				Image picture = new Image();
 				BitmapImage bitpic = new BitmapImage(new Uri(FQP));
-				picture.Source = bitpic;//new BitmapImage( new Uri(FQP) );
+				picture.Source = bitpic;
 				picture.Width = bitpic.Width;
 				picture.Height = bitpic.Height;
-
+				picture.Margin = new Thickness(5,5,5,5);
 #if OPT1	
 				double maxX = Canvas_pics.Width - bitpic.Width;
 				double maxY = Canvas_pics.Height - bitpic.Height;		
-#endif
-#if OPT2
-				picture.Height = 20;
-				picture.Width = 20;
-#endif
-#if OPT3
-				//picture.Margin = new MyControl.Margin.Thickness(60,89,0,0);// VerticalAlignment="Top" Height="100" Width="100"
-				Thickness marge = picture.Margin;
-				marge.Left = 60;
-				marge.Top = 89;
-				picture.Margin = marge;
 #endif
 			/*	if (null != Pics.Children.OfType<Image>().Last())
 					foreach(Image imy in Pics.Children.OfType<Image>()) { yval += imy.Height; }
