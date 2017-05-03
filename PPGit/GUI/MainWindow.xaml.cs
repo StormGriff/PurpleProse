@@ -19,6 +19,7 @@ using MahApps.Metro.Controls;
 using MahApps.Metro;
 
 using PPGit.GUI.DetailWindows;
+using System.IO;
 
 namespace PPGit.GUI
 {
@@ -82,7 +83,7 @@ namespace PPGit.GUI
             DataGrid.DataContext = bindChar.DefaultView;
 			*/
 
-            PPGit.Lib.TextOps.editor = "D:\\Documents\\Visual Studio 2015\\Projects\\HelloWPF\\HelloWPF\\bin\\Debug\\HelloWPF.exe";//"D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\HelloWPF - Shortcut.exe";
+            //PPGit.Lib.TextOps.editor = "D:\\Documents\\Visual Studio 2015\\Projects\\HelloWPF\\HelloWPF\\bin\\Debug\\HelloWPF.exe";//"D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\HelloWPF - Shortcut.exe";
                                                                                                                          // Intialization of default texteditor must be moved, and edited.
         }
 
@@ -260,6 +261,33 @@ namespace PPGit.GUI
             AppThemeChanger wnd = new AppThemeChanger();
 
             wnd.Show();
+        }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Get all info and write to file in the created file structure
+            // Compress the file into a zip file
+            // Change zip file to be a custom zip file
+
+            // For load: unzip custom zip file
+
+            StringBuilder sb = new StringBuilder();
+
+            // Characters
+            /*foreach (TreeViewItem node in Elements.)
+            {
+                sb.AppendLine(node.Name);
+            }
+
+            SaveFileDialog saveList = new SaveFileDialog();
+
+            saveList.DefaultExt = "*.mvia";
+            saveList.Filter = "MVIA Files|*.mvia";
+
+            if (saveList.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(saveList.FileName, sb.ToString());
+            }*/
         }
     }
 }

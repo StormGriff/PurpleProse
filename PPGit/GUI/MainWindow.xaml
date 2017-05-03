@@ -55,6 +55,13 @@
                         </ContextMenu>
                     </MenuItem.ContextMenu>
                 </MenuItem>
+                
+                <Button x:Name="SaveBtn" 
+                        Content="Save" Width="75" 
+                        RenderTransformOrigin="5.8,0.575" Click="SaveBtn_Click"
+                        
+                        />
+                
             </Menu>
         </DockPanel>
 
