@@ -97,5 +97,14 @@ namespace PPGit.GUI.Deadlines
         {
             this.Close();
         }
+
+        private void removeBTN_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult warning = MessageBox.Show("You are about to delete this deadline, are you sure?", "WARNING", MessageBoxButton.YesNo, MessageBoxImage.Hand);
+            if (warning == MessageBoxResult.Yes) {
+                Lib.time.removeDeadline(thisDeadline);
+                this.Close();
+            }
+        }
     }
 }

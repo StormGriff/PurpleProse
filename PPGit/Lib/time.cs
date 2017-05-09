@@ -12,6 +12,7 @@ namespace PPGit.Lib
         public static DateTime lastDay;
         private static List<PPGit.Lib.deadline> deadlines = new List<PPGit.Lib.deadline>();
         public static int currentWords;
+        public static bool deleted = false;
         public static PPGit.Lib.deadline addDeadline
         {
             set
@@ -26,6 +27,7 @@ namespace PPGit.Lib
         public static void removeDeadline(PPGit.Lib.deadline removeThis)
         {
             deadlines.Remove(removeThis);
+            deleted = true;
         }
         public static bool deadlineMatch(int day)
         { //Do we have a match?
