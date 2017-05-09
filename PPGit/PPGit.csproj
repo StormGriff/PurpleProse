@@ -108,6 +108,7 @@
       <DependentUpon>CharacterWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\MainWindow.xaml.cs" />
+    <Compile Include="GUI\MapMaker\MapMaker.xaml.cs" />
     <Compile Include="GUI\TextEditor.xaml.cs">
       <DependentUpon>TextEditor.xaml</DependentUpon>
     </Compile>
@@ -119,10 +120,15 @@
     <Compile Include="Lib\CY_Object.cs" />
     <Compile Include="Lib\deadline.cs" />
     <Compile Include="Lib\Location.cs" />
+    <Compile Include="Lib\mapStack.cs" />
     <Compile Include="Lib\Object.cs" />
     <Compile Include="Lib\Planet.cs" />
     <Compile Include="Lib\Region.cs" />
     <Compile Include="Lib\room.cs" />
+    <Page Include="GUI\MapMaker\MapMaker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GUI\TextEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
