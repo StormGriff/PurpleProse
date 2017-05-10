@@ -2,7 +2,7 @@
 using System.IO;
 using System.ComponentModel;
 using System.Windows;
-
+using PPGit.GUI.DetailWindows;
 using MahApps.Metro.Controls;
 
 namespace PPGit.Lib
@@ -13,7 +13,7 @@ namespace PPGit.Lib
 		protected string description, history;
 		public List<string> Images;
 		protected List<relationship> MyRelationships;	//List of this objects relationships
-		public MetroWindow window;						//A reference to the Object's page used for activation checking.
+		public /*Adornament_Win/*/MetroWindow window;						//A reference to the Object's page used for activation checking.
 		public static System.IO.FileNotFoundException InvalidTextFile;
 		public enum relationshipTypes { Null, Father, Mother, Sibling, Friend, Enemy }; //Types of relationships... let me know if we need more
 

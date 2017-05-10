@@ -10,7 +10,7 @@
 		Height="520" Width="413"
 		Background="Maroon"
 		SizeChanged="Window_SizeChanged"
-		Closing="MetroWindow_Closing">
+		Closing="MetroWindow_Closing" Loaded="Window_Loaded">
 	<Window.Resources>
 		<Style x:Key="TopLeft" TargetType="{x:Type Control}"><!--Needs to be based on the metro style-->
 			<Setter Property="VerticalAlignment" Value="Top"/>

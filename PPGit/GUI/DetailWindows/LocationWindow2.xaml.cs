@@ -20,7 +20,7 @@ namespace PPGit.GUI.DetailWindows
 	/// <summary>
 	/// Interaction logic for LocationWindow.xaml
 	/// </summary>
-	public partial class LocationWindow : MetroWindow
+	public partial class LocationWindow : /*Adornment_Win/*/MetroWindow
 	{
 		private PPGit.Lib.Location Place;
 

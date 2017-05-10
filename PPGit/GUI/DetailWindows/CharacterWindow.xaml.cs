@@ -22,7 +22,7 @@ namespace PPGit.GUI.DetailWindows
     /// <summary>
     /// Interaction logic for CharacterWindow.xaml
     /// </summary>
-    public partial class CharacterWindow : MetroWindow
+    public partial class CharacterWindow : /*Adornment_Win//*/MetroWindow
     {
         private PPGit.Lib.Character Person;
 		private const int defaultwidth = 413;
@@ -111,17 +111,14 @@ namespace PPGit.GUI.DetailWindows
 				picture.Width = bitpic.Width;
 				picture.Height = bitpic.Height;
 				picture.Margin = new Thickness(5,5,5,5);
-#if OPT1	
-				double maxX = Canvas_pics.Width - bitpic.Width;
-				double maxY = Canvas_pics.Height - bitpic.Height;		
-#endif
-			/*	if (null != Pics.Children.OfType<Image>().Last())
-					foreach(Image imy in Pics.Children.OfType<Image>()) { yval += imy.Height; }
-				Canvas.SetLeft(picture, 31);
-				Canvas.SetTop( picture, yval + 1);
-			*/	WrapP_pics.Children.Add(picture);
+				//picture += new SizeChangedEventHandler(PictureSizeChanged);
+				WrapP_pics.Children.Add(picture);
 				
 			} catch (Exception x) { MessageBox.Show("An unexpected error occured."); Trace.Write("Exception: "+x); }
+		}
+
+		private void PictureSizeChanged(object sender, SizeChangedEventArgs e) {
+			throw new NotImplementedException();
 		}
 
 		private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -155,5 +152,6 @@ namespace PPGit.GUI.DetailWindows
 		private void gridSplitter_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e) {
 			Trace.WriteLine("DragCompleted");
 		}
+
 	}
 }
