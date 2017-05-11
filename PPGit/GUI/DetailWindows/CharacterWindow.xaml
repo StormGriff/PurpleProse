@@ -8,7 +8,6 @@
         mc:Ignorable="d"
         Title="CharacterWindow"
 		Height="520" Width="413"
-		Background="Maroon"
 		SizeChanged="Window_SizeChanged"
 		Closing="MetroWindow_Closing" Loaded="Window_Loaded">
 	<Window.Resources>
@@ -40,7 +39,7 @@
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 		
-		<WrapPanel Grid.Column="0" x:Name="Info" HorizontalAlignment="Left" Background="DarkSlateGray" >
+		<WrapPanel Grid.Column="0" x:Name="Info" HorizontalAlignment="Left" >
 			<WrapPanel Margin="0,0,20,0">
 				<Label   x:Name="NameLabel" Content="Name" FontSize="14"			Style="{StaticResource TopLeft}"/>
 				<TextBox x:Name="NameBox" LostKeyboardFocus="NameBox_LostKeyFocus"	Style="{StaticResource TopLeft}" TextWrapping="Wrap" FontSize="15" Width="129" Height="23" />
@@ -85,12 +84,12 @@
 		
 		<GridSplitter Grid.Column="1" x:Name="gridSplitter" HorizontalAlignment="Stretch" Width="5" DragStarted="gridSplitter_DragStarted" DragCompleted="gridSplitter_DragCompleted" DragDelta="gridSplitter_DragDelta"/>
 
-		<Grid Grid.Column="2" Name="Art_space" Height="auto" Background="#FF1B24F0">
+		<Grid Grid.Column="2" Name="Art_space" Height="auto">
 			<Label x:Name="label" Content="Art Work:" HorizontalAlignment="Left" Margin="0,29,0,0" VerticalAlignment="Top"/>
 			<Button x:Name="NewPic" Content="Load" HorizontalAlignment="Left" Margin="143,32,0,0" VerticalAlignment="Top" Width="41" Click="NewPic_Click"/>
 			<Canvas x:Name="Canvas_pics" Margin="10,60,10,0" Panel.ZIndex="1" ScrollViewer.CanContentScroll="True">
 				<WrapPanel x:Name="WrapP_pics" HorizontalAlignment="Left" VerticalAlignment="Top"
-						   MaxWidth="{Binding ActualWidth, ElementName=Canvas_pics}" ScrollViewer.CanContentScroll="True" Background="Aqua"/>
+						   MaxWidth="{Binding ActualWidth, ElementName=Canvas_pics}" ScrollViewer.CanContentScroll="True"/>
 			</Canvas>
 		</Grid>
 	</Grid>
