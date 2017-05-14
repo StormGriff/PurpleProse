@@ -15,8 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 
+using System.IO;
 using MahApps.Metro.Controls;
-using MahApps.Metro;
 
 using PPGit.GUI.DetailWindows;
 
@@ -30,43 +30,66 @@ namespace PPGit.GUI
     {
 
         //static string texteditor; Currently using seperate class
-        ObservableCollection<Lib.Character> characters;
-        ObservableCollection<Lib.Location> locations;
-        DataTable bindChar;
         //	TreeView Elements;
 
         public MainWindow()
         {
-            characters = new ObservableCollection<Lib.Character>();
-            locations = new ObservableCollection<Lib.Location>();
-            bindChar = new DataTable();
+            mainLists.characterList = new ObservableCollection<Lib.Character>();
+            mainLists.locationList = new ObservableCollection<Lib.Location>();
+
             InitializeComponent();
         }
 
-
-        #region Title Bar and Border
-
-        private void TitleBarText_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void NewCharacter()
         {
-            this.DragMove();
+            Lib.Character New_Char = new Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
+            // ^Create a character^
+
+            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + mainLists.objNum);
+            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + mainLists.objNum + "\\images");
+            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + mainLists.objNum + "\\texts");
+
+            New_Char.Number = mainLists.objNum;
+            mainLists.objNum++;
+
+            File.Create(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + New_Char.Number + "\\" + New_Char.Name.ToLower() + ".info");
+
+            
+
+            mainLists.characterList.Add(New_Char);						//Add it to the list of characters
+
+            New_Char.window = new CharacterWindow(New_Char);//give it a window (stored inside for later reference)
+            New_Char.window.Show();							//Show it.
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void NewLocation()
         {
-            this.Close();
+            Lib.Location New_Loc = new Lib.Location("The_State", null, null, null);
+            // ^Create a location^
+
+            Directory.CreateDirectory(mainLists.projectDir + "\\items\\locations\\" + New_Loc.Name.ToLower() + mainLists.objNum);
+            Directory.CreateDirectory(mainLists.projectDir + "\\items\\locations\\" + New_Loc.Name.ToLower() + mainLists.objNum + "\\images");
+            Directory.CreateDirectory(mainLists.projectDir + "\\items\\locations\\" + New_Loc.Name.ToLower() + mainLists.objNum + "\\texts");
+
+            New_Loc.Number = mainLists.objNum;
+            mainLists.objNum++;
+
+            File.Create(mainLists.projectDir + "\\items\\locations\\" + New_Loc.Name.ToLower() + New_Loc.Number + "\\" + New_Loc.Name.ToLower() + ".info");
+
+            mainLists.locationList.Add(New_Loc);						//Add it to the list of locations
+            New_Loc.window = new LocationWindow(New_Loc);//give it a window (stored inside for later reference)
+            New_Loc.window.Show();						//Show it.
         }
 
-        private void MaxButton_Click(object sender, RoutedEventArgs e)
+        private void ResetDisplay()
         {
-            this.WindowState = (this.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
+            lblDisplayHeader.Content = null;
+            lblDisplayLine1.Content = null;
+            lblDisplayLine2.Content = null;
+            lblDisplayLine3.Content = null;
+            blkDisplayLines.Text = null;
         }
 
-        private void MinButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        #endregion
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -82,8 +105,7 @@ namespace PPGit.GUI
             DataGrid.DataContext = bindChar.DefaultView;
 			*/
 
-            PPGit.Lib.TextOps.editor = "D:\\Documents\\Visual Studio 2015\\Projects\\HelloWPF\\HelloWPF\\bin\\Debug\\HelloWPF.exe";//"D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\HelloWPF - Shortcut.exe";
-                                                                                                                         // Intialization of default texteditor must be moved, and edited.
+            //PPGit.Lib.TextOps.editor = "D:\\Documents\\Visual Studio 2015\\Projects\\HelloWPF\\HelloWPF\\bin\\Debug\\HelloWPF.exe";//"D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\HelloWPF - Shortcut.exe";
         }
 
         private void Window_Activated(object sender, System.EventArgs e)
@@ -93,12 +115,11 @@ namespace PPGit.GUI
                 //UpdateBinding();
                 var sub_folder = Elements.Items[0] as TreeViewItem;
                 sub_folder.ItemsSource = null;
-                sub_folder.ItemsSource = characters;
+                sub_folder.ItemsSource = mainLists.characterList;
 
-                /**/
                 sub_folder = Elements.Items[1] as TreeViewItem;
                 sub_folder.ItemsSource = null;
-                sub_folder.ItemsSource = locations;
+                sub_folder.ItemsSource = mainLists.locationList;
             }
         }
 
@@ -111,7 +132,7 @@ namespace PPGit.GUI
 			// ... Create a TreeViewItem.
 			TreeViewItem Characters_TVL = new TreeViewItem();
 			Characters_TVL.Header = "Characters";
-
+			
 			// ... Create a second TreeViewItem.
 			TreeViewItem _Locations = new TreeViewItem();
 			_Locations.Header = "Locations";
@@ -122,38 +143,87 @@ namespace PPGit.GUI
 
             var sub_folder = Elements.Items[0] as TreeViewItem;
             sub_folder.ItemsSource = null;
-            sub_folder.ItemsSource = characters;
+            sub_folder.ItemsSource = mainLists.characterList;
 
-            /**/
             sub_folder = Elements.Items[1] as TreeViewItem;
             sub_folder.ItemsSource = null;
-            sub_folder.ItemsSource = locations;
+            sub_folder.ItemsSource = mainLists.locationList;
 
         }
 
         private void Elements_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             var selection = (sender as TreeView).SelectedItem;
-            /**/
-            if (selection is Lib.Character)
-            {
-                var select = selection as Lib.Character;
 
-                CharacterWindow win = new CharacterWindow(select);
-                win.Show();
-            }
-            else if (selection is Lib.Location)
+            if (selection is Lib.Character)								//If the slected item is a character
             {
-                var select = selection as Lib.Location;
+                var Acharacter = selection as Lib.Character;            //call it Acharacter
+                string role;
 
-                //LocationWindow win = new CharacterWindow(select);
-                //win.Show();
+                if(Acharacter.charRole != null)
+                {
+                    role = " ( " + Acharacter.charRole + " ) ";
+                }
+                else
+                {
+                    role = null;
+                }
+
+                lblDisplayHeader.Content = Acharacter.Name + role;
+                lblDisplayLine1.Content = Acharacter.charAge;
+                lblDisplayLine2.Content = Acharacter.charKind;
+                lblDisplayLine3.Content = Acharacter.charGender;
+                blkDisplayLines.Text = Acharacter.DescText;
             }
-            else if (selection is Lib.Object)
+            else if (selection is Lib.Location)                 //If the slected item is a location
             {
-                var select = selection as Lib.Object;
-                //if (select.its_window == null) ;//new    ObjectWindow(select).Show();
-                //else select.its_window.Activate();
+                var Alocation = selection as Lib.Location;          //call it Alocation
+
+                lblDisplayHeader.Content = Alocation.Name;
+                lblDisplayLine1.Content = Alocation.size;
+                blkDisplayLines.Text = Alocation.DescText;
+            }
+            else if (selection is Lib.Object)               //If the slected item is a misc. item
+            {
+                var Athing = selection as Lib.Object;           //call it Athing
+                if (Athing.window == null) ;                    //if it does not have a window
+                                                                /*{	Athing.window = new ObjectWindow(Athing);	//	create a new window for it
+                                                                 *	Athing.window.Show(); }*/                    //	and make it visable
+                else Athing.window.Activate();                  //otherwise make its window active
+            }
+        }
+
+        private void Elements_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selection = (sender as TreeView).SelectedItem;
+
+            if (selection is Lib.Character)								//If the slected item is a character
+            {
+                var Acharacter = selection as Lib.Character;            //call it Acharacter
+                if (Acharacter.window == null)                          //if it does not have a window
+                {
+                    Acharacter.window = new CharacterWindow(Acharacter);//	create a new window for it
+                    Acharacter.window.Show();                           //	and make it visable
+                }
+                else Acharacter.window.Activate();						//otherwise make its window active
+            }
+            else if (selection is Lib.Location)                 //If the slected item is a location
+            {
+                var Alocation = selection as Lib.Location;          //call it Alocation
+                if (Alocation.window == null)                       //if it does not have a window
+                {
+                    Alocation.window = new LocationWindow(Alocation);//	create a new window for it
+                    Alocation.window.Show();                        //	and make it visable
+                }
+                else Alocation.window.Activate();                   //otherwise make its window active
+            }
+            else if (selection is Lib.Object)               //If the slected item is a misc. item
+            {
+                var Athing = selection as Lib.Object;           //call it Athing
+                if (Athing.window == null) ;                    //if it does not have a window
+                                                                /*{	Athing.window = new ObjectWindow(Athing);	//	create a new window for it
+                                                                 *	Athing.window.Show(); }*/                    //	and make it visable
+                else Athing.window.Activate();                  //otherwise make its window active
             }
         }
 
@@ -165,101 +235,174 @@ namespace PPGit.GUI
             (sender as MenuItem).ContextMenu.IsOpen = true;
         }
 
-        //need to add for location
-        private void UpdateBinding()
-        {
-            bindChar.Clear();
-
-            foreach (PPGit.Lib.Character c in characters)
-            {
-                DataRow dr = bindChar.NewRow();
-                dr["Name"] = c.Name;
-                dr["Age"] = c.charAge;
-                dr["Race"] = c.charKind;
-                dr["Gender"] = c.charGender;
-                dr["Role"] = c.charRole;
-                dr["Language"] = c.charLanguage;
-                dr["Hometown"] = c.charHometown;
-                bindChar.Rows.Add(dr);
-            }
-        }
-
-        private void NewColumn(string label, string ctype = "System.String")
-        {
-            DataColumn dc = new DataColumn();
-            dc.ColumnName = label;
-            dc.DataType = System.Type.GetType(ctype);
-            bindChar.Columns.Add(dc);
-        }
-        private void NewColumn(List<string> labels)
-        {
-            DataColumn dc;
-            foreach (string label in labels)
-            {
-                dc = new DataColumn();
-                dc.ColumnName = label;
-                dc.DataType = System.Type.GetType("System.String");
-                bindChar.Columns.Add(dc);
-            }
-        }
-
-        private void Add_Character_LeftMouseUp(object sender, MouseButtonEventArgs e)
-        {
-            Lib.Character New_Char = new Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
-            characters.Add(New_Char);
-
-            GUI.DetailWindows.CharacterWindow win = new CharacterWindow(New_Char);
-            win.Show();
-
-            //new CharacterWindow(New_Char);
-            //New_Char.its_window.Show();
-        }
-
-        private void Add_Location_LeftMouseUp(object sender, MouseButtonEventArgs e)
-        {
-            Lib.Location New_Loc = new Lib.Location("The_State", null, null, null);
-            locations.Add(New_Loc);
-
-            //to show the window, use code as above for add_character
-            //its_window was a resource sink that really didn't need to be there
-
-            //new LocationWindow(New_Loc);
-            //New_Loc.its_window.Show();
-        }
-
-        private void Text_Click(object sender, RoutedEventArgs e)
-        {
-            PPGit.GUI.TextEditor test = new PPGit.GUI.TextEditor();
-
-            test.Show();
-        }
-
-        private void Cal_Click(object sender, RoutedEventArgs e)
-        {
-            PPGit.GUI.Deadlines.Calendar test = new Deadlines.Calendar();
-
-            test.Show();
-        }
-
-        private void Theme_Click(object sender, RoutedEventArgs e)
-        {
-            PPGit.GUI.AppThemeChanger temp = new PPGit.GUI.AppThemeChanger();
-
-            temp.Show();
-        }
-
-        private void Music_Click(object sender, RoutedEventArgs e)
-        {
-            //PPGit.GUI.MusicPlayer.MusicPlayer temp = new MusicPlayer.MusicPlayer();
-
-            //temp.Show();
-        }
-
         private void btnRightWindowChangeTheme_Click(object sender, RoutedEventArgs e)
         {
             AppThemeChanger wnd = new AppThemeChanger();
 
             wnd.Show();
+        }
+
+        private void NewCharacterContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            NewCharacter();
+        }
+
+        private void NewLocationContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            NewLocation();
+        }
+
+        private void ViewEditContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            var selection = Elements.SelectedItem;
+
+            if (selection is Lib.Character)								//If the slected item is a character
+            {
+                var Acharacter = selection as Lib.Character;            //call it Acharacter
+                if (Acharacter.window == null)                          //if it does not have a window
+                {
+                    Acharacter.window = new CharacterWindow(Acharacter);//	create a new window for it
+                    Acharacter.window.Show();                           //	and make it visable
+                }
+                else Acharacter.window.Activate();						//otherwise make its window active
+            }
+            else if (selection is Lib.Location)                 //If the slected item is a location
+            {
+                var Alocation = selection as Lib.Location;          //call it Alocation
+                if (Alocation.window == null)                       //if it does not have a window
+                {
+                    Alocation.window = new LocationWindow(Alocation);//	create a new window for it
+                    Alocation.window.Show();                        //	and make it visable
+                }
+                else Alocation.window.Activate();                   //otherwise make its window active
+            }
+            else if (selection is Lib.Object)               //If the slected item is a misc. item
+            {
+                var Athing = selection as Lib.Object;           //call it Athing
+                if (Athing.window == null) ;                    //if it does not have a window
+                                                                /*{	Athing.window = new ObjectWindow(Athing);	//	create a new window for it
+                                                                 *	Athing.window.Show(); }*/                    //	and make it visable
+                else Athing.window.Activate();                  //otherwise make its window active
+            }
+        }
+
+        private void DeleteContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            var selection = Elements.SelectedItem;
+
+            if (selection is Lib.Character)								//If the slected item is a character
+            {
+                var Acharacter = selection as Lib.Character;            //call it Acharacter
+
+                mainLists.characterList.Remove(Acharacter);
+
+                Directory.Delete(mainLists.projectDir + "\\items\\characters\\" + Acharacter.Name.ToLower() + Acharacter.Number, true);
+
+                ResetDisplay();
+            }
+            else if (selection is Lib.Location)                 //If the slected item is a location
+            {
+                var Alocation = selection as Lib.Location;          //call it Alocation
+
+                mainLists.locationList.Remove(Alocation);
+
+                Directory.Delete(mainLists.projectDir + "\\items\\locations\\" + Alocation.Name.ToLower() + Alocation.Number, true);
+
+                ResetDisplay();
+            }
+            else if (selection is Lib.Object)               //If the slected item is a misc. item
+            {
+                var Athing = selection as Lib.Object;           //call it Athing
+
+            }
+        }
+
+        private void btnViewEdit_Click(object sender, RoutedEventArgs e)
+        {
+            var selection = Elements.SelectedItem;
+
+            if (selection is Lib.Character)								//If the slected item is a character
+            {
+                var Acharacter = selection as Lib.Character;            //call it Acharacter
+                if (Acharacter.window == null)                          //if it does not have a window
+                {
+                    Acharacter.window = new CharacterWindow(Acharacter);//	create a new window for it
+                    Acharacter.window.Show();                           //	and make it visable
+                }
+                else Acharacter.window.Activate();						//otherwise make its window active
+            }
+            else if (selection is Lib.Location)                 //If the slected item is a location
+            {
+                var Alocation = selection as Lib.Location;          //call it Alocation
+                if (Alocation.window == null)                       //if it does not have a window
+                {
+                    Alocation.window = new LocationWindow(Alocation);//	create a new window for it
+                    Alocation.window.Show();                        //	and make it visable
+                }
+                else Alocation.window.Activate();                   //otherwise make its window active
+            }
+            else if (selection is Lib.Object)               //If the slected item is a misc. item
+            {
+                var Athing = selection as Lib.Object;           //call it Athing
+                if (Athing.window == null) ;                    //if it does not have a window
+                                                                /*{	Athing.window = new ObjectWindow(Athing);	//	create a new window for it
+                                                                 *	Athing.window.Show(); }*/                    //	and make it visable
+                else Athing.window.Activate();                  //otherwise make its window active
+            }
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var selection = Elements.SelectedItem;
+
+            if (selection is Lib.Character)								//If the slected item is a character
+            {
+                var Acharacter = selection as Lib.Character;            //call it Acharacter
+
+                mainLists.characterList.Remove(Acharacter);
+
+                ResetDisplay();
+            }
+            else if (selection is Lib.Location)                 //If the slected item is a location
+            {
+                var Alocation = selection as Lib.Location;          //call it Alocation
+
+                mainLists.locationList.Remove(Alocation);
+
+                ResetDisplay();
+            }
+            else if (selection is Lib.Object)               //If the slected item is a misc. item
+            {
+                var Athing = selection as Lib.Object;           //call it Athing
+
+            }
+        }
+
+        private void mnuCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            PPGit.GUI.Deadlines.Calendar win = new Deadlines.Calendar();
+            win.Show();
+        }
+
+        private void mnuRestoreItems_Click(object sender, RoutedEventArgs e)
+        {
+            PPGit.GUI.RecycleBin.RecycleBin win = new RecycleBin.RecycleBin();
+            win.Show();
+        }
+
+        private void mnuMusic_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void mnuNewProject_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void mnuExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

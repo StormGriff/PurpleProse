@@ -87,6 +87,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI\DetailWindows\LocationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Launcher\Launcher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -107,12 +115,18 @@
     <Compile Include="GUI\DetailWindows\CharacterWindow.xaml.cs">
       <DependentUpon>CharacterWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DetailWindows\LocationWindow.xaml.cs">
+      <DependentUpon>LocationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Launcher\Launcher.xaml.cs">
+      <DependentUpon>Launcher.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\MainWindow.xaml.cs" />
     <Compile Include="GUI\MapMaker\MapMaker.xaml.cs" />
     <Compile Include="GUI\RecycleBin\RecycleBin.xaml.cs">
       <DependentUpon>RecycleBin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\TextEditor.xaml.cs">
+    <Compile Include="GUI\TextEditor\TextEditor.xaml.cs">
       <DependentUpon>TextEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\ThemeManagerHelper.cs" />
@@ -122,6 +136,7 @@
     <Compile Include="Lib\Country.cs" />
     <Compile Include="Lib\CY_Object.cs" />
     <Compile Include="Lib\deadline.cs" />
+    <Compile Include="Lib\Load.cs" />
     <Compile Include="Lib\Location.cs" />
     <Compile Include="Lib\mapStack.cs" />
     <Compile Include="Lib\Object.cs" />
@@ -137,7 +152,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\TextEditor.xaml">
+    <Page Include="GUI\TextEditor\TextEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

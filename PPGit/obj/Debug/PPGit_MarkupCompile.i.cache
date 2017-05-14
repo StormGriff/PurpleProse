@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-12-1534253985
+14-186222321
 
-34-275824757
+37-1824908336
 16-1012325367
-App.xaml;GUI\Deadlines\addDeadline.xaml;GUI\AppThemeChanger.xaml;GUI\Deadlines\Calendar.xaml;GUI\Deadlines\deadlineInfo.xaml;GUI\DetailWindows\CharacterWindow.xaml;GUI\MainWindow.xaml;GUI\MapMaker\MapMaker.xaml;GUI\RecycleBin\RecycleBin.xaml;GUI\TextEditor.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;
+App.xaml;GUI\Deadlines\addDeadline.xaml;GUI\AppThemeChanger.xaml;GUI\Deadlines\Calendar.xaml;GUI\Deadlines\deadlineInfo.xaml;GUI\DetailWindows\CharacterWindow.xaml;GUI\DetailWindows\LocationWindow.xaml;GUI\Launcher\Launcher.xaml;GUI\MainWindow.xaml;GUI\MapMaker\MapMaker.xaml;GUI\RecycleBin\RecycleBin.xaml;GUI\TextEditor\TextEditor.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;
 
 True
 

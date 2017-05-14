@@ -18,7 +18,7 @@ using MahApps.Metro;
 
 using Ookii.Dialogs.Wpf;
 
-namespace PPGit.GUI
+namespace PPGit.GUI.TextEditor
 {
     /// <summary>
     /// Interaction logic for TextEditor.xaml
@@ -34,26 +34,43 @@ namespace PPGit.GUI
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
         }
 
+        public TextEditor(string FQpath)
+        {
+            InitializeComponent();
+
+            cmbFontFamily.ItemsSource = Fonts.SystemFontFamilies;
+
+            cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
+
+            OpenFile(FQpath);
+        }
+
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
-            Ookii.Dialogs.Wpf.VistaOpenFileDialog ofd = new VistaOpenFileDialog();
-            ofd.Filter = "Rich Text Format (*.rtf)|*.rtf|All Files (*.*)|*.*";
-
-            if(ofd.ShowDialog() == true)
+            try
             {
-                FileStream fs = new FileStream(ofd.FileName, FileMode.Open);
-                TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
-                range.Load(fs, DataFormats.Rtf);
+                Ookii.Dialogs.Wpf.VistaOpenFileDialog ofd = new VistaOpenFileDialog();
+                ofd.Filter = "Rich Text Format (*.rtf)|*.rtf|All Files (*.*)|*.*";
 
-                this.Title = ofd.FileName;
+                if (ofd.ShowDialog() == true) OpenFile(ofd.FileName);
             }
+            catch (Exception) { }
+        }
+
+        private void OpenFile(string FQpath)
+        {
+            FileStream fs = new FileStream(FQpath, FileMode.Open);
+            TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+            range.Load(fs, DataFormats.Rtf);
+
+            this.Title = FQpath;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             Ookii.Dialogs.Wpf.VistaSaveFileDialog sfd = new VistaSaveFileDialog();
 
-            if(sfd.ShowDialog() == true)
+            if (sfd.ShowDialog() == true)
             {
                 FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
                 TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
@@ -63,7 +80,7 @@ namespace PPGit.GUI
 
         private void cmbFontFamily_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(cmbFontFamily.SelectedItem != null)
+            if (cmbFontFamily.SelectedItem != null)
             {
                 rtbEditor.Selection.ApplyPropertyValue(Inline.FontFamilyProperty, cmbFontFamily.SelectedItem);
             }

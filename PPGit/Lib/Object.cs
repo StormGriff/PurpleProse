@@ -1,16 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.ComponentModel;
+using System.Windows;
+using PPGit.GUI.DetailWindows;
+using MahApps.Metro.Controls;
 
 namespace PPGit.Lib
 {
     public abstract class Object : INotifyPropertyChanged //This will be a parent class to all objects
     {
-        public enum relationshipTypes { Null, Father, Mother, Sibling, Friend, Enemy }; //Types of relationships... let me know if we need more
         public string Name { get; set; }
-        protected string description, history, imageFile;
-        protected List<relationship> MyRelationships; //List of this objects relationships
+        public string Directory { get; set; }
+        public long Number { get; set; }
+        protected string description, history;
+        public List<string> Images;
+        protected List<relationship> MyRelationships;   //List of this objects relationships
+        public /*Adornament_Win/*/MetroWindow window;                       //A reference to the Object's page used for activation checking.
         public static System.IO.FileNotFoundException InvalidTextFile;
+        public enum relationshipTypes { Null, Father, Mother, Sibling, Friend, Enemy }; //Types of relationships... let me know if we need more
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propName)
@@ -28,38 +36,40 @@ namespace PPGit.Lib
         {
             Name = Original.Name;
             description = Original.description;
-            imageFile = Original.imageFile;
+            Images = Original.Images;
             MyRelationships = Original.MyRelationships;
             //	attributes = copy.attributes;
         }
 
         /*public Object(string name, Window wind, string desc, string hist, string pict = "") {
 			if (!string.IsNullOrEmpty(name)) Name = name;
-			if (wind != null) its_window = wind;
-			if (!string.IsNullOrEmpty(desc)) description = desc; //desc, hist, and imageFile hold filenames with extension
+			if (wind != null) window = wind;
+			if (!string.IsNullOrEmpty(desc)) description = desc; //desc, hist, and images hold filenames with extension
 			if (!string.IsNullOrEmpty(hist)) history = hist;
-			if (!string.IsNullOrEmpty(pict)) imageFile = pict;
+			if (!string.IsNullOrEmpty(pict)) images = pict;
 			MyRelationships = new List<relationship>();
 		}*/
 
-        public Object(string name, string desc, string hist, string pict = "")
+        public Object(string name, string desc, string hist, List<string> pics = null)
         {
             if (!string.IsNullOrEmpty(name)) Name = name;
-            if (!string.IsNullOrEmpty(desc)) description = desc; //desc, hist, and imageFile hold filenames with extension
+            if (!string.IsNullOrEmpty(desc)) description = desc; //desc, hist, and Images hold filenames with extension
             if (!string.IsNullOrEmpty(hist)) history = hist;
-            if (!string.IsNullOrEmpty(pict)) imageFile = pict;
+            if (null != pics) Images = pics;
+            else Images = new List<string>();
             MyRelationships = new List<relationship>();
         }
 
         public string DescFile { get { return description; } set { description = value; } }
         public string HistFile { get { return history; } set { history = value; } }
-        public string ImageFile { get { return imageFile; } set { imageFile = value; } }
+        //	public List<string> ImgFiles{ get { return Images;		} set { Images		= value; } }
         public string DescText
         { //Gets and Sets the description text
             get
             {
                 if (description == null) return null;
-                else {
+                else
+                {
                     try { return string.Join("\n", File.ReadAllLines(description)); }
                     catch (FileNotFoundException) { return null; }
                 }
@@ -76,7 +86,8 @@ namespace PPGit.Lib
             get
             {
                 if (history == null) return null;
-                else {
+                else
+                {
                     try { return string.Join("\n", File.ReadAllLines(history)); }
                     catch (FileNotFoundException) { return null; }
                 }
@@ -115,10 +126,8 @@ namespace PPGit.Lib
             return relationshipTypes.Null; //If the given object does not have a relationship to this object, return null type
         }
 
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() { return Name; }
 
     }
 }
+
