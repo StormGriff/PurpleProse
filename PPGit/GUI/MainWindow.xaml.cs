@@ -361,6 +361,8 @@ namespace PPGit.GUI
 
                 mainLists.characterList.Remove(Acharacter);
 
+                Lib.Recycle.Bin.add(Acharacter); //Add to recycle bin
+
                 ResetDisplay();
             }
             else if (selection is Lib.Location)                 //If the slected item is a location
@@ -368,6 +370,8 @@ namespace PPGit.GUI
                 var Alocation = selection as Lib.Location;          //call it Alocation
 
                 mainLists.locationList.Remove(Alocation);
+
+                Lib.Recycle.Bin.add(Alocation); //Add to recycle bin
 
                 ResetDisplay();
             }
