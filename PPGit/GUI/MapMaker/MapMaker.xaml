@@ -6,19 +6,20 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:PPGit.GUI"
         mc:Ignorable="d"
-        Title="Map Creator" Height="463.945" Width="681.414" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner" Initialized="mapMakerFRM_Initialized" KeyDown="mapMakerFRM_KeyDown" KeyUp="mapMakerFRM_KeyUp" Closing="mapMakerFRM_Closing">
+        Title="Map Creator" Height="461.331" Width="669.652" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner" Initialized="mapMakerFRM_Initialized" KeyDown="mapMakerFRM_KeyDown" KeyUp="mapMakerFRM_KeyUp" Closing="mapMakerFRM_Closing" Loaded="mapMakerFRM_Loaded">
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
             <Button x:Name="btnRightWindowChangeTheme" Content="change app theme" Click="btnRightWindowChangeTheme_Click"/>
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
-    
+
     <Grid>
         <Canvas x:Name="mapCVS" HorizontalAlignment="Left" Height="335" Margin="10,70,0,0" VerticalAlignment="Top" Width="644" Background="#FFF7F7F7" MouseMove="mapCVS_MouseMove" MouseLeftButtonDown="mapCVS_MouseLeftButtonDown" MouseRightButtonDown="mapCVS_MouseRightButtonDown"/>
         <Menu HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="678">
             <MenuItem x:Name="fileBTN" Header="File" Click="fileBTN_Click">
                 <MenuItem x:Name="openBTN" Header="Open" Click="openBTN_Click"/>
                 <MenuItem x:Name="saveBTN" Header="Save As..." Click="saveBTN_Click"/>
+                <MenuItem x:Name="tutorialBTN" Header="Show Tutorial" Click="tutorialBTN_Click"/>
             </MenuItem>
             <MenuItem x:Name="backgroundLST" Header="Background" Height="31" Width="90" HorizontalAlignment="Center" VerticalAlignment="Center" Click="backgroundLST_Click">
                 <MenuItem.ContextMenu>
