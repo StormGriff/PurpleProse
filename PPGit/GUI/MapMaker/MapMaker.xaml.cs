@@ -35,6 +35,7 @@ namespace PPGit.GUI
         bool cntrl = false;
         bool z = false;
         bool shift = false;
+        tutorial theTutorial;
 
         private void snowBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -79,7 +80,7 @@ namespace PPGit.GUI
         private void mountainBTN_Click(object sender, RoutedEventArgs e)
         {
             switchIcons();
-            picLoc = new Uri(@"..\..\Map POIs\mountains.png", UriKind.Relative); //Location of the image
+            picLoc = new Uri(@"..\..\Map POIs\Mountains.png", UriKind.Relative); //Location of the image
             map = new BitmapImage(picLoc);
             img = new Image();
             img.Source = map;
@@ -115,6 +116,7 @@ namespace PPGit.GUI
         private void mapMakerFRM_Initialized(object sender, EventArgs e)
         {
             iconsLST.IsEnabled = false;
+            theTutorial = new tutorial();
         }
 
         private void cityBTN_Click(object sender, RoutedEventArgs e)
@@ -255,6 +257,17 @@ namespace PPGit.GUI
             AppThemeChanger wnd = new AppThemeChanger();
 
             wnd.Show();
+        }
+
+        private void mapMakerFRM_Loaded(object sender, RoutedEventArgs e)
+        {
+            theTutorial.ShowDialog();
+        }
+
+        private void tutorialBTN_Click(object sender, RoutedEventArgs e)
+        {
+            theTutorial = new tutorial();
+            theTutorial.ShowDialog();
         }
     }
 }
