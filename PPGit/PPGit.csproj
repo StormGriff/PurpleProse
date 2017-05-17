@@ -116,6 +116,7 @@
     </Compile>
     <Compile Include="GUI\MainWindow.xaml.cs" />
     <Compile Include="GUI\DetailWindows\ResizingAdorner.cs" />
+    <Compile Include="GUI\MultiStyleExtension.cs" />
     <Compile Include="GUI\TextEditor.xaml.cs">
       <DependentUpon>TextEditor.xaml</DependentUpon>
     </Compile>

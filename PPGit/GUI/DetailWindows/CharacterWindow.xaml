@@ -10,6 +10,7 @@
 		Height="520" Width="413"
 		SizeChanged="Window_SizeChanged"
 		Closing="MetroWindow_Closing" Loaded="Window_Loaded">
+
 	<Window.Resources>
 		<Style x:Key="TopLeft" TargetType="{x:Type Control}"><!--Needs to be based on the metro style-->
 			<Setter Property="VerticalAlignment" Value="Top"/>
@@ -18,13 +19,13 @@
 		</Style>
 		
 		<Style x:Key="NewStdCombo" BasedOn="{StaticResource TopLeft}" TargetType="ComboBox">
-			<!--Metro Style Properties (copied here because I cannot figure out how else to access them)-->
+			<!--Metro Style Properties (copied here because I cannot figure out how else to access them)>
 			<Setter Property="Background" Value="#FF252525"/>
 			<Setter Property="Controls:ControlsHelper.MouseOverBorderBrush" Value="{DynamicResource Gray2}"/>
 			<Setter Property="Foreground" Value="White"/>
 			<Setter Property="FontFamily" Value="Segoe UI, Lucida Sans Unicode, Verdana"/>
 			<Setter Property="Controls:ControlsHelper.FocusBorderBrush" Value="White"/>
-			<Setter Property="BorderBrush" Value="{DynamicResource Gray6}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource Gray6}"/-->
 
 			<Setter Property="IsEditable" Value="True"/>
 			<Setter Property="Width" Value="129"/>
@@ -41,12 +42,12 @@
 		
 		<WrapPanel Grid.Column="0" x:Name="Info" HorizontalAlignment="Left" >
 			<WrapPanel Margin="0,0,20,0">
-				<Label   x:Name="NameLabel" Content="Name" FontSize="14"			Style="{StaticResource TopLeft}"/>
-				<TextBox x:Name="NameBox" LostKeyboardFocus="NameBox_LostKeyFocus"	Style="{StaticResource TopLeft}" TextWrapping="Wrap" FontSize="15" Width="129" Height="23" />
+				<Label   x:Name="NameLabel" Content="Name" FontSize="14"			Style="{local:MultiStyle MetroLabel TopLeft}"/>
+				<TextBox x:Name="NameBox" LostKeyboardFocus="NameBox_LostKeyFocus"	Style="{local:MultiStyle MetroTextBox TopLeft}" TextWrapping="Wrap" FontSize="15" Width="129" Height="23" />
 				<!--Text="{Binding Person.Name, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource AncestorType=TreeView, AncestorLevel=1}, Mode=TwoWay}"/-->
 			</WrapPanel>
 			<Grid>
-				<Label   x:Name="L4" Content="Description"							Style="{StaticResource TopLeft}"/>
+				<Label   x:Name="L4" Content="Description"							Style="{local:MultiStyle MetroLabel TopLeft}"/>
 				<Grid x:Name="DescControl" Margin="10,46,10,0" Height="92">
 					<RichTextBox x:Name="DescBox" Focusable="False" PreviewMouseDoubleClick="DescBox_PreviewMouseDoubleClick">
 						<FlowDocument x:Name="DescBox_" Focusable="False">
@@ -57,36 +58,36 @@
 				</Grid>
 			</Grid>
 			<WrapPanel>
-				<Label   x:Name="AgeLabel" Content="Age"								Style="{StaticResource TopLeft}"/>
-				<TextBox x:Name="AgeBox" LostKeyboardFocus="AgeBox_LostKeyFocus"		Style="{StaticResource TopLeft}" TextWrapping="Wrap" Width="31" Height="23"/>
+				<Label   x:Name="AgeLabel" Content="Age"								Style="{local:MultiStyle MetroLabel TopLeft}"/>
+				<TextBox x:Name="AgeBox" LostKeyboardFocus="AgeBox_LostKeyFocus"		Style="{local:MultiStyle MetroTextBox TopLeft}" TextWrapping="Wrap" Width="31" Height="23"/>
 			</WrapPanel>
 			<WrapPanel>
-				<Label   x:Name="GeLabel" Content="Gender"								Style="{StaticResource TopLeft}"/>
-				<ComboBox x:Name="GenderBox" LostKeyboardFocus="GenderBox_LostKeyFocus" Style="{StaticResource NewStdCombo}" Width="58"/>
+				<Label   x:Name="GeLabel" Content="Gender"								Style="{local:MultiStyle MetroLabel TopLeft}"/>
+				<ComboBox x:Name="GenderBox" LostKeyboardFocus="GenderBox_LostKeyFocus" Style="{local:MultiStyle MetroComboBox NewStdCombo}" Width="58"/>
 			</WrapPanel>
 			<WrapPanel>
-				<Label   x:Name="RoleLabel" Content="Role"								Style="{StaticResource TopLeft}"/>
-				<ComboBox x:Name="RoleBox" LostKeyboardFocus="RoleBox_LostKeyFocus"		Style="{StaticResource NewStdCombo}" Width="72"/>
+				<Label   x:Name="RoleLabel" Content="Role"								Style="{local:MultiStyle MetroLabel TopLeft}"/>
+				<ComboBox x:Name="RoleBox" LostKeyboardFocus="RoleBox_LostKeyFocus"		Style="{local:MultiStyle MetroComboBox NewStdCombo}" Width="72"/>
 			</WrapPanel>
 			<WrapPanel>
-				<Label   x:Name="HomeLabel" Content="HomeTown"							Style="{StaticResource TopLeft}"/>
-				<ComboBox x:Name="HomeBox" LostKeyboardFocus="HomeBox_LostKeyFocus"		Style="{StaticResource NewStdCombo}"/>
+				<Label   x:Name="HomeLabel" Content="HomeTown"							Style="{local:MultiStyle MetroLabel TopLeft}"/>
+				<ComboBox x:Name="HomeBox" LostKeyboardFocus="HomeBox_LostKeyFocus"		Style="{local:MultiStyle MetroComboBox NewStdCombo}"/>
 			</WrapPanel>
 			<WrapPanel>
-				<Label   x:Name="LingLabel" Content="Language"							Style="{StaticResource TopLeft}"/>
-				<ComboBox x:Name="LingBox" LostKeyboardFocus="LingBox_LostKeyFocus"		Style="{StaticResource NewStdCombo}"/>
+				<Label   x:Name="LingLabel" Content="Language"							Style="{local:MultiStyle MetroLabel TopLeft}"/>
+				<ComboBox x:Name="LingBox" LostKeyboardFocus="LingBox_LostKeyFocus"		Style="{local:MultiStyle MetroComboBox NewStdCombo}"/>
 			</WrapPanel>
 			<WrapPanel>
-				<Label   x:Name="RaceLabel" Content="Race"								Style="{StaticResource TopLeft}"/>
-				<ComboBox x:Name="RaceBox" LostKeyboardFocus="RaceBox_LostKeyFocus"		Style="{StaticResource NewStdCombo}"/>
+				<Label   x:Name="RaceLabel" Content="Race"								Style="{local:MultiStyle MetroLabel TopLeft}"/>
+				<ComboBox x:Name="RaceBox" LostKeyboardFocus="RaceBox_LostKeyFocus"		Style="{local:MultiStyle MetroComboBox NewStdCombo}"/>
 			</WrapPanel>
 		</WrapPanel>
 		
 		<GridSplitter Grid.Column="1" x:Name="gridSplitter" HorizontalAlignment="Stretch" Width="5" DragStarted="gridSplitter_DragStarted" DragCompleted="gridSplitter_DragCompleted" DragDelta="gridSplitter_DragDelta"/>
 
 		<Grid Grid.Column="2" Name="Art_space" Height="auto">
-			<Label x:Name="label" Content="Art Work:" HorizontalAlignment="Left" Margin="0,29,0,0" VerticalAlignment="Top"/>
-			<Button x:Name="NewPic" Content="Load" HorizontalAlignment="Left" Margin="143,32,0,0" VerticalAlignment="Top" Width="41" Click="NewPic_Click"/>
+			<Label x:Name="label" Content="Art Work:" Margin="0,29,0,0" Style="{local:MultiStyle MetroLabel TopLeft}"/>
+			<Button x:Name="NewPic" Content="Load" Style="{local:MultiStyle MetroButton TopLeft}" Margin="143,32,0,0" Width="41" Click="NewPic_Click"/>
 			<Canvas x:Name="Canvas_pics" Margin="10,60,10,0" Panel.ZIndex="1" ScrollViewer.CanContentScroll="True">
 				<WrapPanel x:Name="WrapP_pics" HorizontalAlignment="Left" VerticalAlignment="Top"
 						   MaxWidth="{Binding ActualWidth, ElementName=Canvas_pics}" ScrollViewer.CanContentScroll="True"/>

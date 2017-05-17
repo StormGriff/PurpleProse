@@ -16,6 +16,7 @@ using System.Windows.Markup;
 using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System.Diagnostics;
+using MahApps.Metro;
 
 namespace PPGit.GUI.DetailWindows
 {
@@ -43,6 +44,9 @@ namespace PPGit.GUI.DetailWindows
 			if (Person.DescText == null) DescBox.AppendText("Double Click to add (not yet available).");
 			else DescBox.AppendText(Person.DescText);
 			foreach(string image_file in Person.Images){ Add_picture(image_file); }
+			var wndStyle = ThemeManager.DetectAppStyle(Application.Current);
+			var theme = ThemeManager.GetAppTheme("BaseDark");
+			ThemeManager.ChangeAppStyle(Application.Current, wndStyle.Item2, theme);
 		}
 
         #region Title Bar and Border
