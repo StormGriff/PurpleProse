@@ -13,5 +13,6 @@ namespace PPGit
         public static string projectDir = null;
         public static ObservableCollection<PPGit.Lib.Character> characterList = new ObservableCollection<Lib.Character>();
         public static ObservableCollection<PPGit.Lib.Location> locationList = new ObservableCollection<Lib.Location>();
+        public static long wordCount = 0;
     }
 }
