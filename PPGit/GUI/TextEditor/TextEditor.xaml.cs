@@ -25,6 +25,7 @@ namespace PPGit.GUI.TextEditor
     /// </summary>
     public partial class TextEditor : MetroWindow
     {
+        private bool fullStory; //Is the user writing the full story in this window?
         public TextEditor()
         {
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace PPGit.GUI.TextEditor
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
         }
 
-        public TextEditor(string FQpath)
+        public TextEditor(string FQpath, bool fullStory = false)
         {
             InitializeComponent();
 
@@ -43,6 +44,7 @@ namespace PPGit.GUI.TextEditor
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
 
             OpenFile(FQpath);
+            this.fullStory = fullStory;
         }
 
         private void btnOpen_Click(object sender, RoutedEventArgs e)
@@ -86,6 +88,22 @@ namespace PPGit.GUI.TextEditor
             }
         }
 
+        private int countWords() { //Count words in textbox
+            TextRange newRange = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+            int words = 0;
+            bool white = false;
+            foreach (char theChar in newRange.Text.ToCharArray())
+            {
+                if (char.IsWhiteSpace(theChar) && !white)
+                {
+                    words++; //Count spaces
+                    white = !white; //white is going to equal true
+                }
+                else if (!char.IsWhiteSpace(theChar)) white = false; //No more successive white space
+            }
+            return words;
+        }
+
         private void cmbFontSize_TextChanged(object sender, RoutedEventArgs e)
         {
             rtbEditor.Selection.ApplyPropertyValue(Inline.FontSizeProperty, cmbFontSize.Text);
@@ -114,6 +132,11 @@ namespace PPGit.GUI.TextEditor
             AppThemeChanger wnd = new AppThemeChanger();
 
             wnd.Show();
+        }
+
+        private void WordsBTN_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Word Count: " + countWords().ToString(), "NUMBER OF WORDS", MessageBoxButton.OK, MessageBoxImage.None);
         }
     }
 }

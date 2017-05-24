@@ -408,11 +408,5 @@ namespace PPGit.GUI
         {
             this.Close();
         }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            GUI.MapMaker newMap = new MapMaker();
-            newMap.Show();
-        }
     }
 }

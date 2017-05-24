@@ -13,7 +13,7 @@
             <Button x:Name="btnRightWindowChangeTheme" Content="change app theme" Click="btnRightWindowChangeTheme_Click"/>
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
-    
+
     <DockPanel>
         <ToolBar DockPanel.Dock="Top" HorizontalAlignment="Right"
                  Margin="0,0,0.333,0" Width="593">
@@ -75,9 +75,14 @@
                       Opacity="0.8"/>
             <ComboBox Name="cmbFontSize" Width="50" IsEditable="True"
                       TextBoxBase.TextChanged="cmbFontSize_TextChanged"/>
+            <Button x:Name="WordsBTN" Content="Get Word Count" Height="29" VerticalAlignment="Top" Width="106" Margin="0,0,0,-0.2" Click="WordsBTN_Click"/>
         </ToolBar>
-        
+
         <RichTextBox Name="rtbEditor"
-                     SelectionChanged="rtbEditor_SelectionChanged"/>
+                     SelectionChanged="rtbEditor_SelectionChanged">
+            <FlowDocument>
+                <Paragraph/>
+            </FlowDocument>
+        </RichTextBox>
     </DockPanel>
 </Controls:MetroWindow>
