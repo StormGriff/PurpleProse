@@ -26,13 +26,14 @@ namespace PPGit.GUI.TextEditor
     public partial class TextEditor : MetroWindow
     {
         private bool fullStory; //Is the user writing the full story in this window?
-        public TextEditor()
+        public TextEditor(bool fullStory = false)
         {
             InitializeComponent();
 
             cmbFontFamily.ItemsSource = Fonts.SystemFontFamilies;
 
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
+            this.fullStory = fullStory;
         }
 
         public TextEditor(string FQpath, bool fullStory = false)
@@ -77,6 +78,11 @@ namespace PPGit.GUI.TextEditor
                 FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
                 TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
                 range.Save(fs, DataFormats.Rtf);
+                if (fullStory)
+                {
+                    mainLists.storyLocation = sfd.FileName;  //Store location of story
+                    mainLists.wordCount = countWords();
+                }
             }
         }
 
@@ -137,6 +143,11 @@ namespace PPGit.GUI.TextEditor
         private void WordsBTN_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Word Count: " + countWords().ToString(), "NUMBER OF WORDS", MessageBoxButton.OK, MessageBoxImage.None);
+        }
+
+        private void MetroWindow_Closed(object sender, EventArgs e)
+        {
+            if(fullStory) mainLists.fullEditor = null;
         }
     }
 }

@@ -384,7 +384,9 @@ namespace PPGit.GUI
 
         private void mnuCalendar_Click(object sender, RoutedEventArgs e)
         {
-            PPGit.GUI.Deadlines.Calendar win = new Deadlines.Calendar();
+            PPGit.GUI.Deadlines.Calendar win;
+            if (mainLists.wordCount > 0) win = new Deadlines.Calendar(mainLists.wordCount);
+            else win = new Deadlines.Calendar();
             win.Show();
         }
 
@@ -407,6 +409,19 @@ namespace PPGit.GUI
         private void mnuExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void storyBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (mainLists.fullEditor != null)
+            {
+                mainLists.fullEditor.Activate();
+            }
+            else {
+                if (mainLists.storyLocation == null) mainLists.fullEditor = new TextEditor.TextEditor(true);
+                else mainLists.fullEditor = new TextEditor.TextEditor(mainLists.storyLocation, true); //True for full story
+                mainLists.fullEditor.Show();
+            }
         }
     }
 }

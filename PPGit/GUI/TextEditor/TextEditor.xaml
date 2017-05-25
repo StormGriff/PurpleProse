@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PPGit.GUI"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="Text Editor" Height="300" Width="600">
+        Title="Text Editor" Height="300" Width="600" Closed="MetroWindow_Closed">
 
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>

@@ -22,7 +22,7 @@ namespace PPGit.GUI.Deadlines
     /// </summary>
     public partial class Calendar : MetroWindow
     {
-        public Calendar(int words = 0)
+        public Calendar(long words = 0)
         {
             Lib.time.currentWords = words;
             InitializeComponent();
@@ -429,7 +429,7 @@ namespace PPGit.GUI.Deadlines
         { //Sets how many days and words left for deadline in GUI
             wordsLeftLBL.Visibility = Visibility.Hidden;
             daysLeftLBL.Visibility = Visibility.Hidden;
-            int words = 0;
+            long words = 0;
             int days = 0;
             DateTime lastDate = DateTime.MaxValue;
             foreach (PPGit.Lib.deadline theDeadline in Lib.time.getAllDeadlines())
@@ -2277,7 +2277,7 @@ namespace PPGit.GUI.Deadlines
 
         private void wordsLeftOutput()
         {
-            int num = 0;
+            long num = 0;
             foreach (PPGit.Lib.deadline thisDeadline in Lib.time.getAllDeadlines())
             {
                 if (num == 0) num = thisDeadline.theWordCount;

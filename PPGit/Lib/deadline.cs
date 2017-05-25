@@ -9,7 +9,7 @@ namespace PPGit.Lib
     public class deadline
     {
         private DateTime newDeadline;
-        private int wordCount;
+        private long wordCount;
         private bool usingWordCount;
         private string notes;
         private bool usingNotes;
@@ -43,7 +43,7 @@ namespace PPGit.Lib
             if (newDeadline.Year == year && newDeadline.Month == month && newDeadline.Day == day) return true;
             else return false;
         }
-        public int theWordCount
+        public long theWordCount
         {
             set
             {
@@ -61,7 +61,7 @@ namespace PPGit.Lib
                 return newDeadline;
             }
         }
-        public int wordsLeft
+        public long wordsLeft
         {
             get
             {
@@ -70,8 +70,8 @@ namespace PPGit.Lib
             }
             set
             {
-                int left = wordCount - PPGit.Lib.time.currentWords;
-                int newValue = value - left; //What was the change?
+                long left = wordCount - PPGit.Lib.time.currentWords;
+                long newValue = value - left; //What was the change?
                 wordCount += newValue;
             }
         }

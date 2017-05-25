@@ -55,6 +55,7 @@
                         </ContextMenu>
                     </MenuItem.ContextMenu>
                 </MenuItem>
+                <Button x:Name="storyBTN" Content="Write Story" Width="85" Height="7" Click="storyBTN_Click"/>
             </Menu>
         </DockPanel>
 
@@ -62,14 +63,16 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".3*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <!--<DataGrid Name="DataGrid" Grid.Row="0" ItemsSource="{Binding}">
-                --><!--I thought this might need to be used for making a proper tree list--><!--
+                -->
+            <!--I thought this might need to be used for making a proper tree list-->
+            <!--
             </DataGrid>-->
 
             <DockPanel Grid.Column="0" x:Name="TreeList" Panel.ZIndex="0">
@@ -103,6 +106,10 @@
 
 
             <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="57*"/>
+                    <ColumnDefinition Width="181*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -112,13 +119,13 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Label Name="lblDisplayHeader" Grid.Row="0" HorizontalAlignment="Center" FontSize="25"/>
-                <Label Name="lblDisplayLine1" Grid.Row="1" HorizontalAlignment="Center" FontSize="15"/>
-                <Label Name="lblDisplayLine2" Grid.Row="2" HorizontalAlignment="Center" FontSize="15"/>
-                <Label Name="lblDisplayLine3" Grid.Row="3" HorizontalAlignment="Center" FontSize="15"/>
-                <TextBlock Name="blkDisplayLines" Grid.Row="4" HorizontalAlignment="Center" FontSize="12" TextWrapping="Wrap" Margin="5"/>
+                <Label Name="lblDisplayHeader" Grid.Row="0" HorizontalAlignment="Center" FontSize="25" Grid.Column="1" Margin="118.8,0,233,9.2" Grid.RowSpan="2"/>
+                <Label Name="lblDisplayLine1" Grid.Row="1" HorizontalAlignment="Center" FontSize="15" Grid.Column="1" Margin="118.8,0.4,233,0.2"/>
+                <Label Name="lblDisplayLine2" Grid.Row="1" HorizontalAlignment="Center" FontSize="15" Grid.Column="1" Margin="118.8,9.4,233,9.4" Grid.RowSpan="3"/>
+                <Label Name="lblDisplayLine3" Grid.Row="3" HorizontalAlignment="Center" FontSize="15" Grid.Column="1" Margin="118.8,0.2,233,0.4"/>
+                <TextBlock Name="blkDisplayLines" Grid.Row="4" HorizontalAlignment="Center" FontSize="12" TextWrapping="Wrap" Margin="123.8,4.6,238,5" Grid.Column="1"/>
 
-                <Grid Grid.Row="5">
+                <Grid Grid.Row="5" Grid.ColumnSpan="2" Margin="0,0,0,0.4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
