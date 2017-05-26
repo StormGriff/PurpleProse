@@ -11,7 +11,7 @@ namespace PPGit.Lib
         public static DateTime firstDay;
         public static DateTime lastDay;
         private static List<PPGit.Lib.deadline> deadlines = new List<PPGit.Lib.deadline>();
-        public static int currentWords;
+        public static long currentWords;
         public static bool deleted = false;
         public static PPGit.Lib.deadline addDeadline
         {

@@ -43,7 +43,7 @@ namespace PPGit.GUI.Deadlines
             string day = theDate.Day.ToString();
             this.Title = day + ", " + month;
             //Setting the Word-Count
-            int words = thisDeadline.theWordCount;
+            long words = thisDeadline.theWordCount;
             if (words == 0)
             {
                 wordsLeftLBL.IsEnabled = false;
