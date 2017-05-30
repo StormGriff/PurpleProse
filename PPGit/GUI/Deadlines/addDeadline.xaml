@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PPGit.GUI.Deadlines"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="Deadline" Height="238.311" Width="499.651" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Loaded="addDeadline1_Loaded">
+        Title="Deadline" Height="247.368" Width="522.859" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Loaded="addDeadline1_Loaded">
 
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>

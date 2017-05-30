@@ -96,6 +96,7 @@ namespace PPGit.GUI.TextEditor
 
         private int countWords() { //Count words in textbox
             TextRange newRange = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+            if (newRange.Text == "\r\n") return 0; //No words in text box
             int words = 0;
             bool white = false;
             foreach (char theChar in newRange.Text.ToCharArray())
