@@ -1,0 +1,116 @@
+﻿<Controls:MetroWindow x:Class="PPGit.GUI.DetailWindows.CharacterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PPGit.GUI.DetailWindows"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="CharacterWindow"
+		Height="475" Width="410"
+        MinHeight="475" MaxHeight="475"
+        MinWidth="410" MaxWidth="410"
+		SizeChanged="Window_SizeChanged"
+		Closing="MetroWindow_Closing">
+    <!--<Window.Resources>
+        <Style x:Key="TopLeft" TargetType="{x:Type Control}">
+            --><!--Needs to be based on the metro style--><!--
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="10,10,0,0"/>
+        </Style>
+
+        <Style x:Key="NewStdCombo" BasedOn="{StaticResource TopLeft}" TargetType="ComboBox">
+            --><!--Metro Style Properties (copied here because I cannot figure out how else to access them)--><!--
+            <Setter Property="Background" Value="#FF252525"/>
+            <Setter Property="Controls:ControlsHelper.MouseOverBorderBrush" Value="{DynamicResource Gray2}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Segoe UI, Lucida Sans Unicode, Verdana"/>
+            <Setter Property="Controls:ControlsHelper.FocusBorderBrush" Value="White"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Gray6}"/>
+
+            <Setter Property="IsEditable" Value="True"/>
+            <Setter Property="Width" Value="129"/>
+            <Setter Property="Height" Value="23"/>
+        </Style>
+
+    </Window.Resources>-->
+    
+    <Grid x:Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <WrapPanel Grid.Column="0" x:Name="Info" HorizontalAlignment="Left" >
+            <WrapPanel Margin="0,0,20,0">
+                <Label   x:Name="NameLabel" Content="Name" FontSize="14"			/>
+                <TextBox x:Name="NameBox" LostKeyboardFocus="NameBox_LostKeyFocus"	 TextWrapping="Wrap" FontSize="15" Width="129" Height="23" />
+                <!--Text="{Binding Person.Name, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource AncestorType=TreeView, AncestorLevel=1}, Mode=TwoWay}"/-->
+            </WrapPanel>
+            <Grid Margin="5">
+                <Label   x:Name="L4" Content="Description"							/>
+                <Grid x:Name="DescControl" Margin="10,46,10,0" Height="92">
+                    <RichTextBox x:Name="DescBox" Focusable="False" PreviewMouseDoubleClick="DescBox_PreviewMouseDoubleClick">
+                        <FlowDocument x:Name="DescBox_" Focusable="False">
+                            <Paragraph x:Name="DescBox__">
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </Grid>
+            </Grid>
+            <WrapPanel Margin="5">
+                <Label   x:Name="AgeLabel" Content="Age"								/>
+                <TextBox x:Name="AgeBox" LostKeyboardFocus="AgeBox_LostKeyFocus"		 TextWrapping="Wrap" Width="31" Height="23"/>
+            </WrapPanel>
+            <WrapPanel Margin="5">
+                <Label   x:Name="GeLabel" Content="Gender"								/>
+                <TextBox x:Name="GenderBox" LostKeyboardFocus="GenderBox_LostKeyFocus"   Width="72"/>
+            </WrapPanel>
+            <WrapPanel Margin="5">
+                <Label   x:Name="RoleLabel" Content="Role"								/>
+                <TextBox x:Name="RoleBox" LostKeyboardFocus="RoleBox_LostKeyFocus"		 Width="100"/>
+            </WrapPanel>
+            <WrapPanel Margin="5">
+                <Label   x:Name="HomeLabel" Content="HomeTown"							/>
+                <TextBox x:Name="HomeBox" LostKeyboardFocus="HomeBox_LostKeyFocus"		 Width="100"/>
+            </WrapPanel>
+            <WrapPanel Margin="5">
+                <Label   x:Name="LingLabel" Content="Language"							/>
+                <TextBox x:Name="LingBox" LostKeyboardFocus="LingBox_LostKeyFocus"		 Width="100"/>
+            </WrapPanel>
+            <WrapPanel Margin="5">
+                <Label   x:Name="RaceLabel" Content="Race"								/>
+                <TextBox x:Name="RaceBox" LostKeyboardFocus="RaceBox_LostKeyFocus"		 Width="100"/>
+            </WrapPanel>
+        </WrapPanel>
+
+        <!--<GridSplitter Grid.Column="1" x:Name="gridSplitter" HorizontalAlignment="Stretch" Width="5" DragStarted="gridSplitter_DragStarted" DragCompleted="gridSplitter_DragCompleted" DragDelta="gridSplitter_DragDelta"/>-->
+
+        <Grid Grid.Column="2" Name="Art_space" Height="auto">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="NewPic" Content="Add Image" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5" Click="NewPic_Click" Grid.Row="3"/>
+            <Button Name="PrimaryPic" Content="Select Primary Image" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="5" Click="PrimaryPic_Click" Grid.Row="3" FontSize="8"/>
+            <!--<Canvas x:Name="Canvas_pics" Margin="10,60,10,60" Panel.ZIndex="1" ScrollViewer.CanContentScroll="True">
+                <WrapPanel x:Name="WrapP_pics" HorizontalAlignment="Left" VerticalAlignment="Top"
+						   MaxWidth="{Binding ActualWidth, ElementName=Canvas_pics}" ScrollViewer.CanContentScroll="True"/>
+            </Canvas>-->
+            <Image Name="PrimaryImage" Grid.Row="0" Margin="5"> 
+                
+            </Image>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Image Name="SecondaryImage1" Margin="5" Width="60" Height="60"></Image>
+                <Image Name="SecondaryImage2" Margin="5" Width="60" Height="60"/>
+                <Button Name="btnBrowseImage" HorizontalAlignment="Right" VerticalAlignment="Center" Click="btnBrowseImage_Click">
+                    <TextBlock Text="Browse"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Controls:MetroWindow>
