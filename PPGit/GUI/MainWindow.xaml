@@ -14,11 +14,11 @@
         Loaded="Window_Loaded"
         Activated="Window_Activated">
 
-    <Controls:MetroWindow.RightWindowCommands>
+    <!--Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
             <Button x:Name="btnRightWindowChangeTheme" Content="change app theme" Click="btnRightWindowChangeTheme_Click"/>
         </Controls:WindowCommands>
-    </Controls:MetroWindow.RightWindowCommands>
+    </Controls:MetroWindow.RightWindowCommands-->
 
     <Grid Name="GridBackground"
                   Grid.Row="1" Grid.ColumnSpan="2"
@@ -34,9 +34,11 @@
                     <MenuItem.ContextMenu>
                         <ContextMenu>
                             <MenuItem x:Name="NewProj" FontSize="12" Header="New Project" Click="mnuNewProject_Click"/>
+							<Separator/>
+							<MenuItem x:Name="ChangeTheme" Header="Change App Theme" Click="btnRightWindowChangeTheme_Click"/>
                             <Separator/>
                             <MenuItem x:Name="Exit" FontSize="12" Header="Exit" Click="mnuExit_Click"/>
-                        </ContextMenu>
+						</ContextMenu>
                     </MenuItem.ContextMenu>
                 </MenuItem>
                 <MenuItem Name="Project" Header="Project" Click="MenuItem_Click" ContextMenuService.IsEnabled="False">
@@ -48,14 +50,24 @@
                         </ContextMenu>
                     </MenuItem.ContextMenu>
                 </MenuItem>
-                <MenuItem Name="Accessories" Header="Accessories" Click="MenuItem_Click" ContextMenuService.IsEnabled="False">
-                    <MenuItem.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Name="Music" Header="Music" FontSize="12" Click="mnuMusic_Click"/>
-                        </ContextMenu>
-                    </MenuItem.ContextMenu>
-                </MenuItem>
-            </Menu>
+				<MenuItem Name="Accessories" Header="Accessories" Click="MenuItem_Click" ContextMenuService.IsEnabled="False">
+					<MenuItem.ContextMenu>
+						<ContextMenu>
+							<MenuItem Name="Music" Header="Music" FontSize="12" Click="mnuMusic_Click"/>
+						</ContextMenu>
+					</MenuItem.ContextMenu>
+				</MenuItem>
+				<MenuItem  Name="Add" Header="Add" Click="MenuItem_Click" ContextMenuService.IsEnabled="False">
+					<MenuItem.ContextMenu>
+						<ContextMenu>
+							<MenuItem x:Name="Add_Object"	 FontSize="12" Header="Object"/>
+							<MenuItem x:Name="Add_Character" FontSize="12" Header="Character" PreviewMouseLeftButtonUp="Add_Character_PreviewMouseLeftButtonUp"/>
+							<MenuItem x:Name="Add_Location"  FontSize="12" Header="Location"  PreviewMouseLeftButtonUp="Add_Location_PreviewMouseLeftButtonUp"/>
+							<MenuItem x:Name="Add_Relationship" FontSize="12" Header="Relationship"/>
+						</ContextMenu>
+					</MenuItem.ContextMenu>
+				</MenuItem>
+			</Menu>
         </DockPanel>
 
         <Grid Grid.Row="1">
@@ -131,9 +143,8 @@
                     <Button Name="btnDelete" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="btnDelete_Click" Grid.Column="2" Margin="10">
                         <TextBlock Text="Delete"/>
                     </Button>
-                    <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="155,178,0,0" VerticalAlignment="Top" Width="104" Height="38" Click="button_Click"/>
 
-                </Grid>
+				</Grid>
             </Grid>
         </Grid>
     </Grid>
