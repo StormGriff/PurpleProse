@@ -70,7 +70,7 @@ namespace PPGit.Lib
                 if (description == null) return null;
                 else
                 {
-                    try { return string.Join("\n", File.ReadAllLines(description)); }
+                    try { return File.ReadAllText(description); } //string.Join("\n", File.ReadAllLines(description)); }
                     catch (FileNotFoundException) { return null; }
                 }
             }

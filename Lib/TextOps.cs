@@ -17,14 +17,14 @@ namespace PPGit.Lib
                 t.Show();
             }
         }
-        static public void Open(string file)
+        static public void Open(Lib.Object theObject)
         {
-            if (editor != null) Process.Start(editor, "\"" + file + "\"");
+            /*if (editor != null) Process.Start(editor, "\"" + file + "\"");
             else
-            {
-                TextEditor t = new TextEditor(file);
-                t.Show();
-            }
+            {*/
+                TextEditor t = new TextEditor(theObject);
+                t.ShowDialog();
+            //}
         }
     }
 }

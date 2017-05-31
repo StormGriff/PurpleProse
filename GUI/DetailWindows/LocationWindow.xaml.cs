@@ -42,7 +42,7 @@ namespace PPGit.GUI.DetailWindows
 
         }
 
-        private void DescBtn_Click(object sender, RoutedEventArgs e) { TextOps.Open(Place.DescFile); }
+        private void DescBtn_Click(object sender, RoutedEventArgs e) { /*TextOps.Open(Place.DescFile);*/ }
 
         Binding name_binding;
 
