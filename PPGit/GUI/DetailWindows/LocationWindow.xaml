@@ -14,27 +14,22 @@
     <Border Name="WindowBorder" BorderThickness="1" BorderBrush="#FF171717">
         <Grid>
 
-            <Grid Margin="2,0,194,-8" Height="auto">
+            <Grid Margin="2,0,176,-8" Height="auto">
                 <!--Honestly IDK whether this should be a panel, grid, control or whatever-->
                 <Label    x:Name="NameLabel"	Content="Name" FontSize="14"			Margin="10,8,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <TextBox  x:Name="NameBox" LostKeyboardFocus="NameBox_LostKeyFocus"		Margin="10,37,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="15" Width="129" Height="23" Text="{Binding Person.Name, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource AncestorType=TreeView, AncestorLevel=1}, Mode=TwoWay}"/>
                 <Label    x:Name="DescLabel"	Content="Description"					Margin="10,76,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Button  Name="DescBtn"	Content="Open new window" Click="DescBtn_Click"	Margin="80,79,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Height="23" Panel.ZIndex="2"/>
-                <RichTextBox x:Name="DescBox" IsEnabled="False"							Margin="10,112,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="176" Height="92">
+                <RichTextBox x:Name="DescBox"							Margin="10,112,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="176" Height="92" PreviewMouseDoubleClick="DescBox_PreviewMouseDoubleClick" Focusable="False">
                     <FlowDocument>
                         <Paragraph>
                             <Run Text="Rich Text Box functionality not yet available."/>
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
-                <Label    x:Name="AgeLabel"		Content="Age"							Margin="10,217,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBox  x:Name="AgeBox" LostKeyboardFocus="AgeBox_LostKeyFocus"		Margin="10,243,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Width="70" Height="23"/>
-                <Label    x:Name="SizeLabel"	Content="Size"							Margin="108,217,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBox  x:Name="SizeBox" LostKeyboardFocus="SizeBox_LostKeyFocus"		Margin="108,243,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="77" Height="23"/>
+                <Label    x:Name="SizeLabel"	Content="Size"							Margin="18,217,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox  x:Name="SizeBox" LostKeyboardFocus="SizeBox_LostKeyFocus"		Margin="15,243,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="77" Height="23"/>
                 <Label    x:Name="ParentLabel"	Content="Location"						Margin="10,280,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <ComboBox x:Name="ParentLoc" LostKeyboardFocus="ParentLoc_LostKeyFocus"	Margin="10,306,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" IsEditable="True"/>
-                <Label    x:Name="PopLabel"		Content="Population"					Margin="10,343,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBox  x:Name="PopBox" LostKeyboardFocus="PopBox_LostKeyFocus"		Margin="10,369,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23"/>
+                <ComboBox x:Name="ParentLoc" LostKeyboardFocus="ParentLoc_LostKeyFocus"	Margin="10,306,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" SelectionChanged="ParentLoc_SelectionChanged" Controls:TextBoxHelper.HasText="True"/>
                 <Label    x:Name="LingLabel"	Content="Language"						Margin="10,364,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed"/>
                 <ComboBox x:Name="LingBox" LostKeyboardFocus="LingBox_LostKeyFocus"		Margin="10,390,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" IsEditable="True" Visibility="Collapsed"/>
                 <Label    x:Name="RaceLabel"	Content="Race"							Margin="10,427,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed"/>
@@ -45,6 +40,8 @@
                 <ComboBox x:Name="EconBox" LostKeyboardFocus="EconBox_LostKeyFocus"		Margin="10,453,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" IsEditable="True" Visibility="Collapsed"/>
                 <Label    x:Name="GovLabel"		Content="Government"					Margin="10,427,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed"/>
                 <ComboBox x:Name="GovBox" LostKeyboardFocus="GovBox_LostKeyFocus"		Margin="10,453,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" IsEditable="True" Visibility="Collapsed"/>
+                <ComboBox x:Name="measurementBX" HorizontalAlignment="Left" Margin="108,243,0,0" VerticalAlignment="Top" Width="78" SelectionChanged="measurementBX_SelectionChanged"/>
+                <Label x:Name="squaredLBL" Content="2" HorizontalAlignment="Left" Margin="186,232,0,0" VerticalAlignment="Top" Width="22" Height="20" FontSize="6" RenderTransformOrigin="0.455,0.5"/>
             </Grid>
 
 

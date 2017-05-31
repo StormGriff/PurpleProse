@@ -173,6 +173,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lib\size.cs" />
     <Compile Include="Lib\TextOps.cs" />
     <Compile Include="Lib\time.cs" />
     <Compile Include="mainLists.cs" />

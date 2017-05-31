@@ -26,6 +26,8 @@ namespace PPGit.GUI.TextEditor
     public partial class TextEditor : MetroWindow
     {
         private bool fullStory; //Is the user writing the full story in this window?
+        private Lib.Object thisObject;
+        private bool save;
         public TextEditor(bool fullStory = false)
         {
             InitializeComponent();
@@ -34,6 +36,8 @@ namespace PPGit.GUI.TextEditor
 
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
             this.fullStory = fullStory;
+            thisObject = null;
+            save = false;
         }
 
         public TextEditor(string FQpath, bool fullStory = false)
@@ -46,6 +50,18 @@ namespace PPGit.GUI.TextEditor
 
             OpenFile(FQpath);
             this.fullStory = fullStory;
+            thisObject = null;
+            save = false;
+        }
+
+        public TextEditor(Lib.Object thisObject) {
+            InitializeComponent();
+            cmbFontFamily.ItemsSource = Fonts.SystemFontFamilies;
+            cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
+            this.thisObject = thisObject;
+            if (thisObject.DescFile != null) {
+                OpenFile(thisObject.DescFile);
+            }
         }
 
         private void btnOpen_Click(object sender, RoutedEventArgs e)
@@ -65,6 +81,7 @@ namespace PPGit.GUI.TextEditor
             FileStream fs = new FileStream(FQpath, FileMode.Open);
             TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
             range.Load(fs, DataFormats.Rtf);
+            fs.Close();
 
             this.Title = FQpath;
         }
@@ -72,6 +89,8 @@ namespace PPGit.GUI.TextEditor
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             Ookii.Dialogs.Wpf.VistaSaveFileDialog sfd = new VistaSaveFileDialog();
+            sfd.Filter = "Rich Text (*.rtf) | *.rtf";
+            sfd.InitialDirectory = mainLists.projectDir;
 
             if (sfd.ShowDialog() == true)
             {
@@ -83,6 +102,11 @@ namespace PPGit.GUI.TextEditor
                     mainLists.storyLocation = sfd.FileName;  //Store location of story
                     mainLists.wordCount = countWords();
                 }
+                else if (thisObject != null) {
+                    thisObject.DescFile = sfd.FileName;
+                }
+                fs.Close(); //Close the stream
+                save = true;
             }
         }
 
@@ -149,6 +173,19 @@ namespace PPGit.GUI.TextEditor
         private void MetroWindow_Closed(object sender, EventArgs e)
         {
             if(fullStory) mainLists.fullEditor = null;
+        }
+
+        private void rtbEditor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            save = false;
+        }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!save) {
+                MessageBoxResult result = MessageBox.Show("All unsaved progress will be lost", "WARNING", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Cancel) e.Cancel = true;
+            }
         }
     }
 }
