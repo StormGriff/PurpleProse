@@ -9,6 +9,7 @@ namespace PPGit
 {
     public static class mainLists
     {
+        public enum measurement { Inches, Centimeters, Feet, Meters, Yard, Lightyear };
         public static long objNum = 0;
         public static string projectDir = null;
         public static ObservableCollection<PPGit.Lib.Character> characterList = new ObservableCollection<Lib.Character>();

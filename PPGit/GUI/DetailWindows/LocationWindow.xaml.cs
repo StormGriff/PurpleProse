@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using PPGit.Lib;
 
 using MahApps.Metro.Controls;
+using System.IO;
 
 namespace PPGit.GUI.DetailWindows
 {
@@ -28,10 +29,21 @@ namespace PPGit.GUI.DetailWindows
         {
             InitializeComponent();
             this.Place = place;
-            //Place.window = this;
+            this.Title = place.Name;
+            Place.window = this;
             NameBox.Text = Place.Name;
-            AgeBox.Text = Convert.ToString(Place.size);
-            SizeBox.Text = Place.size;
+            SizeBox.Text = Place.theSize.num.ToString();
+            fillDescText();
+            foreach (Lib.Location theLocs in mainLists.locationList) {
+                if(theLocs.Name != place.Name) ParentLoc.Items.Add(theLocs.Name); //Add every location except this one
+            }
+            if (Place.parent != null) ParentLoc.SelectedValue = Place.parent.Name;
+            measurementBX.Items.Add(mainLists.measurement.Centimeters/*.ToString()*/);
+            measurementBX.Items.Add(mainLists.measurement.Feet/*.ToString()*/);
+            measurementBX.Items.Add(mainLists.measurement.Inches/*.ToString()*/);
+            measurementBX.Items.Add(mainLists.measurement.Lightyear/*.ToString()*/);
+            measurementBX.Items.Add(mainLists.measurement.Meters/*.ToString()*/);
+            measurementBX.SelectedValue = place.theSize.units/*.ToString()*/;
             //	ParentLoc.Text = Place.??.Name;
             //	LingBox.Text = Place.Language;
             //	RaceBox.Text = Place.Race;
@@ -42,26 +54,35 @@ namespace PPGit.GUI.DetailWindows
 
         }
 
-        private void DescBtn_Click(object sender, RoutedEventArgs e) { TextOps.Open(Place.DescFile); }
-
         Binding name_binding;
 
         //Bug: Functions execute upon inital click. (Originally named XXX_LostKeyboardFocus)
         //ComboBox Tutorial: https://youtu.be/UDDYd3q5WM4
 
         private void NameBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
-        { if (NameBox.Text != "") Place.Name = NameBox.Text; }
+        { if (NameBox.Text != "") Place.Name = NameBox.Text; this.Title = Place.Name; }
 
-        private void AgeBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
+        /*private void AgeBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             if (AgeBox.Text != "") try { Convert.ToInt64(AgeBox.Text); }
                 catch (FormatException exc) { AgeBox.Clear(); }
                 catch (OverflowException exc) { AgeBox.Text = "OvrFlo"; }
             //	else Place.Age = 0; 
-        }
+        }*/
 
         private void SizeBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
-        { Place.size = SizeBox.Text; }
+        {
+            if (SizeBox.Text != "")
+            {
+                string newText = "";
+                foreach (char car in SizeBox.Text)
+                {
+                    if (char.IsDigit(car)) newText += car;
+                }
+
+                Place.theSize.num = Convert.ToInt32(newText);
+            }
+        }
 
         private void ParentLoc_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
         { /*Place. = ParentLoc.Text*/; }
@@ -72,12 +93,12 @@ namespace PPGit.GUI.DetailWindows
         private void RaceBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
         { /*Place.Race = RaceBox.Text*/; }
 
-        private void PopBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
+        /*private void PopBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            if (PopBox.Text != "") try {/*Place.population = */Convert.ToInt64(PopBox.Text); }
+            if (PopBox.Text != "") try {/*Place.population = Convert.ToInt64(PopBox.Text); }
                 catch (FormatException exc) { PopBox.Clear(); }
                 catch (OverflowException exc) { PopBox.Text = "OvrFlo"; }
-        }
+        }*/
 
         private void TerraBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
         { /*Place.terrain = TerraBox.Text*/; }
@@ -89,5 +110,42 @@ namespace PPGit.GUI.DetailWindows
         { /*Place.economy = EconBox.Text*/; }
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) { Place.window = null; }
+
+        private void DescBox_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Lib.TextOps.Open(Place);
+            fillDescText();
+        }
+
+        private void fillDescText()
+        {
+            if (Place.DescFile != null)
+            {
+                FileStream fs = new FileStream(Place.DescFile, FileMode.Open);
+                TextRange range = new TextRange(DescBox.Document.ContentStart, DescBox.Document.ContentEnd);
+                range.Load(fs, DataFormats.Rtf);
+                fs.Close();
+            }
+            else
+            {
+                TextRange range = new TextRange(DescBox.Document.ContentStart, DescBox.Document.ContentEnd);
+                range.Text = "Double Click to add.";
+            }
+        }
+
+        private void ParentLoc_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (Lib.Location theLoc in mainLists.locationList) {
+                if (theLoc.Name == ParentLoc.SelectedItem.ToString()) Place.parent = theLoc;
+            }
+        }
+
+        private void measurementBX_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (measurementBX.SelectedValue != null)
+            {
+                Place.theSize.units = (mainLists.measurement)measurementBX.SelectedValue;
+            }
+        }
     }
 }

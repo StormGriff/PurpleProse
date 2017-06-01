@@ -198,7 +198,7 @@ namespace PPGit.Lib
                 }
                 if (lines.ElementAt(0) == "Size")
                 {
-                    c.size = lines.ElementAt(1);
+                    c.theSize.num = Convert.ToInt32(lines.ElementAt(1));
                 }
             }
             c.Number = mainLists.objNum;

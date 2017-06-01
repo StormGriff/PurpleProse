@@ -180,7 +180,7 @@ namespace PPGit.GUI
                 var Alocation = selection as Lib.Location;          //call it Alocation
 
                 lblDisplayHeader.Content = Alocation.Name;
-                lblDisplayLine1.Content = Alocation.size;
+                lblDisplayLine1.Content = Alocation.theSize.num;
                 blkDisplayLines.Text = Alocation.DescText;
             }
             else if (selection is Lib.Object)               //If the slected item is a misc. item

@@ -2273,9 +2273,10 @@ namespace PPGit.GUI.Deadlines
             PPGit.Lib.deadline thisDeadline = PPGit.Lib.time.returnDeadline(day);
             PPGit.GUI.Deadlines.deadlineInfo newInfo = new deadlineInfo(thisDeadline);
             newInfo.ShowDialog();
+            SetLeft();
         }
 
-        private void wordsLeftOutput()
+        /*private void wordsLeftOutput()
         {
             long num = 0;
             foreach (PPGit.Lib.deadline thisDeadline in Lib.time.getAllDeadlines())
@@ -2285,7 +2286,7 @@ namespace PPGit.GUI.Deadlines
             }
             if (num == 0) wordsLeftLBL.IsEnabled = false;
             else wordsLeftLBL.Content = num + " Words left for nearest deadline";
-        }
+        }*/
 
         private void day1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -2296,7 +2297,6 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day1.Background = defaultColor;
                 }
-                wordsLeftOutput();
             }
         }
 
@@ -2310,7 +2310,6 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day9.Background = defaultColor;
                 }
-                wordsLeftOutput();
             }
         }
 
@@ -2324,7 +2323,6 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day2.Background = defaultColor;
                 }
-                wordsLeftOutput();
             }
         }
 
@@ -2338,7 +2336,6 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day3.Background = defaultColor;
                 }
-                wordsLeftOutput();
             }
         }
 
@@ -2352,7 +2349,6 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day4.Background = defaultColor;
                 }
-                wordsLeftOutput();
             }
         }
 
@@ -2366,7 +2362,6 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day5.Background = defaultColor;
                 }
-                wordsLeftOutput();
             }
         }
 
@@ -2380,7 +2375,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day6.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2394,7 +2389,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day7.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2408,7 +2403,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day8.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2422,7 +2417,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day10.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2436,7 +2431,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day11.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2450,7 +2445,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day12.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2464,7 +2459,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day13.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2478,7 +2473,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day14.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2492,7 +2487,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day15.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2506,7 +2501,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day16.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2520,7 +2515,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day17.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2534,7 +2529,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day18.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2548,7 +2543,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day19.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2562,7 +2557,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day20.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2576,7 +2571,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day21.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2590,7 +2585,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day22.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2604,7 +2599,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day23.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2618,7 +2613,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day24.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2632,7 +2627,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day25.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2646,7 +2641,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day26.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2660,7 +2655,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day27.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2674,7 +2669,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day28.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2688,7 +2683,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day29.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2702,7 +2697,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day30.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2716,7 +2711,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day31.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2730,7 +2725,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day32.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2744,7 +2739,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day33.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2758,7 +2753,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day34.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2772,7 +2767,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day35.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2786,7 +2781,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day36.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2800,7 +2795,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day37.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2814,7 +2809,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day38.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2828,7 +2823,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day39.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2842,7 +2837,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day40.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2856,7 +2851,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day41.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
 
@@ -2870,7 +2865,7 @@ namespace PPGit.GUI.Deadlines
                     Lib.time.deleted = false;
                     day42.Background = defaultColor;
                 }
-                wordsLeftOutput();
+                
             }
         }
     }

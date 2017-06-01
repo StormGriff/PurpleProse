@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PPGit.GUI"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="Text Editor" Height="300" Width="600" Closed="MetroWindow_Closed">
+        Title="Text Editor" Height="300" Width="600" Closed="MetroWindow_Closed" Closing="MetroWindow_Closing">
 
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
@@ -79,7 +79,7 @@
         </ToolBar>
 
         <RichTextBox Name="rtbEditor"
-                     SelectionChanged="rtbEditor_SelectionChanged">
+                     SelectionChanged="rtbEditor_SelectionChanged" TextChanged="rtbEditor_TextChanged">
             <FlowDocument>
                 <Paragraph/>
             </FlowDocument>

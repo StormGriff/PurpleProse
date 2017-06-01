@@ -8,6 +8,7 @@ using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Documents;
 
 namespace PPGit.GUI.DetailWindows
 {
@@ -33,8 +34,7 @@ namespace PPGit.GUI.DetailWindows
             RoleBox.Text = Person.charRole;
             LingBox.Text = Person.charLanguage;
             RaceBox.Text = Person.charKind;
-            if (Person.DescText == null) DescBox.AppendText("Double Click to add (not yet available).");
-            else DescBox.AppendText(Person.DescText);
+            fillDescText();
             foreach (string image_file in Person.Images) { Add_picture(image_file); }
 
             this.Title = Person.Name;
@@ -65,13 +65,30 @@ namespace PPGit.GUI.DetailWindows
         {
             if (NameBox.Text != "")
             {
-                //rename folder and deletes the old one
-                Directory.Move(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower() + Person.Number, mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number);
+                try
+                {
+                    if (Directory.Exists(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower() + Person.Number))
+                    {
+                        //rename folder and deletes the old one
+                        Directory.Move(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower() + Person.Number, mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number);
+                    }
+                    else Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number);
 
-                //rename info file and deletes old one
-                Directory.Move(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + "\\" + Person.Name.ToLower() + ".info", mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + "\\" + NameBox.Text.ToLower() + ".info");
+                    if (Directory.Exists(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + "\\" + Person.Name.ToLower() + ".info"))
+                    {
+                        //rename info file and deletes old one
+                        Directory.Move(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower() + Person.Number + "\\" + Person.Name.ToLower() + ".info", mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + "\\" + NameBox.Text.ToLower() + ".info");
+                    }
+                    else Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + "\\" + NameBox.Text.ToLower() + ".info");
 
-                Person.Name = NameBox.Text;
+                    Person.Name = NameBox.Text;
+                    string newString = "";
+                    foreach(char newChar in NameBox.Text) {
+                        newString += char.ToUpper(newChar);
+                    }
+                    this.Title = newString;
+                }
+                catch (System.IO.IOException x) { }
             }
         }
 
@@ -173,15 +190,30 @@ namespace PPGit.GUI.DetailWindows
 
         private void DescBox_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {   //Person.DescFile = "D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\Lolly.rtf";
-            if (Person.DescFile == null)
+            /*if (Person.DescFile == null) Checked for in text editor constructor
             {
                 Lib.TextOps.Open();
             }
             else
-            { 
-                Lib.TextOps.Open(Person.DescFile);
-            }
+            { */
+                Lib.TextOps.Open(Person);
+                fillDescText();
+            //}
 
+        }
+
+        private void fillDescText() {
+            if (Person.DescFile != null)
+            {
+                FileStream fs = new FileStream(Person.DescFile, FileMode.Open);
+                TextRange range = new TextRange(DescBox.Document.ContentStart, DescBox.Document.ContentEnd);
+                range.Load(fs, DataFormats.Rtf);
+                fs.Close();
+            }
+            else {
+                TextRange range = new TextRange(DescBox.Document.ContentStart, DescBox.Document.ContentEnd);
+                range.Text = "Double Click to add.";
+            }
         }
 
         private void btnBrowseImage_Click(object sender, RoutedEventArgs e)
