@@ -123,6 +123,9 @@
     </Compile>
     <Compile Include="GUI\MainWindow.xaml.cs" />
     <Compile Include="GUI\MapMaker\MapMaker.xaml.cs" />
+    <Compile Include="GUI\MoreInfo\Building.xaml.cs">
+      <DependentUpon>Building.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\RecycleBin\RecycleBin.xaml.cs">
       <DependentUpon>RecycleBin.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
     <Page Include="GUI\MapMaker\MapMaker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\MoreInfo\Building.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\RecycleBin\RecycleBin.xaml">
       <SubType>Designer</SubType>

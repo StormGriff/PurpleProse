@@ -42,6 +42,9 @@
                 <ComboBox x:Name="GovBox" LostKeyboardFocus="GovBox_LostKeyFocus"		Margin="10,453,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="23" IsEditable="True" Visibility="Collapsed"/>
                 <ComboBox x:Name="measurementBX" HorizontalAlignment="Left" Margin="108,243,0,0" VerticalAlignment="Top" Width="78" SelectionChanged="measurementBX_SelectionChanged"/>
                 <Label x:Name="squaredLBL" Content="2" HorizontalAlignment="Left" Margin="186,232,0,0" VerticalAlignment="Top" Width="22" Height="20" FontSize="6" RenderTransformOrigin="0.455,0.5"/>
+                <ComboBox x:Name="specialBX" HorizontalAlignment="Left" Margin="18,427,0,0" VerticalAlignment="Top" Width="96" SelectionChanged="specialBX_SelectionChanged"/>
+                <Button x:Name="infoBTN" Content="More Info" HorizontalAlignment="Left" Margin="140,426,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.488,0.483" Click="infoBTN_Click"/>
+                <Label x:Name="typeLBL" Content="Type of Location" HorizontalAlignment="Left" Margin="10,372,0,0" VerticalAlignment="Top"/>
             </Grid>
 
 

@@ -51,6 +51,10 @@ namespace PPGit.GUI.DetailWindows
             //	TerraBox.Text = Place.terrain;
             //	GovBox.Text = Place._ocracy;
             //	EconBox.Text = Place.economy;
+            specialBX.Items.Add("Building");
+            if (place is Lib.Building) {
+                specialBX.SelectedValue = "Building";
+            }
 
         }
 
@@ -145,6 +149,25 @@ namespace PPGit.GUI.DetailWindows
             if (measurementBX.SelectedValue != null)
             {
                 Place.theSize.units = (mainLists.measurement)measurementBX.SelectedValue;
+            }
+        }
+
+        private void infoBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (Place is Lib.Building) {
+                GUI.MoreInfo.Building info = new MoreInfo.Building(Place);
+                info.Show();
+            }
+        }
+
+        private void specialBX_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Location old;
+            if (specialBX.SelectedItem.ToString() == "Building" && !(Place is Lib.Building)) { //Convert this location to a building
+                old = Place;
+                mainLists.locationList.Remove(Place);
+                Place = new Building(old);
+                mainLists.locationList.Add(Place);
             }
         }
     }
