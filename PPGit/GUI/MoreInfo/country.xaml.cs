@@ -1,23 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
+using MahApps.Metro.Controls;
+
 
 namespace PPGit.GUI.MoreInfo
 {
     /// <summary>
     /// Interaction logic for country.xaml
     /// </summary>
-    public partial class country : Window
+    public partial class country : MetroWindow
     {
         Lib.Country thisLoc;
         public country(Lib.Location loc)

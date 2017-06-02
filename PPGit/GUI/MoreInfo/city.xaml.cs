@@ -1,23 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
+using MahApps.Metro.Controls;
+
 
 namespace PPGit.GUI.MoreInfo
 {
     /// <summary>
     /// Interaction logic for city.xaml
     /// </summary>
-    public partial class city : Window
+    public partial class city : MetroWindow
     {
         private Lib.City thisLoc;
         public city(Lib.Location theLoc)

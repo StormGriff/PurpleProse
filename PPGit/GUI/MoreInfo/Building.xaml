@@ -1,9 +1,10 @@
-﻿<Window x:Name="buildingInfo" x:Class="PPGit.GUI.MoreInfo.Building"
+﻿<Controls:MetroWindow x:Name="buildingInfo" x:Class="PPGit.GUI.MoreInfo.Building"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PPGit.GUI.MoreInfo"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         Title="BUILDING INFO" Height="312.766" Width="317.021" ResizeMode="NoResize" Initialized="buildingInfo_Initialized" WindowStartupLocation="CenterScreen" Closed="buildingInfo_Closed">
     <Grid>
@@ -21,4 +22,4 @@
         <TextBox x:Name="roomsTXT" HorizontalAlignment="Left" Height="23" Margin="183,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" TextChanged="roomsTXT_TextChanged"/>
 
     </Grid>
-</Window>
+</Controls:MetroWindow>

@@ -204,7 +204,7 @@ namespace PPGit.GUI.DetailWindows
                 }
                 else if (Place is Lib.Planet)
                 {
-                    GUI.MoreInfo.planetInfo info = new MoreInfo.planetInfo(Place);
+                    GUI.MoreInfo.PlanetInfo info = new MoreInfo.PlanetInfo(Place);
                     info.Show();
                     openWindow = true;
                 }

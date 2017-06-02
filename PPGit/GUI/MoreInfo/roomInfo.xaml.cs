@@ -1,23 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
+using MahApps.Metro.Controls;
+
 
 namespace PPGit.GUI.MoreInfo
 {
     /// <summary>
     /// Interaction logic for roomInfo.xaml
     /// </summary>
-    public partial class roomInfo : Window
+    public partial class roomInfo : MetroWindow
     {
         private Lib.room thisLoc;
         public roomInfo(Lib.Location theLoc)
