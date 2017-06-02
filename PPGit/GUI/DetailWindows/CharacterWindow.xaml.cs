@@ -64,45 +64,73 @@ namespace PPGit.GUI.DetailWindows
         private void NameBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             if (NameBox.Text != "")
-            {
-                //rename folder and deletes the old one
-                Directory.Move(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower() + Person.Number, mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number);
+            {	string characdir = mainLists.projectDir + "\\items\\characters\\";
+				
+				//string char_contents = string.Empty;
+				//FileStream fs = File.Open(characdir + "char.list", FileMode.Open);
+				//StreamReader sr = new StreamReader(fs);
+				//StreamWriter sw = new StreamWriter(fs);
+				//while (!sr.EndOfStream) { char_contents += sr.ReadLine(); }
+				//char_contents.Replace(Person.Name, NameBox.Text);
+				//sr.Close();
+				//v-Update char.list
+				File.WriteAllText(
+					characdir + "char.list",
+					File.ReadAllText(characdir + "char.list").Replace(Person.Name, NameBox.Text)
+				);
 
                 //rename info file and deletes old one
-                Directory.Move(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + "\\" + Person.Name.ToLower() + ".info", mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + "\\" + NameBox.Text.ToLower() + ".info");
+                Directory.Move(
+					Person.Directory + "\\" + Person.Name.ToLower() + ".info",
+					Person.Directory + "\\" +NameBox.Text.ToLower() + ".info"
+				);
+		
+				//rename folder and deletes the old one
+                Directory.Move(Person.Directory, characdir + NameBox.Text.ToLower() + Person.Number);
 
                 Person.Name = NameBox.Text;
+				Person.Directory = characdir + NameBox.Text.ToLower() + Person.Number;
+
+				string newdir, _name;
+
+				newdir = Person.Directory + "\\texts\\";
+				_name = new FileInfo(Person.DescFile).Name;
+				if (File.Exists(newdir + _name)) Person.DescFile = newdir + _name;
+				
+				newdir = Person.Directory + "\\images\\";
+				for (int i=0; i < Person.Images.Count; ++i)
+				{	_name = new FileInfo(Person.Images[i]).Name;
+					if (File.Exists(newdir + _name)) Person.Images[i] = newdir + _name;
+				}
             }
+			else NameBox.Text = Person.Name;
         }
 
         private void AgeBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            if (AgeBox.Text != "") try { Person.charAge = Convert.ToInt64(AgeBox.Text); }// I figured sometimes the ages of fictional characters can get long.
-                catch (FormatException exc) { AgeBox.Clear(); }
-                catch (OverflowException exc) { AgeBox.Text = "OvrFlo"; }
-            else Person.charAge = 0;
+        {	if (AgeBox.Text != "") try { Person.charAge = Convert.ToInt64(AgeBox.Text); }// I figured sometimes the ages of fictional characters can get long.
+			    catch (FormatException exc) { AgeBox.Clear(); }
+			    catch (OverflowException exc) { AgeBox.Text = "OvrFlo"; }
+			else Person.charAge = 0;
         }
 
         private void GenderBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
-        { Person.charGender = GenderBox.Text; }
+			{ Person.charGender = GenderBox.Text; }
 
         private void HomeBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
-        { Person.charHometown = HomeBox.Text; }
+			{ Person.charHometown = HomeBox.Text; }
 
         private void RoleBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
-        { Person.charRole = RoleBox.Text; }
+			{ Person.charRole = RoleBox.Text; }
 
         private void LingBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
-        { Person.charLanguage = LingBox.Text; }
+			{ Person.charLanguage = LingBox.Text; }
 
         private void RaceBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
-        { Person.charKind = RaceBox.Text; }
+			{ Person.charKind = RaceBox.Text; }
 
         private void NewPic_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                OpenFileDialog dlg = new OpenFileDialog();
+        {	try
+            {   OpenFileDialog dlg = new OpenFileDialog();
                 dlg.Title = "Insert image";
                 dlg.Filter = "Image (*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.tif;*.tiff;*.wdp)|*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.tif;*.tiff;*.wdp";
                 if (dlg.ShowDialog() == true)   //Calls show dialog, if the function does not fail then...
@@ -121,10 +149,8 @@ namespace PPGit.GUI.DetailWindows
 
             SetPrimaryBitmapSize(ref bmp);
 
-            if (Person.Images.Count == 1)
-            {
-                PrimaryImage.Source = bmp;
-            }
+            if (Person.Images.Count == 1) PrimaryImage.Source = bmp;
+
             else if(Person.Images.Count == 2)
             {
                 bmp.DecodePixelHeight = 60;
@@ -173,14 +199,8 @@ namespace PPGit.GUI.DetailWindows
 
         private void DescBox_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {   //Person.DescFile = "D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\Lolly.rtf";
-            if (Person.DescFile == null)
-            {
-                Lib.TextOps.Open();
-            }
-            else
-            { 
-                Lib.TextOps.Open(Person.DescFile);
-            }
+            if (Person.DescFile == null) Lib.TextOps.Open();
+            else Lib.TextOps.Open(Person.DescFile);
 
         }
 
@@ -202,88 +222,39 @@ namespace PPGit.GUI.DetailWindows
         //}
 
         private void PrimaryPic_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog fd = new OpenFileDialog();
+        {	OpenFileDialog fd = new OpenFileDialog();
             fd.InitialDirectory = Person.Directory + "\\images\\";
             fd.Filter = "Image (*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.tif;*.tiff;*.wdp)|*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.tif;*.tiff;*.wdp";
 
             if (fd.ShowDialog() == true)
-            {
-                BitmapImage bmp = new BitmapImage(new Uri(fd.FileName));
+			{	BitmapImage bmp = new BitmapImage(new Uri(fd.FileName));
+				int index = Person.Images.IndexOf(fd.FileName);
 
-                int index = Person.Images.IndexOf(fd.FileName);
+				SetPrimaryBitmapSize(ref bmp);
+				PrimaryImage.Source = bmp;
 
-                SetPrimaryBitmapSize(ref bmp);
+				if (Person.Images.Count == 2)
+				{	BitmapImage sbmp;
 
-                PrimaryImage.Source = bmp;
+					if (index == 0) sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(1)));
+					else			sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(0)));
 
-                if (index == 0)
-                {
-                    if (Person.Images.Count == 2)
-                    {
-                        BitmapImage sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(1)));
+					sbmp.DecodePixelHeight = 60;
+					sbmp.DecodePixelWidth = 60;
 
-                        sbmp.DecodePixelHeight = 60;
-                        sbmp.DecodePixelWidth = 60;
+					SecondaryImage1.Source = sbmp;
+					
+					if (Person.Images.Count >= 3)
+					{	if (index==0 || index==1) sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(2)));
+						else					  sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(1)));
 
-                        SecondaryImage1.Source = sbmp;
+						sbmp.DecodePixelHeight = 60;
+						sbmp.DecodePixelWidth = 60;
 
-                        if (Person.Images.Count >= 3)
-                        {
-                            sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(2)));
-
-                            sbmp.DecodePixelHeight = 60;
-                            sbmp.DecodePixelWidth = 60;
-
-                            SecondaryImage2.Source = sbmp;
-                        }
-                    }
-                }
-                else if(index == 1)
-                {
-                    if (Person.Images.Count == 2)
-                    {
-                        BitmapImage sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(0)));
-
-                        sbmp.DecodePixelHeight = 60;
-                        sbmp.DecodePixelWidth = 60;
-
-                        SecondaryImage1.Source = sbmp;
-
-                        if (Person.Images.Count >= 3)
-                        {
-                            sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(2)));
-
-                            sbmp.DecodePixelHeight = 60;
-                            sbmp.DecodePixelWidth = 60;
-
-                            SecondaryImage2.Source = sbmp;
-                        }
-                    }
-                }
-                else
-                {
-                    if(Person.Images.Count == 2)
-                    {
-                        BitmapImage sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(0)));
-
-                        sbmp.DecodePixelHeight = 60;
-                        sbmp.DecodePixelWidth = 60;
-
-                        SecondaryImage1.Source = sbmp;
-
-                        if(Person.Images.Count >= 3)
-                        {
-                            sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(1)));
-
-                            sbmp.DecodePixelHeight = 60;
-                            sbmp.DecodePixelWidth = 60;
-
-                            SecondaryImage2.Source = sbmp;
-                        }
-                    }
-                }
-            }
+						SecondaryImage2.Source = sbmp;
+					}
+				}
+			}
         }
 
         //private void gridSplitter_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)

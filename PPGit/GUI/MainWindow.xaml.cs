@@ -45,18 +45,17 @@ namespace PPGit.GUI
             Lib.Character New_Char = new Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
             // ^Create a character^
 
-            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + mainLists.objNum);
-            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + mainLists.objNum + "\\images");
-            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + mainLists.objNum + "\\texts");
-
             New_Char.Number = mainLists.objNum;
             mainLists.objNum++;
 
-            File.Create(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + New_Char.Number + "\\" + New_Char.Name.ToLower() + ".info");
+			New_Char.Directory = mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + New_Char.Number;
+            Directory.CreateDirectory(New_Char.Directory);
+            Directory.CreateDirectory(New_Char.Directory + "\\images");
+            Directory.CreateDirectory(New_Char.Directory + "\\texts");
 
-            
+            File.Create(New_Char.Directory + "\\" + New_Char.Name.ToLower() + ".info");            
 
-            mainLists.characterList.Add(New_Char);						//Add it to the list of characters
+            mainLists.characterList.Add(New_Char);			//Add it to the list of characters
 
             New_Char.window = new CharacterWindow(New_Char);//give it a window (stored inside for later reference)
             New_Char.window.Show();							//Show it.
@@ -242,15 +241,13 @@ namespace PPGit.GUI
             wnd.Show();
         }
 
-        private void NewCharacterContextMenu_Click(object sender, RoutedEventArgs e)
-        {
-            NewCharacter();
-        }
+		private void NewCharacterContextMenu_Click(object sender, RoutedEventArgs e){ NewCharacter(); }
 
-        private void NewLocationContextMenu_Click(object sender, RoutedEventArgs e)
-        {
-            NewLocation();
-        }
+		private void NewLocationContextMenu_Click(object sender, RoutedEventArgs e) { NewLocation(); }
+		
+		private void Add_Character_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e){ NewCharacter(); }
+
+		private void Add_Location_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e) { NewLocation(); }
 
         private void ViewEditContextMenu_Click(object sender, RoutedEventArgs e)
         {

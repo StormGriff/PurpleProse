@@ -43,10 +43,7 @@ namespace PPGit.Lib
 
             string line;
 
-            while (!sr.EndOfStream)
-            {
-                line = sr.ReadLine();
-            }
+            while (!sr.EndOfStream) { line = sr.ReadLine(); }
         }
 
         private void LoadCharacterList(string filepath)
@@ -96,50 +93,23 @@ namespace PPGit.Lib
 
                 lines = line.Split(new char[] { ':' }).ToList();
 
-                if (lines.ElementAt(0) == "Age")
-                {
-                    c.charAge = Convert.ToInt32(lines.ElementAt(1));
-                }
+                if (lines.ElementAt(0) == "Age") c.charAge = Convert.ToInt32(lines.ElementAt(1));
 
-                if (lines.ElementAt(0) == "Race")
-                {
-                    c.charKind = lines.ElementAt(1);
-                }
+                if (lines.ElementAt(0) == "Race") c.charKind = lines.ElementAt(1);
 
-                if (lines.ElementAt(0) == "Gender")
-                {
-                    c.charGender = lines.ElementAt(1);
-                }
+                if (lines.ElementAt(0) == "Gender") c.charGender = lines.ElementAt(1);
 
-                if (lines.ElementAt(0) == "Role")
-                {
-                    c.charRole = lines.ElementAt(1);
-                }
+                if (lines.ElementAt(0) == "Role") c.charRole = lines.ElementAt(1);
 
-                if (lines.ElementAt(0) == "Language")
-                {
-                    c.charLanguage = lines.ElementAt(1);
-                }
+                if (lines.ElementAt(0) == "Language") c.charLanguage = lines.ElementAt(1);
 
-                if (lines.ElementAt(0) == "Hometown")
-                {
-                    c.charHometown = lines.ElementAt(1);
-                }
+                if (lines.ElementAt(0) == "Hometown") c.charHometown = lines.ElementAt(1);
 
-                if (lines.ElementAt(0) == "Description")
-                {
-                    c.DescFile = filepath + "\\texts\\" + lines.ElementAt(1).ToString();
-                }
+                if (lines.ElementAt(0) == "Description") c.DescFile = filepath + "\\texts\\" + lines.ElementAt(1).ToString();
 
-                if (lines.ElementAt(0) == "Text")
-                {
-                    //TODO
-                }
+                if (lines.ElementAt(0) == "Text") /*TODO*/;
 
-                if (lines.ElementAt(0) == "Image")
-                {
-                    c.Images.Add(filepath + "\\images\\" + lines.ElementAt(1).ToString());
-                }
+                if (lines.ElementAt(0) == "Image") c.Images.Add(filepath + "\\images\\" + lines.ElementAt(1).ToString());
             }
             c.Number = mainLists.objNum;
 
@@ -192,14 +162,9 @@ namespace PPGit.Lib
 
                 lines = line.Split(new char[] { ':' }).ToList();
 
-                if (lines.ElementAt(0) == "Description")
-                {
-                    c.DescFile = filepath + "\\texts\\" + lines.ElementAt(1).ToString();
-                }
-                if (lines.ElementAt(0) == "Size")
-                {
-                    c.size = lines.ElementAt(1);
-                }
+                if (lines.ElementAt(0) == "Description") c.DescFile = filepath + "\\texts\\" + lines.ElementAt(1).ToString();
+
+                if (lines.ElementAt(0) == "Size") c.size = lines.ElementAt(1);
             }
             c.Number = mainLists.objNum;
 

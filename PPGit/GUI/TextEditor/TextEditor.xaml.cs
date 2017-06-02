@@ -83,6 +83,7 @@ namespace PPGit.GUI.TextEditor
                     mainLists.storyLocation = sfd.FileName;  //Store location of story
                     mainLists.wordCount = countWords();
                 }
+				fs.Close();
             }
         }
 
@@ -147,7 +148,7 @@ namespace PPGit.GUI.TextEditor
         }
 
         private void MetroWindow_Closed(object sender, EventArgs e)
-        {
+        {	//if() ;
             if(fullStory) mainLists.fullEditor = null;
         }
     }
