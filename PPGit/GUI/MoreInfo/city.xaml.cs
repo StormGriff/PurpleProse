@@ -79,7 +79,7 @@ namespace PPGit.GUI.MoreInfo
 
         private void cityInfoFRM_Closed(object sender, EventArgs e)
         {
-            GUI.DetailWindows.LocationWindow.openWindow = false;
+            (thisLoc.window as DetailWindows.LocationWindow).openWindow = false;
         }
     }
 }

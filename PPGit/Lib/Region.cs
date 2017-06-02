@@ -11,6 +11,10 @@ namespace PPGit.Lib
         public Region(string name, string desc, string hist, List<string> images) : base(name, desc, hist, images)
         { }
 
-        private string terrain { get; set; }
+        public Region(Location theLoc) : base(theLoc) {
+
+        }
+
+        public string terrain { get; set; }
     }
 }

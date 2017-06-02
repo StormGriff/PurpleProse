@@ -16,15 +16,16 @@ namespace PPGit.Lib
             public mainLists.measurement usedMeasurement;
         }
         dimensions myRoom;
-        private string myDescription;
 
-        public room(double x, double y, mainLists.measurement measuredIn, string descriptionFile, string name, string desc, string hist, List<string> images) : base(name, desc, hist, images)
+        public room(double x, double y, mainLists.measurement measuredIn, string name, string desc, string hist, List<string> images) : base(name, desc, hist, images)
         {
             myRoom = new dimensions();
             myRoom.x = x;
             myRoom.y = y;
             myRoom.usedMeasurement = measuredIn;
-            this.myDescription = descriptionFile;
+        }
+        public room(Location theLoc) : base(theLoc) {
+
         }
 
         public double[] getDimensions

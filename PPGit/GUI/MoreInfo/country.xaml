@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PPGit.GUI.MoreInfo"
         mc:Ignorable="d"
-        Title="COUNTRY INFO" Height="223.49" Width="285.235" ResizeMode="NoResize" Closed="countryInfoFRM_Closed" Initialized="countryInfoFRM_Initialized">
+        Title="COUNTRY INFO" Height="223.49" Width="285.235" ResizeMode="NoResize" Closed="countryInfoFRM_Closed" Initialized="countryInfoFRM_Initialized" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label x:Name="citizensLBL" Content="Number of Citizens:" HorizontalAlignment="Left" Margin="23,28,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="citizensTXT" HorizontalAlignment="Left" Height="23" Margin="152,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" TextChanged="citizensTXT_TextChanged"/>

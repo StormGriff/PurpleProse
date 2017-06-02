@@ -38,6 +38,7 @@ namespace PPGit.Lib
             description = Original.description;
             Images = Original.Images;
             MyRelationships = Original.MyRelationships;
+            window = Original.window;
             //	attributes = copy.attributes;
         }
 

@@ -132,6 +132,15 @@
     <Compile Include="GUI\MoreInfo\country.xaml.cs">
       <DependentUpon>country.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\MoreInfo\planetInfo.xaml.cs">
+      <DependentUpon>planetInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MoreInfo\regionInfo.xaml.cs">
+      <DependentUpon>regionInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MoreInfo\roomInfo.xaml.cs">
+      <DependentUpon>roomInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\RecycleBin\RecycleBin.xaml.cs">
       <DependentUpon>RecycleBin.xaml</DependentUpon>
     </Compile>
@@ -169,6 +178,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\MoreInfo\country.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\MoreInfo\planetInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\MoreInfo\regionInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\MoreInfo\roomInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

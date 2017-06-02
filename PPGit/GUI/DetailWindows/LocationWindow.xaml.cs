@@ -25,7 +25,7 @@ namespace PPGit.GUI.DetailWindows
     {
         private PPGit.Lib.Location Place;
 
-        public static bool openWindow;
+        public bool openWindow;
 
         public LocationWindow(PPGit.Lib.Location place)
         {
@@ -56,6 +56,9 @@ namespace PPGit.GUI.DetailWindows
             specialBX.Items.Add("Building");
             specialBX.Items.Add("City");
             specialBX.Items.Add("Country");
+            specialBX.Items.Add("Planet");
+            specialBX.Items.Add("Region");
+            specialBX.Items.Add("Room");
             if (place is Lib.Building)
             {
                 specialBX.SelectedValue = "Building";
@@ -64,8 +67,20 @@ namespace PPGit.GUI.DetailWindows
             {
                 specialBX.SelectedValue = "City";
             }
-            else if (place is Lib.Country) {
+            else if (place is Lib.Country)
+            {
                 specialBX.SelectedValue = "Country";
+            }
+            else if (place is Lib.Planet)
+            {
+                specialBX.SelectedValue = "Planet";
+            }
+            else if (place is Lib.Region)
+            {
+                specialBX.SelectedValue = "Region";
+            }
+            else if (place is Lib.room) {
+                specialBX.SelectedValue = "Room";
             }
             openWindow = false;
 
@@ -181,8 +196,26 @@ namespace PPGit.GUI.DetailWindows
                     info.Show();
                     openWindow = true;
                 }
-                else if (Place is Lib.Country) {
+                else if (Place is Lib.Country)
+                {
                     GUI.MoreInfo.country info = new MoreInfo.country(Place);
+                    info.Show();
+                    openWindow = true;
+                }
+                else if (Place is Lib.Planet)
+                {
+                    GUI.MoreInfo.planetInfo info = new MoreInfo.planetInfo(Place);
+                    info.Show();
+                    openWindow = true;
+                }
+                else if (Place is Lib.Region)
+                {
+                    GUI.MoreInfo.regionInfo info = new MoreInfo.regionInfo(Place);
+                    info.Show();
+                    openWindow = true;
+                }
+                else if (Place is Lib.room) {
+                    GUI.MoreInfo.roomInfo info = new MoreInfo.roomInfo(Place);
                     info.Show();
                     openWindow = true;
                 }
@@ -208,10 +241,31 @@ namespace PPGit.GUI.DetailWindows
                     Place = new City(old);
                     mainLists.locationList.Add(Place);
                 }
-                else if (specialBX.SelectedItem.ToString() == "Country" && !(Place is Lib.Country)) {
+                else if (specialBX.SelectedItem.ToString() == "Country" && !(Place is Lib.Country))
+                {
                     old = Place;
                     mainLists.locationList.Remove(Place);
                     Place = new Country(old);
+                    mainLists.locationList.Add(Place);
+                }
+                else if (specialBX.SelectedItem.ToString() == "Planet" && !(Place is Lib.Planet))
+                {
+                    old = Place;
+                    mainLists.locationList.Remove(Place);
+                    Place = new Planet(old);
+                    mainLists.locationList.Add(Place);
+                }
+                else if (specialBX.SelectedItem.ToString() == "Region" && !(Place is Lib.Region))
+                {
+                    old = Place;
+                    mainLists.locationList.Remove(Place);
+                    Place = new Region(old);
+                    mainLists.locationList.Add(Place);
+                }
+                else if (specialBX.SelectedItem.ToString() == "Room" && !(Place is Lib.room)) {
+                    old = Place;
+                    mainLists.locationList.Remove(Place);
+                    Place = new room(old);
                     mainLists.locationList.Add(Place);
                 }
             }
