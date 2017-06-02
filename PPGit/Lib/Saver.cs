@@ -111,10 +111,28 @@ namespace PPGit.Lib
 
         private void SaveLocationList(string filepath)
         {
+            StreamWriter sw = new StreamWriter(filepath);
+            StringBuilder builder = new StringBuilder();
+            string locFolder;
 
+            foreach (Location l in mainLists.locationList)
+            {
+                string rawText = l.Name;
+                long num = l.Number;
+                builder.Append(rawText);
+                builder.Append(',');
+                builder.Append(num.ToString());
+                builder.Append("\n");
+
+                locFolder = l.Name.ToLower().Replace(" ", string.Empty) + l.Number.ToString();
+                SaveLocationInfo(Path.GetDirectoryName(filepath) + "\\" + locFolder + "\\" + l.Name.ToLower().Replace(" ", string.Empty) + ".info", l);
+            }
+
+            sw.Write(builder.ToString());
+            sw.Flush();
         }
 
-        private void SaveLocationInfo()
+        private void SaveLocationInfo(string filepath, Location l)
         {
 
         }
