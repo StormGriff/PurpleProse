@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PPGit.GUI.MoreInfo"
         mc:Ignorable="d"
-        Title="Building Info" Height="312.766" Width="317.021" ResizeMode="NoResize" Initialized="buildingInfo_Initialized">
+        Title="BUILDING INFO" Height="312.766" Width="317.021" ResizeMode="NoResize" Initialized="buildingInfo_Initialized" WindowStartupLocation="CenterScreen" Closed="buildingInfo_Closed">
     <Grid>
         <Label x:Name="dimLBL" Content="Dimensions" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="124"/>
         <Label x:Name="widthLBL" Content="Width:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.491,0.492"/>

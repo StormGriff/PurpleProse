@@ -93,5 +93,10 @@ namespace PPGit.GUI.MoreInfo
             }
             catch (InvalidCastException) { }
         }
+
+        private void buildingInfo_Closed(object sender, EventArgs e)
+        {
+            GUI.DetailWindows.LocationWindow.openWindow = false;
+        }
     }
 }

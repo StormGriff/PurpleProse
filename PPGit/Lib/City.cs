@@ -16,8 +16,11 @@ namespace PPGit.Lib
             myPopulation = pop;
             mySize = theSize;
         }
+        public City(Location theLoc) : base(theLoc) {
+
+        }
         public int population { get; set; } //Get and set the population
-        public size theSize { get; set; } //Get and set the size of the town/City
+        public size relativeSize { get; set; } //Get and set the size of the town/City
         public Region region { get; set; }
         //     public  Country state	{ 
         //get { return state; }

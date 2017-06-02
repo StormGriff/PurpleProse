@@ -25,6 +25,8 @@ namespace PPGit.GUI.DetailWindows
     {
         private PPGit.Lib.Location Place;
 
+        public static bool openWindow;
+
         public LocationWindow(PPGit.Lib.Location place)
         {
             InitializeComponent();
@@ -52,9 +54,15 @@ namespace PPGit.GUI.DetailWindows
             //	GovBox.Text = Place._ocracy;
             //	EconBox.Text = Place.economy;
             specialBX.Items.Add("Building");
-            if (place is Lib.Building) {
+            specialBX.Items.Add("City");
+            if (place is Lib.Building)
+            {
                 specialBX.SelectedValue = "Building";
             }
+            else if (place is Lib.City) {
+                specialBX.SelectedValue = "City";
+            }
+            openWindow = false;
 
         }
 
@@ -154,20 +162,45 @@ namespace PPGit.GUI.DetailWindows
 
         private void infoBTN_Click(object sender, RoutedEventArgs e)
         {
-            if (Place is Lib.Building) {
-                GUI.MoreInfo.Building info = new MoreInfo.Building(Place);
-                info.Show();
+            if (!openWindow)
+            {
+                if (Place is Lib.Building)
+                {
+                    GUI.MoreInfo.Building info = new MoreInfo.Building(Place);
+                    info.Show();
+                    openWindow = true;
+                }
+                else if (Place is Lib.City)
+                {
+                    GUI.MoreInfo.city info = new MoreInfo.city(Place);
+                    info.Show();
+                    openWindow = true;
+                }
             }
         }
 
         private void specialBX_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Location old;
-            if (specialBX.SelectedItem.ToString() == "Building" && !(Place is Lib.Building)) { //Convert this location to a building
-                old = Place;
-                mainLists.locationList.Remove(Place);
-                Place = new Building(old);
-                mainLists.locationList.Add(Place);
+            if (!openWindow)
+            {
+                Location old;
+                if (specialBX.SelectedItem.ToString() == "Building" && !(Place is Lib.Building))
+                { //Convert this location to a building
+                    old = Place;
+                    mainLists.locationList.Remove(Place);
+                    Place = new Building(old);
+                    mainLists.locationList.Add(Place);
+                }
+                else if (specialBX.SelectedItem.ToString() == "City" && !(Place is Lib.City))
+                { //Convert place to city
+                    old = Place;
+                    mainLists.locationList.Remove(Place);
+                    Place = new City(old);
+                    mainLists.locationList.Add(Place);
+                }
+            }
+            else {
+                MessageBox.Show("Cannot complete while \"More Info\" window is open", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
