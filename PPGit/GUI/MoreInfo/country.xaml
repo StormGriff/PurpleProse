@@ -1,0 +1,20 @@
+﻿<Window x:Name="countryInfoFRM" x:Class="PPGit.GUI.MoreInfo.country"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PPGit.GUI.MoreInfo"
+        mc:Ignorable="d"
+        Title="COUNTRY INFO" Height="223.49" Width="285.235" ResizeMode="NoResize" Closed="countryInfoFRM_Closed" Initialized="countryInfoFRM_Initialized">
+    <Grid>
+        <Label x:Name="citizensLBL" Content="Number of Citizens:" HorizontalAlignment="Left" Margin="23,28,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="citizensTXT" HorizontalAlignment="Left" Height="23" Margin="152,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" TextChanged="citizensTXT_TextChanged"/>
+        <Label x:Name="governmentLBL" Content="Government:" HorizontalAlignment="Left" Margin="59,67,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="govBX" HorizontalAlignment="Left" Margin="152,67,0,0" VerticalAlignment="Top" Width="98" SelectionChanged="govBX_SelectionChanged"/>
+        <Label x:Name="econLBL" Content="Economy:" HorizontalAlignment="Left" Margin="76,107,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="econBX" HorizontalAlignment="Left" Margin="152,107,0,0" VerticalAlignment="Top" Width="98" SelectionChanged="econBX_SelectionChanged"/>
+        <Label x:Name="regionLBL" Content="Region:" HorizontalAlignment="Left" Margin="88,144,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="regBX" HorizontalAlignment="Left" Margin="152,144,0,0" VerticalAlignment="Top" Width="98" SelectionChanged="regBX_SelectionChanged"/>
+
+    </Grid>
+</Window>

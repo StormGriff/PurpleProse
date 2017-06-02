@@ -129,6 +129,9 @@
     <Compile Include="GUI\MoreInfo\city.xaml.cs">
       <DependentUpon>city.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\MoreInfo\country.xaml.cs">
+      <DependentUpon>country.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\RecycleBin\RecycleBin.xaml.cs">
       <DependentUpon>RecycleBin.xaml</DependentUpon>
     </Compile>
@@ -162,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\MoreInfo\city.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\MoreInfo\country.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

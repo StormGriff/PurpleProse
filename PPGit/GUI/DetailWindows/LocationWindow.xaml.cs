@@ -55,12 +55,17 @@ namespace PPGit.GUI.DetailWindows
             //	EconBox.Text = Place.economy;
             specialBX.Items.Add("Building");
             specialBX.Items.Add("City");
+            specialBX.Items.Add("Country");
             if (place is Lib.Building)
             {
                 specialBX.SelectedValue = "Building";
             }
-            else if (place is Lib.City) {
+            else if (place is Lib.City)
+            {
                 specialBX.SelectedValue = "City";
+            }
+            else if (place is Lib.Country) {
+                specialBX.SelectedValue = "Country";
             }
             openWindow = false;
 
@@ -176,6 +181,11 @@ namespace PPGit.GUI.DetailWindows
                     info.Show();
                     openWindow = true;
                 }
+                else if (Place is Lib.Country) {
+                    GUI.MoreInfo.country info = new MoreInfo.country(Place);
+                    info.Show();
+                    openWindow = true;
+                }
             }
         }
 
@@ -196,6 +206,12 @@ namespace PPGit.GUI.DetailWindows
                     old = Place;
                     mainLists.locationList.Remove(Place);
                     Place = new City(old);
+                    mainLists.locationList.Add(Place);
+                }
+                else if (specialBX.SelectedItem.ToString() == "Country" && !(Place is Lib.Country)) {
+                    old = Place;
+                    mainLists.locationList.Remove(Place);
+                    Place = new Country(old);
                     mainLists.locationList.Add(Place);
                 }
             }
