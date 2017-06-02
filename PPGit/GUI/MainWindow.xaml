@@ -35,6 +35,8 @@
                         <ContextMenu>
                             <MenuItem x:Name="NewProj" FontSize="12" Header="New Project" Click="mnuNewProject_Click"/>
                             <Separator/>
+                            <MenuItem Name="SaveProj" FontSize="12" Header="Save Project" Click="mnuSaveProject_Click"/>
+                            <Separator/>
                             <MenuItem x:Name="Exit" FontSize="12" Header="Exit" Click="mnuExit_Click"/>
                         </ContextMenu>
                     </MenuItem.ContextMenu>

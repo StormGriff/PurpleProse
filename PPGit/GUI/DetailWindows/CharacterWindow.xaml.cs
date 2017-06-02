@@ -67,19 +67,23 @@ namespace PPGit.GUI.DetailWindows
             {
                 try
                 {
-                    if (Directory.Exists(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower() + Person.Number))
+                    if (Directory.Exists(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower().Replace(" ", string.Empty) + Person.Number))
                     {
+                        string oldDir = mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower().Replace(" ", string.Empty) + Person.Number;
+                        string newDir = mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Person.Number;
                         //rename folder and deletes the old one
-                        Directory.Move(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower() + Person.Number, mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number);
+                        Directory.Move(oldDir, newDir);
                     }
-                    else Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number);
+                    else Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Person.Number);
 
-                    if (Directory.Exists(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + "\\" + Person.Name.ToLower() + ".info"))
+                    if (File.Exists(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Person.Number + "\\" + Person.Name.ToLower().Replace(" ", string.Empty) + ".info"))
                     {
+                        string oldFile = mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Person.Number + "\\" + Person.Name.ToLower().Replace(" ", string.Empty) + ".info";
+                        string newFile = mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Person.Number + "\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + ".info";
                         //rename info file and deletes old one
-                        Directory.Move(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower() + Person.Number + "\\" + Person.Name.ToLower() + ".info", mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + "\\" + NameBox.Text.ToLower() + ".info");
+                        File.Move(oldFile, newFile);
                     }
-                    else Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + "\\" + NameBox.Text.ToLower() + ".info");
+                    else File.Create(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Person.Number + "\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + ".info");
 
                     Person.Name = NameBox.Text;
                     string newString = "";
@@ -88,7 +92,7 @@ namespace PPGit.GUI.DetailWindows
                     }
                     this.Title = newString;
                 }
-                catch (System.IO.IOException x) { }
+                catch (System.IO.IOException x) { MessageBox.Show(x.ToString()); }
             }
         }
 

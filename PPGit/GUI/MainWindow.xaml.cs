@@ -45,14 +45,14 @@ namespace PPGit.GUI
             Lib.Character New_Char = new Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
             // ^Create a character^
 
-            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + mainLists.objNum);
-            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + mainLists.objNum + "\\images");
-            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + mainLists.objNum + "\\texts");
+            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + mainLists.objNum);
+            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + mainLists.objNum + "\\images");
+            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + mainLists.objNum + "\\texts");
 
             New_Char.Number = mainLists.objNum;
             mainLists.objNum++;
 
-            File.Create(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + New_Char.Number + "\\" + New_Char.Name.ToLower() + ".info");
+            File.Create(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + New_Char.Number + "\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + ".info");
 
             
 
@@ -422,6 +422,12 @@ namespace PPGit.GUI
                 else mainLists.fullEditor = new TextEditor.TextEditor(mainLists.storyLocation, true); //True for full story
                 mainLists.fullEditor.Show();
             }
+        }
+
+        private void mnuSaveProject_Click(object sender, RoutedEventArgs e)
+        {
+            PPGit.Lib.Saver saver = new Lib.Saver();
+            saver.Save();
         }
     }
 }
