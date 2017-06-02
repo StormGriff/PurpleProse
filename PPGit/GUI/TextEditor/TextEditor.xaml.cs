@@ -88,25 +88,45 @@ namespace PPGit.GUI.TextEditor
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Ookii.Dialogs.Wpf.VistaSaveFileDialog sfd = new VistaSaveFileDialog();
-            sfd.Filter = "Rich Text (*.rtf) | *.rtf";
-            sfd.InitialDirectory = mainLists.projectDir;
-
-            if (sfd.ShowDialog() == true)
+            if (fullStory)
             {
-                FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
+                FileStream fs = new FileStream(mainLists.storyLocation, FileMode.Create);
                 TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
                 range.Save(fs, DataFormats.Rtf);
-                if (fullStory)
-                {
-                    mainLists.storyLocation = sfd.FileName;  //Store location of story
-                    mainLists.wordCount = countWords();
-                }
-                else if (thisObject != null) {
-                    thisObject.DescFile = sfd.FileName;
-                }
-                fs.Close(); //Close the stream
+                fs.Close();
                 save = true;
+            }
+            else if (thisObject != null && thisObject.DescFile != null)
+            {
+                FileStream fs = new FileStream(thisObject.DescFile, FileMode.Create);
+                TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+                range.Save(fs, DataFormats.Rtf);
+                fs.Close();
+                save = true;
+            }
+            else
+            {
+                Ookii.Dialogs.Wpf.VistaSaveFileDialog sfd = new VistaSaveFileDialog();
+                sfd.InitialDirectory = mainLists.projectDir;
+                sfd.Filter = "Rich Text (*.rtf) | *.rtf";
+
+                if (sfd.ShowDialog() == true)
+                {
+                    FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
+                    TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+                    range.Save(fs, DataFormats.Rtf);
+                    if (fullStory)
+                    {
+                        mainLists.storyLocation = sfd.FileName;  //Store location of story
+                        mainLists.wordCount = countWords();
+                    }
+                    else if (thisObject != null)
+                    {
+                        thisObject.DescFile = sfd.FileName;
+                    }
+                    fs.Close(); //Close the stream
+                    save = true;
+                }
             }
         }
 

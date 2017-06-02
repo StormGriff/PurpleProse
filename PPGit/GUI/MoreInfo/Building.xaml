@@ -1,0 +1,24 @@
+﻿<Window x:Name="buildingInfo" x:Class="PPGit.GUI.MoreInfo.Building"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PPGit.GUI.MoreInfo"
+        mc:Ignorable="d"
+        Title="BUILDING INFO" Height="312.766" Width="317.021" ResizeMode="NoResize" Initialized="buildingInfo_Initialized" WindowStartupLocation="CenterScreen" Closed="buildingInfo_Closed">
+    <Grid>
+        <Label x:Name="dimLBL" Content="Dimensions" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="124"/>
+        <Label x:Name="widthLBL" Content="Width:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.491,0.492"/>
+        <TextBox x:Name="widthTXT" HorizontalAlignment="Left" Height="23" Margin="60,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" TextChanged="widthTXT_TextChanged"/>
+        <Label x:Name="lengthLBL" Content="Length:" HorizontalAlignment="Left" Margin="145,41,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="lengthTXT" HorizontalAlignment="Left" Height="23" Margin="199,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" TextChanged="lengthTXT_TextChanged"/>
+        <Label x:Name="heightLBL" Content="Height:" HorizontalAlignment="Left" Margin="31,83,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="heightTXT" HorizontalAlignment="Left" Height="23" Margin="96,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" TextChanged="heightTXT_TextChanged"/>
+        <ComboBox x:Name="measurementBX" HorizontalAlignment="Left" Margin="183,83,0,0" VerticalAlignment="Top" Width="105" SelectionChanged="measurementBX_SelectionChanged"/>
+        <Label x:Name="storiesLBL" Content="Number of Stories:" HorizontalAlignment="Left" Margin="17,146,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="storiesTXT" HorizontalAlignment="Left" Height="23" Margin="141,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" TextChanged="storiesTXT_TextChanged"/>
+        <Label x:Name="roomsLBL" Content="Number of Rooms:" HorizontalAlignment="Left" Margin="60,206,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="roomsTXT" HorizontalAlignment="Left" Height="23" Margin="183,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" TextChanged="roomsTXT_TextChanged"/>
+
+    </Grid>
+</Window>

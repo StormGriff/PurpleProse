@@ -123,6 +123,24 @@
     </Compile>
     <Compile Include="GUI\MainWindow.xaml.cs" />
     <Compile Include="GUI\MapMaker\MapMaker.xaml.cs" />
+    <Compile Include="GUI\MoreInfo\Building.xaml.cs">
+      <DependentUpon>Building.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MoreInfo\city.xaml.cs">
+      <DependentUpon>city.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MoreInfo\country.xaml.cs">
+      <DependentUpon>country.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MoreInfo\planetInfo.xaml.cs">
+      <DependentUpon>planetInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MoreInfo\regionInfo.xaml.cs">
+      <DependentUpon>regionInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MoreInfo\roomInfo.xaml.cs">
+      <DependentUpon>roomInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\RecycleBin\RecycleBin.xaml.cs">
       <DependentUpon>RecycleBin.xaml</DependentUpon>
     </Compile>
@@ -150,6 +168,30 @@
     <Page Include="GUI\MapMaker\MapMaker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\MoreInfo\Building.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\MoreInfo\city.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\MoreInfo\country.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\MoreInfo\planetInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\MoreInfo\regionInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\MoreInfo\roomInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\RecycleBin\RecycleBin.xaml">
       <SubType>Designer</SubType>

@@ -8,12 +8,18 @@ namespace PPGit.Lib
 {
     public class Country : Location
     {
+        public enum government { Monarchy, Democracy, Dictatorship, Theocracy, Confederation, Communist }
+        public enum economies { Capitalist, Socialist }
         public Country(string name, string desc, string hist, List<string> images) : base(name, desc, hist, images) { }
 
+        public Country(Location theLoc) : base(theLoc) {
+
+        }
+
         public Region regio { get; set; }
-        public string _ocracy { get; set; } //Ex: Theocracy Democracy
-        public string values { get; set; } //Ex: Totalatarian, Left_wing right_wing
-        public string economy { get; set; } //Ex: Communist, Market; Free Restricted Controled
+        public government _ocracy { get; set; }
+        public economies economy { get; set; }
+        public int citizens { get; set; }
     }
 }
 

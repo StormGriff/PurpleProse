@@ -25,6 +25,8 @@ namespace PPGit.GUI.DetailWindows
     {
         private PPGit.Lib.Location Place;
 
+        public bool openWindow;
+
         public LocationWindow(PPGit.Lib.Location place)
         {
             InitializeComponent();
@@ -51,6 +53,36 @@ namespace PPGit.GUI.DetailWindows
             //	TerraBox.Text = Place.terrain;
             //	GovBox.Text = Place._ocracy;
             //	EconBox.Text = Place.economy;
+            specialBX.Items.Add("Building");
+            specialBX.Items.Add("City");
+            specialBX.Items.Add("Country");
+            specialBX.Items.Add("Planet");
+            specialBX.Items.Add("Region");
+            specialBX.Items.Add("Room");
+            if (place is Lib.Building)
+            {
+                specialBX.SelectedValue = "Building";
+            }
+            else if (place is Lib.City)
+            {
+                specialBX.SelectedValue = "City";
+            }
+            else if (place is Lib.Country)
+            {
+                specialBX.SelectedValue = "Country";
+            }
+            else if (place is Lib.Planet)
+            {
+                specialBX.SelectedValue = "Planet";
+            }
+            else if (place is Lib.Region)
+            {
+                specialBX.SelectedValue = "Region";
+            }
+            else if (place is Lib.room) {
+                specialBX.SelectedValue = "Room";
+            }
+            openWindow = false;
 
         }
 
@@ -145,6 +177,100 @@ namespace PPGit.GUI.DetailWindows
             if (measurementBX.SelectedValue != null)
             {
                 Place.theSize.units = (mainLists.measurement)measurementBX.SelectedValue;
+            }
+        }
+
+        private void infoBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (!openWindow)
+            {
+                if (Place is Lib.Building)
+                {
+                    GUI.MoreInfo.Building info = new MoreInfo.Building(Place);
+                    info.Show();
+                    openWindow = true;
+                }
+                else if (Place is Lib.City)
+                {
+                    GUI.MoreInfo.city info = new MoreInfo.city(Place);
+                    info.Show();
+                    openWindow = true;
+                }
+                else if (Place is Lib.Country)
+                {
+                    GUI.MoreInfo.country info = new MoreInfo.country(Place);
+                    info.Show();
+                    openWindow = true;
+                }
+                else if (Place is Lib.Planet)
+                {
+                    GUI.MoreInfo.planetInfo info = new MoreInfo.planetInfo(Place);
+                    info.Show();
+                    openWindow = true;
+                }
+                else if (Place is Lib.Region)
+                {
+                    GUI.MoreInfo.regionInfo info = new MoreInfo.regionInfo(Place);
+                    info.Show();
+                    openWindow = true;
+                }
+                else if (Place is Lib.room) {
+                    GUI.MoreInfo.roomInfo info = new MoreInfo.roomInfo(Place);
+                    info.Show();
+                    openWindow = true;
+                }
+            }
+        }
+
+        private void specialBX_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!openWindow)
+            {
+                Location old;
+                if (specialBX.SelectedItem.ToString() == "Building" && !(Place is Lib.Building))
+                { //Convert this location to a building
+                    old = Place;
+                    mainLists.locationList.Remove(Place);
+                    Place = new Building(old);
+                    mainLists.locationList.Add(Place);
+                }
+                else if (specialBX.SelectedItem.ToString() == "City" && !(Place is Lib.City))
+                { //Convert place to city
+                    old = Place;
+                    mainLists.locationList.Remove(Place);
+                    Place = new City(old);
+                    mainLists.locationList.Add(Place);
+                }
+                else if (specialBX.SelectedItem.ToString() == "Country" && !(Place is Lib.Country))
+                {
+                    old = Place;
+                    mainLists.locationList.Remove(Place);
+                    Place = new Country(old);
+                    mainLists.locationList.Add(Place);
+                }
+                else if (specialBX.SelectedItem.ToString() == "Planet" && !(Place is Lib.Planet))
+                {
+                    old = Place;
+                    mainLists.locationList.Remove(Place);
+                    Place = new Planet(old);
+                    mainLists.locationList.Add(Place);
+                }
+                else if (specialBX.SelectedItem.ToString() == "Region" && !(Place is Lib.Region))
+                {
+                    old = Place;
+                    mainLists.locationList.Remove(Place);
+                    Place = new Region(old);
+                    mainLists.locationList.Add(Place);
+                }
+                else if (specialBX.SelectedItem.ToString() == "Room" && !(Place is Lib.room)) {
+                    old = Place;
+                    mainLists.locationList.Remove(Place);
+                    Place = new room(old);
+                    mainLists.locationList.Add(Place);
+                }
+            }
+            else {
+                MessageBox.Show("Cannot complete while \"More Info\" window is open", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

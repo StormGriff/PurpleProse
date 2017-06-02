@@ -16,6 +16,12 @@ namespace PPGit.Lib
             theSize.num = 0;
         }
 
+        public Location(Location theLoc) : base(theLoc) {
+            parent = theLoc.parent;
+            theSize = theLoc.theSize;
+            map_file = theLoc.map_file;
+        }
+
         public size theSize;
 
         public Location parent { get; set; }
