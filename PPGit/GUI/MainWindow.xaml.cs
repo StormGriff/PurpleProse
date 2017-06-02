@@ -411,7 +411,7 @@ namespace PPGit.GUI
             this.Close();
         }
 
-        private void storyBTN_Click(object sender, RoutedEventArgs e)
+        private void mnuWriteStory_Click(object sender, RoutedEventArgs e)
         {
             if (mainLists.fullEditor != null)
             {

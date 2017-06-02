@@ -14,11 +14,12 @@ namespace PPGit.Lib
         /// Executes a load operation for a full project
         /// User should select a .proj file
         /// </summary>
-        public void Load()
+        public bool Load()
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Project File .proj|*.proj";
             string directory;
+            bool success = false;
 
             ofd.InitialDirectory = "C:\\";
 
@@ -29,11 +30,14 @@ namespace PPGit.Lib
                 LoadProjectFile(ofd.FileName);
                 LoadCharacterList(directory + "\\items\\characters\\char.list");
                 LoadLocationList(directory + "\\items\\locations\\loc.list");
+                success = true;
             }
             else
             {
-
+                success = false;
             }
+
+            return success;
         }
 
         private void LoadProjectFile(string filepath)

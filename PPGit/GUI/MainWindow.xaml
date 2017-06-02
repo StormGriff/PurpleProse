@@ -43,6 +43,7 @@
                     <MenuItem.ContextMenu>
                         <ContextMenu>
                             <MenuItem Name="Calendar" Header="Calendar" FontSize="12" Click="mnuCalendar_Click"/>
+                            <MenuItem Name="WriteStory" Header="Write Story" FontSize="12" Click="mnuWriteStory_Click"/>
                             <Separator/>
                             <MenuItem Name="Restore" Header="Restore Items" FontSize="12" Click="mnuRestoreItems_Click"/>
                         </ContextMenu>
@@ -55,7 +56,6 @@
                         </ContextMenu>
                     </MenuItem.ContextMenu>
                 </MenuItem>
-                <Button x:Name="storyBTN" Content="Write Story" Width="85" Height="7" Click="storyBTN_Click"/>
             </Menu>
         </DockPanel>
 

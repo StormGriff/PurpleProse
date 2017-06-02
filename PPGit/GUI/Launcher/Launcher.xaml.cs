@@ -30,12 +30,21 @@ namespace PPGit.GUI.Launcher
 
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
+            bool loadSuccess;
             PPGit.Lib.Loader l = new Lib.Loader();
             MainWindow win = new MainWindow();
 
-            l.Load();
-            this.Close();
-            win.Show();
+            loadSuccess = l.Load();
+
+            if(loadSuccess)
+            {
+                this.Close();
+                win.Show();
+            }
+            else
+            {
+                MessageBox.Show("An Error Occured.");
+            }
         }
 
         private void btnNew_Click(object sender, RoutedEventArgs e)
