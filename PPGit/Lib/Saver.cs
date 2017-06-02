@@ -37,6 +37,7 @@ namespace PPGit.Lib
         {
             StreamWriter sw = new StreamWriter(filepath);
             StringBuilder builder = new StringBuilder();
+            string charFolder;
 
             foreach(Character c in mainLists.characterList)
             {
@@ -46,15 +47,66 @@ namespace PPGit.Lib
                 builder.Append(',');
                 builder.Append(num.ToString());
                 builder.Append("\n");
+
+                charFolder = c.Name.ToLower().Replace(" ", string.Empty) + c.Number.ToString();
+                SaveCharacterInfo(Path.GetDirectoryName(filepath) + "\\" + charFolder + "\\" + c.Name.ToLower().Replace(" ", string.Empty) + ".info", c);
             }
 
             sw.Write(builder.ToString());
             sw.Flush();
         }
 
-        private void SaveCharacterInfo()
+        private void SaveCharacterInfo(string filepath, Character c)
         {
+            StreamWriter sw = new StreamWriter(filepath);
+            StringBuilder builder = new StringBuilder();
+            string folder = Path.GetDirectoryName(filepath);
 
+            builder.Append("Name:");
+            builder.Append(c.Name);
+            builder.Append("\n");
+
+            builder.Append("Age:");
+            builder.Append(c.charAge);
+            builder.Append("\n");
+
+            if(c.charGender != null)
+            {
+                builder.Append("Gender:");
+                builder.Append(c.charGender);
+                builder.Append("\n");
+            }
+            if(c.charKind != null)
+            {
+                builder.Append("Race:");
+                builder.Append(c.charKind);
+                builder.Append("\n");
+            }
+            if(c.DescFile != null)
+            {
+                builder.Append("Description:desc.txt\n");
+            }
+            if(c.charRole != null)
+            {
+                builder.Append("Role:");
+                builder.Append(c.charRole);
+                builder.Append("\n");
+            }
+            if(c.charLanguage != null)
+            {
+                builder.Append("Language:");
+                builder.Append(c.charLanguage);
+                builder.Append("\n");
+            }
+            if(c.charHometown != null)
+            {
+                builder.Append("Hometown:");
+                builder.Append(c.charHometown);
+                builder.Append("\n");
+            }
+
+            sw.Write(builder.ToString());
+            sw.Flush();
         }
 
         private void SaveLocationList(string filepath)
