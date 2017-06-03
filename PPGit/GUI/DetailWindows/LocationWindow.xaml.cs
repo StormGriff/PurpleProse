@@ -92,7 +92,36 @@ namespace PPGit.GUI.DetailWindows
         //ComboBox Tutorial: https://youtu.be/UDDYd3q5WM4
 
         private void NameBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
-        { if (NameBox.Text != "") Place.Name = NameBox.Text; this.Title = Place.Name; }
+        {
+            if (NameBox.Text != "")
+            {
+                try
+                {
+                    if (Directory.Exists(mainLists.projectDir + "\\items\\locations\\" + Place.Name.ToLower().Replace(" ", string.Empty) + Place.Number))
+                    {
+                        string oldDir = mainLists.projectDir + "\\items\\locations\\" + Place.Name.ToLower().Replace(" ", string.Empty) + Place.Number;
+                        string newDir = mainLists.projectDir + "\\items\\locations\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Place.Number;
+                        //rename folder and deletes the old one
+                        Directory.Move(oldDir, newDir);
+                    }
+                    else Directory.CreateDirectory(mainLists.projectDir + "\\items\\locations\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Place.Number);
+
+                    if (File.Exists(mainLists.projectDir + "\\items\\locations\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Place.Number + "\\" + Place.Name.ToLower().Replace(" ", string.Empty) + ".info"))
+                    {
+                        string oldFile = mainLists.projectDir + "\\items\\locations\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Place.Number + "\\" + Place.Name.ToLower().Replace(" ", string.Empty) + ".info";
+                        string newFile = mainLists.projectDir + "\\items\\locations\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Place.Number + "\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + ".info";
+                        //rename info file and deletes old one
+                        File.Move(oldFile, newFile);
+                    }
+                    else File.Create(mainLists.projectDir + "\\items\\locations\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Place.Number + "\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + ".info");
+
+                    Place.Name = NameBox.Text;
+                    string newString = NameBox.Text.ToUpper();
+                    this.Title = newString;
+                }
+                catch (System.IO.IOException x) { MessageBox.Show(x.ToString()); }
+            }
+        }
 
         /*private void AgeBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
         {

@@ -86,10 +86,7 @@ namespace PPGit.GUI.DetailWindows
                     else File.Create(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Person.Number + "\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + ".info");
 
                     Person.Name = NameBox.Text;
-                    string newString = "";
-                    foreach(char newChar in NameBox.Text) {
-                        newString += char.ToUpper(newChar);
-                    }
+                    string newString = NameBox.Text.ToUpper();
                     this.Title = newString;
                 }
                 catch (System.IO.IOException x) { MessageBox.Show(x.ToString()); }

@@ -40,6 +40,42 @@ namespace PPGit.GUI
             InitializeComponent();
         }
 
+        private void NewItem()
+        {
+            GUI.NewObject.NewItemWizard wizard = new NewObject.NewItemWizard();
+            wizard.ShowDialog();
+
+            mainLists.ItemTypes type = wizard.GetSelectedItemType();
+
+            switch(type)
+            {
+                case mainLists.ItemTypes.Character:
+                    NewCharacter();
+                    break;
+                case mainLists.ItemTypes.Location:
+                    NewLocation(type);
+                    break;
+                case mainLists.ItemTypes.Building:
+                    NewLocation(type);
+                    break;
+                case mainLists.ItemTypes.City:
+                    NewLocation(type);
+                    break;
+                case mainLists.ItemTypes.Country:
+                    NewLocation(type);
+                    break;
+                case mainLists.ItemTypes.Planet:
+                    NewLocation(type);
+                    break;
+                case mainLists.ItemTypes.Region:
+                    NewLocation(type);
+                    break;
+                case mainLists.ItemTypes.Room:
+                    NewLocation(type);
+                    break;
+            }
+        }
+
         private void NewCharacter()
         {
             Lib.Character New_Char = new Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
@@ -62,10 +98,35 @@ namespace PPGit.GUI
             New_Char.window.Show();							//Show it.
         }
 
-        private void NewLocation()
+        private void NewLocation(mainLists.ItemTypes type)
         {
             Lib.Location New_Loc = new Lib.Location("The_State", null, null, null);
             // ^Create a location^
+
+            switch(type)
+            {
+                case mainLists.ItemTypes.Location:
+                    New_Loc = new Lib.Location("The_State", null, null, null);
+                    break;
+                case mainLists.ItemTypes.Building:
+                    New_Loc = new Lib.Building("The_State", null, null, null, 0, 0, 0, 0);
+                    break;
+                case mainLists.ItemTypes.City:
+                    New_Loc = new Lib.City(0, 0, "The_State", null, null, null);
+                    break;
+                case mainLists.ItemTypes.Country:
+                    New_Loc = new Lib.Country("The_State", null, null, null);
+                    break;
+                case mainLists.ItemTypes.Planet:
+                    New_Loc = new Lib.Planet(0, 0, 0, "The_State", null, null, null);
+                    break;
+                case mainLists.ItemTypes.Region:
+                    New_Loc = new Lib.Region("The_State", null, null, null);
+                    break;
+                case mainLists.ItemTypes.Room:
+                    New_Loc = new Lib.room(0, 0, 0, "The_State", null, null, null);
+                    break;
+            }
 
             Directory.CreateDirectory(mainLists.projectDir + "\\items\\locations\\" + New_Loc.Name.ToLower() + mainLists.objNum);
             Directory.CreateDirectory(mainLists.projectDir + "\\items\\locations\\" + New_Loc.Name.ToLower() + mainLists.objNum + "\\images");
@@ -244,12 +305,14 @@ namespace PPGit.GUI
 
         private void NewCharacterContextMenu_Click(object sender, RoutedEventArgs e)
         {
-            NewCharacter();
+            NewItem();
+            //NewCharacter();
         }
 
         private void NewLocationContextMenu_Click(object sender, RoutedEventArgs e)
         {
-            NewLocation();
+            NewItem();
+            //NewLocation();
         }
 
         private void ViewEditContextMenu_Click(object sender, RoutedEventArgs e)

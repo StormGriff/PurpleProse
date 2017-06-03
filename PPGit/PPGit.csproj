@@ -141,6 +141,9 @@
     <Compile Include="GUI\MoreInfo\roomInfo.xaml.cs">
       <DependentUpon>roomInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\NewObject\NewItemWizard.xaml.cs">
+      <DependentUpon>NewItemWizard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\RecycleBin\RecycleBin.xaml.cs">
       <DependentUpon>RecycleBin.xaml</DependentUpon>
     </Compile>
@@ -190,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\MoreInfo\roomInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\NewObject\NewItemWizard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

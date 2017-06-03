@@ -134,7 +134,37 @@ namespace PPGit.Lib
 
         private void SaveLocationInfo(string filepath, Location l)
         {
+            StreamWriter sw = new StreamWriter(filepath);
+            StringBuilder builder = new StringBuilder();
 
+            if(l is Building)
+            {
+                builder.Append("Building\n");
+            }
+            else if(l is City)
+            {
+                builder.Append("City\n");
+            }
+            else if (l is Country)
+            {
+                builder.Append("Country\n");
+            }
+            else if (l is Planet)
+            {
+                builder.Append("Planet\n");
+            }
+            else if (l is Region)
+            {
+                builder.Append("Region\n");
+            }
+            else if (l is room)
+            {
+                builder.Append("Room\n");
+            }
+            else //if l is Location
+            {
+                builder.Append("Location\n");
+            }
         }
     }
 }
