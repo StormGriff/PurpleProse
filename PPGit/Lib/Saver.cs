@@ -139,19 +139,95 @@ namespace PPGit.Lib
 
             if(l is Building)
             {
+                Building temp = (Building)l;
+
                 builder.Append("Building\n");
+
+                if (temp.getnumStories != null)
+                {
+                    builder.Append("Stories:");
+                    builder.Append(temp.getnumStories);
+                    builder.Append("\n");
+                }
+
+                builder.Append("Rooms:");
+                builder.Append(temp.numRooms);
+                builder.Append("\n");
+                
+
+                builder.Append("Dimensions:");
+                builder.Append(temp.myDimensions.x);
+                builder.Append(',');
+                builder.Append(temp.myDimensions.y);
+                builder.Append(',');
+                builder.Append(temp.myDimensions.z);
+                builder.Append(',');
+                builder.Append(temp.myDimensions.myMeasurement.ToString());
+                builder.Append("\n");
             }
             else if(l is City)
             {
+                City temp = (City)l;
+
                 builder.Append("City\n");
+
+                builder.Append("Population:");
+                builder.Append(temp.population);
+                builder.Append("\n");
+
+                builder.Append("Size:");
+                builder.Append(temp.MySize.ToString());
+                builder.Append("\n");
+
+                if(temp.region != null)
+                {
+                    builder.Append("Region:");
+                    builder.Append(temp.region.ToString());
+                    builder.Append("\n");
+                }
             }
             else if (l is Country)
             {
+                Country temp = (Country)l;
+
                 builder.Append("Country\n");
+
+                if(temp.region != null)
+                {
+                    builder.Append("Region:");
+                    builder.Append(temp.region.ToString());
+                    builder.Append("\n");
+                }
+
+                builder.Append("Government:");
+                builder.Append(temp._ocracy.ToString());
+                builder.Append("\n");
+
+                builder.Append("Economy:");
+                builder.Append(temp.economy.ToString());
+                builder.Append("\n");
+
+                builder.Append("Citizens:");
+                builder.Append(temp.citizens.ToString());
+                builder.Append("\n");
             }
             else if (l is Planet)
             {
+                Planet temp = (Planet)l;
+
                 builder.Append("Planet\n");
+
+                builder.Append("Technology:");
+                builder.Append(temp.getLevel().ToString());
+                builder.Append("\n");
+
+                builder.Append("Population:");
+                builder.Append(temp.population.ToString());
+                builder.Append("\n");
+
+                builder.Append("Biome:");
+                builder.Append(temp.myLand.ToString());
+                builder.Append("\n");
             }
             else if (l is Region)
             {
@@ -159,12 +235,41 @@ namespace PPGit.Lib
             }
             else if (l is room)
             {
+                room temp = (room)l;
+
                 builder.Append("Room\n");
+
+                builder.Append("Dimensions:");
+                builder.Append(temp.myRoom.x);
+                builder.Append(',');
+                builder.Append(temp.myRoom.y);
+                builder.Append(',');
+                builder.Append(temp.myRoom.usedMeasurement.ToString());
+                builder.Append("\n");
             }
             else //if l is Location
             {
                 builder.Append("Location\n");
             }
+
+            builder.Append("Name:");
+            builder.Append(l.Name);
+            builder.Append("\n");
+
+            if (l.DescFile != null)
+            {
+                builder.Append("Description:desc.txt\n");
+            }
+            if (l.HistFile != null)
+            {
+                builder.Append("History:hist.txt\n");
+            }
+            if(l.map_file != null)
+            {
+                builder.Append("Map:map.jpg");
+            }
+
+            
         }
     }
 }

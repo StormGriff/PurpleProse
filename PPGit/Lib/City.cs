@@ -20,7 +20,7 @@ namespace PPGit.Lib
 
         }
         public int population { get; set; } //Get and set the population
-        public size relativeSize { get; set; } //Get and set the size of the town/City
+        public size MySize { get { return mySize; } set { mySize = value; } } //Get and set the size of the town/City
         public Region region { get; set; }
         //     public  Country state	{ 
         //get { return state; }

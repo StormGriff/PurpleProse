@@ -9,17 +9,17 @@ namespace PPGit.Lib
 {
     public class room : Location
     {
-        private struct dimensions
+        public struct dimensionsRoom
         {
             public double x;
             public double y;
             public mainLists.measurement usedMeasurement;
         }
-        dimensions myRoom;
+        public dimensionsRoom myRoom;
 
         public room(double x, double y, mainLists.measurement measuredIn, string name, string desc, string hist, List<string> images) : base(name, desc, hist, images)
         {
-            myRoom = new dimensions();
+            myRoom = new dimensionsRoom();
             myRoom.x = x;
             myRoom.y = y;
             myRoom.usedMeasurement = measuredIn;

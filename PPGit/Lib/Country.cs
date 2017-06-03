@@ -16,7 +16,7 @@ namespace PPGit.Lib
 
         }
 
-        public Region regio { get; set; }
+        public Region region { get; set; }
         public government _ocracy { get; set; }
         public economies economy { get; set; }
         public int citizens { get; set; }

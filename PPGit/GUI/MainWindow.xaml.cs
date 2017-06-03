@@ -87,10 +87,13 @@ namespace PPGit.GUI
             Directory.CreateDirectory(New_Char.Directory + "\\images");
             Directory.CreateDirectory(New_Char.Directory + "\\texts");
 
-            New_Char.Number = mainLists.objNum;
-            mainLists.objNum++;
+            New_Char.Number = mainLists.objNum++;
 
+            //create info file
             File.Create(New_Char.Directory + "\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + ".info");
+
+            //create desc file
+            File.Create(New_Char.Directory + "\\texts\\desc.txt");
 
             mainLists.characterList.Add(New_Char);						//Add it to the list of characters
 
