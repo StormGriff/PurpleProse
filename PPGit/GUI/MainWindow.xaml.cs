@@ -45,6 +45,9 @@ namespace PPGit.GUI
             GUI.NewObject.NewItemWizard wizard = new NewObject.NewItemWizard();
             wizard.ShowDialog();
 
+            if (!wizard.DialogRes)
+                return;
+
             mainLists.ItemTypes type = wizard.GetSelectedItemType();
 
             switch(type)

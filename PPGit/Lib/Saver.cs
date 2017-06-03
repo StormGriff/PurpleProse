@@ -143,6 +143,9 @@ namespace PPGit.Lib
 
                 builder.Append("Building\n");
 
+                //Name needs to be near top to reduce amount of storage required before instatiation of new object during load
+                SaveGeneralLocData(ref builder, l);
+
                 if (temp.getnumStories != null)
                 {
                     builder.Append("Stories:");
@@ -164,10 +167,15 @@ namespace PPGit.Lib
                 builder.Append(',');
                 builder.Append(temp.myDimensions.myMeasurement.ToString());
                 builder.Append("\n");
+
+
             }
             else if(l is City)
             {
                 City temp = (City)l;
+
+                //Name needs to be near top to reduce amount of storage required before instatiation of new object during load
+                SaveGeneralLocData(ref builder, l);
 
                 builder.Append("City\n");
 
@@ -189,6 +197,9 @@ namespace PPGit.Lib
             else if (l is Country)
             {
                 Country temp = (Country)l;
+
+                //Name needs to be near top to reduce amount of storage required before instatiation of new object during load
+                SaveGeneralLocData(ref builder, l);
 
                 builder.Append("Country\n");
 
@@ -215,6 +226,9 @@ namespace PPGit.Lib
             {
                 Planet temp = (Planet)l;
 
+                //Name needs to be near top to reduce amount of storage required before instatiation of new object during load
+                SaveGeneralLocData(ref builder, l);
+
                 builder.Append("Planet\n");
 
                 builder.Append("Technology:");
@@ -232,10 +246,16 @@ namespace PPGit.Lib
             else if (l is Region)
             {
                 builder.Append("Region\n");
+
+                //Name needs to be near top to reduce amount of storage required before instatiation of new object during load
+                SaveGeneralLocData(ref builder, l);
             }
             else if (l is room)
             {
                 room temp = (room)l;
+
+                //Name needs to be near top to reduce amount of storage required before instatiation of new object during load
+                SaveGeneralLocData(ref builder, l);
 
                 builder.Append("Room\n");
 
@@ -250,8 +270,15 @@ namespace PPGit.Lib
             else //if l is Location
             {
                 builder.Append("Location\n");
-            }
 
+                //Name needs to be near top to reduce amount of storage required before instatiation of new object during load
+                SaveGeneralLocData(ref builder, l);
+            }
+            
+        }
+
+        private void SaveGeneralLocData(ref StringBuilder builder, Location l)
+        {
             builder.Append("Name:");
             builder.Append(l.Name);
             builder.Append("\n");
@@ -264,12 +291,10 @@ namespace PPGit.Lib
             {
                 builder.Append("History:hist.txt\n");
             }
-            if(l.map_file != null)
+            if (l.map_file != null)
             {
                 builder.Append("Map:map.jpg");
             }
-
-            
         }
     }
 }

@@ -22,7 +22,7 @@ namespace PPGit.GUI.NewObject
     public partial class NewItemWizard : MetroWindow
     {
         mainLists.ItemTypes type;
-        public bool DialogRes;
+        public bool DialogRes = false;
 
         public NewItemWizard()
         {
