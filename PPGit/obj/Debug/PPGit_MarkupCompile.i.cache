@@ -16,5 +16,5 @@ DEBUG;TRACE
 16-457413221
 App.xaml;GUI\Deadlines\addDeadline.xaml;GUI\AppThemeChanger.xaml;GUI\Deadlines\Calendar.xaml;GUI\Deadlines\deadlineInfo.xaml;GUI\DetailWindows\CharacterWindow.xaml;GUI\DetailWindows\LocationWindow.xaml;GUI\Launcher\Launcher.xaml;GUI\MainWindow.xaml;GUI\MapMaker\MapMaker.xaml;GUI\RecycleBin\RecycleBin.xaml;GUI\TextEditor\TextEditor.xaml;GUI\MapMaker\tutorial.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;
 
-True
+False
 

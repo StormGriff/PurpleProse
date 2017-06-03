@@ -8,6 +8,7 @@ using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.IO;
+using PPGit.Lib;
 
 namespace PPGit.GUI.DetailWindows
 {
@@ -63,16 +64,13 @@ namespace PPGit.GUI.DetailWindows
 
         private void NameBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            if (NameBox.Text != "")
-            {	string characdir = mainLists.projectDir + "\\items\\characters\\";
+			if (Person.Name == NameBox.Text) return;
+            else if (NameBox.Text == "") NameBox.Text = Person.Name;
+			else
+            {	string characdir = mainLists.projectDir + "\\items\\characters\\",
+					old_safe_name = TextOps.ToDirectorySafe(Person.Name),
+					new_safe_name = TextOps.ToDirectorySafe(NameBox.Text);
 				
-				//string char_contents = string.Empty;
-				//FileStream fs = File.Open(characdir + "char.list", FileMode.Open);
-				//StreamReader sr = new StreamReader(fs);
-				//StreamWriter sw = new StreamWriter(fs);
-				//while (!sr.EndOfStream) { char_contents += sr.ReadLine(); }
-				//char_contents.Replace(Person.Name, NameBox.Text);
-				//sr.Close();
 				//v-Update char.list
 				File.WriteAllText(
 					characdir + "char.list",
@@ -81,29 +79,36 @@ namespace PPGit.GUI.DetailWindows
 
                 //rename info file and deletes old one
                 Directory.Move(
-					Person.Directory + "\\" + Person.Name.ToLower() + ".info",
-					Person.Directory + "\\" +NameBox.Text.ToLower() + ".info"
+					Person.Directory + "\\" + old_safe_name + ".info",
+					Person.Directory + "\\" + new_safe_name + ".info"
 				);
 		
+				File.WriteAllText(
+					/*----------<--*/Person.Directory + "\\" + new_safe_name + ".info",
+					File.ReadAllText(Person.Directory + "\\" + new_safe_name + ".info").
+						Replace(Person.Name, NameBox.Text)
+				);
+
 				//rename folder and deletes the old one
-                Directory.Move(Person.Directory, characdir + NameBox.Text.ToLower() + Person.Number);
+                Directory.Move(Person.Directory, characdir + new_safe_name + Person.Number);
 
                 Person.Name = NameBox.Text;
-				Person.Directory = characdir + NameBox.Text.ToLower() + Person.Number;
 
-				string newdir, _name;
+				Person.Directory = characdir + new_safe_name + Person.Number;
 
-				newdir = Person.Directory + "\\texts\\";
-				_name = new FileInfo(Person.DescFile).Name;
-				if (File.Exists(newdir + _name)) Person.DescFile = newdir + _name;
-				
-				newdir = Person.Directory + "\\images\\";
+				string base_dir, file_name;//for description and images
+
+				base_dir = Person.Directory + "\\texts\\";
+				if (Person.DescFile != null)
+				{	file_name = new FileInfo(Person.DescFile).Name;
+					if (File.Exists(base_dir + file_name)) Person.DescFile = base_dir + file_name;
+				}
+				base_dir = Person.Directory + "\\images\\";
 				for (int i=0; i < Person.Images.Count; ++i)
-				{	_name = new FileInfo(Person.Images[i]).Name;
-					if (File.Exists(newdir + _name)) Person.Images[i] = newdir + _name;
+				{	file_name = new FileInfo(Person.Images[i]).Name;
+					if (File.Exists(base_dir + file_name)) Person.Images[i] = base_dir + file_name;
 				}
             }
-			else NameBox.Text = Person.Name;
         }
 
         private void AgeBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
