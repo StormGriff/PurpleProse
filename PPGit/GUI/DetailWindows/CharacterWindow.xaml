@@ -52,7 +52,7 @@
             <Grid Margin="5">
                 <Label   x:Name="L4" Content="Description"							/>
                 <Grid x:Name="DescControl" Margin="10,46,10,0" Height="92">
-                    <RichTextBox x:Name="DescBox" Focusable="False" PreviewMouseDoubleClick="DescBox_PreviewMouseDoubleClick">
+                    <RichTextBox x:Name="DescBox" Focusable="False" PreviewMouseDoubleClick="DescBox_PreviewMouseDoubleClick" >
                         <FlowDocument x:Name="DescBox_" Focusable="False">
                             <Paragraph x:Name="DescBox__">
                             </Paragraph>

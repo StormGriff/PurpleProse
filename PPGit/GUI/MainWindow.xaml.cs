@@ -19,6 +19,7 @@ using System.IO;
 using MahApps.Metro.Controls;
 
 using PPGit.GUI.DetailWindows;
+using PPGit.Lib;
 
 namespace PPGit.GUI
 {
@@ -44,6 +45,8 @@ namespace PPGit.GUI
         {
             Lib.Character New_Char = new Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
             // ^Create a character^
+
+            mainLists.locationToSaveTo = mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + mainLists.objNum;
 
             Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + mainLists.objNum);
             Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + mainLists.objNum + "\\images");
@@ -244,6 +247,10 @@ namespace PPGit.GUI
 
         private void NewCharacterContextMenu_Click(object sender, RoutedEventArgs e)
         {
+            // Check if characters exist in characters folder
+            // if yes, load them to a NewCharacter() 
+
+            // else, create a new character
             NewCharacter();
         }
 
@@ -413,15 +420,42 @@ namespace PPGit.GUI
 
         private void storyBTN_Click(object sender, RoutedEventArgs e)
         {
+            // If project is loaded, chapter count would not begin with 1
+            mainLists.locationToSaveTo = mainLists.projectDir + @"/story/";
+            
+            int chapCount = Directory.GetFiles(mainLists.locationToSaveTo, "*", SearchOption.TopDirectoryOnly).Length;
+            if(chapCount > 0)
+            {
+                mainLists.chapterCount = chapCount;
+            }
+
+            mainLists.chapterCount++;
+            
+            string fileExt = ".Rtf";
+            string fileName = "chapter" + mainLists.chapterCount;
+           
+            
             if (mainLists.fullEditor != null)
             {
                 mainLists.fullEditor.Activate();
             }
             else {
-                if (mainLists.storyLocation == null) mainLists.fullEditor = new TextEditor.TextEditor(true);
-                else mainLists.fullEditor = new TextEditor.TextEditor(mainLists.storyLocation, true); //True for full story
+                if (mainLists.locationToSaveTo == null) mainLists.fullEditor = new TextEditor.TextEditor(true);
+                else mainLists.fullEditor = new TextEditor.TextEditor(mainLists.locationToSaveTo + @"/chapter" + mainLists.chapterCount + fileExt, "chapter" + mainLists.chapterCount + fileExt, true); //True for full story
+
+                mainLists.fullEditor.Title = "Chapter " + mainLists.chapterCount;
                 mainLists.fullEditor.Show();
             }
+
+            // Clear mainLists.locationToSaveTo
+            //mainLists.locationToSaveTo = "";
+        }
+
+        private void saveBTN_Click(object sender, RoutedEventArgs e)
+        {
+            //PPGit.Lib.Saver mySave = new Saver();
+            //mySave.Save();
+
         }
     }
 }

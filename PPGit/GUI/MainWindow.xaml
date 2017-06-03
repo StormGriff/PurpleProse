@@ -56,6 +56,7 @@
                     </MenuItem.ContextMenu>
                 </MenuItem>
                 <Button x:Name="storyBTN" Content="Write Story" Width="85" Height="7" Click="storyBTN_Click"/>
+                <Button x:Name="saveBTN" Content="Save Project" Width="95" Click="saveBTN_Click"/>
             </Menu>
         </DockPanel>
 
@@ -114,9 +115,9 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="13*"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="425*"/>
                 </Grid.RowDefinitions>
 
                 <Label Name="lblDisplayHeader" Grid.Row="0" HorizontalAlignment="Center" FontSize="25" Grid.Column="1" Margin="118.8,0,233,9.2" Grid.RowSpan="2"/>

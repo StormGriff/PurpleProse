@@ -11,6 +11,9 @@ namespace PPGit.Lib
         //private string charHist;
         //private List<string> images;
 
+
+       //public string charID { get; set; }
+
         // Using Properties: Character attribute file names + extension
         public long charAge { get; set; }
         public string charKind { get; set; } // Make a list struct

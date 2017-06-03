@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\
+C:\PurpleProse-master\PurpleProse\PPGit\obj\Debug\
 PPGit
 none
 false
 DEBUG;TRACE
 
-14-186222321
+15-863737567
+11085070309
+39-1823388188
+162079629027
+App.xaml;GUI\Deadlines\addDeadline.xaml;GUI\AppThemeChanger.xaml;GUI\Deadlines\Calendar.xaml;GUI\Deadlines\deadlineInfo.xaml;GUI\DetailWindows\CharacterWindow.xaml;GUI\DetailWindows\LocationWindow.xaml;GUI\Launcher\Launcher.xaml;GUI\MainWindow.xaml;GUI\MapMaker\MapMaker.xaml;GUI\RecycleBin\RecycleBin.xaml;GUI\TextEditor\TextEditor.xaml;GUI\MapMaker\tutorial.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;
 
-37-1824908336
-16-1012325367
-App.xaml;GUI\Deadlines\addDeadline.xaml;GUI\AppThemeChanger.xaml;GUI\Deadlines\Calendar.xaml;GUI\Deadlines\deadlineInfo.xaml;GUI\DetailWindows\CharacterWindow.xaml;GUI\DetailWindows\LocationWindow.xaml;GUI\Launcher\Launcher.xaml;GUI\MainWindow.xaml;GUI\MapMaker\MapMaker.xaml;GUI\RecycleBin\RecycleBin.xaml;GUI\TextEditor\TextEditor.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;
-
-True
+False
 

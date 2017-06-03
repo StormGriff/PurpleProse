@@ -65,6 +65,7 @@ namespace PPGit.GUI.DetailWindows
         {
             if (NameBox.Text != "")
             {
+                mainLists.locationToSaveTo = mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number;
                 //rename folder and deletes the old one
                 Directory.Move(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower() + Person.Number, mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number);
 
@@ -173,14 +174,70 @@ namespace PPGit.GUI.DetailWindows
 
         private void DescBox_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {   //Person.DescFile = "D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\Lolly.rtf";
-            if (Person.DescFile == null)
+
+
+            // Set location to 
+            mainLists.locationToSaveTo = mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + @"/texts/";
+            // TODO: check if location exists, if not create dir
+        
+
+            string fileExt = ".txt";
+            string fileName = "desc";
+            // Check if any file exists
+            bool isEmpty = true;
+
+            // Check if new directory exists
+            // mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number
+            if (Directory.Exists(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number))
+            {
+                // Check if any file exists in charname/<texts>/
+                isEmpty = !Directory.EnumerateFiles(mainLists.locationToSaveTo).Any();
+            }
+            else
+            {
+                // Create dir
+                Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + mainLists.objNum);
+                Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + mainLists.objNum + "\\images");
+                Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + mainLists.objNum + "\\texts");
+
+            }
+
+            // Create dest.txt if empty
+            if (isEmpty)
+            {
+                //if (mainLists.locationToSaveTo == null) mainLists.fullEditor = new TextEditor.TextEditor(false);
+                // Save desc file name through Text Editor's constructor's 2nd arg
+                //else
+
+                File.Create(mainLists.locationToSaveTo + fileName + fileExt);
+
+                // Create a new file using this constructor
+                mainLists.fullEditor = new TextEditor.TextEditor(mainLists.locationToSaveTo + fileName + fileExt, fileName + fileExt, false); //false if not full story
+                
+
+            }
+            // If file exists
+            else
+            {
+                // Open existing file with this constructor
+                mainLists.fullEditor = new TextEditor.TextEditor();
+                // mainLists.locationToSaveTo + @"/texts/" + fileName + fileExt, false
+                mainLists.fullEditor.OpenTextFile(mainLists.locationToSaveTo, fileName + fileExt);
+
+
+            }
+
+            mainLists.fullEditor.Title = Person.Name + "'s Description";
+            mainLists.fullEditor.Show();
+
+            /*if (Person.DescFile == null)
             {
                 Lib.TextOps.Open();
             }
             else
             { 
                 Lib.TextOps.Open(Person.DescFile);
-            }
+            }*/
 
         }
 
@@ -188,6 +245,11 @@ namespace PPGit.GUI.DetailWindows
         {
             Process.Start(Person.Directory + "\\images\\");
         }
+
+        /*private void DescBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+        }*/
 
         //private void gridSplitter_DragStarted(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e)
         //{
