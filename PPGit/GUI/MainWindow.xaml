@@ -91,7 +91,7 @@
                     <TreeViewItem x:Name="Characters_TVI" Header="Characters">
                         <TreeViewItem.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="New Character" Click="NewItemContextMenu_Click"/>
+                                <MenuItem Header="New Item" Click="NewItemContextMenu_Click"/>
                                 <MenuItem Header="View/Edit" Click="ViewEditContextMenu_Click"/>
                                 <MenuItem Header="Delete" Click="DeleteContextMenu_Click"/>
                             </ContextMenu>
@@ -100,7 +100,7 @@
                     <TreeViewItem x:Name="Locations_TVI" Header="Locations">
                         <TreeViewItem.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="New Location" Click="NewItemContextMenu_Click"/>
+                                <MenuItem Header="New Item" Click="NewItemContextMenu_Click"/>
                                 <MenuItem Header="View/Edit" Click="ViewEditContextMenu_Click"/>
                                 <MenuItem Header="Delete" Click="DeleteContextMenu_Click"/>
                             </ContextMenu>
