@@ -72,6 +72,8 @@ namespace PPGit.GUI.DetailWindows
             {
                 try
                 {
+                    mainLists.locationToSaveTo = mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number;
+
                     //if the directory already exists, rename the character's folder to the new name
                     if (Directory.Exists(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower().Replace(" ", string.Empty) + Person.Number))
                     {
@@ -228,16 +230,49 @@ namespace PPGit.GUI.DetailWindows
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) { Person.window = null; }
 
         private void DescBox_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {   //Person.DescFile = "D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\Lolly.rtf";
-            /*if (Person.DescFile == null) Checked for in text editor constructor
+        {
+            mainLists.locationToSaveTo = mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + @"\texts";
+
+            string fileExt = ".txt";
+            string fileName = "desc";
+            bool isEmpty = true;
+
+            if(Directory.Exists(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number))
             {
-                Lib.TextOps.Open();
+                isEmpty = !Directory.EnumerateFiles(mainLists.locationToSaveTo).Any();
             }
             else
-            { */
-                Lib.TextOps.Open(Person);
-                fillDescText();
-            //}
+            {
+                Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + mainLists.objNum);
+                Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + mainLists.objNum + "\\images");
+                Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + mainLists.objNum + "\\texts");
+            }
+
+            if(isEmpty)
+            {
+                File.Create(mainLists.locationToSaveTo + fileName + fileExt);
+
+                mainLists.fullEditor = new TextEditor.TextEditor(mainLists.locationToSaveTo + fileName + fileExt, fileName + fileExt, false);
+            }
+            else
+            {
+                mainLists.fullEditor = new TextEditor.TextEditor();
+                mainLists.fullEditor.OpenTextFile(mainLists.locationToSaveTo, fileName + fileExt);
+            }
+
+            mainLists.fullEditor.Title = Person.Name + "'s Description";
+            mainLists.fullEditor.Show();
+            
+        //Person.DescFile = "D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\Lolly.rtf";
+        //    /*if (Person.DescFile == null) Checked for in text editor constructor
+        //    {
+        //        Lib.TextOps.Open();
+        //    }
+        //    else
+        //    { */
+        //        Lib.TextOps.Open(Person);
+        //        fillDescText();
+        //    //}
 
         }
 

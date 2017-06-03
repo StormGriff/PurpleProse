@@ -28,7 +28,6 @@ namespace PPGit.GUI
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-
         //static string texteditor; Currently using seperate class
         //	TreeView Elements;
 
@@ -84,6 +83,8 @@ namespace PPGit.GUI
             Lib.Character New_Char = new Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
             // ^Create a character^
 
+            
+
             New_Char.Directory = mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + mainLists.objNum;
 
             Directory.CreateDirectory(New_Char.Directory);
@@ -91,6 +92,8 @@ namespace PPGit.GUI
             Directory.CreateDirectory(New_Char.Directory + "\\texts");
 
             New_Char.Number = mainLists.objNum++;
+
+            mainLists.locationToSaveTo = mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower() + New_Char.Number;
 
             //create info file
             File.Create(New_Char.Directory + "\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + ".info");
@@ -478,13 +481,27 @@ namespace PPGit.GUI
 
         private void mnuWriteStory_Click(object sender, RoutedEventArgs e)
         {
+            mainLists.locationToSaveTo = mainLists.projectDir + @"\story";
+
+            int chapCount = Directory.GetFiles(mainLists.locationToSaveTo, "*", SearchOption.TopDirectoryOnly).Length;
+            if(chapCount > 0)
+            {
+                mainLists.chapterCount = chapCount;
+            }
+
+            mainLists.chapterCount++;
+
+            string fileExt = ".rtf";
+            string fileName = "chapter" + mainLists.chapterCount;
+
             if (mainLists.fullEditor != null)
             {
                 mainLists.fullEditor.Activate();
             }
             else {
                 if (mainLists.storyLocation == null) mainLists.fullEditor = new TextEditor.TextEditor(true);
-                else mainLists.fullEditor = new TextEditor.TextEditor(mainLists.storyLocation, true); //True for full story
+                else mainLists.fullEditor = new TextEditor.TextEditor(mainLists.locationToSaveTo + @"/chapter" + mainLists.chapterCount + fileExt, "chapter" + mainLists.chapterCount + fileExt, true); //True for full story
+                mainLists.fullEditor.Title = "Chapter: " + mainLists.chapterCount;
                 mainLists.fullEditor.Show();
             }
         }

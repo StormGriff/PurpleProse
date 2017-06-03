@@ -26,6 +26,7 @@ namespace PPGit.GUI.TextEditor
     public partial class TextEditor : MetroWindow
     {
         private bool fullStory; //Is the user writing the full story in this window?
+        private string fileName;
         private Lib.Object thisObject;
         private bool save;
         public TextEditor(bool fullStory = false)
@@ -64,6 +65,17 @@ namespace PPGit.GUI.TextEditor
             }
         }
 
+        public TextEditor(string FQPath, string filename, bool fullstory = false)
+        {
+            InitializeComponent();
+
+            cmbFontFamily.ItemsSource = Fonts.SystemFontFamilies;
+            cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
+
+            this.fileName = filename;
+            this.fullStory = fullstory;
+        }
+
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -86,48 +98,116 @@ namespace PPGit.GUI.TextEditor
             this.Title = FQpath;
         }
 
+        public void OpenTextFile(string textFilePath, string fileName)
+         {
+             // Extracting rtf ansi code out of txt file
+             // Removing last 3 lines out of the file
+             // check if text in file consists of curly braces or "charset"
+             if(File.ReadAllText(textFilePath + fileName).Contains("charset"))
+             {
+                 var lines = System.IO.File.ReadAllLines(textFilePath + fileName);
+                 System.IO.File.WriteAllLines(textFilePath + fileName, lines.Take(lines.Length - 3).ToArray());
+             }
+             
+             this.fileName = fileName;
+             TextRange range;
+             FileStream fStream;
+             if (File.Exists(textFilePath + fileName))
+             {
+        range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+        fStream = new FileStream(textFilePath + fileName, FileMode.Open);
+        range.Load(fStream, DataFormats.Text);
+        fStream.Close();
+                    }
+         }
+ 
+         public void SaveTextFile(string textFilePath)
+         {
+             TextRange range;
+             FileStream fStream;
+             if (File.Exists(textFilePath))
+             {
+                 range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+                 fStream = new FileStream(textFilePath, FileMode.Open);
+                 range.Save(fStream, DataFormats.Text);
+                 fStream.Close();
+             }
+         }
+ 
+         public void SaveRTFFile(string RTFFilePath)
+         {
+             TextRange range;
+             FileStream fStream;
+             if (File.Exists(RTFFilePath))
+             {
+                 range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+                 fStream = new FileStream(RTFFilePath, FileMode.OpenOrCreate);
+                 range.Save(fStream, DataFormats.Rtf);
+                 fStream.Close();
+             }
+         }
+
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if (fullStory)
-            {
-                FileStream fs = new FileStream(mainLists.storyLocation, FileMode.Create);
-                TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
-                range.Save(fs, DataFormats.Rtf);
-                fs.Close();
-                save = true;
-            }
-            else if (thisObject != null && thisObject.DescFile != null)
-            {
-                FileStream fs = new FileStream(thisObject.DescFile, FileMode.Create);
-                TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
-                range.Save(fs, DataFormats.Rtf);
-                fs.Close();
-                save = true;
-            }
-            else
-            {
-                Ookii.Dialogs.Wpf.VistaSaveFileDialog sfd = new VistaSaveFileDialog();
-                sfd.InitialDirectory = mainLists.projectDir;
-                sfd.Filter = "Rich Text (*.rtf) | *.rtf";
+            Ookii.Dialogs.Wpf.VistaSaveFileDialog sfd = new VistaSaveFileDialog();
 
-                if (sfd.ShowDialog() == true)
-                {
-                    FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
-                    TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
-                    range.Save(fs, DataFormats.Rtf);
-                    if (fullStory)
-                    {
-                        mainLists.storyLocation = sfd.FileName;  //Store location of story
-                        mainLists.wordCount = countWords();
-                    }
-                    else if (thisObject != null)
-                    {
-                        thisObject.DescFile = sfd.FileName;
-                    }
-                    fs.Close(); //Close the stream
-                    save = true;
-                }
+            sfd.FileName = this.fileName;
+
+            if (fileName.Contains(".rtf"))
+            {
+                SaveRTFFile(mainLists.locationToSaveTo + @"\" + this.fileName);
             }
+            else if (fileName.Contains(".txt"))
+            {
+                SaveTextFile(mainLists.locationToSaveTo + @"\" + this.fileName);
+            }
+
+            if(fullStory)
+            {
+                mainLists.storyLocation = sfd.FileName;
+                mainLists.wordCount = countWords();
+            }
+
+            //if (fullStory)
+            //{
+            //    FileStream fs = new FileStream(mainLists.storyLocation, FileMode.Create);
+            //    TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+            //    range.Save(fs, DataFormats.Rtf);
+            //    fs.Close();
+            //    save = true;
+            //}
+            //else if (thisObject != null && thisObject.DescFile != null)
+            //{
+            //    FileStream fs = new FileStream(thisObject.DescFile, FileMode.Create);
+            //    TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+            //    range.Save(fs, DataFormats.Rtf);
+            //    fs.Close();
+            //    save = true;
+            //}
+            //else
+            //{
+            //    Ookii.Dialogs.Wpf.VistaSaveFileDialog sfd = new VistaSaveFileDialog();
+            //    sfd.InitialDirectory = mainLists.projectDir;
+            //    sfd.Filter = "Rich Text (*.rtf) | *.rtf";
+
+            //    if (sfd.ShowDialog() == true)
+            //    {
+            //        FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
+            //        TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+            //        range.Save(fs, DataFormats.Rtf);
+            //        if (fullStory)
+            //        {
+            //            mainLists.storyLocation = sfd.FileName;  //Store location of story
+            //            mainLists.wordCount = countWords();
+            //        }
+            //        else if (thisObject != null)
+            //        {
+            //            thisObject.DescFile = sfd.FileName;
+            //        }
+            //        fs.Close(); //Close the stream
+            //        save = true;
+            //    }
+            //}
         }
 
         private void cmbFontFamily_SelectionChanged(object sender, SelectionChangedEventArgs e)

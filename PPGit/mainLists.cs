@@ -17,6 +17,9 @@ namespace PPGit
         public static ObservableCollection<PPGit.Lib.Location> locationList = new ObservableCollection<Lib.Location>();
         public static long wordCount = 0;
         public static string storyLocation = null; //Location of the story
+        public static string locationToSaveTo = null;
         public static GUI.TextEditor.TextEditor fullEditor = null;  //Text editor for full story
+
+        public static int chapterCount = 0;
     }
 }
