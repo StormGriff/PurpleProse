@@ -79,3 +79,4 @@ M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.Properties.Resources.resources
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.csproj.GenerateResource.Cache
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.exe
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.pdb
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.csprojResolveAssemblyReference.cache

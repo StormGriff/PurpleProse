@@ -81,16 +81,16 @@ namespace PPGit.GUI
             Lib.Character New_Char = new Lib.Character("Michael", null, null, null, 0, null, null, null, null, null, null);
             // ^Create a character^
 
-            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + mainLists.objNum);
-            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + mainLists.objNum + "\\images");
-            Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + mainLists.objNum + "\\texts");
+            New_Char.Directory = mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + mainLists.objNum;
+
+            Directory.CreateDirectory(New_Char.Directory);
+            Directory.CreateDirectory(New_Char.Directory + "\\images");
+            Directory.CreateDirectory(New_Char.Directory + "\\texts");
 
             New_Char.Number = mainLists.objNum;
             mainLists.objNum++;
 
-            File.Create(mainLists.projectDir + "\\items\\characters\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + New_Char.Number + "\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + ".info");
-
-            
+            File.Create(New_Char.Directory + "\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + ".info");
 
             mainLists.characterList.Add(New_Char);						//Add it to the list of characters
 
@@ -128,14 +128,16 @@ namespace PPGit.GUI
                     break;
             }
 
-            Directory.CreateDirectory(mainLists.projectDir + "\\items\\locations\\" + New_Loc.Name.ToLower() + mainLists.objNum);
-            Directory.CreateDirectory(mainLists.projectDir + "\\items\\locations\\" + New_Loc.Name.ToLower() + mainLists.objNum + "\\images");
-            Directory.CreateDirectory(mainLists.projectDir + "\\items\\locations\\" + New_Loc.Name.ToLower() + mainLists.objNum + "\\texts");
+            New_Loc.Directory = mainLists.projectDir + "\\items\\locations\\" + New_Loc.Name.ToLower() + mainLists.objNum;
+
+            Directory.CreateDirectory(New_Loc.Directory);
+            Directory.CreateDirectory(New_Loc.Directory + "\\images");
+            Directory.CreateDirectory(New_Loc.Directory + "\\texts");
 
             New_Loc.Number = mainLists.objNum;
             mainLists.objNum++;
 
-            File.Create(mainLists.projectDir + "\\items\\locations\\" + New_Loc.Name.ToLower() + New_Loc.Number + "\\" + New_Loc.Name.ToLower() + ".info");
+            File.Create(New_Loc.Directory + "\\" + New_Loc.Name.ToLower() + ".info");
 
             mainLists.locationList.Add(New_Loc);						//Add it to the list of locations
             New_Loc.window = new LocationWindow(New_Loc);//give it a window (stored inside for later reference)
@@ -303,16 +305,10 @@ namespace PPGit.GUI
             wnd.Show();
         }
 
-        private void NewCharacterContextMenu_Click(object sender, RoutedEventArgs e)
+        private void NewItemContextMenu_Click(object sender, RoutedEventArgs e)
         {
             NewItem();
             //NewCharacter();
-        }
-
-        private void NewLocationContextMenu_Click(object sender, RoutedEventArgs e)
-        {
-            NewItem();
-            //NewLocation();
         }
 
         private void ViewEditContextMenu_Click(object sender, RoutedEventArgs e)
@@ -491,6 +487,11 @@ namespace PPGit.GUI
         {
             PPGit.Lib.Saver saver = new Lib.Saver();
             saver.Save();
+        }
+
+        private void mnuAdd_Click(object sender, RoutedEventArgs e)
+        {
+            NewItem();
         }
     }
 }

@@ -44,6 +44,10 @@
                 <MenuItem Name="Project" Header="Project" Click="MenuItem_Click" ContextMenuService.IsEnabled="False">
                     <MenuItem.ContextMenu>
                         <ContextMenu>
+                            <MenuItem Name="Add" Header="Add" FontSize="12" Click="mnuAdd_Click">
+                                <MenuItem Name="AddNewItem" Header="Add New Item" FontSize="12"/>
+                            </MenuItem>
+                            <Separator/>
                             <MenuItem Name="Calendar" Header="Calendar" FontSize="12" Click="mnuCalendar_Click"/>
                             <MenuItem Name="WriteStory" Header="Write Story" FontSize="12" Click="mnuWriteStory_Click"/>
                             <Separator/>
@@ -87,7 +91,7 @@
                     <TreeViewItem x:Name="Characters_TVI" Header="Characters">
                         <TreeViewItem.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="New Character" Click="NewCharacterContextMenu_Click"/>
+                                <MenuItem Header="New Character" Click="NewItemContextMenu_Click"/>
                                 <MenuItem Header="View/Edit" Click="ViewEditContextMenu_Click"/>
                                 <MenuItem Header="Delete" Click="DeleteContextMenu_Click"/>
                             </ContextMenu>
@@ -96,7 +100,7 @@
                     <TreeViewItem x:Name="Locations_TVI" Header="Locations">
                         <TreeViewItem.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="New Location" Click="NewLocationContextMenu_Click"/>
+                                <MenuItem Header="New Location" Click="NewItemContextMenu_Click"/>
                                 <MenuItem Header="View/Edit" Click="ViewEditContextMenu_Click"/>
                                 <MenuItem Header="Delete" Click="DeleteContextMenu_Click"/>
                             </ContextMenu>

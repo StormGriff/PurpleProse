@@ -26,5 +26,13 @@ namespace PPGit.Lib
                 t.ShowDialog();
             //}
         }
+
+        public static readonly char[] DIR_ILLEGALS = { '\\', '/', ':', '*', '?', '<', '>', '|', Loader.ID_SEPARATOR };
+       static public string ToDirectorySafe(string name)//Converts Object names into strings that may be used in file names
+ 		{	string subdir = name;//This is just to make sure name is not edited, although I don't think it would be.
+ 			//v- foreach(char illegal in DIR_ILLEGALS) subdir = subdir.Replace(illegal, '#'); #Unrolled -v
+ 			subdir = subdir.Replace(DIR_ILLEGALS[0], '#').Replace(DIR_ILLEGALS[1], '#').Replace(DIR_ILLEGALS[2], '#').Replace(DIR_ILLEGALS[3], '#').Replace(DIR_ILLEGALS[4], '#').Replace(DIR_ILLEGALS[5], '#').Replace(DIR_ILLEGALS[6], '#').Replace(DIR_ILLEGALS[7], '#').Replace(DIR_ILLEGALS[8], '#');
+ 			return subdir.ToLower().Replace(" ", string.Empty);
+ 		}
     }
 }

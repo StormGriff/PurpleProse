@@ -10,6 +10,8 @@ namespace PPGit.Lib
 {
     public class Loader
     {
+        public const char ID_SEPARATOR = ',';
+
         /// <summary>
         /// Executes a load operation for a full project
         /// User should select a .proj file
@@ -66,11 +68,11 @@ namespace PPGit.Lib
             {
                 line = sr.ReadLine();
 
-                lines = line.Split(new char[] { ',' }).ToList();
+                lines = line.Split(new char[] { ID_SEPARATOR }).ToList();
 
-                folderName = lines.ElementAt(0).Replace(" ", string.Empty).ToLower() + lines.ElementAt(1);
+                folderName = TextOps.ToDirectorySafe(lines.ElementAt(0)) + lines.ElementAt(1);
 
-                LoadCharacterInfo(Path.GetDirectoryName(filepath) + "\\" + folderName, lines.ElementAt(0).Replace(" ", string.Empty).ToLower());
+                LoadCharacterInfo(Path.GetDirectoryName(filepath) + "\\" + folderName, TextOps.ToDirectorySafe(lines.ElementAt(0)));
             }
 
         }
@@ -145,10 +147,9 @@ namespace PPGit.Lib
                     c.Images.Add(filepath + "\\images\\" + lines.ElementAt(1).ToString());
                 }
             }
-            c.Number = mainLists.objNum;
+            c.Number = mainLists.objNum++;
 
             //c.window = new PPGit.GUI.DetailWindows.CharacterWindow(c);
-            mainLists.objNum++;
             PPGit.mainLists.characterList.Add(c);
         }
 
