@@ -10,23 +10,24 @@ namespace PPGit.Lib
     {
         private int stories;
         private int rooms;
-        private struct dimensions {
+        public struct dimensionsBuilding {
             public int x;
             public int y;
             public int z;
             public mainLists.measurement myMeasurement;
         }
 
-        private dimensions myDimensions;
+        public dimensionsBuilding myDimensions;
+
         public Building(string name, string desc, string hist, List<string> images, int height, int width, int length, mainLists.measurement usedMeasurement, int stories = 1, int rooms = 1) : base(name, desc, hist, images) {
             this.stories = stories;
             this.rooms = rooms;
-            myDimensions = new dimensions();
+            myDimensions = new dimensionsBuilding();
             setDimensions(height, width, length, usedMeasurement); //Returns true if input value is a number
         }
 
         public Building(Location theLoc) : base(theLoc) {
-            myDimensions = new dimensions();
+            myDimensions = new dimensionsBuilding();
         }
 
         public string getnumStories { get { return stories.ToString(); } }

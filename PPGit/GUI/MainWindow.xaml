@@ -35,6 +35,8 @@
                         <ContextMenu>
                             <MenuItem x:Name="NewProj" FontSize="12" Header="New Project" Click="mnuNewProject_Click"/>
                             <Separator/>
+                            <MenuItem Name="SaveProj" FontSize="12" Header="Save Project" Click="mnuSaveProject_Click"/>
+                            <Separator/>
                             <MenuItem x:Name="Exit" FontSize="12" Header="Exit" Click="mnuExit_Click"/>
                         </ContextMenu>
                     </MenuItem.ContextMenu>
@@ -42,6 +44,10 @@
                 <MenuItem Name="Project" Header="Project" Click="MenuItem_Click" ContextMenuService.IsEnabled="False">
                     <MenuItem.ContextMenu>
                         <ContextMenu>
+                            <MenuItem Name="Add" Header="Add" FontSize="12" Click="mnuAdd_Click">
+                                <MenuItem Name="AddNewItem" Header="Add New Item" FontSize="12"/>
+                            </MenuItem>
+                            <Separator/>
                             <MenuItem Name="Calendar" Header="Calendar" FontSize="12" Click="mnuCalendar_Click"/>
                             <MenuItem Name="WriteStory" Header="Write Story" FontSize="12" Click="mnuWriteStory_Click"/>
                             <Separator/>
@@ -85,7 +91,7 @@
                     <TreeViewItem x:Name="Characters_TVI" Header="Characters">
                         <TreeViewItem.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="New Character" Click="NewCharacterContextMenu_Click"/>
+                                <MenuItem Header="New Item" Click="NewItemContextMenu_Click"/>
                                 <MenuItem Header="View/Edit" Click="ViewEditContextMenu_Click"/>
                                 <MenuItem Header="Delete" Click="DeleteContextMenu_Click"/>
                             </ContextMenu>
@@ -94,7 +100,7 @@
                     <TreeViewItem x:Name="Locations_TVI" Header="Locations">
                         <TreeViewItem.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="New Location" Click="NewLocationContextMenu_Click"/>
+                                <MenuItem Header="New Item" Click="NewItemContextMenu_Click"/>
                                 <MenuItem Header="View/Edit" Click="ViewEditContextMenu_Click"/>
                                 <MenuItem Header="Delete" Click="DeleteContextMenu_Click"/>
                             </ContextMenu>
@@ -119,11 +125,11 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Label Name="lblDisplayHeader" Grid.Row="0" HorizontalAlignment="Center" FontSize="25" Grid.Column="1" Margin="118.8,0,233,9.2" Grid.RowSpan="2"/>
-                <Label Name="lblDisplayLine1" Grid.Row="1" HorizontalAlignment="Center" FontSize="15" Grid.Column="1" Margin="118.8,0.4,233,0.2"/>
-                <Label Name="lblDisplayLine2" Grid.Row="1" HorizontalAlignment="Center" FontSize="15" Grid.Column="1" Margin="118.8,9.4,233,9.4" Grid.RowSpan="3"/>
-                <Label Name="lblDisplayLine3" Grid.Row="3" HorizontalAlignment="Center" FontSize="15" Grid.Column="1" Margin="118.8,0.2,233,0.4"/>
-                <TextBlock Name="blkDisplayLines" Grid.Row="4" HorizontalAlignment="Center" FontSize="12" TextWrapping="Wrap" Margin="123.8,4.6,238,5" Grid.Column="1"/>
+                <Label Name="lblDisplayHeader" Grid.Row="0" HorizontalAlignment="Center" FontSize="25" Grid.Column="1"/>
+                <Label Name="lblDisplayLine1" Grid.Row="1" HorizontalAlignment="Center" FontSize="15" Grid.Column="1"/>
+                <Label Name="lblDisplayLine2" Grid.Row="2" HorizontalAlignment="Center" FontSize="15" Grid.Column="1"/>
+                <Label Name="lblDisplayLine3" Grid.Row="3" HorizontalAlignment="Center" FontSize="15" Grid.Column="1"/>
+                <TextBlock Name="blkDisplayLines" Grid.Row="4" HorizontalAlignment="Center" FontSize="12" TextWrapping="Wrap" Grid.Column="1"/>
 
                 <Grid Grid.Row="5" Grid.ColumnSpan="2" Margin="0,0,0,0.4">
                     <Grid.ColumnDefinitions>

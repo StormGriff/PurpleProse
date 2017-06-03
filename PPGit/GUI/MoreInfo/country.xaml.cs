@@ -43,7 +43,7 @@ namespace PPGit.GUI.MoreInfo
                     regBX.Items.Add(loc);
                 }
             }
-            regBX.SelectedItem = thisLoc.regio;
+            regBX.SelectedItem = thisLoc.region;
 
             citizensTXT.Text = thisLoc.citizens.ToString();
         }
@@ -79,7 +79,7 @@ namespace PPGit.GUI.MoreInfo
         {
             try
             {
-                thisLoc.regio = (Lib.Region)regBX.SelectedItem;
+                thisLoc.region = (Lib.Region)regBX.SelectedItem;
             }
             catch (NullReferenceException) { }
         }

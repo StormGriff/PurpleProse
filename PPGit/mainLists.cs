@@ -10,6 +10,7 @@ namespace PPGit
     public static class mainLists
     {
         public enum measurement { Inches, Centimeters, Feet, Meters, Yard, Lightyear };
+        public enum ItemTypes { Character, Location, Building, City, Country, Planet, Region, Room};
         public static long objNum = 0;
         public static string projectDir = null;
         public static ObservableCollection<PPGit.Lib.Character> characterList = new ObservableCollection<Lib.Character>();

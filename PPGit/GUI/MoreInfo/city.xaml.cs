@@ -35,7 +35,7 @@ namespace PPGit.GUI.MoreInfo
             sizeBX.Items.Add(Lib.City.size.Medium);
             sizeBX.Items.Add(Lib.City.size.Large);
             sizeBX.Items.Add(Lib.City.size.XLarge);
-            sizeBX.SelectedValue = thisLoc.relativeSize;
+            sizeBX.SelectedValue = thisLoc.MySize;
 
             popTXT.Text = thisLoc.population.ToString();
         }
@@ -55,7 +55,7 @@ namespace PPGit.GUI.MoreInfo
         {
             try
             {
-                thisLoc.relativeSize = (Lib.City.size)sizeBX.SelectedItem;
+                thisLoc.MySize = (Lib.City.size)sizeBX.SelectedItem;
             }
             catch (NullReferenceException) { }
         }

@@ -63,32 +63,71 @@ namespace PPGit.GUI.DetailWindows
 
         private void NameBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
+            if(Person.Name == NameBox.Text)
+            {
+                return;
+            }
+
             if (NameBox.Text != "")
             {
                 try
                 {
-                    if (Directory.Exists(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower() + Person.Number))
+                    //if the directory already exists, rename the character's folder to the new name
+                    if (Directory.Exists(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower().Replace(" ", string.Empty) + Person.Number))
                     {
+                        //string oldDir = mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower().Replace(" ", string.Empty) + Person.Number;
+                        string newDir = mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Person.Number;
                         //rename folder and deletes the old one
-                        Directory.Move(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower() + Person.Number, mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number);
+                        Directory.Move(Person.Directory, newDir);
                     }
-                    else Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number);
-
-                    if (Directory.Exists(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + "\\" + Person.Name.ToLower() + ".info"))
+                    else
                     {
-                        //rename info file and deletes old one
-                        Directory.Move(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower() + Person.Number + "\\" + Person.Name.ToLower() + ".info", mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + "\\" + NameBox.Text.ToLower() + ".info");
+                        Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Person.Number);
                     }
-                    else Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + "\\" + NameBox.Text.ToLower() + ".info");
+
+                    //if the info file already exists, rename the character's info file to the new name
+                    if (File.Exists(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Person.Number + "\\" + Person.Name.ToLower().Replace(" ", string.Empty) + ".info"))
+                    {
+                        string oldFile = mainLists.projectDir + "\\items\\characters\\" + Lib.TextOps.ToDirectorySafe(NameBox.Text) + Person.Number + "\\" + Person.Name.ToLower().Replace(" ", string.Empty) + ".info";
+                        string newFile = mainLists.projectDir + "\\items\\characters\\" + Lib.TextOps.ToDirectorySafe(NameBox.Text) + Person.Number + "\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + ".info";
+                        //rename info file and deletes old one
+                        File.Move(oldFile, newFile);
+                    }
+                    else
+                    {
+                        File.Create(mainLists.projectDir + "\\items\\characters\\" + Lib.TextOps.ToDirectorySafe(NameBox.Text) + Person.Number + "\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + ".info");
+                    }
 
                     Person.Name = NameBox.Text;
-                    string newString = "";
-                    foreach(char newChar in NameBox.Text) {
-                        newString += char.ToUpper(newChar);
-                    }
-                    this.Title = newString;
+                    Person.Directory = mainLists.projectDir + "\\items\\characters\\" + Lib.TextOps.ToDirectorySafe(NameBox.Text) + Person.Number;
+
+                    //string base_dir, file_name;//for description and images
+                    
+                    //base_dir = Person.Directory + "\\texts\\";
+                    //if (Person.DescFile != null)
+                    //{
+                    //    file_name = new FileInfo(Person.DescFile).Name;
+                    //    if (File.Exists(base_dir + file_name))
+                    //        Person.DescFile = base_dir + file_name;
+                    //}
+                    //base_dir = Person.Directory + "\\images\\";
+                    //for (int i = 0; i < Person.Images.Count; ++i)
+                    //{
+                    //    file_name = new FileInfo(Person.Images[i]).Name;
+                    //    if (File.Exists(base_dir + file_name))
+                    //        Person.Images[i] = base_dir + file_name;
+                    //}
+
+                    this.Title = NameBox.Text.ToUpper();
                 }
-                catch (System.IO.IOException x) { }
+                catch (System.IO.IOException x)
+                {
+                    MessageBox.Show(x.ToString());
+                }
+            }
+            else if(NameBox.Text == "")
+            {
+                NameBox.Text = Person.Name;
             }
         }
 
