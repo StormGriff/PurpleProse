@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PPGit.GUI"
         mc:Ignorable="d"
-        Title="relationships" Height="335.612" Width="317.266" Initialized="Window_Initialized" ResizeMode="NoResize">
+        Title="relationships" Height="335.612" Width="317.266" Initialized="Window_Initialized" ResizeMode="NoResize" Closed="relationshipFRM_Closed">
     <Grid>
         <DataGrid x:Name="relationshipDTA" Height="275" VerticalAlignment="Bottom"/>
         <Menu x:Name="menu" Height="30" VerticalAlignment="Top">
-            <MenuItem Header="Add"/>
-            <MenuItem Header="Delete"/>
+            <MenuItem Header="Add" Click="MenuItem_Click"/>
+            <MenuItem Header="Delete" Click="MenuItem_Click_1"/>
         </Menu>
 
     </Grid>

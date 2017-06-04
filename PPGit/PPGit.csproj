@@ -67,6 +67,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="GUI\addRelationship.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Deadlines\addDeadline.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,6 +104,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="App.xaml.cs" />
+    <Compile Include="GUI\addRelationship.xaml.cs">
+      <DependentUpon>addRelationship.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Deadlines\addDeadline.xaml.cs">
       <DependentUpon>addDeadline.xaml</DependentUpon>
     </Compile>

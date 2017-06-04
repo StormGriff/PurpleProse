@@ -19,6 +19,7 @@ namespace PPGit.GUI.DetailWindows
     {
         private PPGit.Lib.Character Person;
         private const int defaultwidth = 413;
+        public bool openWindow;
 
         public double DescNormWidth = 180, DescNormHeight = 92;
 
@@ -38,6 +39,7 @@ namespace PPGit.GUI.DetailWindows
             foreach (string image_file in Person.Images) { Add_picture(image_file); }
 
             this.Title = Person.Name;
+            openWindow = false;
         }
 
         private void SetPrimaryBitmapSize(ref BitmapImage bmp)
@@ -293,6 +295,19 @@ namespace PPGit.GUI.DetailWindows
         private void btnBrowseImage_Click(object sender, RoutedEventArgs e)
         {
             Process.Start(Person.Directory + "\\images\\");
+        }
+
+        private void relationshipBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (!openWindow)
+            {
+                GUI.relationships showRels = new relationships(Person);
+                showRels.Show();
+                openWindow = true;
+            }
+            else {
+                MessageBox.Show("Already open!", "WAIT", MessageBoxButton.OK, MessageBoxImage.Hand);
+            }
         }
 
         //private void gridSplitter_DragStarted(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e)

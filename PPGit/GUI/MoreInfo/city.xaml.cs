@@ -71,7 +71,10 @@ namespace PPGit.GUI.MoreInfo
 
         private void cityInfoFRM_Closed(object sender, EventArgs e)
         {
-            (thisLoc.window as DetailWindows.LocationWindow).openWindow = false;
+            if (thisLoc.window != null)
+            {
+                (thisLoc.window as DetailWindows.LocationWindow).openWindow = false;
+            }
         }
     }
 }

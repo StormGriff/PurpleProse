@@ -14,14 +14,18 @@
 		Closing="MetroWindow_Closing">
     <!--<Window.Resources>
         <Style x:Key="TopLeft" TargetType="{x:Type Control}">
-            --><!--Needs to be based on the metro style--><!--
+            -->
+    <!--Needs to be based on the metro style-->
+    <!--
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Margin" Value="10,10,0,0"/>
         </Style>
 
         <Style x:Key="NewStdCombo" BasedOn="{StaticResource TopLeft}" TargetType="ComboBox">
-            --><!--Metro Style Properties (copied here because I cannot figure out how else to access them)--><!--
+            -->
+    <!--Metro Style Properties (copied here because I cannot figure out how else to access them)-->
+    <!--
             <Setter Property="Background" Value="#FF252525"/>
             <Setter Property="Controls:ControlsHelper.MouseOverBorderBrush" Value="{DynamicResource Gray2}"/>
             <Setter Property="Foreground" Value="White"/>
@@ -35,7 +39,7 @@
         </Style>
 
     </Window.Resources>-->
-    
+
     <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -84,6 +88,7 @@
                 <Label   x:Name="RaceLabel" Content="Race"								/>
                 <TextBox x:Name="RaceBox" LostKeyboardFocus="RaceBox_LostKeyFocus"		 Width="100"/>
             </WrapPanel>
+            <Button x:Name="relationshipBTN" Content="Relationships" Width="145" Height="39" FontSize="14" FontFamily="Castellar" Click="relationshipBTN_Click"/>
         </WrapPanel>
 
         <!--<GridSplitter Grid.Column="1" x:Name="gridSplitter" HorizontalAlignment="Stretch" Width="5" DragStarted="gridSplitter_DragStarted" DragCompleted="gridSplitter_DragCompleted" DragDelta="gridSplitter_DragDelta"/>-->
@@ -101,8 +106,8 @@
                 <WrapPanel x:Name="WrapP_pics" HorizontalAlignment="Left" VerticalAlignment="Top"
 						   MaxWidth="{Binding ActualWidth, ElementName=Canvas_pics}" ScrollViewer.CanContentScroll="True"/>
             </Canvas>-->
-            <Image Name="PrimaryImage" Grid.Row="0" Margin="5"> 
-                
+            <Image Name="PrimaryImage" Grid.Row="0" Margin="5">
+
             </Image>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <Image Name="SecondaryImage1" Margin="5" Width="60" Height="60"></Image>
