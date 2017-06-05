@@ -1,0 +1,21 @@
+﻿<Controls:MetroWindow x:Name="roomInfoFRM" x:Class="PPGit.GUI.MoreInfo.roomInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PPGit.GUI.MoreInfo"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="ROOM INFO" Height="219.463" Width="204.697" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closed="roomInfoFRM_Closed" Initialized="roomInfoFRM_Initialized">
+    <Grid>
+        <Label x:Name="lengthLBL" Content="Length:" HorizontalAlignment="Left" Margin="21,19,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="lengthTXT" HorizontalAlignment="Left" Height="23" Margin="86,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="64" TextChanged="lengthTXT_TextChanged"/>
+        <Label x:Name="widthLBL" Content="Width:" HorizontalAlignment="Left" Margin="25,59,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="widthTXT" HorizontalAlignment="Left" Height="23" Margin="86,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="64" TextChanged="widthTXT_TextChanged"/>
+        <Label x:Name="unitLBL" Content="Units:" HorizontalAlignment="Left" Margin="30,98,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="unitBX" HorizontalAlignment="Left" Margin="86,98,0,0" VerticalAlignment="Top" Width="84" SelectionChanged="unitBX_SelectionChanged"/>
+        <Label x:Name="buildingLBL" Content="Building:" HorizontalAlignment="Left" Margin="14,135,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="buildingBX" HorizontalAlignment="Left" Margin="86,135,0,0" VerticalAlignment="Top" Width="84" SelectionChanged="buildingBX_SelectionChanged"/>
+
+    </Grid>
+</Controls:MetroWindow>
