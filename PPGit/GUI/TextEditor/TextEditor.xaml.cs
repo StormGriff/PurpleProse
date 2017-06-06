@@ -17,6 +17,7 @@ using MahApps.Metro.Controls;
 using MahApps.Metro;
 
 using Ookii.Dialogs.Wpf;
+using Microsoft.Win32;
 
 namespace PPGit.GUI.TextEditor
 {
@@ -37,6 +38,8 @@ namespace PPGit.GUI.TextEditor
 
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
             this.fullStory = fullStory;
+            if (fullStory) this.Title = "FULL STORY";
+            else this.Title = "BLANK TEXT EDITOR";
             thisObject = null;
             save = false;
         }
@@ -50,6 +53,8 @@ namespace PPGit.GUI.TextEditor
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
 
             OpenFile(FQpath);
+            if (fullStory) this.Title = "FULL STORY";
+            else this.Title = FQpath;
             this.fullStory = fullStory;
             thisObject = null;
             save = false;
@@ -63,6 +68,12 @@ namespace PPGit.GUI.TextEditor
             if (thisObject.DescFile != null) {
                 OpenFile(thisObject.DescFile);
             }
+            string upperCase = "";
+            foreach (char theChar in thisObject.Name) //New string is Object.Name in ALL CAPS
+            {
+                upperCase += char.ToUpper(theChar);
+            }
+            this.Title = upperCase + "'S DESCRIPTION"; //Set title
         }
 
         public TextEditor(string FQPath, string filename, bool fullstory = false)
@@ -94,8 +105,6 @@ namespace PPGit.GUI.TextEditor
             TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
             range.Load(fs, DataFormats.Rtf);
             fs.Close();
-
-            this.Title = FQpath;
         }
 
         public void OpenTextFile(string textFilePath, string fileName)
@@ -136,36 +145,49 @@ namespace PPGit.GUI.TextEditor
  
          public void SaveRTFFile(string RTFFilePath)
          {
-             TextRange range;
-             FileStream fStream;
-             if (File.Exists(RTFFilePath))
-             {
-                 range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
-                 fStream = new FileStream(RTFFilePath, FileMode.OpenOrCreate);
-                 range.Save(fStream, DataFormats.Rtf);
-                 fStream.Close();
-             }
-         }
+            FileStream fs = new FileStream(RTFFilePath, FileMode.Create);
+            TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+            range.Save(fs, DataFormats.Rtf);
+            fs.Close();
+            MessageBox.Show("Save Successful", "SUCCESS", MessageBoxButton.OK, MessageBoxImage.None);
+            save = true;
+        }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Ookii.Dialogs.Wpf.VistaSaveFileDialog sfd = new VistaSaveFileDialog();
+            /*Ookii.Dialogs.Wpf.VistaSaveFileDialog sfd = new VistaSaveFileDialog();
 
-            sfd.FileName = this.fileName;
+            sfd.FileName = this.fileName;*/
 
-            if (fileName.Contains(".rtf"))
+            /*if (fileName.Contains(".rtf"))
             {
                 SaveRTFFile(mainLists.locationToSaveTo + @"\" + this.fileName);
             }
             else if (fileName.Contains(".txt"))
             {
                 SaveTextFile(mainLists.locationToSaveTo + @"\" + this.fileName);
-            }
+            }*/
 
-            if(fullStory)
+            if (fullStory)
             {
-                mainLists.storyLocation = sfd.FileName;
+                SaveRTFFile(mainLists.storyLocation);
                 mainLists.wordCount = countWords();
+            }
+            else if (thisObject != null && thisObject.DescFile != null)
+            {
+                SaveRTFFile(thisObject.DescFile);
+            }
+            else {
+                SaveFileDialog theDialog = new SaveFileDialog();
+                theDialog.AddExtension = true;
+                theDialog.Filter = "Rich Text (*.rtf) | *.rtf";
+                theDialog.InitialDirectory = mainLists.projectDir;
+                if (theDialog.ShowDialog() == true)
+                {
+                    SaveRTFFile(theDialog.FileName);
+                }
+                else MessageBox.Show("File Not Saved", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
+
             }
 
             //if (fullStory)
