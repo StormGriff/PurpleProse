@@ -103,7 +103,7 @@ namespace PPGit.GUI.TextEditor
              // Extracting rtf ansi code out of txt file
              // Removing last 3 lines out of the file
              // check if text in file consists of curly braces or "charset"
-             if(File.ReadAllText(textFilePath + fileName).Contains("charset"))
+             if(File.ReadAllText(textFilePath + "\\" + fileName).Contains("charset"))
              {
                  var lines = System.IO.File.ReadAllLines(textFilePath + fileName);
                  System.IO.File.WriteAllLines(textFilePath + fileName, lines.Take(lines.Length - 3).ToArray());

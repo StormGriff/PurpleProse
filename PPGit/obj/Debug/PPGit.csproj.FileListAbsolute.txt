@@ -80,3 +80,7 @@ M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.csproj.GenerateResource.Cache
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.exe
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.pdb
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\PPGit.csprojResolveAssemblyReference.cache
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\addRelationship.g.cs
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\relationships.g.cs
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\addRelationship.baml
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\relationships.baml

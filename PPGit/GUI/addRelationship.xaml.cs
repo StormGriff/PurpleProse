@@ -12,12 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using MahApps.Metro.Controls;
+
 namespace PPGit.GUI
 {
     /// <summary>
     /// Interaction logic for addRelationship.xaml
     /// </summary>
-    public partial class addRelationship : Window
+    public partial class addRelationship : MetroWindow
     {
         Lib.Character theChar;
         public addRelationship(Lib.Character thisChar)

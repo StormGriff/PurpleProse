@@ -143,6 +143,9 @@ namespace PPGit.GUI
             Directory.CreateDirectory(New_Loc.Directory + "\\images");
             Directory.CreateDirectory(New_Loc.Directory + "\\texts");
 
+            //create desc file
+            File.Create(New_Loc.Directory + "\\texts\\desc.txt");
+
             New_Loc.Number = mainLists.objNum;
             mainLists.objNum++;
 
