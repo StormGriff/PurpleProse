@@ -60,25 +60,33 @@ namespace PPGit.GUI.Launcher
 
                 if(!Directory.Exists(rootpath))
                 {
-                    Directory.CreateDirectory(rootpath);
+                    try
+                    {
 
-                    File.Create(rootpath + "\\" + txtNew.Text.ToLower() + ".proj");
+                        Directory.CreateDirectory(rootpath);
 
-                    //in root project folder
-                    Directory.CreateDirectory(rootpath + "\\items");
-                    Directory.CreateDirectory(rootpath + "\\story");
+                        File.Create(rootpath + "\\" + txtNew.Text.ToLower() + ".proj");
 
-                    Directory.CreateDirectory(rootpath + "\\items\\characters");
-                    Directory.CreateDirectory(rootpath + "\\items\\locations");
-                    Directory.CreateDirectory(rootpath + "\\items\\events");
+                        //in root project folder
+                        Directory.CreateDirectory(rootpath + "\\items");
+                        Directory.CreateDirectory(rootpath + "\\story");
 
-                    File.Create(rootpath + "\\items\\characters\\char.list");
-                    File.Create(rootpath + "\\items\\locations\\loc.list");
-                    File.Create(rootpath + "\\items\\events\\event.list");
+                        Directory.CreateDirectory(rootpath + "\\items\\characters");
+                        Directory.CreateDirectory(rootpath + "\\items\\locations");
+                        Directory.CreateDirectory(rootpath + "\\items\\events");
+
+                        File.Create(rootpath + "\\items\\characters\\char.list");
+                        File.Create(rootpath + "\\items\\locations\\loc.list");
+                        File.Create(rootpath + "\\items\\events\\event.list");
+
+                        this.Close();
+                        win.Show();
+                    }
+                    catch(ArgumentException ex)
+                    {
+                        MessageBox.Show("INVALID NAME", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
-
-                this.Close();
-                win.Show();
             }
         }
     }

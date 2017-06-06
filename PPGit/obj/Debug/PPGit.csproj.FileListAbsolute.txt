@@ -84,3 +84,5 @@ M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\addRelationship.g.cs
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\relationships.g.cs
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\addRelationship.baml
 M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\relationships.baml
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\TextEditor\changeStoryTitle.g.cs
+M:\Git Repos\PurpleProse\PPGit\obj\Debug\GUI\TextEditor\changeStoryTitle.baml

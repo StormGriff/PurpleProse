@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace PPGit.Lib
 {
@@ -65,7 +66,11 @@ namespace PPGit.Lib
         {
             foreach (item list in bin)
             {
-                if (DateTime.Now > list.delete) bin.Remove(list);
+                if (DateTime.Now > list.delete)
+                {
+                    Directory.Delete(list.myObject.Directory, true); //delete dir and all files
+                    bin.Remove(list);
+                }
             }
         }
 

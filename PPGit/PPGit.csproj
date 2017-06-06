@@ -157,6 +157,9 @@
     <Compile Include="GUI\relationships.xaml.cs">
       <DependentUpon>relationships.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\TextEditor\changeStoryTitle.xaml.cs">
+      <DependentUpon>changeStoryTitle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\TextEditor\TextEditor.xaml.cs">
       <DependentUpon>TextEditor.xaml</DependentUpon>
     </Compile>
@@ -215,6 +218,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\relationships.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\TextEditor\changeStoryTitle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

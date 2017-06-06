@@ -17,6 +17,7 @@ using MahApps.Metro.Controls;
 using MahApps.Metro;
 
 using Ookii.Dialogs.Wpf;
+using Microsoft.Win32;
 
 namespace PPGit.GUI.TextEditor
 {
@@ -25,6 +26,7 @@ namespace PPGit.GUI.TextEditor
     /// </summary>
     public partial class TextEditor : MetroWindow
     {
+        private string storyTitleLocation;
         private bool fullStory; //Is the user writing the full story in this window?
         private string fileName;
         private Lib.Object thisObject;
@@ -37,6 +39,20 @@ namespace PPGit.GUI.TextEditor
 
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
             this.fullStory = fullStory;
+
+            if (fullStory)
+            {
+                storyTitleLocation = mainLists.projectDir + @"\story title.txt";
+                if (File.Exists(storyTitleLocation))
+                {
+                    mainLists.storyTitle = File.ReadAllText(storyTitleLocation);
+                }
+                if (mainLists.storyTitle == null) this.Title = "FULL STORY";
+                else this.Title = mainLists.storyTitle;
+                if (File.Exists(mainLists.storyLocation)) OpenFile(mainLists.storyLocation);
+            }
+            else this.Title = "BLANK TEXT EDITOR";
+
             thisObject = null;
             save = false;
         }
@@ -50,6 +66,19 @@ namespace PPGit.GUI.TextEditor
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
 
             OpenFile(FQpath);
+
+            if (fullStory)
+            {
+                storyTitleLocation = mainLists.projectDir + @"\story title.txt";
+                if (File.Exists(storyTitleLocation)) //Read title if it exists
+                {
+                    mainLists.storyTitle = File.ReadAllText(storyTitleLocation);
+                }
+                if (mainLists.storyTitle == null) this.Title = "FULL STORY";
+                else this.Title = mainLists.storyTitle;
+                if (File.Exists(mainLists.storyLocation)) OpenFile(mainLists.storyLocation); //Open the file
+            }
+
             this.fullStory = fullStory;
             thisObject = null;
             save = false;
@@ -63,9 +92,16 @@ namespace PPGit.GUI.TextEditor
             if (thisObject.DescFile != null) {
                 OpenFile(thisObject.DescFile);
             }
+
+            string upperCase = "";
+            foreach (char theChar in thisObject.Name) //New string is Object.Name in ALL CAPS
+            {
+                upperCase += char.ToUpper(theChar);
+            }
+            this.Title = upperCase + "'S DESCRIPTION"; //Set title
         }
 
-        public TextEditor(string FQPath, string filename, bool fullstory = false)
+        /*public TextEditor(string FQPath, string filename, bool fullstory = false)
         {
             InitializeComponent();
 
@@ -74,7 +110,7 @@ namespace PPGit.GUI.TextEditor
 
             this.fileName = filename;
             this.fullStory = fullstory;
-        }
+        }*/
 
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
@@ -94,8 +130,6 @@ namespace PPGit.GUI.TextEditor
             TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
             range.Load(fs, DataFormats.Rtf);
             fs.Close();
-
-            this.Title = FQpath;
         }
 
         public void OpenTextFile(string textFilePath, string fileName)
@@ -136,20 +170,17 @@ namespace PPGit.GUI.TextEditor
  
          public void SaveRTFFile(string RTFFilePath)
          {
-             TextRange range;
-             FileStream fStream;
-             if (File.Exists(RTFFilePath))
-             {
-                 range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
-                 fStream = new FileStream(RTFFilePath, FileMode.OpenOrCreate);
-                 range.Save(fStream, DataFormats.Rtf);
-                 fStream.Close();
-             }
+            TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+            FileStream fs = new FileStream(RTFFilePath, FileMode.Create);
+            range.Save(fs, DataFormats.Rtf);
+            fs.Close();
+            MessageBox.Show("Save Successful", "SUCCESS", MessageBoxButton.OK, MessageBoxImage.None);
+            save = true;
          }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Ookii.Dialogs.Wpf.VistaSaveFileDialog sfd = new VistaSaveFileDialog();
+            /*Ookii.Dialogs.Wpf.VistaSaveFileDialog sfd = new VistaSaveFileDialog();
 
             sfd.FileName = this.fileName;
 
@@ -160,12 +191,32 @@ namespace PPGit.GUI.TextEditor
             else if (fileName.Contains(".txt"))
             {
                 SaveTextFile(mainLists.locationToSaveTo + @"\" + this.fileName);
-            }
+            }*/
 
             if(fullStory)
             {
-                mainLists.storyLocation = sfd.FileName;
-                mainLists.wordCount = countWords();
+                if ((new GUI.TextEditor.changeStoryTitle(storyTitleLocation)).ShowDialog() == true)
+                {
+                    SaveRTFFile(mainLists.storyLocation);
+                    mainLists.wordCount = countWords();
+                    this.Title = File.ReadAllText(storyTitleLocation);
+                }
+            }
+            else if (thisObject != null && thisObject.DescFile != null)
+            {
+                SaveRTFFile(thisObject.DescFile);
+            }
+            else
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.AddExtension = true;
+                sfd.Filter = "Rich Text (*.rtf) | *.rtf";
+                sfd.InitialDirectory = mainLists.projectDir;
+                if (sfd.ShowDialog() == true)
+                {
+                    SaveRTFFile(sfd.FileName);
+                }
+                else MessageBox.Show("File Not Saved", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
             //if (fullStory)
