@@ -20,7 +20,10 @@ namespace PPGit.GUI.MoreInfo
 
         private void countryInfoFRM_Closed(object sender, EventArgs e)
         {
-            (thisLoc.window as DetailWindows.LocationWindow).openWindow = false;
+            if (thisLoc.window != null)
+            {
+                (thisLoc.window as DetailWindows.LocationWindow).openWindow = false;
+            }
         }
 
         private void countryInfoFRM_Initialized(object sender, EventArgs e)

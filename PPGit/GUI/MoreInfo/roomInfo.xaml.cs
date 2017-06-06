@@ -20,7 +20,10 @@ namespace PPGit.GUI.MoreInfo
 
         private void roomInfoFRM_Closed(object sender, EventArgs e)
         {
-            (thisLoc.window as DetailWindows.LocationWindow).openWindow = false;
+            if (thisLoc.window != null)
+            {
+                (thisLoc.window as DetailWindows.LocationWindow).openWindow = false;
+            }
         }
 
         private void roomInfoFRM_Initialized(object sender, EventArgs e)

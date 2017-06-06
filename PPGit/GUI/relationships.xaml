@@ -1,0 +1,17 @@
+﻿<Window x:Name="relationshipFRM" x:Class="PPGit.GUI.relationships"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PPGit.GUI"
+        mc:Ignorable="d"
+        Title="relationships" Height="335.612" Width="317.266" Initialized="Window_Initialized" ResizeMode="NoResize" Closed="relationshipFRM_Closed">
+    <Grid>
+        <DataGrid x:Name="relationshipDTA" Height="275" VerticalAlignment="Bottom"/>
+        <Menu x:Name="menu" Height="30" VerticalAlignment="Top">
+            <MenuItem Header="Add" Click="MenuItem_Click"/>
+            <MenuItem Header="Delete" Click="MenuItem_Click_1"/>
+        </Menu>
+
+    </Grid>
+</Window>

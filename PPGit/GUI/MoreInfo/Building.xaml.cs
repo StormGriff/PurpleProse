@@ -88,7 +88,10 @@ namespace PPGit.GUI.MoreInfo
 
         private void buildingInfo_Closed(object sender, EventArgs e)
         {
-            (thisBuilding.window as DetailWindows.LocationWindow).openWindow = false;
+            if (thisBuilding.window != null)
+            {
+                (thisBuilding.window as DetailWindows.LocationWindow).openWindow = false;
+            }
         }
     }
 }
