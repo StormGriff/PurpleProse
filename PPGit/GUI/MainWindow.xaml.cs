@@ -484,7 +484,7 @@ namespace PPGit.GUI
 
         private void mnuWriteStory_Click(object sender, RoutedEventArgs e)
         {
-            mainLists.locationToSaveTo = mainLists.projectDir + @"\story";
+            /*mainLists.locationToSaveTo = mainLists.projectDir + @"\story";
 
             int chapCount = Directory.GetFiles(mainLists.locationToSaveTo, "*", SearchOption.TopDirectoryOnly).Length;
             if(chapCount > 0)
@@ -495,16 +495,22 @@ namespace PPGit.GUI
             mainLists.chapterCount++;
 
             string fileExt = ".rtf";
-            string fileName = "chapter" + mainLists.chapterCount;
+            string fileName = "chapter" + mainLists.chapterCount;*/
 
             if (mainLists.fullEditor != null)
             {
                 mainLists.fullEditor.Activate();
             }
             else {
-                if (mainLists.storyLocation == null) mainLists.fullEditor = new TextEditor.TextEditor(true);
-                else mainLists.fullEditor = new TextEditor.TextEditor(mainLists.locationToSaveTo + @"/chapter" + mainLists.chapterCount + fileExt, "chapter" + mainLists.chapterCount + fileExt, true); //True for full story
-                mainLists.fullEditor.Title = "Chapter: " + mainLists.chapterCount;
+                if (mainLists.storyLocation == null)
+                {
+                    mainLists.storyLocation = mainLists.projectDir + @"\story.txt";
+                    mainLists.fullEditor = new TextEditor.TextEditor(true);
+                }
+                else
+                {
+                    mainLists.fullEditor = new TextEditor.TextEditor(true); //True for full story
+                }
                 mainLists.fullEditor.Show();
             }
         }
@@ -518,6 +524,12 @@ namespace PPGit.GUI
         private void mnuAdd_Click(object sender, RoutedEventArgs e)
         {
             NewItem();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            GUI.MapMaker theMap = new MapMaker();
+            theMap.Show();
         }
     }
 }

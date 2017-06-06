@@ -233,49 +233,8 @@ namespace PPGit.GUI.DetailWindows
 
         private void DescBox_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            mainLists.locationToSaveTo = mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number + @"\texts";
-
-            string fileExt = ".txt";
-            string fileName = "desc";
-            bool isEmpty = true;
-
-            if(Directory.Exists(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number))
-            {
-                isEmpty = !Directory.EnumerateFiles(mainLists.locationToSaveTo).Any();
-            }
-            else
-            {
-                Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + mainLists.objNum);
-                Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + mainLists.objNum + "\\images");
-                Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + mainLists.objNum + "\\texts");
-            }
-
-            if(isEmpty)
-            {
-                File.Create(mainLists.locationToSaveTo + fileName + fileExt);
-
-                mainLists.fullEditor = new TextEditor.TextEditor(mainLists.locationToSaveTo + fileName + fileExt, fileName + fileExt, false);
-            }
-            else
-            {
-                mainLists.fullEditor = new TextEditor.TextEditor();
-                mainLists.fullEditor.OpenTextFile(mainLists.locationToSaveTo, fileName + fileExt);
-            }
-
-            mainLists.fullEditor.Title = Person.Name + "'s Description";
-            mainLists.fullEditor.Show();
-            
-        //Person.DescFile = "D:\\Documents\\Visual Studio 2015\\Projects\\PurpleProse\\PPGit\\Resources\\Lolly.rtf";
-        //    /*if (Person.DescFile == null) Checked for in text editor constructor
-        //    {
-        //        Lib.TextOps.Open();
-        //    }
-        //    else
-        //    { */
-        //        Lib.TextOps.Open(Person);
-        //        fillDescText();
-        //    //}
-
+                Lib.TextOps.Open(Person);
+                fillDescText();
         }
 
         private void fillDescText() {
