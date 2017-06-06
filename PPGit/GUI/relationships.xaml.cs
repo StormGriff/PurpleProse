@@ -75,10 +75,25 @@ namespace PPGit.GUI
         private void MenuItem_Click_1(object sender, RoutedEventArgs e) //Delete button
         {
             if (relationshipDTA.SelectedItem != null) {
-                foreach (Lib.Character thisChar in mainLists.characterList) //Get datarows and compare foreach datarow in table
-                {
-                    if (thisChar.Name == relationshipDTA.SelectedValue.ToString()) myChar.removeRelationship(thisChar);
+                DataRowView selectedRow = null;
+                foreach (DataRowView theRow in thisTable.DefaultView) { //Find the selected row
+                    if (theRow == relationshipDTA.SelectedItem) {
+                        selectedRow = theRow;
+                        break;
+                    }
                 }
+                if (selectedRow != null)
+                {
+                    foreach (Lib.Character thisChar in mainLists.characterList)
+                    {
+                        if (thisChar.Name == selectedRow["Character"].ToString()) //Find the selected relationship
+                        {
+                            myChar.removeRelationship(thisChar); //Delete selected relationship
+                            break;
+                        }
+                    }
+                }
+                refreshRelationships(); //Refresh relationship list
             }
         }
     }

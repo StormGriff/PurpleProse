@@ -17,7 +17,7 @@ namespace PPGit.Lib
         protected List<relationship> MyRelationships;   //List of this objects relationships
         public /*Adornament_Win/*/MetroWindow window;                       //A reference to the Object's page used for activation checking.
         public static System.IO.FileNotFoundException InvalidTextFile;
-        public enum relationshipTypes { Null, Father, Mother, Sibling, Friend, Enemy }; //Types of relationships... let me know if we need more
+        public enum relationshipTypes { Null, Father, Mother, Sibling, Spouse, Friend, Enemy }; //Types of relationships... let me know if we need more
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -112,7 +112,11 @@ namespace PPGit.Lib
         { //Removes a relationship
             foreach (relationship theRelationships in MyRelationships)
             {
-                if (theRelationships.myRelationship == removeMe) MyRelationships.Remove(theRelationships);
+                if (theRelationships.myRelationship == removeMe)
+                {
+                    MyRelationships.Remove(theRelationships);
+                    break;
+                }
             }
         }
         public relationshipTypes whatsTheRelationshipTo(Object myName)

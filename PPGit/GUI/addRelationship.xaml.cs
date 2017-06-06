@@ -36,6 +36,7 @@ namespace PPGit.GUI
             typeBX.Items.Add(Lib.Object.relationshipTypes.Father);  //Fill relationship types
             typeBX.Items.Add(Lib.Object.relationshipTypes.Mother);
             typeBX.Items.Add(Lib.Object.relationshipTypes.Sibling);
+            typeBX.Items.Add(Lib.Object.relationshipTypes.Spouse);
             typeBX.Items.Add(Lib.Object.relationshipTypes.Friend);
             typeBX.Items.Add(Lib.Object.relationshipTypes.Enemy);
 
