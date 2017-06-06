@@ -180,7 +180,9 @@ namespace PPGit.GUI
             bool newResult = (bool)newSave.ShowDialog();
             if (newResult == true)
             {
-                RenderTargetBitmap rtb = new RenderTargetBitmap((int)mapCVS.Width, (int)mapCVS.Height, 96d, 96d, PixelFormats.Default);
+                Size mySize = new Size(mapCVS.ActualWidth, mapCVS.ActualHeight);
+                mapCVS.Measure(mySize);
+                RenderTargetBitmap rtb = new RenderTargetBitmap((int)mySize.Width, (int)mySize.Height, 96d, 96d, PixelFormats.Default);
                 rtb.Render(mapCVS);
                 JpegBitmapEncoder newEncoder = new JpegBitmapEncoder();
                 newEncoder.Frames.Add(BitmapFrame.Create(rtb));

@@ -19,6 +19,7 @@ namespace PPGit
         public static string storyLocation = null; //Location of the story
         public static string locationToSaveTo = null;
         public static GUI.TextEditor.TextEditor fullEditor = null;  //Text editor for full story
+        public static string storyTitle = null; //Title of story
 
         public static int chapterCount = 0;
     }

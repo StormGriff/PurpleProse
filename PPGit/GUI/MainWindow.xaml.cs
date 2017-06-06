@@ -501,13 +501,12 @@ namespace PPGit.GUI
             else {
                 if (mainLists.storyLocation == null)
                 {
-                    mainLists.storyLocation = mainLists.projectDir + @"story.txt";
-                    File.Create(mainLists.storyLocation);
-                    mainLists.fullEditor = new TextEditor.TextEditor(mainLists.storyLocation, true);
+                    mainLists.storyLocation = mainLists.projectDir + @"\story.txt";
+                    mainLists.fullEditor = new TextEditor.TextEditor(true);
                 }
                 else
                 {
-                    mainLists.fullEditor = new TextEditor.TextEditor(mainLists.storyLocation, true); //True for full story
+                    mainLists.fullEditor = new TextEditor.TextEditor(true); //True for full story
                 }
                 mainLists.fullEditor.Show();
             }
@@ -522,6 +521,12 @@ namespace PPGit.GUI
         private void mnuAdd_Click(object sender, RoutedEventArgs e)
         {
             NewItem();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            GUI.MapMaker theMap = new MapMaker();
+            theMap.Show();
         }
     }
 }

@@ -26,6 +26,7 @@ namespace PPGit.GUI.TextEditor
     /// </summary>
     public partial class TextEditor : MetroWindow
     {
+        private string storyTitleLocation;
         private bool fullStory; //Is the user writing the full story in this window?
         private string fileName;
         private Lib.Object thisObject;
@@ -38,7 +39,17 @@ namespace PPGit.GUI.TextEditor
 
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
             this.fullStory = fullStory;
-            if (fullStory) this.Title = "FULL STORY";
+            if (fullStory)
+            {
+                storyTitleLocation = mainLists.projectDir + @"\story title.txt";
+                if (File.Exists(storyTitleLocation)) //Read title if it exists
+                {
+                    mainLists.storyTitle = File.ReadAllText(storyTitleLocation);
+                }
+                if (mainLists.storyTitle == null) this.Title = "FULL STORY";
+                else this.Title = mainLists.storyTitle;
+                if(File.Exists(mainLists.storyLocation)) OpenFile(mainLists.storyLocation); //Open the file
+            }
             else this.Title = "BLANK TEXT EDITOR";
             thisObject = null;
             save = false;
@@ -53,7 +64,17 @@ namespace PPGit.GUI.TextEditor
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 28, 36, 48, 72 };
 
             OpenFile(FQpath);
-            if (fullStory) this.Title = "FULL STORY";
+            if (fullStory)
+            {
+                storyTitleLocation = mainLists.projectDir + @"\story title.txt";
+                if(File.Exists(storyTitleLocation)) //Read title if it exists
+                {
+                    mainLists.storyTitle = File.ReadAllText(storyTitleLocation);
+                }
+                if (mainLists.storyTitle == null) this.Title = "FULL STORY";
+                else this.Title = mainLists.storyTitle;
+                if (File.Exists(mainLists.storyLocation)) OpenFile(mainLists.storyLocation); //Open the file
+            }
             else this.Title = FQpath;
             this.fullStory = fullStory;
             thisObject = null;
@@ -76,7 +97,7 @@ namespace PPGit.GUI.TextEditor
             this.Title = upperCase + "'S DESCRIPTION"; //Set title
         }
 
-        public TextEditor(string FQPath, string filename, bool fullstory = false)
+        /*public TextEditor(string FQPath, string filename, bool fullstory = false)
         {
             InitializeComponent();
 
@@ -85,7 +106,7 @@ namespace PPGit.GUI.TextEditor
 
             this.fileName = filename;
             this.fullStory = fullstory;
-        }
+        }*/
 
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
@@ -170,8 +191,12 @@ namespace PPGit.GUI.TextEditor
 
             if (fullStory)
             {
-                SaveRTFFile(mainLists.storyLocation);
-                mainLists.wordCount = countWords();
+                if ((new GUI.TextEditor.changeStoryTitle(storyTitleLocation)).ShowDialog() == true)
+                {
+                    SaveRTFFile(mainLists.storyLocation);
+                    mainLists.wordCount = countWords();
+                    this.Title = File.ReadAllText(storyTitleLocation);
+                }
             }
             else if (thisObject != null && thisObject.DescFile != null)
             {
