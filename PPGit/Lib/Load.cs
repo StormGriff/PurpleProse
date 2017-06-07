@@ -147,7 +147,7 @@ namespace PPGit.Lib
                     c.Images.Add(filepath + "\\images\\" + lines.ElementAt(1).ToString());
                 }
             }
-            c.Number = mainLists.objNum++;
+            c.Number = ++mainLists.objNum;//Keep pre-increment
 
             //c.window = new PPGit.GUI.DetailWindows.CharacterWindow(c);
             PPGit.mainLists.characterList.Add(c);
@@ -168,9 +168,9 @@ namespace PPGit.Lib
 
                 lines = line.Split(new char[] { ',' }).ToList();
 
-                folderName = lines.ElementAt(0).Replace(" ", string.Empty).ToLower() + lines.ElementAt(1);
+                folderName = TextOps.ToDirectorySafe(lines.ElementAt(0)) + lines.ElementAt(1);
 
-                LoadLocationInfo(Path.GetDirectoryName(filepath) + "\\" + folderName, lines.ElementAt(0).Replace(" ", string.Empty).ToLower());
+                LoadLocationInfo(Path.GetDirectoryName(filepath) + "\\" + folderName, TextOps.ToDirectorySafe(lines.ElementAt(0)));
             }
         }
 

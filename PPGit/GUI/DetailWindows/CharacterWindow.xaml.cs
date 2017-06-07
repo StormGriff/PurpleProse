@@ -9,6 +9,7 @@ using Microsoft.Win32;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Documents;
+using PPGit.Lib;
 
 namespace PPGit.GUI.DetailWindows
 {
@@ -65,45 +66,105 @@ namespace PPGit.GUI.DetailWindows
 
         private void NameBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            if(Person.Name == NameBox.Text)
+
+            if (Person.Name == NameBox.Text)
             {
-                return;
+				return;
             }
 
+            else if (NameBox.Text == "")
+            {
+				NameBox.Text = Person.Name;
+            }
+
+            else
+            {   string characdir = mainLists.projectDir + "\\items\\characters\\",
+                    old_safe_name = TextOps.ToDirectorySafe(Person.Name),
+                    new_safe_name = TextOps.ToDirectorySafe(NameBox.Text);
+                
+                //v-Update char.list
+                File.WriteAllText(
+                    characdir + "char.list",
+                    File.ReadAllText(characdir + "char.list").Replace(Person.Name, NameBox.Text)
+                );
+
+                //rename info file and deletes old one
+                Directory.Move(
+                    Person.Directory + "\\" + old_safe_name + ".info",
+                    Person.Directory + "\\" + new_safe_name + ".info"
+                );
+        
+                File.WriteAllText(
+                    /*----------<--*/Person.Directory + "\\" + new_safe_name + ".info",
+                    File.ReadAllText(Person.Directory + "\\" + new_safe_name + ".info").
+                        Replace(Person.Name, NameBox.Text)
+                );
+
+                //rename folder and deletes the old one
+                Directory.Move(Person.Directory, characdir + new_safe_name + Person.Number);
+
+                Person.Name = NameBox.Text;
+
+                Person.Directory = characdir + new_safe_name + Person.Number;
+
+                string base_dir, file_name;//for description and images
+
+                base_dir = Person.Directory + "\\texts\\";
+                if (Person.DescFile != null)
+                {   
+                    file_name = new FileInfo(Person.DescFile).Name;
+                    if (File.Exists(base_dir + file_name))
+                    {
+						Person.DescFile = base_dir + file_name;
+                    }
+                }
+                base_dir = Person.Directory + "\\images\\";
+                for (int i=0; i < Person.Images.Count; ++i)
+                {   
+                    file_name = new FileInfo(Person.Images[i]).Name;
+                    if (File.Exists(base_dir + file_name))
+                    {
+						Person.Images[i] = base_dir + file_name;
+                    }
+                }
+            }
+
+            #region Previous merge
+            /*
             if (NameBox.Text != "")
             {
                 try
                 {
-                    mainLists.locationToSaveTo = mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower() + Person.Number;
+                    mainLists.locationToSaveTo = mainLists.projectDir + "\\items\\characters\\" + TextOps.ToDirectorySafe(NameBox.Text) + Person.Number;
 
                     //if the directory already exists, rename the character's folder to the new name
-                    if (Directory.Exists(mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower().Replace(" ", string.Empty) + Person.Number))
+                    if (Directory.Exists(mainLists.projectDir + "\\items\\characters\\" + TextOps.ToDirectorySafe(Person.Name) + Person.Number))
                     {
-                        //string oldDir = mainLists.projectDir + "\\items\\characters\\" + Person.Name.ToLower().Replace(" ", string.Empty) + Person.Number;
-                        string newDir = mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Person.Number;
+                        //string oldDir = mainLists.projectDir + "\\items\\characters\\" + TextOps.ToDirectorySafe(Person.Name) + Person.Number;
+                        string newDir = mainLists.projectDir + "\\items\\characters\\" + TextOps.ToDirectorySafe(NameBox.Text) + Person.Number;
                         //rename folder and deletes the old one
                         Directory.Move(Person.Directory, newDir);
                     }
                     else
                     {
-                        Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Person.Number);
+                        Directory.CreateDirectory(mainLists.projectDir + "\\items\\characters\\" + TextOps.ToDirectorySafe(NameBox.Text) + Person.Number);
                     }
 
                     //if the info file already exists, rename the character's info file to the new name
-                    if (File.Exists(mainLists.projectDir + "\\items\\characters\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + Person.Number + "\\" + Person.Name.ToLower().Replace(" ", string.Empty) + ".info"))
+                    if (File.Exists(mainLists.projectDir + "\\items\\characters\\" + TextOps.ToDirectorySafe(NameBox.Text) + Person.Number + "\\" + TextOps.ToDirectorySafe(Person.Name) + ".info"))
                     {
-                        string oldFile = mainLists.projectDir + "\\items\\characters\\" + Lib.TextOps.ToDirectorySafe(NameBox.Text) + Person.Number + "\\" + Person.Name.ToLower().Replace(" ", string.Empty) + ".info";
-                        string newFile = mainLists.projectDir + "\\items\\characters\\" + Lib.TextOps.ToDirectorySafe(NameBox.Text) + Person.Number + "\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + ".info";
+                        string oldFile = mainLists.projectDir + "\\items\\characters\\" + TextOps.ToDirectorySafe(NameBox.Text) + Person.Number + "\\" + TextOps.ToDirectorySafe(Person.Name) + ".info";
+                        string newFile = mainLists.projectDir + "\\items\\characters\\" + TextOps.ToDirectorySafe(NameBox.Text) + Person.Number + "\\" + TextOps.ToDirectorySafe(NameBox.Text) + ".info";
                         //rename info file and deletes old one
                         File.Move(oldFile, newFile);
                     }
                     else
                     {
-                        File.Create(mainLists.projectDir + "\\items\\characters\\" + Lib.TextOps.ToDirectorySafe(NameBox.Text) + Person.Number + "\\" + NameBox.Text.ToLower().Replace(" ", string.Empty) + ".info");
+                        File.Create(mainLists.projectDir + "\\items\\characters\\" + TextOps.ToDirectorySafe(NameBox.Text) + Person.Number + "\\" + TextOps.ToDirectorySafe(NameBox.Text) + ".info");
                     }
 
                     Person.Name = NameBox.Text;
-                    Person.Directory = mainLists.projectDir + "\\items\\characters\\" + Lib.TextOps.ToDirectorySafe(NameBox.Text) + Person.Number;
+                    Person.Directory = mainLists.projectDir + "\\items\\characters\\" + TextOps.ToDirectorySafe(NameBox.Text) + Person.Number;
 
                     //string base_dir, file_name;//for description and images
                     
@@ -133,6 +194,8 @@ namespace PPGit.GUI.DetailWindows
             {
                 NameBox.Text = Person.Name;
             }
+            */
+            #endregion
         }
 
         private void AgeBox_LostKeyFocus(object sender, KeyboardFocusChangedEventArgs e)
@@ -160,8 +223,7 @@ namespace PPGit.GUI.DetailWindows
 
         private void NewPic_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            try{
                 OpenFileDialog dlg = new OpenFileDialog();
                 dlg.Title = "Insert image";
                 dlg.Filter = "Image (*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.tif;*.tiff;*.wdp)|*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.tif;*.tiff;*.wdp";
@@ -233,7 +295,7 @@ namespace PPGit.GUI.DetailWindows
 
         private void DescBox_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Lib.TextOps.Open(Person);
+            TextOps.Open(Person);
 
             fillDescText();
         }
@@ -289,79 +351,34 @@ namespace PPGit.GUI.DetailWindows
             fd.Filter = "Image (*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.tif;*.tiff;*.wdp)|*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.tif;*.tiff;*.wdp";
 
             if (fd.ShowDialog() == true)
-            {
+            {   
                 BitmapImage bmp = new BitmapImage(new Uri(fd.FileName));
-
                 int index = Person.Images.IndexOf(fd.FileName);
 
                 SetPrimaryBitmapSize(ref bmp);
-
                 PrimaryImage.Source = bmp;
 
-                if (index == 0)
-                {
-                    if (Person.Images.Count == 2)
-                    {
-                        BitmapImage sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(1)));
+                if (Person.Images.Count == 2)
+                {   
+                    BitmapImage sbmp;
+
+                    if (index == 0) sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(1)));
+                    else            sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(0)));
+
+                    sbmp.DecodePixelHeight = 60;
+                    sbmp.DecodePixelWidth = 60;
+
+                    SecondaryImage1.Source = sbmp;
+                    
+                    if (Person.Images.Count >= 3)
+                    {    
+                        if (index==0 || index==1) sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(2)));
+                        else                      sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(1)));
 
                         sbmp.DecodePixelHeight = 60;
                         sbmp.DecodePixelWidth = 60;
 
-                        SecondaryImage1.Source = sbmp;
-
-                        if (Person.Images.Count >= 3)
-                        {
-                            sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(2)));
-
-                            sbmp.DecodePixelHeight = 60;
-                            sbmp.DecodePixelWidth = 60;
-
-                            SecondaryImage2.Source = sbmp;
-                        }
-                    }
-                }
-                else if(index == 1)
-                {
-                    if (Person.Images.Count == 2)
-                    {
-                        BitmapImage sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(0)));
-
-                        sbmp.DecodePixelHeight = 60;
-                        sbmp.DecodePixelWidth = 60;
-
-                        SecondaryImage1.Source = sbmp;
-
-                        if (Person.Images.Count >= 3)
-                        {
-                            sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(2)));
-
-                            sbmp.DecodePixelHeight = 60;
-                            sbmp.DecodePixelWidth = 60;
-
-                            SecondaryImage2.Source = sbmp;
-                        }
-                    }
-                }
-                else
-                {
-                    if(Person.Images.Count == 2)
-                    {
-                        BitmapImage sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(0)));
-
-                        sbmp.DecodePixelHeight = 60;
-                        sbmp.DecodePixelWidth = 60;
-
-                        SecondaryImage1.Source = sbmp;
-
-                        if(Person.Images.Count >= 3)
-                        {
-                            sbmp = new BitmapImage(new Uri(Person.Images.ElementAt(1)));
-
-                            sbmp.DecodePixelHeight = 60;
-                            sbmp.DecodePixelWidth = 60;
-
-                            SecondaryImage2.Source = sbmp;
-                        }
+                        SecondaryImage2.Source = sbmp;
                     }
                 }
             }

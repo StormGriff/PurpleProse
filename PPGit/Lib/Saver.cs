@@ -48,8 +48,8 @@ namespace PPGit.Lib
                 builder.Append(num.ToString());
                 builder.Append("\n");
 
-                charFolder = c.Name.ToLower().Replace(" ", string.Empty) + c.Number.ToString();
-                SaveCharacterInfo(Path.GetDirectoryName(filepath) + "\\" + charFolder + "\\" + c.Name.ToLower().Replace(" ", string.Empty) + ".info", c);
+                charFolder = TextOps.ToDirectorySafe(c.Name) + c.Number.ToString();
+                SaveCharacterInfo(Path.GetDirectoryName(filepath) + "\\" + charFolder + "\\" + TextOps.ToDirectorySafe(c.Name) + ".info", c);
             }
 
             sw.Write(builder.ToString());
@@ -124,8 +124,8 @@ namespace PPGit.Lib
                 builder.Append(num.ToString());
                 builder.Append("\n");
 
-                locFolder = l.Name.ToLower().Replace(" ", string.Empty) + l.Number.ToString();
-                SaveLocationInfo(Path.GetDirectoryName(filepath) + "\\" + locFolder + "\\" + l.Name.ToLower().Replace(" ", string.Empty) + ".info", l);
+                locFolder = TextOps.ToDirectorySafe(l.Name) + l.Number.ToString();
+                SaveLocationInfo(Path.GetDirectoryName(filepath) + "\\" + locFolder + "\\" + TextOps.ToDirectorySafe(l.Name) + ".info", l);
             }
 
             sw.Write(builder.ToString());

@@ -4,7 +4,7 @@
 winexe
 C#
 .cs
-M:\Git Repos\PurpleProse\PPGit\obj\Debug\
+D:\Documents\Visual Studio 2015\Projects\PurpleProses\PurpleProse - Copy1\PPGit\obj\Debug\
 PPGit
 none
 false
@@ -12,9 +12,9 @@ DEBUG;TRACE
 
 25-1795607482
 11085070309
-501216604235
-16-1012325367
+501207191259
+16-1852748850
 App.xaml;GUI\addRelationship.xaml;GUI\Deadlines\addDeadline.xaml;GUI\AppThemeChanger.xaml;GUI\Deadlines\Calendar.xaml;GUI\Deadlines\deadlineInfo.xaml;GUI\DetailWindows\CharacterWindow.xaml;GUI\DetailWindows\LocationWindow.xaml;GUI\Launcher\Launcher.xaml;GUI\MainWindow.xaml;GUI\MapMaker\MapMaker.xaml;GUI\MoreInfo\Building.xaml;GUI\MoreInfo\city.xaml;GUI\MoreInfo\country.xaml;GUI\MoreInfo\planetInfo.xaml;GUI\MoreInfo\regionInfo.xaml;GUI\MoreInfo\roomInfo.xaml;GUI\NewObject\NewItemWizard.xaml;GUI\RecycleBin\RecycleBin.xaml;GUI\relationships.xaml;GUI\TextEditor\changeStoryTitle.xaml;GUI\TextEditor\TextEditor.xaml;GUI\MapMaker\tutorial.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;
 
-True
+False
 
