@@ -57,8 +57,10 @@ namespace PPGit.GUI.Launcher
 
                 string rootpath = ofd.SelectedPath + "\\" + txtNew.Text.ToLower();
                 mainLists.projectDir = rootpath;
+                mainLists.projectName = txtNew.Text.ToLower();
+                mainLists.basePath = ofd.SelectedPath;
 
-                if(!Directory.Exists(rootpath))
+                if (!Directory.Exists(rootpath))
                 {
                     Directory.CreateDirectory(rootpath);
 

@@ -123,50 +123,63 @@ namespace PPGit.GUI.TextEditor
  
          public void SaveTextFile(string textFilePath)
          {
-             TextRange range;
-             FileStream fStream;
-             if (File.Exists(textFilePath))
-             {
-                 range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
-                 fStream = new FileStream(textFilePath, FileMode.Open);
-                 range.Save(fStream, DataFormats.Text);
-                 fStream.Close();
-             }
-         }
+            FileStream fStream;
+            TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+
+             // If that file exists in this folder, open it
+             if (File.Exists(textFilePath))     { fStream = new FileStream(textFilePath, FileMode.Open); }
+            // Otherwiae, create it 
+            else    { fStream = new FileStream(textFilePath, FileMode.Create); }
+
+             range.Save(fStream, DataFormats.Text);
+             fStream.Close();
+        }
  
          public void SaveRTFFile(string RTFFilePath)
          {
-             TextRange range;
-             FileStream fStream;
-             if (File.Exists(RTFFilePath))
-             {
-                 range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
-                 fStream = new FileStream(RTFFilePath, FileMode.OpenOrCreate);
-                 range.Save(fStream, DataFormats.Rtf);
-                 fStream.Close();
-             }
-         }
+            FileStream fStream;
+            TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+
+            // If that file exists in this folder, open it
+            if (File.Exists(RTFFilePath)) { fStream = new FileStream(RTFFilePath, FileMode.Open); }
+            // Otherwiae, create it 
+            else { fStream = new FileStream(RTFFilePath, FileMode.Create); }
+
+            range.Save(fStream, DataFormats.Rtf);
+            fStream.Close();
+        }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Ookii.Dialogs.Wpf.VistaSaveFileDialog sfd = new VistaSaveFileDialog();
-
-            sfd.FileName = this.fileName;
-
-            if (fileName.Contains(".rtf"))
+            if(this.fileName == null)
             {
-                SaveRTFFile(mainLists.locationToSaveTo + @"\" + this.fileName);
+                // No fileName, so don't save
+                save = false;
             }
-            else if (fileName.Contains(".txt"))
+            else
             {
-                SaveTextFile(mainLists.locationToSaveTo + @"\" + this.fileName);
-            }
+                Ookii.Dialogs.Wpf.VistaSaveFileDialog sfd = new VistaSaveFileDialog();
 
-            if(fullStory)
-            {
-                mainLists.storyLocation = sfd.FileName;
-                mainLists.wordCount = countWords();
+                sfd.FileName = this.fileName;
+
+                if (fileName.Contains(".rtf"))
+                {
+                    SaveRTFFile(mainLists.locationToSaveTo + @"\" + this.fileName);
+                }
+                else if (fileName.Contains(".txt"))
+                {
+                    SaveTextFile(mainLists.locationToSaveTo + @"\" + this.fileName);
+                }
+
+                if (fullStory)
+                {
+                    mainLists.storyLocation = sfd.FileName;
+                    mainLists.wordCount = countWords();
+                }
+
+                save = true;
             }
+            
 
             //if (fullStory)
             //{
@@ -282,7 +295,7 @@ namespace PPGit.GUI.TextEditor
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!save) {
+            if (save == false) {
                 MessageBoxResult result = MessageBox.Show("All unsaved progress will be lost", "WARNING", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Cancel) e.Cancel = true;
             }

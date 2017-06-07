@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO.Compression;
+using System.Windows;
+//using System.IO
 
 namespace PPGit.Lib
 {
@@ -25,7 +28,53 @@ namespace PPGit.Lib
                 SaveLocationList(mainLists.projectDir + "\\items\\locations\\loc.list");
             }
 
+
+            WrapUp();
+
             return success;
+        }
+
+        private static void WrapUp()
+        {
+            // Get root directory
+            //mainLists.projectDir
+            if (mainLists.projectDir != null)
+            {
+                var lastFolder = mainLists.basePath = mainLists.projectDir;
+                var parentDir = Directory.GetParent(mainLists.basePath);
+                mainLists.basePath = parentDir.ToString();
+
+                var di = new DirectoryInfo(mainLists.projectDir);
+                var di_base = new DirectoryInfo(mainLists.basePath);
+                di.Attributes &= ~FileAttributes.ReadOnly;
+                di_base.Attributes &= ~FileAttributes.ReadOnly;
+
+                foreach (var file in di.GetFiles("*", SearchOption.AllDirectories))
+                    file.Attributes &= ~FileAttributes.ReadOnly;
+
+                
+                //var baseDir = Directory.GetParent(path.EndsWith("\\") ? path : string.Concat(path, "\\"));
+
+                // TODO: if file already exists, replace
+                ZipFile.CreateFromDirectory(mainLists.projectDir, mainLists.basePath + "\\"+ mainLists.projectName +".zip");
+            }
+            else
+            {
+                /*string[] files = textBox1.Text.Split(',');
+                ZipArchive zip = ZipFile.Open(saveFileDialog1.FileName, ZipArchiveMode.Create);
+                foreach (string file in files)
+                {
+                    zip.CreateEntryFromFile(file, Path.GetFileName(file), CompressionLevel.Optimal);
+                }
+                zip.Dispose();*/
+            }
+
+            var compressedPath = mainLists.basePath + "\\" + mainLists.projectName + ".zip";
+            var result = Path.ChangeExtension(mainLists.basePath + "\\" + mainLists.projectName + ".zip", ".ppprj");
+
+            File.Move(compressedPath, Path.ChangeExtension(compressedPath, ".ppprj"));
+            //myfile.replace(extension, ".Jpeg");
+            MessageBox.Show("PPProj file created successfully!");
         }
 
         private void SaveProjectFile()
@@ -54,6 +103,8 @@ namespace PPGit.Lib
 
             sw.Write(builder.ToString());
             sw.Flush();
+
+            sw.Close();
         }
 
         private void SaveCharacterInfo(string filepath, Character c)
@@ -107,6 +158,8 @@ namespace PPGit.Lib
 
             sw.Write(builder.ToString());
             sw.Flush();
+
+            sw.Close();
         }
 
         private void SaveLocationList(string filepath)
@@ -130,6 +183,7 @@ namespace PPGit.Lib
 
             sw.Write(builder.ToString());
             sw.Flush();
+            sw.Close();
         }
 
         private void SaveLocationInfo(string filepath, Location l)

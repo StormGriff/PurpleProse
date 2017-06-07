@@ -499,8 +499,12 @@ namespace PPGit.GUI
                 mainLists.fullEditor.Activate();
             }
             else {
-                if (mainLists.storyLocation == null) mainLists.fullEditor = new TextEditor.TextEditor(true);
-                else mainLists.fullEditor = new TextEditor.TextEditor(mainLists.locationToSaveTo + @"/chapter" + mainLists.chapterCount + fileExt, "chapter" + mainLists.chapterCount + fileExt, true); //True for full story
+                //if (mainLists.storyLocation == null) mainLists.fullEditor = new TextEditor.TextEditor(true);
+                //else 
+
+                // This sets the file name (2nd arg) through the TextEditor constructor 
+                mainLists.fullEditor = new TextEditor.TextEditor(mainLists.locationToSaveTo + @"/chapter" + mainLists.chapterCount + fileExt, "chapter" + mainLists.chapterCount + fileExt, true); //True for full story
+
                 mainLists.fullEditor.Title = "Chapter: " + mainLists.chapterCount;
                 mainLists.fullEditor.Show();
             }

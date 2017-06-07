@@ -29,6 +29,14 @@ namespace PPGit.Lib
             {
                 directory = Path.GetDirectoryName(ofd.FileName);
                 mainLists.projectDir = directory;
+
+                mainLists.projectName = new System.IO.DirectoryInfo(mainLists.projectDir).Name;
+                //string lastFolderName = Path.GetFileName(Path.GetDirectoryName(mainLists.projectDir));
+                //mainLists.projectName = lastFolderName;
+                mainLists.basePath = mainLists.projectDir;
+                var parentDir = Directory.GetParent(mainLists.basePath);
+                mainLists.basePath = parentDir.ToString();
+
                 LoadProjectFile(ofd.FileName);
                 LoadCharacterList(directory + "\\items\\characters\\char.list");
                 LoadLocationList(directory + "\\items\\locations\\loc.list");

@@ -13,13 +13,17 @@ namespace PPGit
         public enum ItemTypes { Character, Location, Building, City, Country, Planet, Region, Room};
         public static long objNum = 0;
         public static string projectDir = null;
+        public static string projectName = null;
+        public static string basePath = null;
         public static ObservableCollection<PPGit.Lib.Character> characterList = new ObservableCollection<Lib.Character>();
         public static ObservableCollection<PPGit.Lib.Location> locationList = new ObservableCollection<Lib.Location>();
         public static long wordCount = 0;
         public static string storyLocation = null; //Location of the story
         public static string locationToSaveTo = null;
         public static GUI.TextEditor.TextEditor fullEditor = null;  //Text editor for full story
+        
 
         public static int chapterCount = 0;
     }
 }
+
