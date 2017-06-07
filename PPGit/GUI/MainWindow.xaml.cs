@@ -19,6 +19,7 @@ using System.IO;
 using MahApps.Metro.Controls;
 
 using PPGit.GUI.DetailWindows;
+using Ookii.Dialogs.Wpf;
 
 namespace PPGit.GUI
 {
@@ -471,7 +472,8 @@ namespace PPGit.GUI
 
         private void mnuNewProject_Click(object sender, RoutedEventArgs e)
         {
-
+            PPGit.GUI.Launcher.Launcher newLauncher = new PPGit.GUI.Launcher.Launcher();
+            newLauncher.Show();
         }
 
         private void mnuExit_Click(object sender, RoutedEventArgs e)

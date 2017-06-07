@@ -33,7 +33,7 @@
                 <MenuItem Name="Menu" Header="Menu"  Click="MenuItem_Click" ContextMenuService.IsEnabled="False">
                     <MenuItem.ContextMenu>
                         <ContextMenu>
-                            <MenuItem x:Name="NewProj" FontSize="12" Header="New Project" Click="mnuNewProject_Click"/>
+                            <MenuItem x:Name="NewProj" FontSize="12" Header="Load Existing or Create New Project" Click="mnuNewProject_Click"/>
                             <Separator/>
                             <MenuItem Name="SaveProj" FontSize="12" Header="Save Project" Click="mnuSaveProject_Click"/>
                             <Separator/>

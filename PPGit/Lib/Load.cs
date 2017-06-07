@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Microsoft.Win32;
-
+using System.IO.Compression;
 
 namespace PPGit.Lib
 {
@@ -19,7 +19,7 @@ namespace PPGit.Lib
         public bool Load()
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Project File .proj|*.proj";
+            ofd.Filter = "Project File .proj|*.proj|PPprj Files (*.ppprj)|*.ppprj";
             string directory;
             bool success = false;
 
@@ -33,13 +33,28 @@ namespace PPGit.Lib
                 mainLists.projectName = new System.IO.DirectoryInfo(mainLists.projectDir).Name;
                 //string lastFolderName = Path.GetFileName(Path.GetDirectoryName(mainLists.projectDir));
                 //mainLists.projectName = lastFolderName;
+
                 mainLists.basePath = mainLists.projectDir;
                 var parentDir = Directory.GetParent(mainLists.basePath);
                 mainLists.basePath = parentDir.ToString();
 
+               
+                if (ofd.FileName.Contains(".ppprj"))
+                {
+                    //  (rename to .zip -> extract)
+                    
+                    ofd.FileName = ExtractCustomProjectFile(ofd.FileName);
+                    // go to project dir and get .proj path 
+                    // and set path to parent path + project name .proj
+                    //mainLists.basePath
+                    // then do all of the above
+                }
+
+                // if(ofd.FileName.Contains(".proj"))
                 LoadProjectFile(ofd.FileName);
                 LoadCharacterList(directory + "\\items\\characters\\char.list");
                 LoadLocationList(directory + "\\items\\locations\\loc.list");
+
                 success = true;
             }
             else
@@ -48,6 +63,32 @@ namespace PPGit.Lib
             }
 
             return success;
+        }
+
+        private string ExtractCustomProjectFile(string sourceArchiveFileName)
+        {
+            // Set project's base path to the folder where th ppprj is located
+            var parentDir = Directory.GetParent(sourceArchiveFileName);
+            mainLists.basePath = parentDir.ToString();
+            mainLists.projectName = new System.IO.DirectoryInfo(sourceArchiveFileName).Name;
+            string projectFolderName = mainLists.projectName.Replace(".ppprj", "");
+
+            string zipFileName = mainLists.basePath + "\\" + projectFolderName + ".zip";
+            // IF ZIP FILE ALREADY EXISTS IN THE DIR, REPLACE IT
+            FileInfo destZipFile = new FileInfo(zipFileName);
+
+            if (destZipFile.Exists)
+            {
+                File.Copy(sourceArchiveFileName, Path.ChangeExtension(sourceArchiveFileName, ".zip"), true);
+
+            }
+            //File.Move(sourceArchiveFileName, Path.ChangeExtension(sourceArchiveFileName, ".zip"));
+            
+            ZipFile.ExtractToDirectory(zipFileName, mainLists.basePath ); //  "\\" + projectFolderName
+                                                                           //MessageBox.Show("ZIP file extracted successfully!");
+
+            // return the <project folder name>.proj
+            return mainLists.basePath + "\\" + projectFolderName + "\\" + projectFolderName + ".proj";
         }
 
         private void LoadProjectFile(string filepath)

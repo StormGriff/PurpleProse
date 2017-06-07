@@ -38,6 +38,7 @@ namespace PPGit.Lib
         {
             // Get root directory
             //mainLists.projectDir
+            var compressedZipPath = mainLists.basePath + "\\" + mainLists.projectName + ".zip";
             if (mainLists.projectDir != null)
             {
                 var lastFolder = mainLists.basePath = mainLists.projectDir;
@@ -52,11 +53,17 @@ namespace PPGit.Lib
                 foreach (var file in di.GetFiles("*", SearchOption.AllDirectories))
                     file.Attributes &= ~FileAttributes.ReadOnly;
 
-                
-                //var baseDir = Directory.GetParent(path.EndsWith("\\") ? path : string.Concat(path, "\\"));
+                // IF ZIP FILE ALREADY EXISTS IN THE DIR, REPLACE IT
+                compressedZipPath = mainLists.basePath + "\\" + mainLists.projectName + ".zip";
+                FileInfo destZipFile = new FileInfo(compressedZipPath);
 
-                // TODO: if file already exists, replace
-                ZipFile.CreateFromDirectory(mainLists.projectDir, mainLists.basePath + "\\"+ mainLists.projectName +".zip");
+                if (destZipFile.Exists)
+                {
+                    File.Copy(compressedZipPath, compressedZipPath, true);
+                    
+                }
+                
+                ZipFile.CreateFromDirectory(mainLists.projectDir, compressedZipPath);
             }
             else
             {
@@ -69,10 +76,10 @@ namespace PPGit.Lib
                 zip.Dispose();*/
             }
 
-            var compressedPath = mainLists.basePath + "\\" + mainLists.projectName + ".zip";
-            var result = Path.ChangeExtension(mainLists.basePath + "\\" + mainLists.projectName + ".zip", ".ppprj");
+            
+            var result = Path.ChangeExtension(compressedZipPath, ".ppprj");
 
-            File.Move(compressedPath, Path.ChangeExtension(compressedPath, ".ppprj"));
+            File.Move(compressedZipPath, Path.ChangeExtension(compressedZipPath, ".ppprj"));
             //myfile.replace(extension, ".Jpeg");
             MessageBox.Show("Project saved. PPprj file created successfully!");
         }
