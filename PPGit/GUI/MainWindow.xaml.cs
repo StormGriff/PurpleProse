@@ -99,7 +99,8 @@ namespace PPGit.GUI
             File.Create(New_Char.Directory + "\\" + New_Char.Name.ToLower().Replace(" ", string.Empty) + ".info");
 
             //create desc file
-            File.Create(New_Char.Directory + "\\texts\\desc.txt");
+            New_Char.DescFile = New_Char.Directory + "\\texts\\desc.txt";
+            File.Create(New_Char.DescFile);
 
             mainLists.characterList.Add(New_Char);						//Add it to the list of characters
 
@@ -144,7 +145,8 @@ namespace PPGit.GUI
             Directory.CreateDirectory(New_Loc.Directory + "\\texts");
 
             //create desc file
-            File.Create(New_Loc.Directory + "\\texts\\desc.txt");
+            New_Loc.DescFile = New_Loc.Directory + "\\texts\\desc.txt";
+            File.Create(New_Loc.DescFile);
 
             New_Loc.Number = mainLists.objNum;
             mainLists.objNum++;
