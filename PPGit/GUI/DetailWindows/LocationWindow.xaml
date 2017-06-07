@@ -11,8 +11,9 @@
         ResizeMode="CanResizeWithGrip"
 		Height="520" Width="413" MinHeight="520" MinWidth="413"
 		Closing="MetroWindow_Closing">
-    <Border Name="WindowBorder" BorderThickness="1" BorderBrush="#FF171717">
-        <Grid>
+
+	<Border Name="WindowBorder" BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}">
+		<Grid>
 
             <Grid Margin="2,0,176,-8" Height="auto">
                 <!--Honestly IDK whether this should be a panel, grid, control or whatever-->

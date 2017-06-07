@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using PPGit.Lib;
 
 using Ookii.Dialogs.Wpf;
 using MahApps.Metro.Controls;
@@ -55,7 +56,7 @@ namespace PPGit.GUI.Launcher
             {
                 MainWindow win = new MainWindow();
 
-                string rootpath = ofd.SelectedPath + "\\" + txtNew.Text.ToLower();
+                string rootpath = ofd.SelectedPath + "\\" + TextOps.ToDirectorySafe(txtNew.Text);
                 mainLists.projectDir = rootpath;
 
                 if(!Directory.Exists(rootpath))
@@ -65,7 +66,7 @@ namespace PPGit.GUI.Launcher
 
                         Directory.CreateDirectory(rootpath);
 
-                        File.Create(rootpath + "\\" + txtNew.Text.ToLower() + ".proj");
+                        File.Create(rootpath + "\\" + TextOps.ToDirectorySafe(txtNew.Text) + ".proj");
 
                         //in root project folder
                         Directory.CreateDirectory(rootpath + "\\items");
