@@ -29,12 +29,12 @@ namespace PPGit.Lib
             }
 
 
-            WrapUp();
+            CompressToCustomProjectFile();
 
             return success;
         }
 
-        private static void WrapUp()
+        private static void CompressToCustomProjectFile()
         {
             // Get root directory
             //mainLists.projectDir
@@ -74,7 +74,7 @@ namespace PPGit.Lib
 
             File.Move(compressedPath, Path.ChangeExtension(compressedPath, ".ppprj"));
             //myfile.replace(extension, ".Jpeg");
-            MessageBox.Show("PPProj file created successfully!");
+            MessageBox.Show("Project saved. PPprj file created successfully!");
         }
 
         private void SaveProjectFile()
