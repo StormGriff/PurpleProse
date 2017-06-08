@@ -83,9 +83,22 @@ namespace PPGit.Lib
 
             }
             //File.Move(sourceArchiveFileName, Path.ChangeExtension(sourceArchiveFileName, ".zip"));
-            
+
+            //Extracts an entry in the zip archive to a file, and optionally overwrites an existing file that has the same name
+            /*using (ZipArchive archive = ZipFile.OpenRead(zipFileName))
+            {
+                foreach (ZipArchiveEntry entry in archive.Entries)
+                {
+                    if (entry.FullName.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
+                    {
+                        entry.ExtractToFile(Path.Combine(mainLists.basePath, entry.FullName), true);
+                    }
+                }
+            }*/
+
+            // Assuming extracted project folder does not exist yet...
             ZipFile.ExtractToDirectory(zipFileName, mainLists.basePath ); //  "\\" + projectFolderName
-                                                                           //MessageBox.Show("ZIP file extracted successfully!");
+            //MessageBox.Show("ZIP file extracted successfully!");
 
             // return the <project folder name>.proj
             return mainLists.basePath + "\\" + projectFolderName + "\\" + projectFolderName + ".proj";
